@@ -62,7 +62,7 @@
 #calyra-editorial .ce-orbit-svg .ce-spark { fill: #fff; filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px rgba(131,226,232,.9)); }
 #calyra-editorial .ce-orbit-svg .ce-spark--wine { fill: var(--ce-wine); filter: drop-shadow(0 0 8px rgba(168,11,61,.55)); }
 #calyra-editorial .ce-hero-syringe { position: absolute; z-index: 5; width: 74%; max-width: none; right: -36%; bottom: 13%; pointer-events: none; transform: translate3d(calc(var(--px) * 14px), calc(var(--py) * 10px), 0); }
-#calyra-editorial .ce-hero-syringe img { transform: rotate(-16deg); filter: drop-shadow(0 26px 22px rgba(46,32,37,.24)); animation: ceFloat 6.5s ease-in-out infinite; }
+#calyra-editorial .ce-hero-syringe img { transform: rotate(-16deg); filter: drop-shadow(0 22px 18px rgba(46,32,37,.3)) drop-shadow(0 2px 3px rgba(46,32,37,.25)); animation: ceFloat 6.5s ease-in-out infinite; }
 
 #calyra-editorial .ce-hero-points { position: relative; z-index: 6; width: min(1040px, 100%); margin: -54px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
 #calyra-editorial .ce-hero-point { text-align: center; }
@@ -170,10 +170,9 @@
 #calyra-editorial .ce-gallery { padding: 120px 0; background: #fff; }
 #calyra-editorial .ce-gallery-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 12px; min-height: 760px; }
 #calyra-editorial .ce-gallery-main { position: relative; overflow: hidden; background: #f2efec; }
-#calyra-editorial .ce-gallery-main img { height: 760px; object-fit: cover; }
+#calyra-editorial .ce-gallery-main img, #calyra-editorial .ce-gallery-image:not(.ce-gallery-image--wine) img { position: absolute; inset: 0; height: 100%; object-fit: cover; }
 #calyra-editorial .ce-gallery-side { display: grid; grid-template-rows: 1fr 1fr; gap: 12px; }
 #calyra-editorial .ce-gallery-image { position: relative; overflow: hidden; background: #f1eeeb; }
-#calyra-editorial .ce-gallery-image img { height: 374px; object-fit: cover; }
 #calyra-editorial .ce-gallery-word { position: absolute; left: 30px; bottom: 27px; color: #fff; font-family: "Prata", Georgia, serif; font-size: 62px; line-height: .8; letter-spacing: -.04em; text-shadow: 0 8px 25px rgba(0,0,0,.18); }
 #calyra-editorial .ce-gallery-image--wine { background: var(--ce-wine); padding: 34px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
 #calyra-editorial .ce-gallery-image--wine p { margin: 0; font-family: "Prata", Georgia, serif; font-size: 44px; line-height: .96; }
@@ -246,9 +245,9 @@
   #calyra-editorial .ce-protocol-grid { grid-template-columns: 1fr; }
   #calyra-editorial .ce-protocol { min-height: 460px; }
   #calyra-editorial .ce-gallery-grid { min-height: 0; }
-  #calyra-editorial .ce-gallery-main img { height: 650px; }
+  #calyra-editorial .ce-gallery-main { min-height: 650px; }
   #calyra-editorial .ce-gallery-side { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
-  #calyra-editorial .ce-gallery-image, #calyra-editorial .ce-gallery-image img { height: 360px; }
+  #calyra-editorial .ce-gallery-image { min-height: 360px; }
   #calyra-editorial .ce-gallery-image--wine img { height: 165px; }
   #calyra-editorial .ce-order-panel { padding: 55px 42px 15px; }
   #calyra-editorial .ce-order-syringe { width: 590px; margin: -10px 0 -5px -96px; }
@@ -304,10 +303,10 @@
   #calyra-editorial .ce-study strong { margin-top: 10px; }
   #calyra-editorial .ce-study-case h3 { font-size: 30px; }
   #calyra-editorial .ce-contra ul { columns: 1; }
-  #calyra-editorial .ce-gallery-main img { height: 510px; }
+  #calyra-editorial .ce-gallery-main { min-height: 510px; }
   #calyra-editorial .ce-gallery-word { font-size: 44px; left: 20px; }
   #calyra-editorial .ce-gallery-side { grid-template-columns: 1fr; }
-  #calyra-editorial .ce-gallery-image, #calyra-editorial .ce-gallery-image img { height: 420px; }
+  #calyra-editorial .ce-gallery-image { min-height: 420px; }
   #calyra-editorial .ce-gallery-image--wine { height: 470px; }
   #calyra-editorial .ce-gallery-image--wine p { font-size: 36px; }
   #calyra-editorial .ce-order { padding-bottom: 35px; }
@@ -395,7 +394,7 @@
           </g>
         </svg>
         <img class="ce-hero-cutout" data-asset="calyra-hero-face-cutout.webp" alt="" aria-hidden="true">
-        <div class="ce-hero-syringe"><img data-asset="calyra-lux-5-syringe.png" alt="Шприц CALYRA LUX 5, 2,5 мл"></div>
+        <div class="ce-hero-syringe"><img data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5, 2,5 мл"></div>
       </div>
 
       <div class="ce-hero-points" aria-label="Коротко о продукте">
@@ -448,7 +447,7 @@
       </div>
 
       <div class="ce-package-stage">
-        <div class="ce-package-photo"><img data-asset="calyra-lux-5-package-angle.jpg" alt="Упаковка JeuDérm CALYRA LUX 5, 2 шприца по 2,5 мл"></div>
+        <div class="ce-package-photo"><img data-asset="calyra-lux-5-box-syringes.jpg" alt="Упаковка JeuDérm CALYRA LUX 5 и два шприца по 2,5 мл"></div>
         <div class="ce-orbit" aria-hidden="true"></div>
         <div class="ce-dark-tag"><b>1000 ppm</b><span>sh-Oligopeptide-104 SP</span></div>
       </div>
@@ -552,10 +551,10 @@
 
   <section class="ce-gallery">
     <div class="ce-wrap ce-gallery-grid">
-      <div class="ce-gallery-main"><img data-asset="calyra-lux-5-professional-hand.jpg" alt="Шприцы CALYRA LUX 5 в руке специалиста"><div class="ce-gallery-word">professional<br>skin longevity</div></div>
+      <div class="ce-gallery-main"><img data-asset="calyra-lux-5-boxes.jpg" alt="Упаковки JeuDérm CALYRA LUX 5"><div class="ce-gallery-word">professional<br>skin longevity</div></div>
       <div class="ce-gallery-side">
-        <div class="ce-gallery-image"><img data-asset="calyra-lux-5-professional-use.jpg" alt="CALYRA LUX 5 в работе специалиста"></div>
-        <div class="ce-gallery-image ce-gallery-image--wine"><p>Премиальный продукт, который заметен в кабинете.</p><img data-asset="calyra-lux-5-syringe.png" alt="Шприц CALYRA LUX 5"></div>
+        <div class="ce-gallery-image"><img style="object-position:center 62%" data-asset="calyra-lux-5-syringes-ribbon.jpg" alt="Шприцы CALYRA LUX 5"></div>
+        <div class="ce-gallery-image ce-gallery-image--wine"><p>Премиальный продукт, который заметен в кабинете.</p><img data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5"></div>
       </div>
     </div>
   </section>
@@ -573,7 +572,7 @@
         </ul>
         <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:order">Заказать продукт</a></div>
       </div>
-      <img class="ce-order-syringe" data-asset="calyra-lux-5-syringe.png" alt="Шприц CALYRA LUX 5">
+      <img class="ce-order-syringe" data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5">
     </div>
     <div class="ce-wrap ce-contra">
       <div class="ce-label ce-label--wine">Противопоказания</div>
