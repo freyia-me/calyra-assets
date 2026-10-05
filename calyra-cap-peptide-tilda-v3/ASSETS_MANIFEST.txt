@@ -1,0 +1,10 @@
+PUBLIC BASE URL
+https://freyia-me.github.io/calyra-assets/assets/
+
+CHROMOSOME / TELOMERES
+File: assets/CALYRA_LUX_CAP_Peptide_5_telomeres_transparent_v3.png
+URL:  https://freyia-me.github.io/calyra-assets/assets/CALYRA_LUX_CAP_Peptide_5_telomeres_transparent_v3.png
+
+SYRINGE
+File: assets/CALYRA_LUX_syringe_apple_style_no_background_v3_full.png
+URL:  https://freyia-me.github.io/calyra-assets/assets/CALYRA_LUX_syringe_apple_style_no_background_v3_full.png
