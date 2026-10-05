@@ -194,6 +194,42 @@
 #calyra-editorial .ce-order-syringe { position: relative; z-index: 3; width: 630px; max-width: none; margin-left: -130px; transform: rotate(-10deg); filter: drop-shadow(0 32px 25px rgba(0,0,0,.4)); }
 #calyra-editorial .ce-footer { min-height: 55px; display: flex; justify-content: space-between; align-items: center; gap: 30px; color: #77787e; font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
 
+#calyra-editorial .ce-trust { margin-top: 70px; margin-left: 28%; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(32,33,39,.13); }
+#calyra-editorial .ce-trust div { padding: 18px 18px 0 0; font-size: 11px; line-height: 1.45; color: #55575e; }
+#calyra-editorial .ce-trust b { display: block; margin-bottom: 4px; font-family: "Prata", Georgia, serif; font-size: 19px; font-weight: 400; color: var(--ce-ink); }
+#calyra-editorial .ce-course { margin-top: 18px; display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; background: #17181d; color: #fff; }
+#calyra-editorial .ce-course > div { padding: 28px 26px; border-right: 1px solid rgba(255,255,255,.12); }
+#calyra-editorial .ce-course > div:last-child { border-right: 0; }
+#calyra-editorial .ce-course .ce-label { color: #e7acbe; }
+#calyra-editorial .ce-course h3 { margin: 12px 0 0; font-family: "Prata", Georgia, serif; font-size: 28px; font-weight: 400; line-height: 1.05; }
+#calyra-editorial .ce-course b { display: block; font-family: "Prata", Georgia, serif; font-size: 30px; font-weight: 400; color: #f0b7c8; }
+#calyra-editorial .ce-course small { display: block; margin-top: 4px; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #8d8f97; }
+#calyra-editorial .ce-course p { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: #b9bac0; }
+#calyra-editorial .ce-course-note { margin: 12px 0 0; font-size: 10px; line-height: 1.5; color: var(--ce-muted); }
+#calyra-editorial .ce-study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-bottom: 70px; border-top: 1px solid rgba(32,33,39,.17); }
+#calyra-editorial .ce-study { padding: 26px 26px 30px 0; border-bottom: 1px solid rgba(32,33,39,.17); }
+#calyra-editorial .ce-study b { display: block; font-family: "Prata", Georgia, serif; font-size: 34px; font-weight: 400; color: var(--ce-wine); line-height: 1; }
+#calyra-editorial .ce-study strong { display: block; margin-top: 14px; font-size: 13px; font-weight: 500; }
+#calyra-editorial .ce-study span { display: block; margin-top: 6px; font-size: 12px; line-height: 1.55; color: var(--ce-muted); }
+#calyra-editorial .ce-study-case { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 22px; }
+#calyra-editorial .ce-study-case h3 { margin: 0; font-family: "Prata", Georgia, serif; font-size: 36px; font-weight: 400; }
+#calyra-editorial .ce-study-case p { margin: 0; max-width: 520px; font-size: 12px; line-height: 1.55; color: var(--ce-muted); text-align: right; }
+#calyra-editorial .ce-study-disclaimer { margin-top: 40px; padding: 18px 22px; background: #fff; border-left: 2px solid var(--ce-wine); font-size: 11px; line-height: 1.6; color: #5d5f66; }
+#calyra-editorial .ce-contra { margin-top: 16px; padding: 26px 0 8px; display: grid; grid-template-columns: 220px 1fr; gap: 30px; border-top: 1px solid rgba(32,33,39,.13); }
+#calyra-editorial .ce-contra ul { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 40px; font-size: 11px; line-height: 1.5; color: #5d5f66; }
+#calyra-editorial .ce-contra li { break-inside: avoid; padding: 0 0 8px 14px; position: relative; }
+#calyra-editorial .ce-contra li::before { content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--ce-wine); }
+
+@media (max-width: 900px) {
+  #calyra-editorial .ce-trust { margin-left: 0; grid-template-columns: 1fr 1fr; }
+  #calyra-editorial .ce-course { grid-template-columns: 1fr 1fr; }
+  #calyra-editorial .ce-course > div:first-child { grid-column: 1 / -1; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  #calyra-editorial .ce-study-grid { grid-template-columns: 1fr 1fr; }
+  #calyra-editorial .ce-study-case { flex-direction: column; align-items: start; gap: 10px; }
+  #calyra-editorial .ce-study-case p { text-align: left; }
+  #calyra-editorial .ce-contra { grid-template-columns: 1fr; gap: 14px; }
+}
+
 @media (max-width: 900px) {
   #calyra-editorial .ce-wrap { width: min(100% - 36px, 700px); }
   #calyra-editorial .ce-hero-art { width: min(520px, 78vw); }
@@ -259,6 +295,15 @@
   #calyra-editorial .ce-recovery-head { flex-direction: column; align-items: start; gap: 8px; }
   #calyra-editorial .ce-recovery-strip { gap: 4px; }
   #calyra-editorial .ce-recovery-photo { height: 190px; }
+  #calyra-editorial .ce-trust { margin-top: 48px; }
+  #calyra-editorial .ce-course { grid-template-columns: 1fr; }
+  #calyra-editorial .ce-course > div { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.12); padding: 22px 20px; }
+  #calyra-editorial .ce-study-grid { grid-template-columns: 1fr; margin-bottom: 50px; }
+  #calyra-editorial .ce-study { padding: 20px 0 22px; }
+  #calyra-editorial .ce-study b { font-size: 27px; }
+  #calyra-editorial .ce-study strong { margin-top: 10px; }
+  #calyra-editorial .ce-study-case h3 { font-size: 30px; }
+  #calyra-editorial .ce-contra ul { columns: 1; }
   #calyra-editorial .ce-gallery-main img { height: 510px; }
   #calyra-editorial .ce-gallery-word { font-size: 44px; left: 20px; }
   #calyra-editorial .ce-gallery-side { grid-template-columns: 1fr; }
@@ -380,6 +425,12 @@
         <p class="ce-text">Большинство продуктов решают одну задачу. В CALYRA LUX 5 три компонента работают в связке: пептид поддерживает клеточный потенциал кожи, полинуклеотиды — её естественное обновление, а 3D-гиалуроновая кислота отвечает за глубокое увлажнение и упругость.</p>
         <div class="ce-proofline"><span>Три задачи —<br>одна процедура</span><b>3 в 1</b></div>
       </div>
+      <div class="ce-trust">
+        <div><b>Патент</b>Запатентованный CAP Пептид 5</div>
+        <div><b>20 лет</b>исследований пептида учёными CSIC (Испания)</div>
+        <div><b>Корея · Испания</b>биотехнологии, производство в Италии</div>
+        <div><b>CE</b>действующий сертификат, стандарты ISO и GMP</div>
+      </div>
     </div>
   </section>
 
@@ -426,7 +477,7 @@
       <div class="ce-formula-row">
         <div class="ce-formula-index">03</div>
         <div class="ce-formula-name"><b>3D-ГК</b><span>Гидратация и упругость · 10 мг/мл</span></div>
-        <div class="ce-formula-result">Гиалуроновая кислота трёх диапазонов молекулярной массы образует единую водоудерживающую систему: глубокое увлажнение, упругость и наполненность кожи.</div>
+        <div class="ce-formula-result">Гиалуроновая кислота трёх молекулярных масс — 1200–1600, 900–1100 и 600–800 кДа — образует единую водоудерживающую систему: глубокое увлажнение, упругость и наполненность кожи.</div>
         <div class="ce-formula-visual" style="--f-color:#a7e4e7;--f-shadow:rgba(64,165,174,.17);--f-line:rgba(64,165,174,.43)"></div>
       </div>
       <div class="ce-formula-cta"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс и состав <em>↗</em></a></div>
@@ -456,26 +507,46 @@
           <div class="ce-protocol-bottom"><h3>В протоколе<br>с мезороллером</h3><span>Смотреть протокол</span></div>
         </a>
       </div>
+      <div class="ce-course">
+        <div><div class="ce-label">Рекомендуемый курс</div><h3>Для кожи 35–40+</h3></div>
+        <div><b>3–4</b><small>процедуры · 35–40+ лет</small><p>Интервал 4 недели</p></div>
+        <div><b>5–6</b><small>процедур · 50–60+ лет</small><p>Интервал 3–4 недели</p></div>
+        <div><b>1</b><small>поддерживающая процедура</small><p>Раз в 4–6 месяцев</p></div>
+      </div>
+      <p class="ce-course-note">Количество процедур и протокол подбираются специалистом индивидуально — с учётом возраста, типа и состояния кожи.</p>
     </div>
   </section>
 
   <section class="ce-results" id="ce-results">
     <div class="ce-wrap">
-      <div class="ce-results-title"><div class="ce-label ce-label--wine">Визуальная динамика</div><h2 class="ce-h2">Результат,<br>который видно</h2></div>
-      <div class="ce-result-pair">
-        <div class="ce-result-photo"><img data-asset="result-before.png" alt="Состояние кожи до курса процедур"><span class="ce-result-label">До</span></div>
-        <div class="ce-result-photo"><img data-asset="result-after.png" alt="Состояние кожи после курса процедур"><span class="ce-result-label">После</span></div>
+      <div class="ce-results-title"><div class="ce-label ce-label--wine">Исследования CAP Пептида 5</div><h2 class="ce-h2">Действие ключевого<br>компонента — в данных</h2></div>
+
+      <div class="ce-study-grid">
+        <div class="ce-study"><b>β-галактозидаза ↓</b><strong>Маркер клеточного старения</strong><span>Применение CAP Пептида 5 значительно снизило накопление β-галактозидазы — биомаркера стареющих клеток.</span></div>
+        <div class="ce-study"><b>Теломеры</b><strong>Поддержка длины теломер</strong><span>Пептид повторяет последовательность белка теломеразного комплекса и поддерживает длину теломер.</span></div>
+        <div class="ce-study"><b>Каталаза · СОД ↑</b><strong>Антиоксидантная защита</strong><span>В культурах фибробластов вырос уровень антиоксидантных ферментов — каталазы и супероксиддисмутазы.</span></div>
+        <div class="ce-study"><b>IL-6 · IL-8 ↓</b><strong>Провоспалительные цитокины</strong><span>Исследования показали снижение провоспалительных цитокинов IL-6 и IL-8.</span></div>
+        <div class="ce-study"><b>4 месяца</b><strong>Коллаген и фибробласты</strong><span>Увеличение коллагеновых волокон и количества фибробластов в биоптатах кожи после 4 месяцев применения пептида.</span></div>
+        <div class="ce-study"><b>3+ месяца</b><strong>Эластичность и увлажнённость</strong><span>Повышение эластичности и увлажнённости кожи, уменьшение глубины и толщины морщин.</span></div>
       </div>
-      <div class="ce-result-caption"><span>Визуально более ровная текстура, свежесть и ухоженный вид кожи.</span><span>Фото из практики специалистов. Индивидуальный результат может отличаться.</span></div>
+
+      <div class="ce-study-case"><h3>Фотостарение кожи</h3><p>Женщина, 58 лет. Применение CAP Пептида 5 дважды в день (утром и вечером) в течение 12 месяцев.</p></div>
+      <div class="ce-result-pair">
+        <div class="ce-result-photo"><img data-asset="result-before.png" alt="Фотостарение кожи до применения CAP Пептида 5"><span class="ce-result-label">До</span></div>
+        <div class="ce-result-photo"><img data-asset="result-after.png" alt="Кожа после 12 месяцев применения CAP Пептида 5"><span class="ce-result-label">12 месяцев</span></div>
+      </div>
+      <div class="ce-result-caption"><span>Более ровная текстура, менее выраженные морщины, свежий вид кожи.</span><span>Данные клинического наблюдения CAP Пептида 5.</span></div>
 
       <div class="ce-recovery">
-        <div class="ce-recovery-head"><h3>Динамика восстановления</h3><span>Этапы 01—03</span></div>
+        <div class="ce-study-case"><h3>Восстановление кожи</h3><p>Мужчина, 56 лет: кожа в области рубца. CAP Пептид 5 наносили ежедневно утром и вечером на чистую сухую кожу.</p></div>
         <div class="ce-recovery-strip">
-          <div class="ce-recovery-photo"><img data-asset="recovery-01.png" alt="Первый этап"><span>01</span></div>
-          <div class="ce-recovery-photo"><img data-asset="recovery-02.png" alt="Второй этап"><span>02</span></div>
-          <div class="ce-recovery-photo"><img data-asset="recovery-03.png" alt="Третий этап"><span>03</span></div>
+          <div class="ce-recovery-photo"><img data-asset="recovery-01.png" alt="Кожа в области рубца, этап 1"><span>01</span></div>
+          <div class="ce-recovery-photo"><img data-asset="recovery-02.png" alt="Кожа в области рубца, этап 2"><span>02</span></div>
+          <div class="ce-recovery-photo"><img data-asset="recovery-03.png" alt="Кожа в области рубца, этап 3"><span>03</span></div>
         </div>
       </div>
+
+      <div class="ce-study-disclaimer">Приведены данные исследований и клинических наблюдений CAP Пептида 5 (sh-Oligopeptide-104 SP) — ключевого компонента CALYRA LUX 5 — по материалам производителя. Это не результаты процедур с готовым продуктом. Индивидуальный результат может отличаться.</div>
     </div>
   </section>
 
@@ -503,6 +574,19 @@
         <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:order">Заказать продукт</a></div>
       </div>
       <img class="ce-order-syringe" data-asset="calyra-lux-5-syringe.png" alt="Шприц CALYRA LUX 5">
+    </div>
+    <div class="ce-wrap ce-contra">
+      <div class="ce-label ce-label--wine">Противопоказания</div>
+      <ul>
+        <li>Индивидуальная непереносимость компонентов</li>
+        <li>Беременность и лактация</li>
+        <li>Аутоиммунные и онкологические заболевания</li>
+        <li>Острые инфекционные заболевания, герпес в стадии обострения</li>
+        <li>Воспалительные процессы на коже в зоне процедуры</li>
+        <li>Склонность к образованию келоидных рубцов</li>
+        <li>Нарушения свёртываемости крови</li>
+        <li>Эпилепсия</li>
+      </ul>
     </div>
     <div class="ce-wrap ce-footer"><span>JeuDérm CALYRA LUX 5 · 2 × 2 мл · профессиональный косметический продукт</span><span>Информация предназначена для специалистов</span></div>
   </section>
@@ -552,7 +636,7 @@
   }
 
   if (!('IntersectionObserver' in window)) return;
-  var targets = root.querySelectorAll('.ce-statement-top, .ce-statement-bottom, .ce-dark-copy, .ce-package-stage, .ce-section-head, .ce-formula-row, .ce-protocol, .ce-results-title, .ce-result-pair, .ce-recovery, .ce-gallery-main, .ce-gallery-image, .ce-order-panel');
+  var targets = root.querySelectorAll('.ce-statement-top, .ce-statement-bottom, .ce-dark-copy, .ce-package-stage, .ce-section-head, .ce-formula-row, .ce-protocol, .ce-results-title, .ce-study-grid, .ce-result-pair, .ce-recovery, .ce-course, .ce-gallery-main, .ce-gallery-image, .ce-order-panel');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
