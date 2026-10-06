@@ -36,10 +36,10 @@
 
 /* ---------- HERO ---------- */
 #calyra-editorial .ce-hero { position: relative; overflow: hidden; isolation: isolate; background:
-  radial-gradient(circle at 50% 46%, rgba(255,255,255,.98) 0 14%, transparent 40%),
-  radial-gradient(circle at 22% 30%, rgba(167,225,234,.26), transparent 28%),
-  radial-gradient(circle at 80% 24%, rgba(224,177,207,.24), transparent 26%),
-  linear-gradient(180deg, #f7f6f3 0%, #f9f5f5 58%, #f8f7f4 100%); }
+  radial-gradient(ellipse 60% 45% at 50% 62%, rgba(255,250,244,.9), transparent 70%),
+  radial-gradient(circle at 15% 20%, rgba(232,206,196,.35), transparent 32%),
+  radial-gradient(circle at 85% 30%, rgba(214,170,170,.22), transparent 30%),
+  linear-gradient(180deg, #f8f4ef 0%, #f1e6dc 62%, #f6f0ea 100%); }
 #calyra-editorial .ce-hero-layout { position: relative; padding-bottom: 38px; }
 #calyra-editorial .ce-hero-copy { position: relative; z-index: 6; padding: 52px 0 0; text-align: center; }
 #calyra-editorial .ce-hero-copy .ce-label { margin-bottom: 18px; }
@@ -48,16 +48,15 @@
 #calyra-editorial .ce-hero-lead { max-width: 600px; margin: 18px auto 0; font-size: 14px; line-height: 1.55; color: #5d5f66; }
 #calyra-editorial .ce-hero-copy .ce-button { min-height: 44px; margin-top: 22px; padding: 10px 14px 10px 22px; }
 
-/* Depth stack: photo → orbit → cut-out figure → syringe. The orbit is drawn between the
-   photo and the identical cut-out, so it reads as passing behind the head. */
-#calyra-editorial .ce-hero-art { --px: 0; --py: 0; position: relative; z-index: 3; width: min(560px, 62vw); aspect-ratio: 1122 / 1402; margin: -6px auto 0; }
-#calyra-editorial .ce-hero-photo, #calyra-editorial .ce-hero-cutout { position: absolute; inset: 0; height: 100%; object-fit: cover; -webkit-mask-image: radial-gradient(ellipse 54% 56% at 50% 47%, #000 58%, transparent 100%); mask-image: radial-gradient(ellipse 54% 56% at 50% 47%, #000 58%, transparent 100%); }
+/* Depth stack: scene photo → orbit → cut-out of box, syringes, podium and ribbon. The orbit is
+   drawn between the photo and the identical cut-out, so it reads as passing behind the product. */
+#calyra-editorial .ce-hero-art { --px: 0; --py: 0; position: relative; z-index: 3; width: min(1080px, 100%); aspect-ratio: 1200 / 630; margin: 26px auto 0; }
+#calyra-editorial .ce-hero-photo, #calyra-editorial .ce-hero-cutout { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: 50% 50%; -webkit-mask-image: radial-gradient(ellipse 48% 52% at 50% 52%, #000 56%, transparent 100%); mask-image: radial-gradient(ellipse 48% 52% at 50% 52%, #000 56%, transparent 100%); }
 #calyra-editorial .ce-hero-photo { z-index: 1; transform: translate3d(calc(var(--px) * -4px), calc(var(--py) * -4px), 0); }
 #calyra-editorial .ce-hero-cutout { z-index: 3; transform: translate3d(calc(var(--px) * -4px), calc(var(--py) * -4px), 0); pointer-events: none; }
-#calyra-editorial .ce-orbit-svg { position: absolute; z-index: 2; left: -42%; top: 26%; width: 184%; height: auto; overflow: visible; pointer-events: none; transform: translate3d(calc(var(--px) * 10px), calc(var(--py) * 6px), 0); }
+#calyra-editorial .ce-orbit-svg { position: absolute; z-index: 2; left: 4%; top: 12%; width: 92%; height: auto; overflow: visible; pointer-events: none; transform: translate3d(calc(var(--px) * 10px), calc(var(--py) * 6px), 0); }
 #calyra-editorial .ce-orbit-svg .ce-ring { fill: none; stroke-linecap: round; }
 #calyra-editorial .ce-orbit-svg .ce-ring--main { stroke: url(#ceRingGrad); stroke-width: 1.6; stroke-dasharray: 2600; stroke-dashoffset: 2600; }
-#calyra-editorial .ce-orbit-svg .ce-ring--soft { stroke: rgba(88,86,103,.16); stroke-width: 1; stroke-dasharray: 2600; stroke-dashoffset: 2600; }
 #calyra-editorial .ce-orbit-svg .ce-ring--glow { stroke: url(#ceRingGrad); stroke-width: 7; opacity: .16; filter: blur(4px); }
 #calyra-editorial .ce-orbit-svg .ce-spark { fill: #fff; filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px rgba(131,226,232,.9)); }
 #calyra-editorial .ce-orbit-svg .ce-spark--wine { fill: var(--ce-wine); filter: drop-shadow(0 0 8px rgba(168,11,61,.55)); }
@@ -235,7 +234,9 @@
 
 @media (max-width: 900px) {
   #calyra-editorial .ce-wrap { width: min(100% - 36px, 700px); }
-  #calyra-editorial .ce-hero-art { width: min(520px, 78vw); }
+  #calyra-editorial .ce-hero-art { width: 100%; aspect-ratio: 5 / 4; }
+  #calyra-editorial .ce-hero-photo, #calyra-editorial .ce-hero-cutout { object-position: 50% 50%; }
+  #calyra-editorial .ce-orbit-svg { left: -30%; width: 160%; top: 14%; }
   #calyra-editorial .ce-hero-points { grid-template-columns: 1fr 1fr; margin-top: 22px; }
   #calyra-editorial .ce-composition-row { min-height: 0; }
   #calyra-editorial .ce-composition-item { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
@@ -265,8 +266,9 @@
   #calyra-editorial .ce-hero-lead { font-size: 13px; padding: 0 6px; }
   /* On phones the figure is wider than the column; the syringe lies across the shoulders
      in front of the figure instead of being squeezed into a corner. */
-  #calyra-editorial .ce-hero-art { width: 104vw; margin: 0 0 0 calc((100% - 104vw) / 2); }
-  #calyra-editorial .ce-orbit-svg { left: -24%; width: 148%; top: 28%; }
+  #calyra-editorial .ce-hero-art { width: 100vw; margin: 18px 0 0 calc((100% - 100vw) / 2); aspect-ratio: 1 / 1; }
+  #calyra-editorial .ce-hero-photo, #calyra-editorial .ce-hero-cutout { object-position: 47% 50%; }
+  #calyra-editorial .ce-orbit-svg { left: -60%; width: 220%; top: 16%; }
   #calyra-editorial .ce-hero-points { margin-top: 18px; gap: 8px; }
   #calyra-editorial .ce-hero-point { padding: 14px 12px 14px 30px; border-radius: 14px; }
   #calyra-editorial .ce-hero-point::before { left: 13px; top: 19px; width: 7px; height: 7px; }
@@ -337,7 +339,6 @@
 #calyra-editorial.ce-ready .ce-hero-copy .ce-button { animation: ceHeroRise .7s .4s backwards; }
 #calyra-editorial.ce-ready .ce-hero-art { animation: ceFigureIn 1.3s .2s cubic-bezier(.22,.8,.22,1) backwards; }
 #calyra-editorial.ce-ready .ce-ring--main { animation: ceRingDraw 2.4s .7s cubic-bezier(.6,0,.2,1) forwards; }
-#calyra-editorial.ce-ready .ce-ring--soft { animation: ceRingDraw 2.8s .95s cubic-bezier(.6,0,.2,1) forwards; }
 #calyra-editorial.ce-ready .ce-ring--glow { animation: ceSoftReveal 1.4s 1.6s backwards, ceGlowPulse 5s 3s ease-in-out infinite; }
 #calyra-editorial.ce-ready .ce-hero-points { animation: ceSoftReveal .85s 1.1s backwards; }
 
@@ -371,7 +372,7 @@
       </div>
 
       <div class="ce-hero-art" data-ce-parallax>
-        <img class="ce-hero-photo" data-asset="calyra-hero-face.webp" alt="Портрет женщины с ухоженной сияющей кожей">
+        <img class="ce-hero-photo" data-asset="calyra-hero-product.webp" alt="Упаковка JeuDérm CALYRA LUX 5 и два шприца по 2,5 мл на травертиновой подставке">
         <svg class="ce-orbit-svg" viewBox="0 0 1000 300" aria-hidden="true">
           <defs>
             <linearGradient id="ceRingGrad" x1="0" y1="0" x2="1" y2="0">
@@ -382,19 +383,14 @@
               <stop offset="1" stop-color="#c97e94" stop-opacity=".15"/>
             </linearGradient>
             <path id="ceOrbitA" d="M60 150 A440 92 0 1 0 940 150 A440 92 0 1 0 60 150"/>
-            <path id="ceOrbitB" d="M20 150 A480 70 0 1 1 980 150 A480 70 0 1 1 20 150"/>
           </defs>
-          <g transform="rotate(-21 500 150)">
+          <g transform="rotate(-9 500 150)">
             <use class="ce-ring ce-ring--glow" href="#ceOrbitA"/>
             <use class="ce-ring ce-ring--main" href="#ceOrbitA"/>
             <circle class="ce-spark" r="4.5"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#ceOrbitA"/></animateMotion></circle>
           </g>
-          <g transform="rotate(-14 500 150)">
-            <use class="ce-ring ce-ring--soft" href="#ceOrbitB"/>
-            <circle class="ce-spark ce-spark--wine" r="4"><animateMotion dur="13s" begin="-4s" repeatCount="indefinite"><mpath href="#ceOrbitB"/></animateMotion></circle>
-          </g>
         </svg>
-        <img class="ce-hero-cutout" data-asset="calyra-hero-face-cutout.webp" alt="" aria-hidden="true">
+        <img class="ce-hero-cutout" data-asset="calyra-hero-product-cutout.webp" alt="" aria-hidden="true">
       </div>
 
       <div class="ce-hero-points" aria-label="Коротко о продукте">
