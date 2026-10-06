@@ -125,6 +125,9 @@
 #calyra-editorial .ce-formula-name b { display: block; font-family: "Prata", Georgia, serif; font-size: 37px; font-weight: 400; line-height: .95; }
 #calyra-editorial .ce-formula-name span { display: block; margin-top: 11px; font-size: 9px; color: var(--ce-muted); text-transform: uppercase; letter-spacing: .1em; }
 #calyra-editorial .ce-formula-result { max-width: 480px; font-size: 13px; line-height: 1.65; color: #686a71; }
+#calyra-editorial .ce-formula-result p { margin: 0; }
+#calyra-editorial .ce-formula-link { margin-top: 16px; min-height: 40px; padding: 8px 10px 8px 18px; gap: 12px; font-size: 11px; color: var(--ce-ink); }
+#calyra-editorial .ce-formula-link em { color: #fff; background: var(--ce-wine); }
 #calyra-editorial .ce-formula-visual { height: 125px; position: relative; }
 #calyra-editorial .ce-formula-visual::before { content: ""; position: absolute; width: 112px; height: 112px; border-radius: 50%; right: 8px; top: 6px; background: radial-gradient(circle at 31% 25%, #fff, var(--f-color)); box-shadow: inset -17px -17px 35px rgba(54,49,58,.08), 0 23px 43px var(--f-shadow); }
 #calyra-editorial .ce-formula-visual::after { content: ""; position: absolute; width: 82px; height: 32px; border: 1px solid var(--f-line); border-radius: 50%; right: 23px; top: 44px; transform: rotate(-22deg); }
@@ -204,6 +207,8 @@
 #calyra-editorial .ce-course b { display: block; font-family: "Prata", Georgia, serif; font-size: 30px; font-weight: 400; color: #f0b7c8; }
 #calyra-editorial .ce-course small { display: block; margin-top: 4px; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #8d8f97; }
 #calyra-editorial .ce-course p { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: #b9bac0; }
+#calyra-editorial .ce-course-cta { margin-top: 40px; display: flex; justify-content: center; }
+#calyra-editorial .ce-course-cta .ce-button { min-height: 56px; padding: 16px 18px 16px 30px; font-size: 14px; box-shadow: 0 16px 36px rgba(168,11,61,.22); }
 #calyra-editorial .ce-course-note { margin: 12px 0 0; font-size: 10px; line-height: 1.5; color: var(--ce-muted); }
 #calyra-editorial .ce-study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-bottom: 70px; border-top: 1px solid rgba(32,33,39,.17); }
 #calyra-editorial .ce-study { padding: 26px 26px 30px 0; border-bottom: 1px solid rgba(32,33,39,.17); }
@@ -464,19 +469,19 @@
       <div class="ce-formula-row">
         <div class="ce-formula-index">01</div>
         <div class="ce-formula-name"><b>CAP Пептид 5</b><span>Клеточный потенциал · 1000 ppm</span></div>
-        <div class="ce-formula-result">Поддерживает процессы, связанные с теломерной защитой, антиоксидантными механизмами и активностью фибробластов.</div>
+        <div class="ce-formula-result"><p>Поддерживает процессы, связанные с теломерной защитой, антиоксидантными механизмами и активностью фибробластов.</p><a class="ce-button ce-formula-link" href="/cap-peptide">Подробнее о CAP Пептиде 5 <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#c8b1f0;--f-shadow:rgba(128,91,186,.18);--f-line:rgba(128,91,186,.4)"></div>
       </div>
       <div class="ce-formula-row">
         <div class="ce-formula-index">02</div>
         <div class="ce-formula-name"><b>PN</b><span>Обновление и плотность · 20 мг/мл</span></div>
-        <div class="ce-formula-result">Полинуклеотиды поддерживают естественные процессы обновления кожи и создают благоприятную увлажнённую среду — кожа выглядит более плотной, ровной и отдохнувшей.</div>
+        <div class="ce-formula-result"><p>Полинуклеотиды поддерживают естественные процессы обновления кожи и создают благоприятную увлажнённую среду — кожа выглядит более плотной, ровной и отдохнувшей.</p><a class="ce-button ce-formula-link" href="/polynucleotides">Подробнее о PN <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#d2a0aa;--f-shadow:rgba(165,32,70,.16);--f-line:rgba(165,32,70,.42)"></div>
       </div>
       <div class="ce-formula-row">
         <div class="ce-formula-index">03</div>
         <div class="ce-formula-name"><b>3D-ГК</b><span>Гидратация и упругость · 10 мг/мл</span></div>
-        <div class="ce-formula-result">Гиалуроновая кислота трёх молекулярных масс — 1200–1600, 900–1100 и 600–800 кДа — образует единую водоудерживающую систему: глубокое увлажнение, упругость и наполненность кожи.</div>
+        <div class="ce-formula-result"><p>Гиалуроновая кислота трёх молекулярных масс — 1200–1600, 900–1100 и 600–800 кДа — образует единую водоудерживающую систему: глубокое увлажнение, упругость и наполненность кожи.</p><a class="ce-button ce-formula-link" href="/hyaluronic">Подробнее о 3D-ГК <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#a7e4e7;--f-shadow:rgba(64,165,174,.17);--f-line:rgba(64,165,174,.43)"></div>
       </div>
       <div class="ce-formula-cta"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс и состав <em>↗</em></a></div>
@@ -487,20 +492,20 @@
     <div class="ce-wrap">
       <div class="ce-section-head">
         <div><div class="ce-label ce-label--wine">Профессиональные сценарии</div><h2 class="ce-h2">Три протокола<br>для кабинета</h2></div>
-        <p class="ce-text">CALYRA LUX 5 легко встраивается в процедуры, которые уже есть в вашем прайсе. Нажмите на карточку, чтобы посмотреть схему протокола.</p>
+        <p class="ce-text">CALYRA LUX 5 легко встраивается в процедуры, которые уже есть в вашем прайсе. Подробные схемы протоколов — на странице для косметологов.</p>
       </div>
       <div class="ce-protocol-grid">
-        <a class="ce-protocol" href="#popup:protocol-rf" aria-label="Открыть протокол совместного применения с RF-лифтингом">
+        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол совместного применения с RF-лифтингом">
           <div class="ce-protocol-top"><span>01</span><span>RF</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M12 28c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/><path d="M8 40c9-9 18-9 27 0s18 9 27 0 14-7 18-4"/><path d="M12 52c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/></svg></div>
           <div class="ce-protocol-bottom"><h3>Совместно<br>с RF-лифтингом</h3><span>Смотреть протокол</span></div>
         </a>
-        <a class="ce-protocol" href="#popup:protocol-recovery" aria-label="Открыть протокол ухода после аппаратных процедур">
+        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол ухода после аппаратных процедур">
           <div class="ce-protocol-top"><span>02</span><span>Recovery</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 8c2 17 8 23 25 25-17 2-23 8-25 25-2-17-8-23-25-25 17-2 23-8 25-25Z"/><path d="M63 51c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg></div>
           <div class="ce-protocol-bottom"><h3>После аппаратных<br>процедур</h3><span>Смотреть протокол</span></div>
         </a>
-        <a class="ce-protocol" href="#popup:protocol-roller" aria-label="Открыть протокол применения с мезороллером">
+        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол применения с мезороллером">
           <div class="ce-protocol-top"><span>03</span><span>Roller</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><rect x="13" y="19" width="43" height="25" rx="12"/><path d="M56 31h11v17c0 10-8 18-18 18H32"/><circle cx="25" cy="31" r="2"/><circle cx="35" cy="31" r="2"/><circle cx="45" cy="31" r="2"/></svg></div>
           <div class="ce-protocol-bottom"><h3>В протоколе<br>с мезороллером</h3><span>Смотреть протокол</span></div>
@@ -513,6 +518,7 @@
         <div><b>1</b><small>поддерживающая процедура</small><p>Раз в 4–6 месяцев</p></div>
       </div>
       <p class="ce-course-note">Количество процедур и протокол подбираются специалистом индивидуально — с учётом возраста, типа и состояния кожи.</p>
+      <div class="ce-course-cta"><a class="ce-button ce-button--wine" href="/cosmetologists">Больше информации для косметологов <em>→</em></a></div>
     </div>
   </section>
 
