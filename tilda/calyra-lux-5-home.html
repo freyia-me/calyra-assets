@@ -54,21 +54,21 @@
 #calyra-editorial .ce-hero-photo, #calyra-editorial .ce-hero-cutout { position: absolute; inset: 0; height: 100%; object-fit: cover; -webkit-mask-image: radial-gradient(ellipse 54% 56% at 50% 47%, #000 58%, transparent 100%); mask-image: radial-gradient(ellipse 54% 56% at 50% 47%, #000 58%, transparent 100%); }
 #calyra-editorial .ce-hero-photo { z-index: 1; transform: translate3d(calc(var(--px) * -4px), calc(var(--py) * -4px), 0); }
 #calyra-editorial .ce-hero-cutout { z-index: 3; transform: translate3d(calc(var(--px) * -4px), calc(var(--py) * -4px), 0); pointer-events: none; }
-#calyra-editorial .ce-orbit-svg { position: absolute; z-index: 2; left: -48%; top: 17%; width: 196%; height: auto; overflow: visible; pointer-events: none; transform: translate3d(calc(var(--px) * 10px), calc(var(--py) * 6px), 0); }
+#calyra-editorial .ce-orbit-svg { position: absolute; z-index: 2; left: -42%; top: 26%; width: 184%; height: auto; overflow: visible; pointer-events: none; transform: translate3d(calc(var(--px) * 10px), calc(var(--py) * 6px), 0); }
 #calyra-editorial .ce-orbit-svg .ce-ring { fill: none; stroke-linecap: round; }
 #calyra-editorial .ce-orbit-svg .ce-ring--main { stroke: url(#ceRingGrad); stroke-width: 1.6; stroke-dasharray: 2600; stroke-dashoffset: 2600; }
 #calyra-editorial .ce-orbit-svg .ce-ring--soft { stroke: rgba(88,86,103,.16); stroke-width: 1; stroke-dasharray: 2600; stroke-dashoffset: 2600; }
 #calyra-editorial .ce-orbit-svg .ce-ring--glow { stroke: url(#ceRingGrad); stroke-width: 7; opacity: .16; filter: blur(4px); }
 #calyra-editorial .ce-orbit-svg .ce-spark { fill: #fff; filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px rgba(131,226,232,.9)); }
 #calyra-editorial .ce-orbit-svg .ce-spark--wine { fill: var(--ce-wine); filter: drop-shadow(0 0 8px rgba(168,11,61,.55)); }
-#calyra-editorial .ce-hero-syringe { position: absolute; z-index: 5; width: 74%; max-width: none; right: -36%; bottom: 13%; pointer-events: none; transform: translate3d(calc(var(--px) * 14px), calc(var(--py) * 10px), 0); }
-#calyra-editorial .ce-hero-syringe img { transform: rotate(-16deg); filter: drop-shadow(0 22px 18px rgba(46,32,37,.3)) drop-shadow(0 2px 3px rgba(46,32,37,.25)); animation: ceFloat 6.5s ease-in-out infinite; }
+#calyra-editorial .ce-hero-syringe { position: absolute; z-index: 5; width: 88%; max-width: none; left: 6%; bottom: -1%; pointer-events: none; transform: translate3d(calc(var(--px) * 14px), calc(var(--py) * 10px), 0); }
+#calyra-editorial .ce-hero-syringe img { transform: rotate(7deg); filter: drop-shadow(0 22px 18px rgba(46,32,37,.3)) drop-shadow(0 2px 3px rgba(46,32,37,.25)); animation: ceFloat 6.5s ease-in-out infinite; }
 
-#calyra-editorial .ce-hero-points { position: relative; z-index: 6; width: min(1040px, 100%); margin: -54px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-#calyra-editorial .ce-hero-point { text-align: center; }
-#calyra-editorial .ce-hero-point::before { content: ""; display: block; width: 8px; height: 8px; margin: 0 auto 11px; border-radius: 50%; background: var(--point); box-shadow: 0 0 17px var(--point); }
-#calyra-editorial .ce-hero-point b { display: block; font-size: 11px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
-#calyra-editorial .ce-hero-point span { display: block; margin-top: 6px; color: #6e7078; font-size: 10px; line-height: 1.45; }
+#calyra-editorial .ce-hero-points { position: relative; z-index: 6; width: min(1100px, 100%); margin: 26px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+#calyra-editorial .ce-hero-point { position: relative; padding: 18px 20px 18px 40px; text-align: left; background: rgba(255,255,255,.74); border: 1px solid rgba(255,255,255,.95); border-radius: 16px; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 14px 34px rgba(58,51,61,.07); }
+#calyra-editorial .ce-hero-point::before { content: ""; position: absolute; left: 20px; top: 23px; width: 8px; height: 8px; border-radius: 50%; background: var(--point); box-shadow: 0 0 12px var(--point); }
+#calyra-editorial .ce-hero-point b { display: block; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--ce-ink); }
+#calyra-editorial .ce-hero-point span { display: block; margin-top: 5px; color: #55575e; font-size: 12px; line-height: 1.45; }
 
 #calyra-editorial .ce-composition { position: relative; z-index: 7; border-top: 1px solid rgba(32,33,39,.13); background: rgba(248,247,244,.76); backdrop-filter: blur(14px); }
 #calyra-editorial .ce-composition-row { min-height: 86px; display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -238,8 +238,7 @@
 @media (max-width: 900px) {
   #calyra-editorial .ce-wrap { width: min(100% - 36px, 700px); }
   #calyra-editorial .ce-hero-art { width: min(520px, 78vw); }
-  #calyra-editorial .ce-hero-syringe { width: 70%; right: -26%; bottom: 12%; }
-  #calyra-editorial .ce-hero-points { grid-template-columns: 1fr 1fr; gap: 22px 16px; margin-top: -40px; }
+  #calyra-editorial .ce-hero-points { grid-template-columns: 1fr 1fr; margin-top: 22px; }
   #calyra-editorial .ce-composition-row { min-height: 0; }
   #calyra-editorial .ce-composition-item { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
   #calyra-editorial .ce-composition-item strong { font-size: 26px; }
@@ -269,13 +268,13 @@
   /* On phones the figure is wider than the column; the syringe lies across the shoulders
      in front of the figure instead of being squeezed into a corner. */
   #calyra-editorial .ce-hero-art { width: 104vw; margin: 0 0 0 calc((100% - 104vw) / 2); }
-  #calyra-editorial .ce-orbit-svg { left: -30%; width: 160%; top: 18%; }
-  #calyra-editorial .ce-hero-syringe { width: 80%; right: 9%; bottom: 0; }
-  #calyra-editorial .ce-hero-syringe img { transform: rotate(-9deg); }
-  #calyra-editorial .ce-hero-points { margin-top: 18px; gap: 18px 10px; }
-  #calyra-editorial .ce-hero-point::before { width: 7px; height: 7px; margin-bottom: 8px; }
-  #calyra-editorial .ce-hero-point b { font-size: 10px; }
-  #calyra-editorial .ce-hero-point span { font-size: 9.5px; }
+  #calyra-editorial .ce-orbit-svg { left: -24%; width: 148%; top: 28%; }
+  #calyra-editorial .ce-hero-syringe { width: 84%; left: 8%; bottom: 0; }
+  #calyra-editorial .ce-hero-points { margin-top: 18px; gap: 8px; }
+  #calyra-editorial .ce-hero-point { padding: 14px 12px 14px 30px; border-radius: 14px; }
+  #calyra-editorial .ce-hero-point::before { left: 13px; top: 19px; width: 7px; height: 7px; }
+  #calyra-editorial .ce-hero-point b { font-size: 12.5px; }
+  #calyra-editorial .ce-hero-point span { font-size: 11.5px; }
   #calyra-editorial .ce-composition-row { grid-template-columns: 1fr; }
   #calyra-editorial .ce-composition-item, #calyra-editorial .ce-composition-item:first-child { grid-template-columns: auto 1fr; gap: 15px; min-height: 70px; padding: 13px 0; border-right: 0; border-bottom: 1px solid rgba(32,33,39,.13); }
   #calyra-editorial .ce-composition-item:last-child { border-bottom: 0; }
@@ -389,14 +388,14 @@
               <stop offset="1" stop-color="#c97e94" stop-opacity=".15"/>
             </linearGradient>
             <path id="ceOrbitA" d="M60 150 A440 92 0 1 0 940 150 A440 92 0 1 0 60 150"/>
-            <path id="ceOrbitB" d="M110 168 A390 120 0 1 1 890 168 A390 120 0 1 1 110 168"/>
+            <path id="ceOrbitB" d="M20 150 A480 70 0 1 1 980 150 A480 70 0 1 1 20 150"/>
           </defs>
-          <g transform="rotate(-6 500 150)">
+          <g transform="rotate(-21 500 150)">
             <use class="ce-ring ce-ring--glow" href="#ceOrbitA"/>
             <use class="ce-ring ce-ring--main" href="#ceOrbitA"/>
             <circle class="ce-spark" r="4.5"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#ceOrbitA"/></animateMotion></circle>
           </g>
-          <g transform="rotate(5 500 150)">
+          <g transform="rotate(-14 500 150)">
             <use class="ce-ring ce-ring--soft" href="#ceOrbitB"/>
             <circle class="ce-spark ce-spark--wine" r="4"><animateMotion dur="13s" begin="-4s" repeatCount="indefinite"><mpath href="#ceOrbitB"/></animateMotion></circle>
           </g>
@@ -406,7 +405,7 @@
       </div>
 
       <div class="ce-hero-points" aria-label="Коротко о продукте">
-        <div class="ce-hero-point" style="--point:#bea3ef"><b>3 актива в 1 шприце</b><span>CAP Пептид 5 · PN · 3D-ГК</span></div>
+        <div class="ce-hero-point" style="--point:#bea3ef"><b>3 актива в 1 шприце</b><span>CAP Пептид 5 · PN · 3D&#8209;ГК</span></div>
         <div class="ce-hero-point" style="--point:#74d3da"><b>2 × 2,5 мл</b><span>Два шприца в упаковке</span></div>
         <div class="ce-hero-point" style="--point:#b86076"><b>3 протокола</b><span>RF-лифтинг, аппаратные процедуры, мезороллер</span></div>
         <div class="ce-hero-point" style="--point:#a80b3d"><b>Поддержка</b><span>Консультации и обучение для специалистов</span></div>
