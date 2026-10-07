@@ -75,7 +75,7 @@
 /* КОМПОНЕНТЫ */
 #clx-tech .clx-head{display:grid;gap:8px;margin-bottom:36px}
 @media(min-width:960px){#clx-tech .clx-head{grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:52px}#clx-tech .clx-head .clx-lead{margin:0}}
-#clx-tech .clx-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px 16px;padding:0 20px 2px}
+#clx-tech .clx-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;padding:0}
 #clx-tech .clx-tabs::-webkit-scrollbar{display:none}
 @media(min-width:960px){#clx-tech .clx-tabs{margin:0 0 16px;padding:0 0 2px}}
 #clx-tech .clx-tab{flex:0 0 auto;display:flex;align-items:baseline;gap:10px;padding:15px 24px;border-radius:var(--pill);border:1px solid var(--line);background:var(--white);font:600 16px/1 var(--sans);color:var(--ink);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
@@ -94,6 +94,7 @@
 #clx-tech .clx-visual__tag b{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--wine);white-space:nowrap}
 #clx-tech .clx-sub{font-size:15px;color:var(--ink);font-weight:600;margin:10px 0 18px}
 #clx-tech .clx-panel p{margin:0 0 16px;color:var(--muted);max-width:62ch}
+#clx-tech .clx-panel p.clx-sub{margin:10px 0 18px;color:var(--ink)}
 #clx-tech .clx-list{list-style:none;margin:8px 0 24px;padding:0;border-top:1px solid var(--line)}
 #clx-tech .clx-list li{padding:12px 0 12px 32px;border-bottom:1px solid var(--line);position:relative;font-weight:500;color:var(--ink)}
 #clx-tech .clx-list li::before{content:"";position:absolute;left:4px;top:19px;width:12px;height:7px;border-left:2px solid var(--wine);border-bottom:2px solid var(--wine);transform:rotate(-45deg)}
@@ -153,6 +154,8 @@
 #clx-tech .clx-qa:last-child{border-bottom:1px solid var(--line)}
 #clx-tech .clx-qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-weight:600;font-size:clamp(17px,1.4vw,19px);line-height:1.35;color:var(--ink)}
 #clx-tech .clx-qa summary::-webkit-details-marker{display:none}
+#clx-tech .clx-faq>*{min-width:0}
+#clx-tech .clx-qa summary{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
 #clx-tech .clx-qa summary i{flex:0 0 42px;height:42px;border-radius:50%;border:1px solid var(--line);position:relative;transition:background .2s,border-color .2s}
 #clx-tech .clx-qa summary i::before,#clx-tech .clx-qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:1.5px;background:var(--wine);transform:translate(-50%,-50%)}
 #clx-tech .clx-qa summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:opacity .2s}
@@ -176,7 +179,7 @@
 #clx-tech .clx-disclaimer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:24px 0 0;font-size:14px;color:var(--muted)}
 </style>
 
-<div id="clx-tech">
+<div id="clx-tech" lang="ru">
 
   <!-- HERO -->
   <section class="clx-sec clx-hero">
@@ -189,7 +192,7 @@
       <div class="clx-hero__top">
         <h1 class="clx-h1">Три компонента. Единая технология <em>качества кожи</em></h1>
         <div>
-          <p class="clx-lead">CALYRA LUX&nbsp;5 объединяет <b>CAP Пептид&nbsp;5</b>, <b>полинуклеотиды PN</b> и <b>3D-гиалуроновую кислоту</b> в одной профессиональной системе ухода.</p>
+          <p class="clx-lead">CALYRA LUX&nbsp;5 объединяет <b>CAP Пептид&nbsp;5</b>, <b>полинуклеотиды (PN)</b> и <b>3D-гиалуроновую кислоту</b> в одной профессиональной системе ухода.</p>
           <div class="clx-btns">
             <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
             <a class="clx-btn clx-btn--line" href="#clx-components">Состав формулы</a>
@@ -199,7 +202,7 @@
       <img class="clx-strands" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/hero-strands.webp" alt="Три линии компонентов сходятся в одну" width="1800" height="257">
       <div class="clx-stats">
         <div class="clx-stat"><b>1000 ppm</b><span>CAP Пептид&nbsp;5</span></div>
-        <div class="clx-stat"><b>20 мг/мл</b><span>Полинуклеотиды PN</span></div>
+        <div class="clx-stat"><b>20 мг/мл</b><span>Полинуклеотиды (PN)</span></div>
         <div class="clx-stat"><b>10 мг/мл</b><span>3D-гиалуроновая кислота</span></div>
       </div>
     </div>
@@ -215,7 +218,7 @@
 
       <div class="clx-tabs" role="tablist" aria-label="Компоненты формулы">
         <button class="clx-tab" type="button" role="tab" id="clx-t1" aria-controls="clx-p1" aria-selected="true">CAP Пептид&nbsp;5 <small>1000 ppm</small></button>
-        <button class="clx-tab" type="button" role="tab" id="clx-t2" aria-controls="clx-p2" aria-selected="false" tabindex="-1">PN <small>20 мг/мл</small></button>
+        <button class="clx-tab" type="button" role="tab" id="clx-t2" aria-controls="clx-p2" aria-selected="false" tabindex="-1">Полинуклеотиды <small>20 мг/мл</small></button>
         <button class="clx-tab" type="button" role="tab" id="clx-t3" aria-controls="clx-p3" aria-selected="false" tabindex="-1">3D-ГК <small>10 мг/мл</small></button>
       </div>
 
@@ -242,13 +245,13 @@
 
       <div class="clx-panel" role="tabpanel" id="clx-p2" aria-labelledby="clx-t2" hidden>
         <div class="clx-visual">
-          <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="Полинуклеотиды PN" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="Полинуклеотиды (PN)" loading="lazy">
           <div class="clx-visual__tag"><span>Полинуклеотиды</span><b>20 мг/мл</b></div>
         </div>
         <div>
-          <h3 class="clx-h3">Полинуклеотиды PN</h3>
+          <h3 class="clx-h3">Полинуклеотиды (PN)</h3>
           <p class="clx-sub">Естественное обновление и матрикс</p>
-          <p>Полинуклеотиды — цепочки из нуклеотидных звеньев. В эстетической медицине это направление изучают в связи с качеством, эластичностью и внешним видом кожи. В составе CALYRA LUX&nbsp;5 PN — часть комплексного ухода, направленного на:</p>
+          <p>Полинуклеотиды — цепочки из нуклеотидных звеньев. В эстетической медицине это направление изучают в связи с качеством, эластичностью и внешним видом кожи. В составе CALYRA LUX&nbsp;5 полинуклеотиды — часть комплексного ухода, направленного на:</p>
           <ul class="clx-list">
             <li>поддержку естественных процессов обновления</li>
             <li>сохранение гладкости и визуальной упругости</li>
@@ -256,8 +259,8 @@
             <li>выравнивание внешнего вида и текстуры кожи</li>
             <li>повышение уровня комфорта кожи</li>
           </ul>
-          <div class="clx-note"><span>Данные исследований PN относятся преимущественно к профессиональному и внутрикожному применению. Поэтому для CALYRA LUX&nbsp;5 корректно говорить о <b>поддержке качества и естественного обновления кожи</b>, а не о лечебном действии.</span></div>
-          <a class="clx-btn clx-btn--fill" href="https://calyraluxmin.tilda.ws/polynucleotides-pn-calyra-lux-5">Подробнее о PN <i>↗</i></a>
+          <div class="clx-note"><span>В CALYRA LUX&nbsp;5 полинуклеотиды работают как компонент профессионального косметического ухода: <b>поддержка качества и естественного обновления кожи</b>.</span></div>
+          <a class="clx-btn clx-btn--fill" href="https://calyraluxmin.tilda.ws/polynucleotides-pn-calyra-lux-5">Подробнее о полинуклеотидах <i>↗</i></a>
         </div>
       </div>
 
@@ -302,7 +305,7 @@
           <ul class="clx-chips"><li class="clx-chip">Как формируется синергия</li></ul>
           <h2 class="clx-h2">Три уровня поддержки <em>качества кожи</em></h2>
         </div>
-        <p class="clx-lead">Компоненты не работают изолированно: они решают разные задачи внутри общей тканевой среды — от гидратации до клеточного уровня.</p>
+        <p class="clx-lead">Компоненты не работают изолированно: каждый отвечает за своё направление, а вместе они поддерживают кожу — от увлажнения до клеточного потенциала.</p>
       </div>
 
       <div class="clx-skin">
@@ -324,7 +327,7 @@
             <img class="clx-level__icon" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/callout-pn.webp" alt="" loading="lazy">
             <div class="clx-level__depth"><b>2</b><span>Структура</span></div>
             <h3 class="clx-h3">Естественное обновление</h3>
-            <small>Полинуклеотиды PN</small>
+            <small>Полинуклеотиды (PN)</small>
             <p>Дополняют уход, направленный на поддержание гладкости, упругости и однородной текстуры кожи.</p>
           </div>
           <div class="clx-level clx-level--3">
@@ -351,15 +354,15 @@
       <div>
         <details class="clx-qa" open>
           <summary>В чём заключается технология CALYRA LUX&nbsp;5?<i></i></summary>
-          <div class="clx-qa__a"><p>Это сочетание трёх компонентов в одной формуле: CAP Пептид&nbsp;5 поддерживает клеточный потенциал, PN — естественное обновление и матрикс, 3D-гиалуроновая кислота — единую гидратированную матрицу.</p></div>
+          <div class="clx-qa__a"><p>Это сочетание трёх компонентов в одной формуле: CAP Пептид&nbsp;5 поддерживает клеточный потенциал, полинуклеотиды (PN) — естественное обновление и матрикс, 3D-гиалуроновая кислота — единую гидратированную матрицу.</p></div>
         </details>
         <details class="clx-qa">
-          <summary>Чем PN отличаются от PDRN?<i></i></summary>
-          <div class="clx-qa__a"><p>И PN, и PDRN — нуклеотидные цепочки, но PN состоят из более длинных цепей с большей молекулярной массой. За счёт этого они формируют гидратированное окружение, которое поддерживает матрикс кожи.</p></div>
+          <summary>Чем полинуклеотиды (PN) отличаются от полидезокси&shy;рибо&shy;нуклеотидов (PDRN)?<i></i></summary>
+          <div class="clx-qa__a"><p>И те и другие — нуклеотидные цепочки, но полинуклеотиды состоят из более длинных цепей с большей молекулярной массой. За счёт этого они формируют гидратированное окружение, которое поддерживает матрикс кожи.</p></div>
         </details>
         <details class="clx-qa">
           <summary>Зачем использовать три молекулярные массы гиалуроновой кислоты?<i></i></summary>
-          <div class="clx-qa__a"><p>Цепи разной длины по-разному связывают воду и по-разному двигаются в среде. Они не работают на разной глубине, а дополняют друг друга в одной сети: длинные формируют каркас, средние и компактные делают его подвижным и выравнивают распределение влаги.</p></div>
+          <div class="clx-qa__a"><p>Цепи разной длины по-разному связывают воду и по-разному двигаются в среде. Они дополняют друг друга в одной сети: длинные формируют каркас, средние и компактные делают его подвижным и выравнивают распределение влаги.</p></div>
         </details>
         <details class="clx-qa">
           <summary>Что означает «клеточное долголетие кожи»?<i></i></summary>
@@ -368,10 +371,6 @@
         <details class="clx-qa">
           <summary>Чем CAP Пептид&nbsp;5 отличается от обычных увлажняющих компонентов?<i></i></summary>
           <div class="clx-qa__a"><p>Увлажняющие компоненты в основном работают с уровнем влаги. CAP Пептид&nbsp;5 связан с поддержкой клеточного потенциала и теломерной защиты, поэтому в формуле он дополняет увлажнение, а не заменяет его.</p></div>
-        </details>
-        <details class="clx-qa">
-          <summary>Научные источники<i></i></summary>
-          <div class="clx-qa__a"><p>Вставьте сюда список источников с текущей версии страницы.</p></div>
         </details>
       </div>
     </div>
