@@ -104,7 +104,7 @@
 #calyra-editorial .ce-proofline b { font-family: "Prata", Georgia, serif; font-size: 30px; font-weight: 400; color: var(--ce-wine); white-space: nowrap; }
 
 #calyra-editorial .ce-dark { position: relative; overflow: hidden; background: #15161b; color: #f8f6f3; padding: 122px 0 108px; }
-#calyra-editorial .ce-dark::before { content: "LONGEVITY"; position: absolute; left: -2vw; bottom: -35px; font-family: "Prata", Georgia, serif; font-size: clamp(100px, 16vw, 230px); line-height: .8; color: rgba(255,255,255,.045); letter-spacing: -.06em; white-space: nowrap; }
+#calyra-editorial .ce-dark::before { content: "ДОЛГОЛЕТИЕ"; position: absolute; left: -2vw; bottom: -35px; font-family: "Prata", Georgia, serif; font-size: clamp(100px, 16vw, 230px); line-height: .8; color: rgba(255,255,255,.045); letter-spacing: -.06em; white-space: nowrap; }
 #calyra-editorial .ce-dark-layout { display: grid; grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); gap: 65px; align-items: center; position: relative; z-index: 2; }
 #calyra-editorial .ce-dark-copy .ce-label { color: #e8afc0; }
 #calyra-editorial .ce-dark-copy .ce-h2 { margin: 27px 0 31px; }
@@ -138,6 +138,7 @@
 #calyra-editorial .ce-formula-index { font-family: "Prata", Georgia, serif; font-size: 54px; color: var(--ce-wine); }
 #calyra-editorial .ce-formula-name b { display: block; font-family: "Prata", Georgia, serif; font-size: 37px; font-weight: 400; line-height: .95; }
 #calyra-editorial .ce-formula-name span { display: block; margin-top: 11px; font-size: 9px; color: var(--ce-muted); text-transform: uppercase; letter-spacing: .1em; }
+#calyra-editorial .ce-formula-name b.ce-formula-long { font-size: clamp(25px, 2.5vw, 34px); }
 #calyra-editorial .ce-formula-result { max-width: 480px; font-size: 13px; line-height: 1.65; color: #686a71; }
 #calyra-editorial .ce-formula-result p { margin: 0; }
 #calyra-editorial .ce-formula-link { margin-top: 16px; min-height: 40px; padding: 8px 10px 8px 18px; gap: 12px; font-size: 11px; color: var(--ce-ink); }
@@ -159,7 +160,7 @@
 #calyra-editorial .ce-protocol-art::after { content: ""; position: absolute; width: 305px; height: 105px; border: 1px solid rgba(159,12,55,.27); border-radius: 50%; transform: rotate(-18deg); }
 #calyra-editorial .ce-protocol-icon { position: absolute; z-index: 3; width: 76px; height: 76px; color: var(--ce-wine); fill: none; stroke: currentColor; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 8px 18px rgba(168,11,61,.12)); }
 #calyra-editorial .ce-protocol-bottom { position: relative; z-index: 3; }
-#calyra-editorial .ce-protocol-bottom h3 { font-family: "Prata", Georgia, serif; font-size: 31px; line-height: 1; font-weight: 400; margin: 0; }
+#calyra-editorial .ce-protocol-bottom h3 { font-family: "Prata", Georgia, serif; font-size: clamp(24px, 2.3vw, 31px); line-height: 1; font-weight: 400; margin: 0; }
 #calyra-editorial .ce-protocol-bottom span { display: block; margin-top: 10px; font-size: 10px; line-height: 1.45; color: var(--ce-muted); }
 #calyra-editorial .ce-protocol-bottom span::after { content: " →"; color: var(--ce-wine); }
 #calyra-editorial .ce-protocol::before { content: ""; position: absolute; inset: 31px 26px 91px; z-index: 1; border: 1px solid rgba(255,255,255,.72); background: linear-gradient(135deg, rgba(255,255,255,.42), rgba(255,255,255,.12)); backdrop-filter: blur(17px); box-shadow: 0 30px 65px rgba(58,51,61,.12), inset 0 1px rgba(255,255,255,.84); }
@@ -192,7 +193,7 @@
 #calyra-editorial .ce-gallery-image { position: relative; overflow: hidden; background: #f1eeeb; }
 #calyra-editorial .ce-gallery-word { position: absolute; left: 30px; bottom: 27px; color: #fff; font-family: "Prata", Georgia, serif; font-size: 62px; line-height: .8; letter-spacing: -.04em; text-shadow: 0 8px 25px rgba(0,0,0,.18); }
 #calyra-editorial .ce-gallery-image--wine { background: var(--ce-wine); padding: 34px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
-#calyra-editorial .ce-gallery-image--wine p { margin: 0; font-family: "Prata", Georgia, serif; font-size: 44px; line-height: .96; }
+#calyra-editorial .ce-gallery-image--wine p { margin: 0; font-family: "Prata", Georgia, serif; font-size: clamp(28px, 3.2vw, 44px); line-height: .96; }
 #calyra-editorial .ce-gallery-image--wine img { height: 210px; object-fit: contain; filter: drop-shadow(0 25px 22px rgba(65,0,18,.26)); }
 
 #calyra-editorial .ce-order { padding: 0 0 70px; background: #fff; }
@@ -208,7 +209,7 @@
 #calyra-editorial .ce-order-list li::before { content: ""; width: 7px; height: 7px; margin-top: 7px; border-radius: 50%; background: var(--ce-wine); box-shadow: 0 0 12px rgba(232,120,160,.6); }
 #calyra-editorial .ce-order-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 31px; }
 #calyra-editorial .ce-order-actions .ce-button:not(.ce-button--wine) { color: #fff; border-color: rgba(255,255,255,.27); }
-#calyra-editorial .ce-order-syringe { position: relative; z-index: 3; width: 630px; max-width: none; margin-left: -130px; transform: rotate(-10deg); filter: drop-shadow(0 32px 25px rgba(0,0,0,.4)); }
+#calyra-editorial .ce-order-syringe { position: relative; z-index: 3; width: 630px; max-width: none; margin-left: -130px; transform: rotate(4deg); filter: drop-shadow(0 32px 25px rgba(0,0,0,.4)); }
 #calyra-editorial .ce-footer { min-height: 55px; display: flex; justify-content: space-between; align-items: center; gap: 30px; color: #77787e; font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
 
 #calyra-editorial .ce-trust { margin-top: 70px; margin-left: 28%; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(32,33,39,.13); }
@@ -304,6 +305,9 @@
   #calyra-editorial .ce-section-head { align-items: start; margin-bottom: 42px; gap: 24px; }
   #calyra-editorial .ce-formula-row { grid-template-columns: 55px 1fr; gap: 16px; min-height: 0; }
   #calyra-editorial .ce-formula-name b { font-size: 31px; }
+  #calyra-editorial .ce-formula-name b.ce-formula-long { font-size: 24px; }
+  #calyra-editorial .ce-formula-index { font-size: 40px; }
+  #calyra-editorial .ce-protocol-bottom h3 { font-size: 24px; }
   #calyra-editorial .ce-formula-result { grid-column: 2; }
   #calyra-editorial .ce-formula-visual { display: none; }
   #calyra-editorial .ce-protocol { min-height: 420px; }
@@ -329,7 +333,7 @@
   #calyra-editorial .ce-gallery-side { grid-template-columns: 1fr; }
   #calyra-editorial .ce-gallery-image { min-height: 420px; }
   #calyra-editorial .ce-gallery-image--wine { height: 470px; }
-  #calyra-editorial .ce-gallery-image--wine p { font-size: 36px; }
+  #calyra-editorial .ce-gallery-image--wine p { font-size: 30px; }
   #calyra-editorial .ce-order { padding-bottom: 35px; }
   #calyra-editorial .ce-order-panel { padding: 42px 23px 4px; }
   #calyra-editorial .ce-order-actions { flex-direction: column; }
@@ -384,13 +388,13 @@
         <img class="ce-hero-photo" data-asset="calyra-hero-product.webp" alt="Упаковка JeuDérm CALYRA LUX 5 и два шприца по 2,5 мл на травертиновой подставке">
         <div class="ce-particles" aria-hidden="true"><i style="--x:58.4%;--s:6px;--c:#bea3ef;--d:12.0s;--w:-12.3s;--dx:14px"></i><i style="--x:69.2%;--s:4px;--c:#74d3da;--d:12.2s;--w:-10.1s;--dx:-15px"></i><i style="--x:37.9%;--s:5px;--c:#c0476f;--d:8.6s;--w:-6.1s;--dx:-15px"></i><i style="--x:55.6%;--s:8px;--c:#ffffff;--d:9.2s;--w:-9.5s;--dx:-6px"></i><i style="--x:42.6%;--s:7px;--c:#bea3ef;--d:8.8s;--w:-10.4s;--dx:-22px"></i><i style="--x:58.2%;--s:5px;--c:#74d3da;--d:8.7s;--w:-12.6s;--dx:-30px"></i><i style="--x:63.8%;--s:5px;--c:#c0476f;--d:12.4s;--w:-3.8s;--dx:28px"></i><i style="--x:55.4%;--s:5px;--c:#ffffff;--d:8.9s;--w:-12.6s;--dx:-18px"></i><i style="--x:70.7%;--s:7px;--c:#bea3ef;--d:9.5s;--w:-4.7s;--dx:-20px"></i><i style="--x:41.2%;--s:4px;--c:#74d3da;--d:9.7s;--w:-10.6s;--dx:5px"></i><i style="--x:57.5%;--s:6px;--c:#c0476f;--d:8.3s;--w:-4.6s;--dx:-12px"></i><i style="--x:61.1%;--s:5px;--c:#ffffff;--d:10.4s;--w:-9.2s;--dx:-27px"></i><i style="--x:71.1%;--s:4px;--c:#bea3ef;--d:12.7s;--w:-4.6s;--dx:-6px"></i><i style="--x:55.8%;--s:7px;--c:#74d3da;--d:9.8s;--w:-7.5s;--dx:-29px"></i><i style="--x:37.7%;--s:5px;--c:#c0476f;--d:11.1s;--w:-12.4s;--dx:-23px"></i><i style="--x:44.9%;--s:7px;--c:#ffffff;--d:9.7s;--w:-4.6s;--dx:1px"></i><i style="--x:63.9%;--s:4px;--c:#bea3ef;--d:10.9s;--w:-10.2s;--dx:-8px"></i><i style="--x:46.7%;--s:7px;--c:#74d3da;--d:12.7s;--w:-1.2s;--dx:-10px"></i></div>
         <img class="ce-hero-cutout" data-asset="calyra-hero-product-cutout.webp" alt="" aria-hidden="true">
-        <div class="ce-callouts" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line style="--t:.9s" x1="41" y1="36" x2="28" y2="30"/><line style="--t:1.6s" x1="53.5" y1="40" x2="63" y2="22"/><line style="--t:2.3s" x1="63" y1="67" x2="72" y2="64"/></svg><span class="ce-callout-dot" style="--c:#a80b3d;--t:.9s;left:41%;top:36%"></span><span class="ce-callout-dot" style="--c:#5fc7cf;--t:1.6s;left:53.5%;top:40%"></span><span class="ce-callout-dot" style="--c:#c0476f;--t:2.3s;left:63%;top:67%"></span><div class="ce-callout" style="--t:.9s;right:72%;top:24%"><b>CAP Пептид 5</b><span><em>1000 ppm</em> · клеточный потенциал</span></div><div class="ce-callout" style="--t:1.6s;left:63%;top:15%"><b>3D-гиалуроновая кислота</b><span><em>10 мг/мл</em> · увлажнение и упругость</span></div><div class="ce-callout" style="--t:2.3s;left:72%;top:58%"><b>Полинуклеотиды PN</b><span><em>20 мг/мл</em> · обновление кожи</span></div></div>
+        <div class="ce-callouts" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line style="--t:.9s" x1="41" y1="36" x2="28" y2="30"/><line style="--t:1.6s" x1="53.5" y1="40" x2="63" y2="22"/><line style="--t:2.3s" x1="63" y1="67" x2="72" y2="64"/></svg><span class="ce-callout-dot" style="--c:#a80b3d;--t:.9s;left:41%;top:36%"></span><span class="ce-callout-dot" style="--c:#5fc7cf;--t:1.6s;left:53.5%;top:40%"></span><span class="ce-callout-dot" style="--c:#c0476f;--t:2.3s;left:63%;top:67%"></span><div class="ce-callout" style="--t:.9s;right:72%;top:24%"><b>CAP Пептид 5</b><span><em>1000 ppm</em> · клеточный потенциал</span></div><div class="ce-callout" style="--t:1.6s;left:63%;top:15%"><b>3D-гиалуроновая кислота</b><span><em>10 мг/мл</em> · увлажнение и упругость</span></div><div class="ce-callout" style="--t:2.3s;left:72%;top:58%"><b>Полинуклеотиды (PN)</b><span><em>20 мг/мл</em> · обновление кожи</span></div></div>
       </div>
 
       <div class="ce-hero-points" aria-label="Коротко о продукте">
-        <div class="ce-hero-point" style="--point:#bea3ef"><b>3 актива в 1 шприце</b><span>CAP Пептид 5 · PN · 3D&#8209;ГК</span></div>
+        <div class="ce-hero-point" style="--point:#bea3ef"><b>3 актива в 1 шприце</b><span>CAP Пептид 5 · полинуклеотиды · 3D&#8209;ГК</span></div>
         <div class="ce-hero-point" style="--point:#74d3da"><b>2 × 2,5 мл</b><span>Два шприца в упаковке</span></div>
-        <div class="ce-hero-point" style="--point:#b86076"><b>3 протокола</b><span>RF-лифтинг, аппаратные процедуры, мезороллер</span></div>
+        <div class="ce-hero-point" style="--point:#b86076"><b>3 протокола</b><span>Радиочастотный лифтинг (RF), аппаратные процедуры, мезороллер</span></div>
         <div class="ce-hero-point" style="--point:#a80b3d"><b>Поддержка</b><span>Консультации и обучение для специалистов</span></div>
       </div>
     </div>
@@ -398,7 +402,7 @@
     <div class="ce-composition">
       <div class="ce-wrap ce-composition-row">
         <div class="ce-composition-item"><strong>1000 ppm</strong><span>CAP Пептид 5<br>sh-Oligopeptide-104 SP</span></div>
-        <div class="ce-composition-item"><strong>20 мг/мл</strong><span>Полинуклеотиды<br>PN</span></div>
+        <div class="ce-composition-item"><strong>20 мг/мл</strong><span>Полинуклеотиды<br>(PN)</span></div>
         <div class="ce-composition-item"><strong>10 мг/мл</strong><span>3D-гиалуроновая<br>кислота</span></div>
       </div>
     </div>
@@ -416,9 +420,9 @@
       </div>
       <div class="ce-trust">
         <div><b>Патент</b>Запатентованный CAP Пептид 5</div>
-        <div><b>20 лет</b>исследований пептида учёными CSIC (Испания)</div>
+        <div><b>20 лет</b>исследований пептида в Высшем совете по научным исследованиям Испании (CSIC)</div>
         <div><b>Корея</b>производство, корейские и испанские биотехнологии</div>
-        <div><b>CE</b>действующий сертификат, стандарты ISO и GMP</div>
+        <div><b>CE</b>действующий сертификат соответствия, производство по стандартам ISO и GMP</div>
       </div>
     </div>
   </section>
@@ -428,11 +432,11 @@
       <div class="ce-dark-copy">
         <div class="ce-label">Главное отличие</div>
         <h2 class="ce-h2">CAP Пептид 5 — фокус на <i>долголетии кожи</i></h2>
-        <p>Пептидная технология CAP Peptide 5 (sh-Oligopeptide-104 SP) — основа концепции skin longevity: поддержка клеточного потенциала, активности фибробластов и защиты кожи от факторов преждевременного старения.</p>
+        <p>Пептидная технология CAP Пептид 5 (sh-Oligopeptide-104 SP) — основа концепции долголетия кожи (skin longevity): поддержка клеточного потенциала, активности фибробластов и защиты кожи от факторов преждевременного старения.</p>
         <div class="ce-dark-list">
-          <div class="ce-dark-line"><span>01</span><b>Поддержка клеточного потенциала</b><small>longevity</small></div>
-          <div class="ce-dark-line"><span>02</span><b>Поддержка процессов теломерной защиты</b><small>protection</small></div>
-          <div class="ce-dark-line"><span>03</span><b>Поддержка функциональной активности фибробластов</b><small>matrix</small></div>
+          <div class="ce-dark-line"><span>01</span><b>Поддержка клеточного потенциала</b><small>долголетие</small></div>
+          <div class="ce-dark-line"><span>02</span><b>Поддержка процессов теломерной защиты</b><small>защита</small></div>
+          <div class="ce-dark-line"><span>03</span><b>Поддержка функциональной активности фибробластов</b><small>матрикс</small></div>
         </div>
       </div>
 
@@ -459,8 +463,8 @@
       </div>
       <div class="ce-formula-row">
         <div class="ce-formula-index">02</div>
-        <div class="ce-formula-name"><b>PN</b><span>Обновление и плотность · 20 мг/мл</span></div>
-        <div class="ce-formula-result"><p>Полинуклеотиды поддерживают естественные процессы обновления кожи и создают благоприятную увлажнённую среду — кожа выглядит более плотной, ровной и отдохнувшей.</p><a class="ce-button ce-formula-link" href="/polynucleotides">Подробнее о PN <em>→</em></a></div>
+        <div class="ce-formula-name"><b class="ce-formula-long">Полинуклеотиды (PN)</b><span>Обновление и плотность · 20 мг/мл</span></div>
+        <div class="ce-formula-result"><p>Полинуклеотиды поддерживают естественные процессы обновления кожи и создают благоприятную увлажнённую среду — кожа выглядит более плотной, ровной и отдохнувшей.</p><a class="ce-button ce-formula-link" href="/polynucleotides">Подробнее о полинуклеотидах <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#d2a0aa;--f-shadow:rgba(165,32,70,.16);--f-line:rgba(165,32,70,.42)"></div>
       </div>
       <div class="ce-formula-row">
@@ -480,18 +484,18 @@
         <p class="ce-text">CALYRA LUX 5 легко встраивается в процедуры, которые уже есть в вашем прайсе. Подробные схемы протоколов — на странице для косметологов.</p>
       </div>
       <div class="ce-protocol-grid">
-        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол совместного применения с RF-лифтингом">
-          <div class="ce-protocol-top"><span>01</span><span>RF</span></div>
+        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол совместного применения с радиочастотным лифтингом">
+          <div class="ce-protocol-top"><span>01</span><span>Радиочастоты</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M12 28c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/><path d="M8 40c9-9 18-9 27 0s18 9 27 0 14-7 18-4"/><path d="M12 52c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/></svg></div>
-          <div class="ce-protocol-bottom"><h3>Совместно<br>с RF-лифтингом</h3><span>Смотреть протокол</span></div>
+          <div class="ce-protocol-bottom"><h3>С радиочастотным<br>лифтингом (RF)</h3><span>Смотреть протокол</span></div>
         </a>
         <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол ухода после аппаратных процедур">
-          <div class="ce-protocol-top"><span>02</span><span>Recovery</span></div>
+          <div class="ce-protocol-top"><span>02</span><span>Восстановление</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 8c2 17 8 23 25 25-17 2-23 8-25 25-2-17-8-23-25-25 17-2 23-8 25-25Z"/><path d="M63 51c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg></div>
           <div class="ce-protocol-bottom"><h3>После аппаратных<br>процедур</h3><span>Смотреть протокол</span></div>
         </a>
         <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол применения с мезороллером">
-          <div class="ce-protocol-top"><span>03</span><span>Roller</span></div>
+          <div class="ce-protocol-top"><span>03</span><span>Мезороллер</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><rect x="13" y="19" width="43" height="25" rx="12"/><path d="M56 31h11v17c0 10-8 18-18 18H32"/><circle cx="25" cy="31" r="2"/><circle cx="35" cy="31" r="2"/><circle cx="45" cy="31" r="2"/></svg></div>
           <div class="ce-protocol-bottom"><h3>В протоколе<br>с мезороллером</h3><span>Смотреть протокол</span></div>
         </a>
@@ -515,7 +519,7 @@
         <div class="ce-study"><b>β-галактозидаза ↓</b><strong>Маркер клеточного старения</strong><span>Применение CAP Пептида 5 значительно снизило накопление β-галактозидазы — биомаркера стареющих клеток.</span></div>
         <div class="ce-study"><b>Теломеры</b><strong>Поддержка длины теломер</strong><span>Пептид повторяет последовательность белка теломеразного комплекса и поддерживает длину теломер.</span></div>
         <div class="ce-study"><b>Каталаза · СОД ↑</b><strong>Антиоксидантная защита</strong><span>В культурах фибробластов вырос уровень антиоксидантных ферментов — каталазы и супероксиддисмутазы.</span></div>
-        <div class="ce-study"><b>IL-6 · IL-8 ↓</b><strong>Провоспалительные цитокины</strong><span>Исследования показали снижение провоспалительных цитокинов IL-6 и IL-8.</span></div>
+        <div class="ce-study"><b>ИЛ-6 · ИЛ-8 ↓</b><strong>Провоспалительные цитокины</strong><span>Исследования показали снижение провоспалительных цитокинов — интерлейкинов ИЛ-6 и ИЛ-8 (IL-6, IL-8).</span></div>
         <div class="ce-study"><b>4 месяца</b><strong>Коллаген и фибробласты</strong><span>Увеличение коллагеновых волокон и количества фибробластов в биоптатах кожи после 4 месяцев применения пептида.</span></div>
         <div class="ce-study"><b>3+ месяца</b><strong>Эластичность и увлажнённость</strong><span>Повышение эластичности и увлажнённости кожи, уменьшение глубины и толщины морщин.</span></div>
       </div>
@@ -542,7 +546,7 @@
 
   <section class="ce-gallery">
     <div class="ce-wrap ce-gallery-grid">
-      <div class="ce-gallery-main"><img data-asset="calyra-lux-5-boxes.jpg" alt="Упаковки JeuDérm CALYRA LUX 5"><div class="ce-gallery-word">professional<br>skin longevity</div></div>
+      <div class="ce-gallery-main"><img data-asset="calyra-lux-5-boxes.jpg" alt="Упаковки JeuDérm CALYRA LUX 5"><div class="ce-gallery-word">долголетие<br>кожи</div></div>
       <div class="ce-gallery-side">
         <div class="ce-gallery-image"><img style="object-position:center 62%" data-asset="calyra-lux-5-syringes-ribbon.jpg" alt="Шприцы CALYRA LUX 5"></div>
         <div class="ce-gallery-image ce-gallery-image--wine"><p>Премиальный продукт, который заметен в кабинете.</p><img data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5"></div>
@@ -558,7 +562,7 @@
         <p>Оставьте заявку — пришлём всё, что нужно для старта:</p>
         <ul class="ce-order-list">
           <li>Прайс для специалистов и условия заказа</li>
-          <li>Протоколы применения: RF, аппаратные процедуры, мезороллер</li>
+          <li>Протоколы применения: радиочастотный лифтинг (RF), аппаратные процедуры, мезороллер</li>
           <li>Консультацию по применению и информацию об обучении</li>
         </ul>
         <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:order">Заказать продукт</a></div>

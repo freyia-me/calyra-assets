@@ -1,0 +1,568 @@
+<!--
+  CALYRA LUX 5 — страница «CAP Пептид 5». Блок T123 (Другое → HTML-код).
+  Картинки: github.com/freyia-me/calyra-assets → папка cap-peptide/ (новая) и technology/ (уже загружена).
+-->
+<!-- ===== CALYRA LUX 5 · Страница «CAP Пептид 5» · блок T123 ===== -->
+<style>
+#clx-cap{
+  --wine:#651d2d; --wine-dark:#4c1521; --ink:#1b2936; --muted:#56616b;
+  --line:#ddd8d1; --silver:#a9b1b5; --cream:#f8f5f0; --white:#ffffff;
+  --r-lg:28px; --r-md:18px; --pill:999px;
+  --serif:'Prata',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  background:var(--white); color:var(--ink); font-family:var(--sans);
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+@media(min-width:960px){#clx-cap{font-size:18px}}
+#clx-cap *,#clx-cap *::before,#clx-cap *::after{box-sizing:border-box}
+#clx-cap img{max-width:100%;display:block;height:auto}
+#clx-cap a{text-decoration:none}
+#clx-cap .clx-wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+#clx-cap .clx-sec{padding:72px 0}
+@media(min-width:960px){#clx-cap .clx-wrap{padding:0 40px}#clx-cap .clx-sec{padding:112px 0}}
+
+/* типографика */
+#clx-cap .clx-h1,#clx-cap .clx-h2,#clx-cap .clx-h3{font-family:var(--serif);font-weight:400;color:var(--wine);margin:0;letter-spacing:-.005em}
+#clx-cap .clx-h1{font-size:clamp(38px,6.2vw,80px);line-height:1.06}
+#clx-cap .clx-h2{font-size:clamp(30px,4.2vw,54px);line-height:1.1}
+#clx-cap .clx-h3{font-size:clamp(26px,2.8vw,38px);line-height:1.15}
+#clx-cap .clx-h1 em,#clx-cap .clx-h2 em{font-style:italic;background:linear-gradient(100deg,#6f7a80 0%,#a9b1b5 35%,#6b757b 55%,#9aa3a8 80%,#5f696f 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .14em 0 .04em;margin:0 -.1em 0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#clx-cap .clx-lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:62ch;margin:24px 0 0}
+#clx-cap .clx-lead b{color:var(--ink);font-weight:600}
+
+/* плашки */
+#clx-cap .clx-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+#clx-cap .clx-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border:1px solid var(--line);border-radius:var(--pill);background:var(--white);font-size:14px;font-weight:500;color:var(--ink);line-height:1.2}
+#clx-cap .clx-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wine)}
+
+/* кнопки */
+#clx-cap .clx-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+#clx-cap .clx-btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:58px;padding:0 9px 0 28px;border-radius:var(--pill);font:600 16px/1 var(--sans);border:1px solid var(--wine);transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+#clx-cap .clx-btn i{font-style:normal;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;font-size:17px;transition:transform .25s}
+#clx-cap .clx-btn:hover i{transform:rotate(45deg)}
+#clx-cap .clx-btn--fill{background:var(--wine);color:#fff}
+#clx-cap .clx-btn--fill i{background:#fff;color:var(--wine)}
+#clx-cap .clx-btn--fill:hover{background:var(--wine-dark);border-color:var(--wine-dark)}
+#clx-cap .clx-btn--line{background:transparent;color:var(--wine);padding:0 28px}
+#clx-cap .clx-btn--line:hover{background:var(--wine);color:#fff}
+#clx-cap a:focus-visible,#clx-cap button:focus-visible,#clx-cap summary:focus-visible{outline:2px solid var(--silver);outline-offset:3px}
+@media(max-width:560px){#clx-cap .clx-btn{width:100%}}
+
+#clx-cap .clx-head{display:grid;gap:8px;margin-bottom:36px}
+@media(min-width:960px){#clx-cap .clx-head{grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:52px}#clx-cap .clx-head .clx-lead{margin:0}}
+#clx-cap .clx-note{display:flex;gap:12px;padding:16px 18px;border-radius:var(--r-md);background:var(--cream);font-size:15px;color:var(--ink);line-height:1.5;margin:0 0 26px}
+#clx-cap .clx-note::before{content:"i";flex:0 0 22px;height:22px;border-radius:50%;background:var(--wine);color:#fff;font:700 12px/22px var(--sans);text-align:center}
+/* FAQ */
+#clx-cap .clx-faq{display:grid;gap:28px}
+@media(min-width:960px){#clx-cap .clx-faq{grid-template-columns:.8fr 1.2fr;gap:64px}#clx-cap .clx-faq__aside{position:sticky;top:32px;align-self:start}}
+#clx-cap .clx-qa{border-top:1px solid var(--line)}
+#clx-cap .clx-qa:last-child{border-bottom:1px solid var(--line)}
+#clx-cap .clx-qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-weight:600;font-size:clamp(17px,1.4vw,19px);line-height:1.35;color:var(--ink)}
+#clx-cap .clx-qa summary::-webkit-details-marker{display:none}
+#clx-cap .clx-qa summary i{flex:0 0 42px;height:42px;border-radius:50%;border:1px solid var(--line);position:relative;transition:background .2s,border-color .2s}
+#clx-cap .clx-qa summary i::before,#clx-cap .clx-qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:1.5px;background:var(--wine);transform:translate(-50%,-50%)}
+#clx-cap .clx-qa summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:opacity .2s}
+#clx-cap .clx-qa[open] summary i{background:var(--wine);border-color:var(--wine)}
+#clx-cap .clx-qa[open] summary i::before{background:#fff}
+#clx-cap .clx-qa[open] summary i::after{opacity:0}
+#clx-cap .clx-qa__a{padding:0 60px 26px 0;color:var(--muted)}
+#clx-cap .clx-qa__a p{margin:0 0 12px}
+@media(max-width:560px){#clx-cap .clx-qa__a{padding-right:0}}
+
+/* CTA */
+#clx-cap .clx-cta{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--cream);display:grid}
+#clx-cap .clx-cta__img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:78% 50%}
+#clx-cap .clx-cta__body{padding:30px 22px 34px}
+@media(min-width:960px){
+  #clx-cap .clx-cta{min-height:560px;align-items:center}
+  #clx-cap .clx-cta__img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:70% 50%}
+  #clx-cap .clx-cta::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(248,245,240,.95) 0%,rgba(248,245,240,.85) 34%,rgba(248,245,240,0) 58%)}
+  #clx-cap .clx-cta__body{position:relative;z-index:2;max-width:560px;padding:64px}
+}
+#clx-cap .clx-disclaimer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:24px 0 0;font-size:14px;color:var(--muted)}
+
+/* ЕДИНАЯ СЕТЬ */
+#clx-cap .clx-net{display:grid;gap:28px;background:var(--cream);border-radius:var(--r-lg);padding:28px 22px 32px;align-items:center}
+#clx-cap .clx-net__art{max-width:420px;margin:0 auto;width:80%}
+@media(min-width:960px){#clx-cap .clx-net{grid-template-columns:.8fr 1.2fr;gap:64px;padding:64px}#clx-cap .clx-net__art{width:100%}}
+#clx-cap .clx-roles{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
+#clx-cap .clx-roles li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+#clx-cap .clx-roles b{font-weight:600;color:var(--wine)}
+#clx-cap .clx-roles span{color:var(--muted)}
+@media(max-width:560px){#clx-cap .clx-roles li{grid-template-columns:1fr;gap:4px}}
+
+/* КОЖА */
+#clx-cap .clx-skin{display:grid;gap:32px;align-items:center}
+@media(min-width:960px){#clx-cap .clx-skin{grid-template-columns:1.05fr .95fr;gap:48px}}
+#clx-cap .clx-fn{display:grid;gap:12px}
+@media(min-width:600px){#clx-cap .clx-fn{grid-template-columns:1fr 1fr}}
+#clx-cap .clx-fn__item{border:1px solid var(--line);border-radius:var(--r-md);padding:22px}
+#clx-cap .clx-fn__ic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--cream);margin-bottom:14px}
+#clx-cap .clx-fn__item h3{margin:0 0 8px;font:600 17px/1.3 var(--sans);color:var(--ink)}
+#clx-cap .clx-fn__item p{margin:0;font-size:15px;color:var(--muted);line-height:1.55}
+
+/* ЦИКЛ */
+#clx-cap .clx-cycle{background:var(--cream)}
+#clx-cap .clx-chainart{position:relative;margin:28px -20px 12px}
+@media(max-width:599px){#clx-cap .clx-chainart .clx-pin{display:none}}
+@media(min-width:600px){#clx-cap .clx-chainart{margin:36px 0 8px}}
+#clx-cap .clx-chainart img{width:100%}
+#clx-cap .clx-pin{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--wine);color:#fff;font:600 13px/1 var(--sans);box-shadow:0 0 0 5px rgba(255,255,255,.75)}
+@media(min-width:960px){#clx-cap .clx-pin{width:44px;height:44px;font-size:16px;box-shadow:0 0 0 8px rgba(255,255,255,.7)}}
+#clx-cap .clx-steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+#clx-cap .clx-step{position:relative;padding:0 0 28px 52px}
+#clx-cap .clx-step::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--wine);color:#fff;font-weight:600;font-size:14px}
+#clx-cap .clx-step::after{content:"";position:absolute;left:16.5px;top:40px;bottom:6px;width:1px;background:var(--line)}
+#clx-cap .clx-step:last-child::after{display:none}
+#clx-cap .clx-step h3{margin:4px 0 8px;font-family:var(--serif);font-weight:400;font-size:24px;color:var(--wine)}
+#clx-cap .clx-step p{margin:0;color:var(--muted);font-size:16px}
+@media(min-width:900px){
+  #clx-cap .clx-steps{grid-template-columns:repeat(4,1fr);gap:28px}
+  #clx-cap .clx-step{padding:56px 0 0}
+  #clx-cap .clx-step::after{left:46px;right:-22px;top:17px;bottom:auto;width:auto;height:1px}
+}
+#clx-cap .clx-other{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);display:grid;gap:18px}
+@media(min-width:960px){#clx-cap .clx-other{grid-template-columns:auto 1fr;gap:40px;align-items:center}}
+#clx-cap .clx-other h3{margin:0;line-height:1.2;font-family:var(--serif);font-weight:400;font-size:26px;color:var(--wine)}
+#clx-cap .clx-other .clx-chips{margin:0}
+
+/* СМОТРИТЕ ТАКЖЕ */
+#clx-cap .clx-more{display:grid;gap:12px;margin-top:12px}
+@media(min-width:760px){#clx-cap .clx-more{grid-template-columns:repeat(3,1fr)}}
+#clx-cap .clx-more a{display:flex;align-items:center;gap:16px;padding:14px 18px 14px 14px;border:1px solid var(--line);border-radius:var(--r-md);color:var(--ink);transition:border-color .2s}
+#clx-cap .clx-more a:hover{border-color:var(--wine)}
+#clx-cap .clx-more img{width:56px;height:56px;object-fit:contain;flex:0 0 56px}
+#clx-cap .clx-more span{flex:1;font-weight:600;line-height:1.3}
+#clx-cap .clx-more small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+#clx-cap .clx-more i{font-style:normal;color:var(--wine);font-size:18px}
+
+/* HERO */
+#clx-cap .clx-hero{background:var(--cream)}
+#clx-cap .clx-hero__top{display:grid;gap:8px}
+@media(min-width:960px){#clx-cap .clx-hero__top{grid-template-columns:1.2fr .8fr;gap:64px;align-items:end}#clx-cap .clx-hero__top .clx-lead{margin:0}#clx-cap .clx-hero__top .clx-btns{margin-top:28px}}
+#clx-cap .clx-hero__art{margin:24px -20px 8px;position:relative}
+#clx-cap .clx-hero__art img{width:100%;height:220px;object-fit:cover;object-position:66% 50%}
+@media(min-width:760px){#clx-cap .clx-hero__art img{height:auto;object-fit:fill}}
+@media(min-width:960px){#clx-cap .clx-hero__art{margin:16px -40px 8px}}
+#clx-cap .clx-stats{display:grid;border-top:1px solid var(--line)}
+#clx-cap .clx-stat{display:grid;grid-template-columns:132px 1fr;gap:4px 20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+#clx-cap .clx-stat b{font-family:var(--serif);font-weight:400;color:var(--wine);font-size:clamp(34px,4.4vw,56px);line-height:1}
+#clx-cap .clx-stat b small{font-size:.42em;margin-left:6px;color:var(--muted)}
+#clx-cap .clx-stat span{font-size:15px;color:var(--muted);line-height:1.45}
+@media(min-width:760px){
+  #clx-cap .clx-stats{grid-template-columns:repeat(3,1fr)}
+  #clx-cap .clx-stat{grid-template-columns:1fr;padding:24px 24px 0;border-bottom:0}
+  #clx-cap .clx-stat:first-child{padding-left:0}
+  #clx-cap .clx-stat+.clx-stat{border-left:1px solid var(--line)}
+}
+
+/* ТЕЛОМЕРЫ */
+#clx-cap .clx-tel{display:grid;gap:32px;align-items:center}
+@media(min-width:960px){#clx-cap .clx-tel{grid-template-columns:.8fr 1.2fr;gap:64px}}
+#clx-cap .clx-tel__art{width:72%;max-width:440px;margin:0 auto}
+@media(min-width:960px){#clx-cap .clx-tel__art{width:100%}}
+#clx-cap .clx-tel p{color:var(--muted);max-width:62ch;margin:0 0 14px}
+#clx-cap .clx-other{margin-top:24px;padding:20px 22px;border-radius:var(--r-md);background:var(--cream)}
+#clx-cap .clx-other p{margin:0 0 12px;color:var(--ink);font-weight:600;font-size:15px}
+#clx-cap .clx-other .clx-chips{margin:0}
+
+/* НАПРАВЛЕНИЯ */
+#clx-cap .clx-dir{display:grid;gap:28px;align-items:center}
+@media(min-width:960px){#clx-cap .clx-dir{grid-template-columns:1fr 1fr;gap:56px}}
+#clx-cap .clx-dir__list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+#clx-cap .clx-dir__list li{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+#clx-cap .clx-dir__list h3{margin:0 0 4px;font:600 17px/1.3 var(--sans);color:var(--ink)}
+#clx-cap .clx-dir__list p{margin:0;font-size:15px;color:var(--muted);line-height:1.55}
+#clx-cap .clx-dir__list li:hover .clx-fn__ic{background:var(--wine)}
+#clx-cap .clx-dir__list li:hover .clx-fn__ic svg *{stroke:#fff}
+
+/* НАУКА */
+#clx-cap .clx-sci{background:var(--cream)}
+#clx-cap .clx-studies{display:grid;gap:12px}
+@media(min-width:900px){#clx-cap .clx-studies{grid-template-columns:1fr 1fr}}
+#clx-cap .clx-study{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:26px 24px;display:flex;flex-direction:column}
+#clx-cap .clx-study__year{font-family:var(--serif);font-size:48px;line-height:1;color:var(--wine)}
+#clx-cap .clx-study__tag{display:inline-block;margin:14px 0 12px;padding:6px 12px;border-radius:var(--pill);background:var(--cream);font-size:13px;font-weight:600;color:var(--ink);align-self:flex-start}
+#clx-cap .clx-study p{margin:0 0 16px;color:var(--muted);font-size:16px}
+#clx-cap .clx-study a{margin-top:auto;font-size:14px;font-weight:600;color:var(--wine);border-bottom:1px solid var(--line);align-self:flex-start;padding-bottom:2px}
+#clx-cap .clx-study a:hover{border-color:var(--wine)}
+#clx-cap .clx-chart{margin-top:12px;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 20px 22px}
+@media(min-width:960px){#clx-cap .clx-chart{padding:40px 44px 32px;display:grid;grid-template-columns:.75fr 1.25fr;gap:48px;align-items:center}}
+#clx-cap .clx-chart .clx-h3{font-size:clamp(26px,2.6vw,34px)}
+#clx-cap .clx-chart__sub{color:var(--muted);font-size:15px;margin:10px 0 18px}
+#clx-cap .clx-chart__big{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+#clx-cap .clx-chart__big b{font-family:var(--serif);font-weight:400;font-size:clamp(48px,6vw,72px);color:var(--wine);line-height:1}
+#clx-cap .clx-chart__big span{font-size:14px;color:var(--muted);line-height:1.35}
+#clx-cap .clx-bars{position:relative;display:grid;grid-template-columns:repeat(9,1fr);gap:6px;align-items:end;height:260px;padding:0 0 0 30px;margin-top:24px;border-bottom:1px solid var(--line)}
+@media(min-width:960px){#clx-cap .clx-bars{height:300px;gap:10px;margin-top:0}}
+#clx-cap .clx-bars__grid{position:absolute;left:30px;right:0;top:0;bottom:0;pointer-events:none}
+#clx-cap .clx-bars__grid span{position:absolute;left:-30px;right:0;border-top:1px dashed #ece8e3;font-size:11px;color:var(--muted);line-height:0}
+#clx-cap .clx-bars__grid span::before{content:attr(data-v);position:absolute;left:0;top:0;transform:translateY(-1px)}
+#clx-cap .clx-bar{position:relative;height:100%;display:flex;align-items:flex-end}
+#clx-cap .clx-bar i{display:block;width:100%;height:var(--h);border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#8d3a4c 0%,#651d2d 100%);opacity:calc(1 - var(--k) * .07);transform-origin:bottom}
+#clx-cap .clx-bar s{position:absolute;left:50%;width:1.5px;background:#8b8f94;transform:translateX(-50%);bottom:var(--lo);height:calc(var(--hi) - var(--lo))}
+#clx-cap .clx-bar s::before,#clx-cap .clx-bar s::after{content:"";position:absolute;left:50%;width:10px;height:1.5px;background:#8b8f94;transform:translateX(-50%)}
+#clx-cap .clx-bar s::before{top:0}#clx-cap .clx-bar s::after{bottom:0}
+#clx-cap .clx-bars__x{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;padding-left:30px;margin-top:8px;font-size:11px;color:var(--muted);text-align:center}
+@media(min-width:960px){#clx-cap .clx-bars__x{gap:10px;font-size:12px}}
+#clx-cap .clx-bars__cap{text-align:center;font-size:13px;color:var(--muted);margin-top:6px;padding-left:30px}
+
+/* ДИНАМИКА */
+#clx-cap .clx-ba{display:grid;gap:12px}
+@media(min-width:900px){#clx-cap .clx-ba{grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}}
+#clx-cap .clx-ba__card{border:1px solid var(--line);border-radius:var(--r-lg);padding:20px}
+#clx-cap .clx-ba__card h3{margin:0 0 16px;font-family:var(--serif);font-weight:400;font-size:26px;color:var(--wine)}
+#clx-cap .clx-ba__pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#clx-cap .clx-ba__trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#clx-cap figure{margin:0;position:relative}
+#clx-cap figure img{width:100%;border-radius:14px;display:block}
+#clx-cap .clx-ba__trio img{aspect-ratio:4/5;object-fit:cover}
+#clx-cap .clx-ba__pair img{aspect-ratio:4/3;object-fit:cover}
+#clx-cap figcaption{position:absolute;left:10px;top:10px;padding:5px 12px;border-radius:var(--pill);background:rgba(255,255,255,.88);font-size:13px;font-weight:600;color:var(--ink)}
+#clx-cap figure.is-after figcaption{background:var(--wine);color:#fff}
+#clx-cap .clx-ba__note{margin:14px 0 0;font-size:14px;color:var(--muted)}
+
+#clx-cap .clx-net__art--syringe{width:100%;max-width:520px;transform:rotate(-12deg)}
+#clx-cap .clx-dir__art{width:100%;max-width:560px;margin:0 auto}
+
+/* ===== АНИМАЦИИ (отключаются при «уменьшить движение») ===== */
+@media(prefers-reduced-motion:no-preference){
+  @keyframes clxUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes clxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes clxFloatR{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-10deg) translateY(-10px)}}
+  @keyframes clxSway{0%,100%{transform:translateX(0)}50%{transform:translateX(-1.2%)}}
+
+  #clx-cap.clx-js .clx-hero__intro{opacity:0;animation:clxUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+  #clx-cap.clx-js .clx-hero__art{opacity:0;animation:clxUp 1.1s cubic-bezier(.2,.7,.2,1) .25s forwards}
+  #clx-cap.clx-js .clx-stats{opacity:0;animation:clxUp .9s cubic-bezier(.2,.7,.2,1) .5s forwards}
+  #clx-cap .clx-hero__art img{animation:clxSway 12s ease-in-out infinite}
+
+  #clx-cap .clx-tel__art{animation:clxFloat 9s ease-in-out infinite}
+  #clx-cap.clx-js .clx-factors .clx-chip{opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .5s ease}
+  #clx-cap .clx-other.is-in .clx-chip{opacity:1;transform:none}
+  #clx-cap .clx-other.is-in .clx-chip:nth-child(2){transition-delay:.1s}
+  #clx-cap .clx-other.is-in .clx-chip:nth-child(3){transition-delay:.2s}
+  #clx-cap .clx-other.is-in .clx-chip:nth-child(4){transition-delay:.3s}
+
+  #clx-cap .clx-dir__art{animation:clxFloat 8s ease-in-out infinite}
+  #clx-cap.clx-js .clx-dir__list li{opacity:0;transform:translateX(16px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  #clx-cap .clx-dir__list.is-in li{opacity:1;transform:none}
+  #clx-cap .clx-dir__list.is-in li:nth-child(2){transition-delay:.1s}
+  #clx-cap .clx-dir__list.is-in li:nth-child(3){transition-delay:.2s}
+  #clx-cap .clx-dir__list.is-in li:nth-child(4){transition-delay:.3s}
+  #clx-cap .clx-dir__list.is-in li:nth-child(5){transition-delay:.4s}
+  #clx-cap .clx-fn__ic{transition:background .25s}
+
+  #clx-cap.clx-js .clx-study{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  #clx-cap .clx-studies.is-in .clx-study{opacity:1;transform:none}
+  #clx-cap .clx-studies.is-in .clx-study:nth-child(2){transition-delay:.15s}
+
+  #clx-cap.clx-js .clx-bar i{transform:scaleY(0);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  #clx-cap.clx-js .clx-bar s{opacity:0;transition:opacity .4s ease}
+  #clx-cap .clx-bars.is-in .clx-bar i{transform:none;transition-delay:calc(var(--k) * .09s)}
+  #clx-cap .clx-bars.is-in .clx-bar s{opacity:1;transition-delay:calc(var(--k) * .09s + .6s)}
+
+  #clx-cap.clx-js .clx-ba__card{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  #clx-cap .clx-ba.is-in .clx-ba__card{opacity:1;transform:none}
+  #clx-cap .clx-ba.is-in .clx-ba__card:nth-child(2){transition-delay:.15s}
+
+  #clx-cap .clx-net__art--syringe{animation:clxFloatR 7s ease-in-out infinite}
+}
+
+/* v2: подпись на hero, формула INCI, находки, ключевая плашка */
+#clx-cap .clx-hero__label{position:absolute;left:69%;top:12%;display:none;align-items:center;gap:10px;padding:8px 14px;border-radius:var(--pill);background:rgba(255,255,255,.9);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+#clx-cap .clx-hero__label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 4px rgba(101,29,45,.15)}
+@media(min-width:960px){#clx-cap .clx-hero__label{display:inline-flex}}
+#clx-cap .clx-stat b.is-text{font-size:clamp(22px,2.4vw,30px);line-height:1.15}
+#clx-cap .clx-key{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:var(--r-md);border:1px solid var(--wine);background:var(--white);margin-top:24px}
+#clx-cap .clx-key svg{flex:0 0 26px;margin-top:2px}
+#clx-cap .clx-key b{display:block;color:var(--wine);font-size:17px;margin-bottom:6px}
+#clx-cap .clx-key span{color:var(--muted);font-size:15px;line-height:1.55}
+#clx-cap .clx-inci{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:0 0 12px}
+#clx-cap .clx-inci__part{flex:1 1 220px;padding:18px 22px;border-radius:var(--r-md);background:var(--white);border:1px solid var(--line)}
+#clx-cap .clx-inci__part b{display:block;font-family:var(--serif);font-weight:400;font-size:24px;color:var(--wine);line-height:1.2}
+#clx-cap .clx-inci__part span{font-size:14px;color:var(--muted)}
+#clx-cap .clx-inci__op{display:grid;place-items:center;font-family:var(--serif);font-size:30px;color:var(--silver);flex:0 0 28px}
+@media(max-width:600px){#clx-cap .clx-inci__op{flex-basis:100%;height:26px;line-height:1}}
+#clx-cap .clx-study__res{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--ink)}
+#clx-cap .clx-study__res b{display:block;font-size:13px;color:var(--wine);margin-bottom:2px}
+#clx-cap .clx-study h3{margin:12px 0 10px;font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.2vw,28px);line-height:1.2;color:var(--wine)}
+#clx-cap .clx-study__tag{margin:0}
+#clx-cap .clx-roles li.is-main{background:linear-gradient(90deg,rgba(101,29,45,.06),transparent);margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:10px}
+#clx-cap .clx-roles span small{display:block;font-size:14px;font-weight:400;color:var(--muted);margin-top:4px;line-height:1.5}
+#clx-cap .clx-roles span{color:var(--ink);font-weight:600}
+#clx-cap .clx-synergy{margin-top:22px;display:flex;align-items:center;gap:14px;font-family:var(--serif);font-size:22px;color:var(--wine)}
+#clx-cap .clx-synergy::before{content:"";flex:0 0 36px;height:1px;background:var(--wine)}
+@media(prefers-reduced-motion:no-preference){
+  #clx-cap.clx-js .clx-key{opacity:0;transform:translateY(12px);transition:opacity .6s ease .2s,transform .6s ease .2s}
+  #clx-cap .clx-key.is-in{opacity:1;transform:none}
+  #clx-cap.clx-js .clx-inci>*{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  #clx-cap .clx-inci.is-in>*{opacity:1;transform:none}
+  #clx-cap .clx-inci.is-in>*:nth-child(2){transition-delay:.15s}
+  #clx-cap .clx-inci.is-in>*:nth-child(3){transition-delay:.3s}
+  @keyframes clxBlink{0%,100%{box-shadow:0 0 0 4px rgba(101,29,45,.15)}50%{box-shadow:0 0 0 8px rgba(101,29,45,0)}}
+  #clx-cap .clx-hero__label::before{animation:clxBlink 2.4s ease-in-out infinite}
+}
+
+#clx-cap .clx-hero .clx-h1{font-size:clamp(38px,5vw,66px)}
+@media(max-width:759px){#clx-cap .clx-stat:has(.is-text){grid-template-columns:1fr}#clx-cap .clx-stat b.is-text{font-size:24px}}
+/* fallback for browsers without :has() */
+@media(max-width:759px){#clx-cap .clx-stat b.is-text{grid-column:1/-1;white-space:normal}}
+/* lead under the telomere heading had no top margin (.clx-tel p overrode .clx-lead) */
+#clx-cap .clx-tel .clx-lead{margin-top:22px}
+/* the syringe photo is already shot at an angle */
+#clx-cap .clx-net__art--syringe{transform:none}
+@media(prefers-reduced-motion:no-preference){@keyframes clxFloatS{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}#clx-cap .clx-net__art--syringe{animation:clxFloatS 7s ease-in-out infinite}}
+/* clinical observations */
+#clx-cap .clx-ba__card p.clx-ba__meta{margin:-6px 0 16px;font-size:15px;color:var(--muted);line-height:1.5}
+@media(min-width:760px){#clx-cap .clx-stat b{display:flex;align-items:flex-end;height:58px}}
+</style>
+
+<div id="clx-cap">
+
+  <!-- HERO -->
+  <section class="clx-sec clx-hero">
+    <div class="clx-wrap">
+      <div class="clx-hero__intro">
+        <ul class="clx-chips">
+          <li class="clx-chip">CAP Пептид&nbsp;5</li>
+          <li class="clx-chip">CALYRA LUX&nbsp;5</li>
+        </ul>
+        <div class="clx-hero__top">
+          <h1 class="clx-h1">Поддержка молодости начинается с <em>клеточного окружения</em></h1>
+          <div>
+            <p class="clx-lead">CAP Пептид&nbsp;5 направлен на теломерную защиту, функциональный потенциал фибробластов и устойчивость клеточного окружения к окислительному стрессу.</p>
+            <div class="clx-btns">
+              <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
+              <a class="clx-btn clx-btn--line" href="#clx-cap-mechanism" data-clx-scroll>Как работает технология</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clx-hero__art">
+        <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/hero-telomere.webp" alt="Хромосома с защитными концами — теломерами" width="1800" height="515">
+        <span class="clx-hero__label">Теломеры защищают концы хромосом</span>
+      </div>
+      <div class="clx-stats">
+        <div class="clx-stat"><b>1000<small>ppm</small></b><span>концентрация CAP Пептида&nbsp;5 в формуле</span></div>
+        <div class="clx-stat"><b class="is-text">sh‑Oligopeptide‑104 SP</b><span>международное наименование в составе (INCI)</span></div>
+        <div class="clx-stat"><b>5</b><span>направлений поддержки качества кожи</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТЕЛОМЕРЫ -->
+  <section class="clx-sec">
+    <div class="clx-wrap">
+      <div class="clx-tel">
+        <img class="clx-tel__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/cap-peptide-5.webp" alt="Хромосома: теломеры выделены на концах" width="1000" height="1000" loading="lazy">
+        <div>
+          <ul class="clx-chips"><li class="clx-chip">Теломерная защита</li></ul>
+          <h2 class="clx-h2">Почему состояние теломер <em>важно для кожи</em></h2>
+          <p class="clx-lead">Теломеры — защитные участки на концах хромосом. Их состояние связано с клеточным потенциалом, устойчивостью к стрессу и способностью фибробластов поддерживать качественный межклеточный матрикс.</p>
+          <div class="clx-key" data-anim><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg><div><b>В лабораторных условиях CAP Пептид&nbsp;5 поддерживал длину теломер</b><span>В уходе за кожей его роль — формировать благоприятное клеточное окружение, которое поддерживает естественные механизмы теломерной защиты и жизнедеятельность клеток кожи.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- НАПРАВЛЕНИЯ -->
+  <section class="clx-sec" id="clx-cap-mechanism" style="padding-top:0">
+    <div class="clx-wrap">
+      <div class="clx-head">
+        <div>
+          <ul class="clx-chips"><li class="clx-chip">Механизм комплексной поддержки</li></ul>
+          <h2 class="clx-h2">Пять направлений <em>работы CAP Пептида&nbsp;5</em></h2>
+        </div>
+        <p class="clx-lead">Не отдельные обещания, а взаимосвязанная система поддержки клеточного потенциала и качества кожи.</p>
+      </div>
+      <div class="clx-dir">
+        <img class="clx-dir__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/peptide-scheme.webp" alt="Схема: пептид в центре связан с хромосомой, клеткой и фибробластом" width="772" height="592" loading="lazy">
+        <ul class="clx-dir__list" data-anim>
+          <li><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><path d="M7 3c2 4 8 14 10 18M17 3C15 7 9 17 7 21"/><circle cx="7" cy="3.5" r="1.2" fill="#651d2d"/><circle cx="17" cy="3.5" r="1.2" fill="#651d2d"/><circle cx="7" cy="20.5" r="1.2" fill="#651d2d"/><circle cx="17" cy="20.5" r="1.2" fill="#651d2d"/></svg></div><div><h3>Теломерная защита</h3><p>Поддержка естественных механизмов, сохраняющих функциональное состояние концов хромосом.</p></div></li>
+          <li><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><path d="M4 12c2-5 6-7 8-7s6 2 8 7c-2 5-6 7-8 7s-6-2-8-7z"/><circle cx="12" cy="12" r="2.6"/></svg></div><div><h3>Клеточный потенциал</h3><p>Поддержка жизнеспособности и функциональной активности фибробластов.</p></div></li>
+          <li><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><path d="M3 8c3-3 6 3 9 0s6 3 9 0M3 16c3-3 6 3 9 0s6 3 9 0"/><path d="M7 7v10M17 7v10" stroke-dasharray="2 2"/></svg></div><div><h3>Коллагеновый матрикс</h3><p>Поддержка окружения, от которого зависят гладкость, плотность и визуальная упругость кожи.</p></div></li>
+          <li><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/></svg></div><div><h3>Антиоксидантные механизмы</h3><p>Повышение устойчивости клеточного окружения к факторам окислительного стресса.</p></div></li>
+          <li><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6"><path d="M12 3c3.5 4.4 6 7.7 6 11a6 6 0 0 1-12 0c0-3.3 2.5-6.6 6-11z"/></svg></div><div><h3>Увлажнение</h3><p>Поддержка условий, в которых клетки и компоненты матрикса взаимодействуют в гидратированной среде.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- НАУКА -->
+  <section class="clx-sec clx-sci">
+    <div class="clx-wrap">
+      <div class="clx-head">
+        <div>
+          <ul class="clx-chips"><li class="clx-chip">Научная база технологии</li></ul>
+          <h2 class="clx-h2">От клеточной модели — к <em>поддержке долголетия кожи</em></h2>
+        </div>
+        <p class="clx-lead">Лабораторные данные показывают биологическое направление технологии. В косметическом уходе оно реализуется через поддержку клеточного окружения и естественных защитных механизмов кожи.</p>
+      </div>
+
+      <div class="clx-inci" data-anim>
+        <div class="clx-inci__part"><b>CAP Пептид&nbsp;5</b><span>название технологии</span></div>
+        <div class="clx-inci__op">=</div>
+        <div class="clx-inci__part"><b>sh‑Oligopeptide‑104 SP</b><span>синтетический пептид в составе</span></div>
+      </div>
+
+      <div class="clx-studies" data-anim>
+        <div class="clx-study">
+          <span class="clx-study__tag">Культура фибробластов</span>
+          <h3>Поддержка теломер и клеточного потенциала</h3>
+          <p>CAP Пептид&nbsp;5 поддерживал длину теломер и снижал активность β‑галактозидазы — маркера клеточного старения.</p>
+          <div class="clx-study__res"><b>Результат</b>Поддержка функционального состояния клетки</div>
+        </div>
+        <div class="clx-study">
+          <span class="clx-study__tag">Биоптаты кожи · 4 месяца</span>
+          <h3>Коллагеновые волокна и фибробласты</h3>
+          <p>После 4 месяцев применения CAP Пептида&nbsp;5 в биоптатах кожи отмечено увеличение коллагеновых волокон и количества фибробластов. Пептид связывается с коллагеновыми волокнами и защищает их от деградации.</p>
+          <div class="clx-study__res"><b>Результат</b>Условия для плотности и качества матрикса</div>
+        </div>
+      </div>
+
+      <div class="clx-chart">
+        <div>
+          <h3 class="clx-h3">Снижение активности β‑галактозидазы</h3>
+          <p class="clx-chart__sub">Маркер клеточного старения в культуре фибробластов. Исходное значение принято за 100%.</p>
+          <div class="clx-chart__big"><b>−84%</b><span>к 240-му дню<br>наблюдения</span></div>
+          <div class="clx-note clx-after" style="margin:20px 0 0"><span>Лабораторная клеточная модель, данные производителя. Не является клиническим результатом.</span></div>
+        </div>
+        <div>
+          <div class="clx-bars" data-anim role="img" aria-label="Активность β-галактозидазы снижается со 100% в день 0 до примерно 16% к 240-му дню">
+            <div class="clx-bars__grid"><span data-v="0" style="bottom:0.0%"></span><span data-v="25" style="bottom:22.7%"></span><span data-v="50" style="bottom:45.5%"></span><span data-v="75" style="bottom:68.2%"></span><span data-v="100" style="bottom:90.9%"></span></div>
+            <div class="clx-bar" title="День 0: ≈100%" style="--h:90.9%;--lo:86.4%;--hi:94.5%;--k:0"><i></i><s></s></div><div class="clx-bar" title="День 30: ≈87.5%" style="--h:79.5%;--lo:74.5%;--hi:85.5%;--k:1"><i></i><s></s></div><div class="clx-bar" title="День 60: ≈71.5%" style="--h:65.0%;--lo:59.1%;--hi:71.8%;--k:2"><i></i><s></s></div><div class="clx-bar" title="День 90: ≈58%" style="--h:52.7%;--lo:47.3%;--hi:58.6%;--k:3"><i></i><s></s></div><div class="clx-bar" title="День 120: ≈40%" style="--h:36.4%;--lo:30.5%;--hi:42.3%;--k:4"><i></i><s></s></div><div class="clx-bar" title="День 150: ≈25%" style="--h:22.7%;--lo:17.7%;--hi:27.7%;--k:5"><i></i><s></s></div><div class="clx-bar" title="День 180: ≈17%" style="--h:15.5%;--lo:10.5%;--hi:20.9%;--k:6"><i></i><s></s></div><div class="clx-bar" title="День 210: ≈17.5%" style="--h:15.9%;--lo:10.9%;--hi:20.9%;--k:7"><i></i><s></s></div><div class="clx-bar" title="День 240: ≈15.5%" style="--h:14.1%;--lo:9.1%;--hi:20.0%;--k:8"><i></i><s></s></div>
+          </div>
+          <div class="clx-bars__x"><span>0</span><span>30</span><span>60</span><span>90</span><span>120</span><span>150</span><span>180</span><span>210</span><span>240</span></div>
+          <div class="clx-bars__cap">период наблюдения, дни</div>
+        </div>
+      </div>
+
+      <div class="clx-key" data-anim><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><div><b>Как это переводится на язык косметики</b><span>Технология не заявляет буквальное удлинение теломер в коже человека. Она создаёт окружение для поддержки теломерной защиты, естественной жизнедеятельности клеток и сохранения качества кожи.</span></div></div>
+    </div>
+  </section>
+
+  <!-- КЛИНИЧЕСКИЕ НАБЛЮДЕНИЯ -->
+  <section class="clx-sec" style="padding-bottom:0">
+    <div class="clx-wrap">
+      <div class="clx-head">
+        <div>
+          <ul class="clx-chips"><li class="clx-chip">Клинические наблюдения</li></ul>
+          <h2 class="clx-h2">Действие CAP Пептида&nbsp;5 <em>на коже</em></h2>
+        </div>
+        <p class="clx-lead">Наблюдения применения CAP Пептида&nbsp;5 — ключевого компонента CALYRA LUX&nbsp;5 — по данным производителя.</p>
+      </div>
+      <div class="clx-ba" data-anim>
+        <div class="clx-ba__card">
+          <h3>Фотостарение кожи</h3>
+          <p class="clx-ba__meta">Женщина, 58&nbsp;лет. Применение дважды в день, утром и вечером, в течение 12&nbsp;месяцев.</p>
+          <div class="clx-ba__pair">
+            <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/before.webp" alt="Фотостарение кожи до применения CAP Пептида 5" width="320" height="238" loading="lazy"><figcaption>До</figcaption></figure>
+            <figure class="is-after"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/after.webp" alt="Кожа через 12 месяцев применения CAP Пептида 5" width="321" height="238" loading="lazy"><figcaption>12 месяцев</figcaption></figure>
+          </div>
+        </div>
+        <div class="clx-ba__card">
+          <h3>Восстановление кожи</h3>
+          <p class="clx-ba__meta">Мужчина, 56&nbsp;лет: кожа в области рубца. Ежедневное нанесение утром и вечером на чистую сухую кожу.</p>
+          <div class="clx-ba__trio">
+            <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/stage-1.webp" alt="Кожа в области рубца, этап 1" width="213" height="267" loading="lazy"><figcaption>01</figcaption></figure>
+            <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/stage-2.webp" alt="Кожа в области рубца, этап 2" width="212" height="267" loading="lazy"><figcaption>02</figcaption></figure>
+            <figure class="is-after"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/stage-3.webp" alt="Кожа в области рубца, этап 3" width="209" height="267" loading="lazy"><figcaption>03</figcaption></figure>
+          </div>
+        </div>
+      </div>
+      <p class="clx-ba__note">Данные клинических наблюдений CAP Пептида&nbsp;5, а не результаты процедур с готовым продуктом. Индивидуальный результат может отличаться.</p>
+    </div>
+  </section>
+
+  <!-- В СИСТЕМЕ -->
+  <section class="clx-sec">
+    <div class="clx-wrap">
+      <div class="clx-net">
+        <img class="clx-net__art clx-net__art--syringe" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/cap-peptide/syringe.webp" alt="Шприц CALYRA LUX 5" width="1100" height="364" loading="lazy">
+        <div>
+          <ul class="clx-chips"><li class="clx-chip">CAP Пептид&nbsp;5 в формуле CALYRA LUX&nbsp;5</li></ul>
+          <h2 class="clx-h2">Один компонент — <em>своя точная роль</em></h2>
+          <p class="clx-lead">CAP Пептид&nbsp;5 работает в общей системе с полинуклеотидами (PN) и 3D-гиалуроновой кислотой и отвечает за пептидное направление формулы.</p>
+          <ul class="clx-roles">
+            <li class="is-main"><b>CAP Пептид&nbsp;5</b><span>Клеточный потенциал<small>Теломерная защита и функциональное окружение фибробластов</small></span></li>
+            <li><b>Полинуклеотиды (PN)</b><span>Обновление матрикса<small>Увлажнённая среда и поддержка естественного обновления кожи</small></span></li>
+            <li><b>3D-ГК</b><span>Гидратация<small>Водонасыщенная система, наполненность и вязкоэластические свойства</small></span></li>
+          </ul>
+          <div class="clx-synergy">Результат синергии — качество кожи как единая система</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="clx-sec" style="padding-top:0">
+    <div class="clx-wrap clx-faq">
+      <div class="clx-faq__aside">
+        <ul class="clx-chips"><li class="clx-chip">Вопросы и ответы</li></ul>
+        <h2 class="clx-h2">Коротко <em>о главном</em></h2>
+        <p class="clx-lead">Не нашли ответ? Специалист расскажет о применении и условиях сотрудничества.</p>
+        <div class="clx-btns"><a class="clx-btn clx-btn--line" href="#popup:price">Задать вопрос</a></div>
+      </div>
+      <div>
+        <details class="clx-qa" open>
+          <summary>Что такое теломеры и как они связаны со старением кожи?<i></i></summary>
+          <div class="clx-qa__a"><p>Теломеры — защитные участки на концах хромосом. Их состояние связано с клеточным потенциалом и способностью фибробластов поддерживать межклеточный матрикс. Поэтому теломерная защита рассматривается как одно из направлений поддержки качества и долговременной функциональности кожи.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Как CAP Пептид&nbsp;5 связан с теломерной защитой кожи?<i></i></summary>
+          <div class="clx-qa__a"><p>CAP Пептид&nbsp;5 поддерживает клеточное окружение фибробластов, естественные механизмы теломерной защиты и устойчивость к окислительному стрессу. Это помогает сохранять функциональный потенциал клеток, отвечающих за качество дермального матрикса.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Как лабораторные данные переводятся в косметический уход?<i></i></summary>
+          <div class="clx-qa__a"><p>В лабораторной модели CAP Пептид&nbsp;5 поддерживал длину теломер и снижал признаки клеточного старения, а в биоптатах кожи после 4 месяцев применения отмечено увеличение коллагеновых волокон. В косметическом уходе это направление реализуется через создание благоприятного окружения для естественной жизнедеятельности клеток кожи.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Что означает косметика для клеточного долголетия кожи?<i></i></summary>
+          <div class="clx-qa__a"><p>Это уход, направленный не только на быстрый внешний эффект, но и на поддержку клеточного потенциала, антиоксидантных механизмов, коллагенового матрикса и естественных защитных процессов, от которых зависит качество кожи.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="clx-sec" style="padding-top:0">
+    <div class="clx-wrap">
+      <div class="clx-cta">
+        <img class="clx-cta__img" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/product-scene.webp" alt="Упаковка и шприцы CALYRA LUX&nbsp;5" loading="lazy">
+        <div class="clx-cta__body">
+          <h2 class="clx-h2">Технология поддержки <em>молодости кожи</em></h2>
+          <p class="clx-lead">CAP Пептид&nbsp;5, полинуклеотиды (PN) и 3D-гиалуроновая кислота объединены в системе, где каждый компонент решает свою задачу.</p>
+          <div class="clx-btns">
+            <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
+            <a class="clx-btn clx-btn--line" href="https://calyraluxmin.tilda.ws/technology-calyra-lux-5">О технологии</a>
+          </div>
+        </div>
+      </div>
+      <div class="clx-more">
+        <a href="https://calyraluxmin.tilda.ws/technology-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/hero-strands.webp" alt="" loading="lazy" style="object-fit:cover;border-radius:50%"><span>Технология CALYRA LUX&nbsp;5<small>Как работают три компонента</small></span><i>↗</i></a>
+        <a href="https://calyraluxmin.tilda.ws/polynucleotides-pn-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="" loading="lazy"><span>Полинуклеотиды (PN)<small>20 мг/мл</small></span><i>↗</i></a>
+        <a href="https://calyraluxmin.tilda.ws/3d-hyaluronic-acid-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/ha-drop.webp" alt="" loading="lazy"><span>3D-гиалуроновая кислота<small>10 мг/мл</small></span><i>↗</i></a>
+      </div>
+      <div class="clx-disclaimer">
+        <span>Профессиональный косметический продукт для наружного применения</span>
+        <span>Информация предназначена для специалистов</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('clx-cap'); if(!root) return;
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    root.classList.add('clx-js');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.2});
+    [].forEach.call(root.querySelectorAll('[data-anim]'),function(el){io.observe(el);});
+  }
+  [].forEach.call(root.querySelectorAll('[data-clx-scroll]'),function(a){
+    a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});
+  });
+})();
+</script>
+<!-- ===== конец блока ===== -->
