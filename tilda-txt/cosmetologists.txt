@@ -151,14 +151,13 @@
 #calyra-lp .cl-quote{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.75rem);line-height:1.4;color:var(--ink);max-width:34ch;margin:80px auto 0;text-align:center}
 
 /* ===== RESULTS ===== */
-#calyra-lp .cl-ba{position:relative;max-width:760px;margin:48px auto 0;aspect-ratio:4/3;user-select:none}
-#calyra-lp .cl-ba .cl-ph{position:absolute;inset:0}
-#calyra-lp .cl-ba .cl-after{clip-path:inset(0 0 0 50%)}
-#calyra-lp .cl-ba-bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;z-index:3;pointer-events:none}
-#calyra-lp .cl-ba-bar::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:var(--wine);transform:translate(-50%,-50%);box-shadow:0 0 0 4px #fff}
-#calyra-lp .cl-ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4}
-#calyra-lp .cl-ba-lbl{position:absolute;top:14px;z-index:3;background:rgba(255,255,255,.88);padding:4px 12px;font-size:.85rem}
-#calyra-lp .cl-ba-lbl.l{left:14px}#calyra-lp .cl-ba-lbl.r{right:14px}
+#calyra-lp .cl-ba2{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:44px auto 0}
+#calyra-lp .cl-ba2 figure{position:relative;margin:0;border-radius:18px;overflow:hidden;background:var(--sand-soft)}
+#calyra-lp .cl-ba2 img{width:100%;height:auto;aspect-ratio:306/402;object-fit:cover}
+#calyra-lp .cl-ba2 figcaption{position:absolute;left:14px;top:14px;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.9);font-size:.85rem;font-weight:600;color:var(--ink)}
+#calyra-lp .cl-ba2 .is-after figcaption{background:var(--wine);color:#fff}
+#calyra-lp .cl-ba-note{font-size:.85rem;color:#5b6670;margin-top:16px}
+@media (max-width:560px){#calyra-lp .cl-ba2{gap:8px}#calyra-lp .cl-ba2 figure{border-radius:12px}#calyra-lp .cl-ba2 figcaption{left:8px;top:8px;padding:3px 10px;font-size:.75rem}}
 #calyra-lp section[hidden]{display:none!important}
 #calyra-lp .cl-center{text-align:center}
 #calyra-lp .cl-center h2,#calyra-lp .cl-center p{margin-left:auto;margin-right:auto}
@@ -448,18 +447,16 @@
   </div>
 </section>
 
-<!-- ===== 6. РЕЗУЛЬТАТЫ (фото до/после добавить позже) ===== -->
+<!-- ===== 6. РЕЗУЛЬТАТЫ ===== -->
 <section class="cl-sec cl-divide" id="cl-results" hidden>
   <div class="cl-wrap cl-center">
     <h2>Результаты клиентов</h2>
-    <p class="cl-muted" style="margin-top:14px">Передвиньте ползунок, чтобы сравнить</p>
-    <div class="cl-ba">
-      <div class="cl-ph" data-file="before-1.jpg"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/before-1.jpg" alt="До процедуры"></div>
-      <div class="cl-ph cl-after" id="clAfter" data-file="after-1.jpg"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/after-1.jpg" alt="После курса"></div>
-      <span class="cl-ba-lbl l">До</span><span class="cl-ba-lbl r">После</span>
-      <div class="cl-ba-bar" id="clBar"></div>
-      <input type="range" min="0" max="100" value="50" id="clRange" aria-label="Сравнение до и после">
+    <p class="cl-muted" style="margin-top:14px">Фото до и после курса процедур с CALYRA&nbsp;LUX&nbsp;5</p>
+    <div class="cl-ba2">
+      <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/before-1.webp" alt="Кожа лица до курса процедур" width="306" height="402"><figcaption>До</figcaption></figure>
+      <figure class="is-after"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/after-1.webp" alt="Кожа лица после курса процедур" width="304" height="402"><figcaption>После курса</figcaption></figure>
     </div>
+    <p class="cl-ba-note">Индивидуальный результат может отличаться.</p>
   </div>
 </section>
 
@@ -627,7 +624,7 @@
   if(hasIO){ var lo=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ startLad(); lo.disconnect(); } },{threshold:.4}); lo.observe(lad); } else { lad.classList.add('in'); }
 
   /* до / после: блок появляется, только когда загружены оба фото */
-  var res=document.getElementById('cl-results'), baImgs=res.querySelectorAll('.cl-ba img'), okCount=0;
+  var res=document.getElementById('cl-results'), baImgs=res.querySelectorAll('.cl-ba2 img'), okCount=0;
   function baOk(){ okCount++; if(okCount===2){ res.hidden=false;
     var hl=document.getElementById('clHeroLink'); hl.href='#cl-results'; hl.textContent='Смотреть результаты'; } }
   baImgs.forEach(function(im){
@@ -635,10 +632,5 @@
     else im.addEventListener('load',baOk,{once:true});
   });
 
-  /* до / после */
-  var range=document.getElementById('clRange'), after=document.getElementById('clAfter'), bar=document.getElementById('clBar');
-  range.addEventListener('input',function(){
-    var v=range.value; after.style.clipPath='inset(0 0 0 '+v+'%)'; bar.style.left=v+'%';
-  });
 })();
 </script>
