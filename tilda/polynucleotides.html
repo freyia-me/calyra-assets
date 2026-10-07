@@ -148,6 +148,8 @@
   #clx-pn .clx-hero__body{max-width:600px;padding:96px 0}
 }
 #clx-pn .clx-hero .clx-h1{font-size:clamp(38px,5vw,70px)}
+#clx-pn .clx-comp>*,#clx-pn .clx-faq>*,#clx-pn .clx-skin>*,#clx-pn .clx-net>*{min-width:0}
+#clx-pn .clx-h1,#clx-pn .clx-h2,#clx-pn .clx-h3{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
 
 /* СОСТАВ */
 #clx-pn .clx-comp{display:grid;gap:32px;align-items:center}
@@ -184,7 +186,6 @@
   @keyframes clxUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   @keyframes clxDrift{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,1%)}}
   @keyframes clxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  @keyframes clxSpin{to{transform:rotate(360deg)}}
   @keyframes clxGlow{0%{box-shadow:0 0 0 0 rgba(101,29,45,.45)}100%{box-shadow:0 0 0 18px rgba(101,29,45,0)}}
   @keyframes clxPulse{from{transform:scale(1);opacity:.9}to{transform:scale(2);opacity:0}}
 
@@ -242,12 +243,12 @@
   #clx-pn.clx-js .clx-key{opacity:0;transform:translateY(12px);transition:opacity .6s ease 1.4s,transform .6s ease 1.4s}
   #clx-pn .clx-key.is-in{opacity:1;transform:none}
 
-  /* система: круг медленно вращается */
-  #clx-pn .clx-net__art{animation:clxSpin 90s linear infinite}
+  /* система: круг мягко покачивается */
+  #clx-pn .clx-net__art{animation:clxFloat 8s ease-in-out infinite}
 }
 </style>
 
-<div id="clx-pn">
+<div id="clx-pn" lang="ru">
 
   <!-- HERO -->
   <section class="clx-hero">
@@ -256,13 +257,13 @@
       <div class="clx-hero__body">
         <ul class="clx-chips">
           <li class="clx-chip">20 мг/мл</li>
-          <li class="clx-chip">Полинуклеотиды PN</li>
+          <li class="clx-chip">Полинуклеотиды (PN)</li>
         </ul>
         <h1 class="clx-h1">Нуклеотидные цепи и <em>клеточное окружение</em> кожи</h1>
-        <p class="clx-lead">Полинуклеотиды PN — биополимерные цепи из нуклеотидных звеньев. В CALYRA LUX&nbsp;5 они поддерживают межклеточный матрикс и естественное обновление кожи вместе с <b>CAP Пептидом&nbsp;5</b> и <b>3D-гиалуроновой кислотой</b>.</p>
+        <p class="clx-lead">Полинуклеотиды (PN) — биополимерные цепи из нуклеотидных звеньев. В CALYRA LUX&nbsp;5 они поддерживают межклеточный матрикс и естественное обновление кожи вместе с <b>CAP Пептидом&nbsp;5</b> и <b>3D-гиалуроновой кислотой</b>.</p>
         <div class="clx-btns">
           <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
-          <a class="clx-btn clx-btn--line" href="#clx-pn-skin" data-clx-scroll>Как работают PN</a>
+          <a class="clx-btn clx-btn--line" href="#clx-pn-skin" data-clx-scroll>Как работают полинуклеотиды</a>
         </div>
       </div>
     </div>
@@ -274,7 +275,7 @@
       <div class="clx-comp">
         <img class="clx-comp__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="Эмблема двойной нуклеотидной цепи" width="1000" height="1000" loading="lazy">
         <div>
-          <h2 class="clx-h2">Длинные цепи из <em>знакомых организму</em> звеньев</h2>
+          <h2 class="clx-h2">Длинные цепи из <em>знакомых орга&shy;низму</em> звеньев</h2>
           <div class="clx-eq" data-anim aria-label="Нуклеотид состоит из азотистого основания, сахара и фосфатной группы">
             <div class="clx-eq__part"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4l11 6.5v13L17 30 6 23.5v-13z" fill="none" stroke="#651d2d" stroke-width="1.8"/><circle cx="17" cy="17" r="4" fill="#651d2d"/></svg>Азотистое основание</div>
             <div class="clx-eq__op">+</div>
@@ -285,7 +286,7 @@
             <div class="clx-eq__part clx-eq__part--res"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="7" cy="17" r="4" fill="#fff"/><circle cx="17" cy="17" r="4" fill="#fff"/><circle cx="27" cy="17" r="4" fill="#fff"/><path d="M11 17h2M21 17h2" stroke="#fff" stroke-width="2"/></svg>Нуклеотид</div>
           </div>
           <p>Нуклеотиды соединяются последовательно <b>фосфодиэфирными связями</b> и образуют цепи разной длины и молекулярной массы.</p>
-          <p>Фосфатные группы придают цепям отрицательный заряд. Благодаря этому PN взаимодействуют с молекулами воды, ионами и компонентами межклеточной среды.</p>
+          <p>Фосфатные группы придают цепям отрицательный заряд. Благодаря этому полинуклеотиды взаимодействуют с молекулами воды, ионами и компонентами межклеточной среды.</p>
         </div>
       </div>
     </div>
@@ -296,12 +297,12 @@
     <div class="clx-wrap">
       <div class="clx-head">
         <h2 class="clx-h2">Матрикс, вода и <em>клеточный ответ</em></h2>
-        <p class="clx-lead">В водной среде тканей полинуклеотидные цепи распределяются в межклеточном пространстве и формируют вокруг себя временную гидратированную среду.</p>
+        <p class="clx-lead">В водной среде тканей полинуклеотидные цепи распределяются в межклеточном пространстве и формируют вокруг себя гидратированную среду.</p>
       </div>
       <div class="clx-skin">
         <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/polynucleotides/skin-pn.webp" alt="Срез кожи: полинуклеотидные цепи и фибробласты в межклеточном матриксе" width="1400" height="820" loading="lazy">
         <div>
-          <p class="clx-lead">Действие PN нельзя свести к одному рецептору или одному клеточному процессу. Его рассматривают как сочетание двух факторов:</p>
+          <p class="clx-lead">Действие полинуклеотидов нельзя свести к одному рецептору или одному клеточному процессу. Его рассматривают как сочетание двух факторов:</p>
           <ul class="clx-roles">
             <li><b>Свойства цепей</b><span>длинные полимеры связывают воду и формируют гидратированное окружение клеток</span></li>
             <li><b>Ответ на фрагменты</b><span>при распаде цепей образуются нуклеотиды и нуклеозиды, на которые реагируют клетки</span></li>
@@ -315,7 +316,7 @@
       </div>
       <div class="clx-fn--4" data-anim>
         <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6"><path d="M12 3c3.5 4.4 6 7.7 6 11a6 6 0 0 1-12 0c0-3.3 2.5-6.6 6-11z"/></svg></div><h3>Матриксное окружение</h3><p>Гидратированная среда вокруг клеток поддерживает перемещение молекул и контакт фибробластов с матриксом.</p></div>
-        <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6"><path d="M4 12c2-5 6-7 8-7s6 2 8 7c-2 5-6 7-8 7s-6-2-8-7z"/><circle cx="12" cy="12" r="2.6"/></svg></div><h3>Жизнеспособность клеток</h3><p>В лабораторных исследованиях PN- и PDRN-материалов наблюдались изменения жизнеспособности, роста и миграции фибробластов.</p></div>
+        <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6"><path d="M4 12c2-5 6-7 8-7s6 2 8 7c-2 5-6 7-8 7s-6-2-8-7z"/><circle cx="12" cy="12" r="2.6"/></svg></div><h3>Жизнеспособность клеток</h3><p>В лабораторных исследованиях полинуклеотидов (PN) и полидезокси&shy;рибо&shy;нуклеотидов (PDRN) наблюдались изменения жизнеспособности, роста и миграции фибробластов.</p></div>
         <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="8" r="2"/><circle cx="19" cy="14" r="2"/><path d="M7 11l3-2M14 9.5l3 3" stroke-dasharray="2 2"/></svg></div><h3>Продукты распада</h3><p>Нуклеотиды и нуклеозиды участвуют в клеточной коммуникации и могут повторно использоваться клетками.</p></div>
         <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg></div><h3>Тканевое обновление</h3><p>Влияние на организацию матрикса и поведение клеток в процессе восстановления тканей.</p></div>
       </div>
@@ -340,12 +341,12 @@
         <span class="clx-pin" style="left:24%;top:47%" aria-hidden="true">4</span>
       </div>
       <ol class="clx-steps" data-anim>
-        <li class="clx-step"><h3>Полимерная цепь</h3><p>Пока цепь сохраняет длину, это крупная пространственная молекула, которая формирует временную гидратированную среду.</p></li>
+        <li class="clx-step"><h3>Полимерная цепь</h3><p>Пока цепь сохраняет длину, это крупная пространственная молекула, которая формирует гидратированную среду вокруг клеток.</p></li>
         <li class="clx-step"><h3>Расщепление</h3><p>Ферменты-нуклеазы постепенно разрезают длинные цепи на более короткие олигонуклеотиды.</p></li>
         <li class="clx-step"><h3>Нуклеотиды</h3><p>Олигонуклеотиды распадаются на отдельные нуклеотиды и нуклеозиды — вещества, которые естественно присутствуют в организме.</p></li>
         <li class="clx-step"><h3>Повторное использование</h3><p>Клетки включают эти компоненты в обмен веществ и пути повторного синтеза нуклеотидов.</p></li>
       </ol>
-      <div class="clx-key" data-anim><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4" stroke-linecap="round"/></svg><div><b>PN не изменяют генетическую информацию</b><span>Полинуклеотидные цепи не встраиваются в хромосомы клеток и не влияют на ДНК.</span></div></div>
+      <div class="clx-key" data-anim><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4" stroke-linecap="round"/></svg><div><b>Полинуклеотиды не изменяют генетическую информацию</b><span>Полинуклеотидные цепи не встраиваются в хромосомы клеток и не влияют на ДНК.</span></div></div>
     </div>
   </section>
 
@@ -357,10 +358,10 @@
         <div>
           <ul class="clx-chips"><li class="clx-chip">Роль в CALYRA LUX&nbsp;5</li></ul>
           <h2 class="clx-h2">Естественное обновление <em>внутри общей системы</em></h2>
-          <p class="clx-lead">PN не работают изолированно. Каждый компонент формулы поддерживает своё звено, а в центре — клетки кожи.</p>
+          <p class="clx-lead">Полинуклеотиды не работают изолированно. Каждый компонент формулы поддерживает своё звено, а в центре — клетки кожи.</p>
           <ul class="clx-roles">
-            <li><b>3D-ГК</b><span>единая гидратированная матрица</span></li>
-            <li><b>PN</b><span>матриксное окружение и естественное обновление</span></li>
+            <li><b>3D-гиалуроновая кислота</b><span>единая гидратированная матрица</span></li>
+            <li><b>Полинуклеотиды (PN)</b><span>матриксное окружение и естественное обновление</span></li>
             <li><b>CAP Пептид&nbsp;5</b><span>клеточный потенциал и теломерная защита</span></li>
           </ul>
         </div>
@@ -379,36 +380,32 @@
       </div>
       <div>
         <details class="clx-qa" open>
-          <summary>Что такое PN простыми словами?<i></i></summary>
+          <summary>Что такое полинуклеотиды простыми словами?<i></i></summary>
           <div class="clx-qa__a"><p>Это длинные цепи из нуклеотидов — тех же звеньев, из которых построены нуклеиновые кислоты. В коже они формируют гидратированную среду вокруг клеток и постепенно распадаются на компоненты, знакомые организму.</p></div>
         </details>
         <details class="clx-qa">
-          <summary>Чем PN отличаются от PDRN?<i></i></summary>
-          <div class="clx-qa__a"><p>И PN, и PDRN — нуклеотидные цепочки, но PN состоят из более длинных цепей с большей молекулярной массой. За счёт этого они формируют гидратированное окружение, которое поддерживает матрикс кожи.</p></div>
+          <summary>Чем полинуклеотиды (PN) отличаются от полидезокси&shy;рибо&shy;нуклеотидов (PDRN)?<i></i></summary>
+          <div class="clx-qa__a"><p>И те и другие — нуклеотидные цепочки, но полинуклеотиды состоят из более длинных цепей с большей молекулярной массой. За счёт этого они формируют гидратированное окружение, которое поддерживает матрикс кожи.</p></div>
         </details>
         <details class="clx-qa">
           <summary>Изменяют ли полинуклеотиды ДНК клеток?<i></i></summary>
           <div class="clx-qa__a"><p>Нет. Полинуклеотидные цепи не встраиваются в хромосомы и не изменяют генетическую информацию. Они расщепляются ферментами до нуклеотидов и нуклеозидов, которые клетки используют в обычном обмене веществ.</p></div>
         </details>
         <details class="clx-qa">
-          <summary>Как PN действуют в коже?<i></i></summary>
+          <summary>Как полинуклеотиды действуют в коже?<i></i></summary>
           <div class="clx-qa__a"><p>Через сочетание двух факторов: длинные цепи связывают воду и создают гидратированное окружение клеток, а продукты их распада участвуют в клеточной коммуникации и обновлении тканей.</p></div>
         </details>
         <details class="clx-qa">
-          <summary>Обладают ли PN противовоспалительным действием?<i></i></summary>
-          <div class="clx-qa__a"><p>Влияние полинуклеотидных материалов на воспалительные процессы изучалось преимущественно для профессионального внутрикожного применения. Для CALYRA LUX&nbsp;5 как косметического продукта корректно говорить о восстановительном уходе и поддержке комфорта кожи.</p></div>
+          <summary>Обладают ли полинуклеотиды противовоспалительным действием?<i></i></summary>
+          <div class="clx-qa__a"><p>Противовоспалительные свойства полинуклеотидов описаны в исследованиях: они связаны со снижением провоспалительных цитокинов. В уходе CALYRA LUX&nbsp;5 это проявляется как восстановление и комфорт кожи, в том числе после аппаратных процедур.</p></div>
         </details>
         <details class="clx-qa">
-          <summary>В чём заключается омолаживающий эффект PN?<i></i></summary>
+          <summary>В чём заключается омолаживающий эффект полинуклеотидов?<i></i></summary>
           <div class="clx-qa__a"><p>Не в одном механизме, а в поддержке среды, в которой работают клетки: гидратации, матрикса и естественного обновления. Внешне это проявляется как более гладкая, упругая и ровная по текстуре кожа.</p></div>
         </details>
         <details class="clx-qa">
           <summary>Безопасны ли полинуклеотиды?<i></i></summary>
-          <div class="clx-qa__a"><p>PN биодеградируемы и распадаются на вещества, которые естественно присутствуют в организме. Применение — по протоколу специалиста; индивидуальная переносимость может различаться.</p></div>
-        </details>
-        <details class="clx-qa">
-          <summary>Научные источники<i></i></summary>
-          <div class="clx-qa__a"><p>Вставьте сюда список источников с текущей версии страницы.</p></div>
+          <div class="clx-qa__a"><p>Полинуклеотиды биодеградируемы и распадаются на вещества, которые естественно присутствуют в организме. Применение — по протоколу специалиста; индивидуальная переносимость может различаться.</p></div>
         </details>
       </div>
     </div>
