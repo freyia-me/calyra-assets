@@ -113,7 +113,6 @@
 #calyra-editorial .ce-order-contact { margin: 22px 0 0; font-size: 12px; color: rgba(255,255,255,.6); }
 #calyra-editorial .ce-order-contact a { white-space: nowrap; color: #fff; border-bottom: 1px solid rgba(255,255,255,.35); transition: border-color .3s ease; }
 #calyra-editorial .ce-order-contact a:hover { border-color: #fff; }
-#calyra-editorial .ce-study-cta { margin-top: 34px; display: flex; justify-content: center; }
 #calyra-editorial .ce-dark-link { margin-top: 34px; color: #fff; border-color: rgba(255,255,255,.27); }
 #calyra-editorial .ce-dark-link em { background: var(--ce-wine); }
 #calyra-editorial .ce-dark-list { margin-top: 45px; border-top: 1px solid rgba(255,255,255,.17); }
@@ -202,6 +201,18 @@
 #calyra-editorial .ce-gallery-image--wine p { margin: 0; font-family: "Prata", Georgia, serif; font-size: clamp(28px, 3.2vw, 44px); line-height: .96; }
 #calyra-editorial .ce-gallery-image--wine img { height: 210px; object-fit: contain; filter: drop-shadow(0 25px 22px rgba(65,0,18,.26)); }
 
+#calyra-editorial .ce-nav { padding: 110px 0 120px; background: var(--ce-paper); }
+#calyra-editorial .ce-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+#calyra-editorial .ce-nav-card { min-height: 320px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; background: #ece9e6; transition: transform .28s ease, box-shadow .28s ease; }
+#calyra-editorial .ce-nav-card:nth-child(2) { background: #e8ecec; }
+#calyra-editorial .ce-nav-card:nth-child(3) { background: #eee6e8; }
+#calyra-editorial .ce-nav-card small { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #65676d; }
+#calyra-editorial .ce-nav-card h3 { margin: 0 0 14px; font-family: "Prata", Georgia, serif; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.02; font-weight: 400; letter-spacing: -.02em; }
+#calyra-editorial .ce-nav-card p { margin: 0; max-width: 320px; font-size: 13px; line-height: 1.6; color: var(--ce-muted); }
+#calyra-editorial .ce-nav-go { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 500; }
+#calyra-editorial .ce-nav-go em, #calyra-editorial .ce-nav-links em { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none; font-style: normal; color: #fff; background: var(--ce-wine); transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+#calyra-editorial .ce-nav-links { margin-top: 46px; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; border-top: 1px solid rgba(32,33,39,.14); }
+#calyra-editorial .ce-nav-links a { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 2px; border-bottom: 1px solid rgba(32,33,39,.14); font-size: 14px; transition: color .3s ease; }
 #calyra-editorial .ce-order { padding: 0 0 70px; background: #fff; }
 #calyra-editorial .ce-order-panel { min-height: 575px; position: relative; overflow: hidden; background: #17181d; color: #fff; display: grid; grid-template-columns: 56% 44%; align-items: center; padding: 70px 74px; }
 #calyra-editorial .ce-order-panel::before { content: ""; position: absolute; width: 610px; height: 610px; right: -230px; top: -198px; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; box-shadow: inset 0 0 90px rgba(169,10,61,.22); }
@@ -229,7 +240,9 @@
 #calyra-editorial .ce-course b { display: block; font-family: "Prata", Georgia, serif; font-size: 30px; font-weight: 400; color: #f0b7c8; }
 #calyra-editorial .ce-course small { display: block; margin-top: 4px; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #8d8f97; }
 #calyra-editorial .ce-course p { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: #b9bac0; }
-#calyra-editorial .ce-course-cta { margin-top: 40px; display: flex; justify-content: center; }
+#calyra-editorial .ce-course-cta { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+#calyra-editorial .ce-course-cta .ce-course-study { box-shadow: none; }
+#calyra-editorial .ce-course-study em { color: #fff; background: var(--ce-wine); }
 #calyra-editorial .ce-course-cta .ce-button { min-height: 56px; padding: 16px 18px 16px 30px; font-size: 14px; box-shadow: 0 16px 36px rgba(168,11,61,.22); }
 #calyra-editorial .ce-course-note { margin: 12px 0 0; font-size: 10px; line-height: 1.5; color: var(--ce-muted); }
 #calyra-editorial .ce-study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-bottom: 70px; border-top: 1px solid rgba(32,33,39,.17); }
@@ -272,6 +285,10 @@
   #calyra-editorial .ce-formula-row { grid-template-columns: 70px 1fr 150px; padding: 24px 0; }
   #calyra-editorial .ce-formula-result { grid-column: 2 / 4; }
   #calyra-editorial .ce-protocol-grid { grid-template-columns: 1fr; }
+  #calyra-editorial .ce-nav { padding: 80px 0 90px; }
+  #calyra-editorial .ce-nav-grid { grid-template-columns: 1fr; }
+  #calyra-editorial .ce-nav-card { min-height: 0; }
+  #calyra-editorial .ce-nav-links { grid-template-columns: 1fr 1fr; column-gap: 28px; }
   #calyra-editorial .ce-protocol { min-height: 460px; }
   #calyra-editorial .ce-gallery-grid { min-height: 0; }
   #calyra-editorial .ce-gallery-main { min-height: 650px; }
@@ -284,6 +301,10 @@
 
 @media (max-width: 560px) {
   #calyra-editorial .ce-wrap { width: calc(100% - 28px); }
+  #calyra-editorial .ce-nav { padding: 64px 0 72px; }
+  #calyra-editorial .ce-nav-card { padding: 24px; }
+  #calyra-editorial .ce-nav-links { grid-template-columns: 1fr; }
+  #calyra-editorial .ce-course-cta .ce-button { width: 100%; }
   #calyra-editorial .ce-hero-copy { padding-top: 40px; }
   #calyra-editorial .ce-hero-copy .ce-h1 { font-size: 42px; line-height: 1.03; }
   #calyra-editorial .ce-hero-lead { font-size: 13px; padding: 0 6px; }
@@ -372,6 +393,9 @@
   #calyra-editorial .ce-button:hover { color: #fff; background: #292a31; border-color: #292a31; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(31,32,39,.18), 0 0 24px rgba(131,226,232,.16); }
   #calyra-editorial .ce-button--wine:hover { color: #fff; background: #c11650; border-color: #c11650; box-shadow: 0 17px 38px rgba(168,11,61,.28), 0 0 30px rgba(195,165,255,.22); }
   #calyra-editorial .ce-button:hover em { transform: translate(2px,-2px); background: rgba(255,255,255,.28); }
+  #calyra-editorial .ce-nav-card:hover { transform: translateY(-5px); box-shadow: 0 28px 70px rgba(52,45,54,.13); }
+  #calyra-editorial .ce-nav-card:hover .ce-nav-go em, #calyra-editorial .ce-nav-links a:hover em { transform: translateX(4px); }
+  #calyra-editorial .ce-nav-links a:hover { color: var(--ce-wine); }
   #calyra-editorial .ce-dark-link:hover { color: #202127; background: #fff; border-color: #fff; }
   #calyra-editorial .ce-order-actions .ce-button:not(.ce-button--wine):hover { color: #202127; background: #fff; border-color: #fff; box-shadow: 0 17px 40px rgba(255,255,255,.15), 0 0 28px rgba(131,226,232,.18); }
 }
@@ -515,7 +539,7 @@
         <div><b>1</b><small>поддерживающая процедура</small><p>Раз в 4–6 месяцев</p></div>
       </div>
       <p class="ce-course-note">Количество процедур и протокол подбираются специалистом индивидуально — с учётом возраста, типа и состояния кожи.</p>
-      <div class="ce-course-cta"><a class="ce-button ce-button--wine" href="/cometology">Больше информации для косметологов <em>→</em></a></div>
+      <div class="ce-course-cta"><a class="ce-button ce-button--wine" href="/cometology">Больше информации для косметологов <em>→</em></a><a class="ce-button ce-course-study" href="/study">Обучение для косметологов <em>→</em></a></div>
     </div>
   </section>
 
@@ -549,7 +573,6 @@
       </div>
 
       <div class="ce-study-disclaimer">Приведены данные исследований и клинических наблюдений CAP Пептида 5 (sh-Oligopeptide-104 SP) — ключевого компонента CALYRA LUX 5 — по материалам производителя. Это не результаты процедур с готовым продуктом. Индивидуальный результат может отличаться.</div>
-      <div class="ce-study-cta"><a class="ce-button ce-button--wine" href="/stady">Все исследования и наблюдения <em>→</em></a></div>
     </div>
   </section>
 
@@ -559,6 +582,40 @@
       <div class="ce-gallery-side">
         <div class="ce-gallery-image"><img style="object-position:center 62%" data-asset="calyra-lux-5-syringes-ribbon.jpg" alt="Шприцы CALYRA LUX 5"></div>
         <div class="ce-gallery-image ce-gallery-image--wine"><p>Премиальный продукт, который заметен в кабинете.</p><img data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ce-nav" id="ce-nav">
+    <div class="ce-wrap">
+      <div class="ce-section-head">
+        <div><div class="ce-label ce-label--wine">Разделы сайта</div><h2 class="ce-h2">Выберите<br>свой раздел</h2></div>
+        <p class="ce-text">Для каждого — своя информация: протоколы для специалистов, понятный рассказ о процедуре для клиентов и условия сотрудничества для партнёров.</p>
+      </div>
+      <div class="ce-nav-grid">
+        <a class="ce-nav-card" href="/cometology">
+          <small>01 · Специалистам</small>
+          <div><h3>Для косметологов</h3><p>Протоколы, курс процедур, результаты применения и условия для специалистов.</p></div>
+          <span class="ce-nav-go">Перейти <em>→</em></span>
+        </a>
+        <a class="ce-nav-card" href="/patients">
+          <small>02 · Клиентам</small>
+          <div><h3>Для клиентов</h3><p>Что даёт процедура с CALYRA LUX 5, как проходит курс и чего ожидать.</p></div>
+          <span class="ce-nav-go">Перейти <em>→</em></span>
+        </a>
+        <a class="ce-nav-card" href="/distribution-clinics">
+          <small>03 · Партнёрам</small>
+          <div><h3>Для дистрибьюторов и клиник</h3><p>Условия сотрудничества, поставки и поддержка партнёров.</p></div>
+          <span class="ce-nav-go">Перейти <em>→</em></span>
+        </a>
+      </div>
+      <div class="ce-nav-links">
+        <a href="/technology-calyra-lux-5"><span>Технология CALYRA LUX 5</span><em>→</em></a>
+        <a href="/cap-peptide-5-telomery-kozhi"><span>CAP Пептид 5</span><em>→</em></a>
+        <a href="/polynucleotides-pn-calyra-lux-5"><span>Полинуклеотиды (PN)</span><em>→</em></a>
+        <a href="/3d-hyaluronic-acid-calyra-lux-5"><span>3D-гиалуроновая кислота</span><em>→</em></a>
+        <a href="/study"><span>Обучение для косметологов</span><em>→</em></a>
+        <a href="/contacts"><span>Контакты</span><em>→</em></a>
       </div>
     </div>
   </section>
@@ -640,7 +697,7 @@
   }
 
   if (!('IntersectionObserver' in window)) return;
-  var targets = root.querySelectorAll('.ce-statement-top, .ce-statement-bottom, .ce-dark-copy, .ce-package-stage, .ce-section-head, .ce-formula-row, .ce-protocol, .ce-results-title, .ce-study-grid, .ce-result-pair, .ce-recovery, .ce-course, .ce-gallery-main, .ce-gallery-image, .ce-order-panel');
+  var targets = root.querySelectorAll('.ce-statement-top, .ce-statement-bottom, .ce-dark-copy, .ce-package-stage, .ce-section-head, .ce-formula-row, .ce-protocol, .ce-results-title, .ce-study-grid, .ce-result-pair, .ce-recovery, .ce-course, .ce-gallery-main, .ce-gallery-image, .ce-nav-card, .ce-nav-links, .ce-order-panel');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
