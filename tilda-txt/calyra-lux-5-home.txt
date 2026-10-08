@@ -110,6 +110,10 @@
 #calyra-editorial .ce-dark-copy .ce-h2 { margin: 27px 0 31px; }
 #calyra-editorial .ce-dark-copy .ce-h2 i { color: #e9b6c5; font-weight: 400; }
 #calyra-editorial .ce-dark-copy > p { color: #a7a8af; max-width: 580px; margin: 0; font-size: 14px; line-height: 1.7; }
+#calyra-editorial .ce-order-contact { margin: 22px 0 0; font-size: 12px; color: rgba(255,255,255,.6); }
+#calyra-editorial .ce-order-contact a { white-space: nowrap; color: #fff; border-bottom: 1px solid rgba(255,255,255,.35); transition: border-color .3s ease; }
+#calyra-editorial .ce-order-contact a:hover { border-color: #fff; }
+#calyra-editorial .ce-study-cta { margin-top: 34px; display: flex; justify-content: center; }
 #calyra-editorial .ce-dark-link { margin-top: 34px; color: #fff; border-color: rgba(255,255,255,.27); }
 #calyra-editorial .ce-dark-link em { background: var(--ce-wine); }
 #calyra-editorial .ce-dark-list { margin-top: 45px; border-top: 1px solid rgba(255,255,255,.17); }
@@ -545,6 +549,7 @@
       </div>
 
       <div class="ce-study-disclaimer">Приведены данные исследований и клинических наблюдений CAP Пептида 5 (sh-Oligopeptide-104 SP) — ключевого компонента CALYRA LUX 5 — по материалам производителя. Это не результаты процедур с готовым продуктом. Индивидуальный результат может отличаться.</div>
+      <div class="ce-study-cta"><a class="ce-button ce-button--wine" href="/stady">Все исследования и наблюдения <em>→</em></a></div>
     </div>
   </section>
 
@@ -570,6 +575,7 @@
           <li>Консультацию по применению и информацию об обучении</li>
         </ul>
         <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:zakaz">Заказать продукт</a></div>
+        <p class="ce-order-contact">Остались вопросы? <a href="/contacts">Связаться с нами →</a></p>
       </div>
       <img class="ce-order-syringe" data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5">
     </div>
