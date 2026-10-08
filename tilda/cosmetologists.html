@@ -156,6 +156,21 @@
 #calyra-lp .cl-ba2 img{width:100%;height:auto;aspect-ratio:306/402;object-fit:cover}
 #calyra-lp .cl-ba2 figcaption{position:absolute;left:14px;top:14px;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.9);font-size:.85rem;font-weight:600;color:var(--ink)}
 #calyra-lp .cl-ba2 .is-after figcaption{background:var(--wine);color:#fff}
+#calyra-lp .cl-ba-video{max-width:960px;margin:44px auto 0;border-radius:18px;overflow:hidden;background:var(--sand-soft)}
+#calyra-lp .cl-ba-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+#calyra-lp .cl-ba-video+.cl-ba2{margin-top:16px;max-width:960px}
+@media (max-width:560px){#calyra-lp .cl-ba-video{border-radius:12px;margin-top:32px}#calyra-lp .cl-ba-video+.cl-ba2{margin-top:8px}}
+#calyra-lp .cl-ba3{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin:16px auto 0}
+#calyra-lp .cl-ba3 figure{position:relative;margin:0;border-radius:18px;overflow:hidden;background:var(--sand-soft)}
+#calyra-lp .cl-ba3 img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+#calyra-lp .cl-ba3 span{position:absolute;top:12px;padding:4px 12px;border-radius:999px;font-size:.8rem;font-weight:600;background:rgba(255,255,255,.9);color:var(--ink)}
+#calyra-lp .cl-ba3-l{left:12px}
+#calyra-lp .cl-ba3 .cl-ba3-r{right:12px;background:var(--wine);color:#fff}
+#calyra-lp .cl-case{max-width:960px;margin:20px auto 0;padding:20px 24px;border-left:2px solid var(--wine);background:var(--sand-soft);text-align:left}
+#calyra-lp .cl-case b{display:block;font-family:var(--serif);font-weight:400;font-size:1.3rem;color:var(--wine);margin-bottom:6px}
+#calyra-lp .cl-case p{margin:0;max-width:none}
+#calyra-lp .cl-case p.cl-case-meta{font-size:.92rem;color:#5b6670;margin-bottom:8px}
+@media (max-width:700px){#calyra-lp .cl-ba3{grid-template-columns:1fr;gap:8px}#calyra-lp .cl-ba3 figure{border-radius:12px}#calyra-lp .cl-case{padding:16px 18px}}
 #calyra-lp .cl-ba-note{font-size:.85rem;color:#5b6670;margin-top:16px}
 @media (max-width:560px){#calyra-lp .cl-ba2{gap:8px}#calyra-lp .cl-ba2 figure{border-radius:12px}#calyra-lp .cl-ba2 figcaption{left:8px;top:8px;padding:3px 10px;font-size:.75rem}}
 #calyra-lp section[hidden]{display:none!important}
@@ -451,10 +466,20 @@
 <section class="cl-sec cl-divide" id="cl-results" hidden>
   <div class="cl-wrap cl-center">
     <h2>Результаты клиентов</h2>
-    <p class="cl-muted" style="margin-top:14px">Фото до и после курса процедур с CALYRA&nbsp;LUX&nbsp;5</p>
-    <div class="cl-ba2">
-      <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/before-1.webp" alt="Кожа лица до курса процедур" width="306" height="402"><figcaption>До</figcaption></figure>
-      <figure class="is-after"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/after-1.webp" alt="Кожа лица после курса процедур" width="304" height="402"><figcaption>После курса</figcaption></figure>
+    <p class="cl-muted" style="margin-top:14px">Результат всего после двух процедур с CALYRA&nbsp;LUX&nbsp;5 — ещё до полного курса</p>
+    <div class="cl-ba-video">
+      <video id="clBaVideo" muted loop playsinline preload="metadata" poster="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/before-after-poster.jpg" aria-label="Видео: кожа до и после двух процедур">
+        <source src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/before-after.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="cl-ba3">
+      <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/before-after-1.webp" alt="Кожа до и после двух процедур, вид сбоку" width="1600" height="900"><span class="cl-ba3-l">До</span><span class="cl-ba3-r">После</span></figure>
+      <figure><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/before-after-2.webp" alt="Кожа до и после двух процедур, вид спереди" width="1600" height="900"><span class="cl-ba3-l">До</span><span class="cl-ba3-r">После</span></figure>
+    </div>
+    <div class="cl-case">
+      <b>Клиентка, 45&nbsp;лет</b>
+      <p class="cl-case-meta">2&nbsp;процедуры с&nbsp;интервалом 1&nbsp;месяц. Фото через 3&nbsp;недели после второй процедуры — это ещё не полный курс.</p>
+      <p>Уменьшились морщины вокруг глаз, носогубные складки и морщины улыбки. Кожа стала менее дряблой.</p>
     </div>
     <p class="cl-ba-note">Индивидуальный результат может отличаться.</p>
   </div>
@@ -624,9 +649,13 @@
   if(hasIO){ var lo=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ startLad(); lo.disconnect(); } },{threshold:.4}); lo.observe(lad); } else { lad.classList.add('in'); }
 
   /* до / после: блок появляется, только когда загружены оба фото */
-  var res=document.getElementById('cl-results'), baImgs=res.querySelectorAll('.cl-ba2 img'), okCount=0;
+  var res=document.getElementById('cl-results'), baImgs=res.querySelectorAll('.cl-ba3 img'), okCount=0;
   function baOk(){ okCount++; if(okCount===2){ res.hidden=false;
     var hl=document.getElementById('clHeroLink'); hl.href='#cl-results'; hl.textContent='Смотреть результаты'; } }
+  var vid=document.getElementById('clBaVideo');
+  if(vid && hasIO && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var p=vid.play(); if(p&&p.catch)p.catch(function(){}); } else vid.pause(); }); },{threshold:.35}).observe(vid);
+  } else if(vid){ vid.controls=true; }
   baImgs.forEach(function(im){
     if(im.complete && im.naturalWidth>0) baOk();
     else im.addEventListener('load',baOk,{once:true});
