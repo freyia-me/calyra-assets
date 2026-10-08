@@ -1,0 +1,99 @@
+<!-- CALYRA LUX 5 — страница 404. Вставлять целиком в блок T123 (HTML-код) в Tilda.
+     В Tilda: Настройки сайта → Ещё → Страница 404 → выберите эту страницу. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
+
+<style>
+#calyra-lp{
+  --wine:#651d2d; --ink:#1b2936; --sand:#ddd8d1; --sand-soft:#f4f1ed; --mist:#a9b1b5;
+  --serif:'Prata', Georgia, 'Times New Roman', serif;
+  --sans:'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-family:var(--sans); color:var(--ink); background:#fff;
+  font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; overflow-x:clip;
+}
+#calyra-lp *,#calyra-lp *::before,#calyra-lp *::after{box-sizing:border-box;margin:0;padding:0}
+#calyra-lp img{max-width:100%;display:block}
+#calyra-lp a{color:inherit}
+#calyra-lp .cl-wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative}
+#calyra-lp h1,#calyra-lp h2,#calyra-lp h3{font-family:var(--serif);font-weight:400;line-height:1.15;color:var(--wine)}
+#calyra-lp p{max-width:62ch}
+#calyra-lp .cl-kicker{font-size:.95rem;color:var(--wine);font-weight:600;margin-bottom:18px;display:block}
+
+/* кнопки */
+#calyra-lp .cl-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+#calyra-lp .cl-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:2px;font-family:var(--sans);font-weight:600;font-size:1rem;text-decoration:none;transition:background .25s,color .25s,border-color .25s;border:1.5px solid var(--wine)}
+#calyra-lp .cl-btn-main{background:var(--wine);color:#fff}
+#calyra-lp .cl-btn-main:hover{background:var(--ink);border-color:var(--ink)}
+#calyra-lp .cl-btn-ghost{background:transparent;color:var(--wine)}
+#calyra-lp .cl-btn-ghost:hover{border-color:var(--mist);color:var(--ink)}
+#calyra-lp .cl-btn:focus-visible,#calyra-lp .cl-links a:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+
+/* ===== 404 ===== */
+#calyra-lp .cl-404{min-height:min(820px,100vh);display:flex;align-items:center;padding:88px 0 96px}
+#calyra-lp .cl-404 > .cl-wrap{width:100%}
+#calyra-lp .cl-404-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+#calyra-lp .cl-num{font-family:var(--serif);font-size:clamp(6rem,15vw,11.5rem);line-height:.9;color:var(--wine);letter-spacing:-.03em;display:block;margin-bottom:24px}
+#calyra-lp .cl-404 h1{font-size:clamp(2rem,3.8vw,3rem);max-width:16ch}
+#calyra-lp .cl-404 .cl-lead{margin-top:22px;font-size:1.15rem;color:#4a5560;max-width:44ch}
+#calyra-lp .cl-art{position:relative;aspect-ratio:1/1;display:grid;place-items:center}
+#calyra-lp .cl-art::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 34% 28%,#fff 0,var(--sand-soft) 46%,#e9e2da 100%);box-shadow:inset -24px -24px 60px rgba(101,29,45,.07)}
+#calyra-lp .cl-art::after{content:"";position:absolute;width:86%;height:30%;border:1px solid rgba(101,29,45,.25);border-radius:50%;transform:rotate(-16deg)}
+#calyra-lp .cl-art img{position:relative;z-index:1;width:92%;transform:rotate(-14deg);filter:drop-shadow(0 24px 30px rgba(27,41,54,.16));animation:clFloat 6s ease-in-out infinite}
+@keyframes clFloat{0%,100%{translate:0 0}50%{translate:0 -12px}}
+
+/* ссылки на разделы */
+#calyra-lp .cl-links{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:32px;border-top:1px solid var(--sand)}
+#calyra-lp .cl-links a{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 2px;border-bottom:1px solid var(--sand);text-decoration:none;font-size:.98rem;font-weight:500;transition:color .25s}
+#calyra-lp .cl-links a::after{content:"→";color:var(--wine);transition:transform .3s}
+#calyra-lp .cl-links a:hover{color:var(--wine)}
+#calyra-lp .cl-links a:hover::after{transform:translateX(4px)}
+
+@media (max-width:900px){
+  #calyra-lp{font-size:17px}
+  #calyra-lp .cl-404{min-height:0;padding:40px 0 72px}
+  #calyra-lp .cl-404-grid{grid-template-columns:1fr;gap:24px}
+  #calyra-lp .cl-art{order:-1;width:min(320px,80%);margin:0 auto}
+  #calyra-lp .cl-num{margin-bottom:16px}
+  #calyra-lp .cl-links{grid-template-columns:1fr 1fr;column-gap:24px}
+}
+@media (max-width:560px){
+  #calyra-lp .cl-btn{width:100%}
+  #calyra-lp .cl-links{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  #calyra-lp *{animation:none!important;transition:none!important}
+}
+</style>
+
+<div id="calyra-lp">
+<section class="cl-404">
+  <div class="cl-wrap">
+    <div class="cl-404-grid">
+      <div>
+        <span class="cl-num" aria-hidden="true">404</span>
+        <h1>Такой страницы нет</h1>
+        <p class="cl-lead">Возможно, ссылка устарела или в адресе опечатка. Вернитесь на главную или выберите нужный раздел ниже.</p>
+        <div class="cl-btns">
+          <a class="cl-btn cl-btn-main" href="/">На главную</a>
+          <a class="cl-btn cl-btn-ghost" href="/contacts">Связаться с нами</a>
+        </div>
+      </div>
+      <div class="cl-art" aria-hidden="true">
+        <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@d88d3d39dbfb/Cosmetology/syringe.webp" alt="">
+      </div>
+    </div>
+    <nav class="cl-links" aria-label="Разделы сайта">
+      <a href="/cometology">Для косметологов</a>
+      <a href="/patients">Для клиентов</a>
+      <a href="/distribution-clinics">Для дистрибьюторов и клиник</a>
+      <a href="/technology-calyra-lux-5">Технология CALYRA LUX 5</a>
+      <a href="/cap-peptide-5-telomery-kozhi">CAP Пептид 5</a>
+      <a href="/polynucleotides-pn-calyra-lux-5">Полинуклеотиды (PN)</a>
+      <a href="/3d-hyaluronic-acid-calyra-lux-5">3D-гиалуроновая кислота</a>
+      <a href="/study">Обучение для косметологов</a>
+      <a href="/contacts">Контакты</a>
+    </nav>
+  </div>
+</section>
+</div>
