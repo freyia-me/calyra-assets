@@ -1,0 +1,454 @@
+<!--
+  CALYRA LUX 5 — страница «Полинуклеотиды PN». Блок T123 (Другое → HTML-код).
+  Картинки: github.com/freyia-me/calyra-assets → папка polynucleotides/ (новая) и technology/ (уже загружена).
+-->
+<!-- ===== CALYRA LUX 5 · Страница «Полинуклеотиды PN» · блок T123 ===== -->
+<style>
+#clx-pn{
+  --wine:#651d2d; --wine-dark:#4c1521; --ink:#1b2936; --muted:#56616b;
+  --line:#ddd8d1; --silver:#a9b1b5; --cream:#f8f5f0; --white:#ffffff;
+  --r-lg:28px; --r-md:18px; --pill:999px;
+  --serif:'Prata',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  background:var(--white); color:var(--ink); font-family:var(--sans);
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+@media(min-width:960px){#clx-pn{font-size:18px}}
+#clx-pn *,#clx-pn *::before,#clx-pn *::after{box-sizing:border-box}
+#clx-pn img{max-width:100%;display:block;height:auto}
+#clx-pn a{text-decoration:none}
+#clx-pn .clx-wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+#clx-pn .clx-sec{padding:72px 0}
+@media(min-width:960px){#clx-pn .clx-wrap{padding:0 40px}#clx-pn .clx-sec{padding:112px 0}}
+
+/* типографика */
+#clx-pn .clx-h1,#clx-pn .clx-h2,#clx-pn .clx-h3{font-family:var(--serif);font-weight:400;color:var(--wine);margin:0;letter-spacing:-.005em}
+#clx-pn .clx-h1{font-size:clamp(38px,6.2vw,80px);line-height:1.06}
+#clx-pn .clx-h2{font-size:clamp(30px,4.2vw,54px);line-height:1.1}
+#clx-pn .clx-h3{font-size:clamp(26px,2.8vw,38px);line-height:1.15}
+#clx-pn .clx-h1 em,#clx-pn .clx-h2 em{font-style:italic;background:linear-gradient(100deg,#6f7a80 0%,#a9b1b5 35%,#6b757b 55%,#9aa3a8 80%,#5f696f 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .14em 0 .04em;margin:0 -.1em 0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#clx-pn .clx-lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:62ch;margin:24px 0 0}
+#clx-pn .clx-lead b{color:var(--ink);font-weight:600}
+
+/* плашки */
+#clx-pn .clx-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+#clx-pn .clx-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border:1px solid var(--line);border-radius:var(--pill);background:var(--white);font-size:14px;font-weight:500;color:var(--ink);line-height:1.2}
+#clx-pn .clx-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wine)}
+
+/* кнопки */
+#clx-pn .clx-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+#clx-pn .clx-btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:58px;padding:0 9px 0 28px;border-radius:var(--pill);font:600 16px/1 var(--sans);border:1px solid var(--wine);transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+#clx-pn .clx-btn i{font-style:normal;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;font-size:17px;transition:transform .25s}
+#clx-pn .clx-btn:hover i{transform:rotate(45deg)}
+#clx-pn .clx-btn--fill{background:var(--wine);color:#fff}
+#clx-pn .clx-btn--fill i{background:#fff;color:var(--wine)}
+#clx-pn .clx-btn--fill:hover{background:var(--wine-dark);border-color:var(--wine-dark)}
+#clx-pn .clx-btn--line{background:transparent;color:var(--wine);padding:0 28px}
+#clx-pn .clx-btn--line:hover{background:var(--wine);color:#fff}
+#clx-pn a:focus-visible,#clx-pn button:focus-visible,#clx-pn summary:focus-visible{outline:2px solid var(--silver);outline-offset:3px}
+@media(max-width:560px){#clx-pn .clx-btn{width:100%}}
+
+#clx-pn .clx-head{display:grid;gap:8px;margin-bottom:36px}
+@media(min-width:960px){#clx-pn .clx-head{grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:52px}#clx-pn .clx-head .clx-lead{margin:0}}
+#clx-pn .clx-note{display:flex;gap:12px;padding:16px 18px;border-radius:var(--r-md);background:var(--cream);font-size:15px;color:var(--ink);line-height:1.5;margin:0 0 26px}
+#clx-pn .clx-note::before{content:"i";flex:0 0 22px;height:22px;border-radius:50%;background:var(--wine);color:#fff;font:700 12px/22px var(--sans);text-align:center}
+/* FAQ */
+#clx-pn .clx-faq{display:grid;gap:28px}
+@media(min-width:960px){#clx-pn .clx-faq{grid-template-columns:.8fr 1.2fr;gap:64px}#clx-pn .clx-faq__aside{position:sticky;top:32px;align-self:start}}
+#clx-pn .clx-qa{border-top:1px solid var(--line)}
+#clx-pn .clx-qa:last-child{border-bottom:1px solid var(--line)}
+#clx-pn .clx-qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-weight:600;font-size:clamp(17px,1.4vw,19px);line-height:1.35;color:var(--ink)}
+#clx-pn .clx-qa summary::-webkit-details-marker{display:none}
+#clx-pn .clx-qa summary i{flex:0 0 42px;height:42px;border-radius:50%;border:1px solid var(--line);position:relative;transition:background .2s,border-color .2s}
+#clx-pn .clx-qa summary i::before,#clx-pn .clx-qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:1.5px;background:var(--wine);transform:translate(-50%,-50%)}
+#clx-pn .clx-qa summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:opacity .2s}
+#clx-pn .clx-qa[open] summary i{background:var(--wine);border-color:var(--wine)}
+#clx-pn .clx-qa[open] summary i::before{background:#fff}
+#clx-pn .clx-qa[open] summary i::after{opacity:0}
+#clx-pn .clx-qa__a{padding:0 60px 26px 0;color:var(--muted)}
+#clx-pn .clx-qa__a p{margin:0 0 12px}
+@media(max-width:560px){#clx-pn .clx-qa__a{padding-right:0}}
+
+/* CTA */
+#clx-pn .clx-cta{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--cream);display:grid}
+#clx-pn .clx-cta__img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:78% 50%}
+#clx-pn .clx-cta__body{padding:30px 22px 34px}
+@media(min-width:960px){
+  #clx-pn .clx-cta{min-height:560px;align-items:center}
+  #clx-pn .clx-cta__img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:70% 50%}
+  #clx-pn .clx-cta::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(248,245,240,.95) 0%,rgba(248,245,240,.85) 34%,rgba(248,245,240,0) 58%)}
+  #clx-pn .clx-cta__body{position:relative;z-index:2;max-width:560px;padding:64px}
+}
+#clx-pn .clx-disclaimer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:24px 0 0;font-size:14px;color:var(--muted)}
+
+/* ЕДИНАЯ СЕТЬ */
+#clx-pn .clx-net{display:grid;gap:28px;background:var(--cream);border-radius:var(--r-lg);padding:28px 22px 32px;align-items:center}
+#clx-pn .clx-net__art{max-width:420px;margin:0 auto;width:80%}
+@media(min-width:960px){#clx-pn .clx-net{grid-template-columns:.8fr 1.2fr;gap:64px;padding:64px}#clx-pn .clx-net__art{width:100%}}
+#clx-pn .clx-roles{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
+#clx-pn .clx-roles li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+#clx-pn .clx-roles b{font-weight:600;color:var(--wine)}
+#clx-pn .clx-roles span{color:var(--muted)}
+@media(max-width:560px){#clx-pn .clx-roles li{grid-template-columns:1fr;gap:4px}}
+
+/* КОЖА */
+#clx-pn .clx-skin{display:grid;gap:32px;align-items:center}
+@media(min-width:960px){#clx-pn .clx-skin{grid-template-columns:1.05fr .95fr;gap:48px}}
+#clx-pn .clx-fn{display:grid;gap:12px}
+@media(min-width:600px){#clx-pn .clx-fn{grid-template-columns:1fr 1fr}}
+#clx-pn .clx-fn__item{border:1px solid var(--line);border-radius:var(--r-md);padding:22px}
+#clx-pn .clx-fn__ic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--cream);margin-bottom:14px}
+#clx-pn .clx-fn__item h3{margin:0 0 8px;font:600 17px/1.3 var(--sans);color:var(--ink)}
+#clx-pn .clx-fn__item p{margin:0;font-size:15px;color:var(--muted);line-height:1.55}
+
+/* ЦИКЛ */
+#clx-pn .clx-cycle{background:var(--cream)}
+#clx-pn .clx-chainart{position:relative;margin:28px -20px 12px}
+@media(max-width:599px){#clx-pn .clx-chainart .clx-pin{display:none}}
+@media(min-width:600px){#clx-pn .clx-chainart{margin:36px 0 8px}}
+#clx-pn .clx-chainart img{width:100%}
+#clx-pn .clx-pin{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--wine);color:#fff;font:600 13px/1 var(--sans);box-shadow:0 0 0 5px rgba(255,255,255,.75)}
+@media(min-width:960px){#clx-pn .clx-pin{width:44px;height:44px;font-size:16px;box-shadow:0 0 0 8px rgba(255,255,255,.7)}}
+#clx-pn .clx-steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+#clx-pn .clx-step{position:relative;padding:0 0 28px 52px}
+#clx-pn .clx-step::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--wine);color:#fff;font-weight:600;font-size:14px}
+#clx-pn .clx-step::after{content:"";position:absolute;left:16.5px;top:40px;bottom:6px;width:1px;background:var(--line)}
+#clx-pn .clx-step:last-child::after{display:none}
+#clx-pn .clx-step h3{margin:4px 0 8px;font-family:var(--serif);font-weight:400;font-size:24px;color:var(--wine)}
+#clx-pn .clx-step p{margin:0;color:var(--muted);font-size:16px}
+@media(min-width:900px){
+  #clx-pn .clx-steps{grid-template-columns:repeat(4,1fr);gap:28px}
+  #clx-pn .clx-step{padding:56px 0 0}
+  #clx-pn .clx-step::after{left:46px;right:-22px;top:17px;bottom:auto;width:auto;height:1px}
+}
+#clx-pn .clx-factors{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);display:grid;gap:18px}
+@media(min-width:960px){#clx-pn .clx-factors{grid-template-columns:auto 1fr;gap:40px;align-items:center}}
+#clx-pn .clx-factors h3{margin:0;line-height:1.2;font-family:var(--serif);font-weight:400;font-size:26px;color:var(--wine)}
+#clx-pn .clx-factors .clx-chips{margin:0}
+
+/* СМОТРИТЕ ТАКЖЕ */
+#clx-pn .clx-more{display:grid;gap:12px;margin-top:12px}
+@media(min-width:760px){#clx-pn .clx-more{grid-template-columns:repeat(3,1fr)}}
+#clx-pn .clx-more a{display:flex;align-items:center;gap:16px;padding:14px 18px 14px 14px;border:1px solid var(--line);border-radius:var(--r-md);color:var(--ink);transition:border-color .2s}
+#clx-pn .clx-more a:hover{border-color:var(--wine)}
+#clx-pn .clx-more img{width:56px;height:56px;object-fit:contain;flex:0 0 56px}
+#clx-pn .clx-more span{flex:1;font-weight:600;line-height:1.3}
+#clx-pn .clx-more small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+#clx-pn .clx-more i{font-style:normal;color:var(--wine);font-size:18px}
+
+/* HERO */
+#clx-pn .clx-hero{position:relative;background:#fbf2ea;overflow:hidden;padding:0}
+#clx-pn .clx-hero__img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:80% 50%}
+#clx-pn .clx-hero__body{padding:32px 0 56px}
+@media(min-width:960px){
+  #clx-pn .clx-hero{min-height:640px;display:flex;align-items:center}
+  #clx-pn .clx-hero__img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:100% 50%}
+  #clx-pn .clx-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(251,242,234,.97) 0%,rgba(251,242,234,.9) 38%,rgba(251,242,234,0) 62%)}
+  #clx-pn .clx-hero .clx-wrap{position:relative;z-index:2;width:100%}
+  #clx-pn .clx-hero__body{max-width:600px;padding:96px 0}
+}
+#clx-pn .clx-hero .clx-h1{font-size:clamp(38px,5vw,70px)}
+#clx-pn .clx-comp>*,#clx-pn .clx-faq>*,#clx-pn .clx-skin>*,#clx-pn .clx-net>*{min-width:0}
+#clx-pn .clx-h1,#clx-pn .clx-h2,#clx-pn .clx-h3{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+
+/* СОСТАВ */
+#clx-pn .clx-comp{display:grid;gap:32px;align-items:center}
+@media(min-width:960px){#clx-pn .clx-comp{grid-template-columns:.75fr 1.25fr;gap:64px}}
+#clx-pn .clx-comp__art{width:70%;max-width:420px;margin:0 auto}
+@media(min-width:960px){#clx-pn .clx-comp__art{width:100%}}
+#clx-pn .clx-eq{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:28px 0}
+#clx-pn .clx-eq__part{flex:1 1 120px;display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 12px;border:1px solid var(--line);border-radius:var(--r-md);text-align:center;font-size:15px;font-weight:600;line-height:1.3}
+#clx-pn .clx-eq__op{display:grid;place-items:center;font-family:var(--serif);font-size:26px;color:var(--silver);flex:0 0 18px}
+#clx-pn .clx-eq__part--res{background:var(--wine);border-color:var(--wine);color:#fff}
+@media(max-width:600px){#clx-pn .clx-eq__op{flex-basis:100%;height:24px;line-height:1;font-size:22px}#clx-pn .clx-eq__part{flex-basis:100%;flex-direction:row;justify-content:flex-start;text-align:left;padding:14px 16px}}
+#clx-pn .clx-comp p{color:var(--muted);margin:0 0 14px;max-width:62ch}
+#clx-pn .clx-comp p b{color:var(--ink)}
+
+/* КЛЮЧЕВАЯ ПЛАШКА */
+#clx-pn .clx-key{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:var(--r-md);border:1px solid var(--wine);background:var(--white);margin-top:28px}
+#clx-pn .clx-key svg{flex:0 0 28px}
+#clx-pn .clx-key b{display:block;color:var(--wine);font-size:17px;margin-bottom:4px}
+#clx-pn .clx-key span{color:var(--muted);font-size:15px}
+
+/* ПОДЗАГОЛОВОК ВНУТРИ СЕКЦИИ */
+#clx-pn .clx-subhead{margin:64px 0 24px;display:grid;gap:8px}
+@media(min-width:960px){#clx-pn .clx-subhead{grid-template-columns:1fr 1fr;gap:64px;align-items:end}}
+#clx-pn .clx-subhead .clx-h3{font-size:clamp(26px,2.8vw,36px)}
+#clx-pn .clx-subhead .clx-h3 em{font-style:italic;background:linear-gradient(100deg,#6f7a80 0%,#a9b1b5 35%,#6b757b 55%,#9aa3a8 80%,#5f696f 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .14em 0 .04em;margin:0 -.1em 0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#clx-pn .clx-subhead p{margin:0;color:var(--muted)}
+#clx-pn .clx-fn--4{display:grid;gap:12px}
+@media(min-width:600px){#clx-pn .clx-fn--4{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){#clx-pn .clx-fn--4{grid-template-columns:repeat(4,1fr)}}
+#clx-pn .clx-skin p.clx-lead{margin-top:0}
+
+/* ===== АНИМАЦИИ (отключаются при «уменьшить движение» в настройках системы) ===== */
+@media(prefers-reduced-motion:no-preference){
+  @keyframes clxUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes clxDrift{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,1%)}}
+  @keyframes clxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes clxGlow{0%{box-shadow:0 0 0 0 rgba(101,29,45,.45)}100%{box-shadow:0 0 0 18px rgba(101,29,45,0)}}
+  @keyframes clxPulse{from{transform:scale(1);opacity:.9}to{transform:scale(2);opacity:0}}
+
+  /* hero: текст появляется по очереди, цепь медленно «дышит» */
+  #clx-pn.clx-js .clx-hero__body>*{opacity:0;animation:clxUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+  #clx-pn.clx-js .clx-hero__body>*:nth-child(2){animation-delay:.12s}
+  #clx-pn.clx-js .clx-hero__body>*:nth-child(3){animation-delay:.24s}
+  #clx-pn.clx-js .clx-hero__body>*:nth-child(4){animation-delay:.36s}
+  #clx-pn .clx-hero__img{animation:clxDrift 16s ease-in-out infinite alternate;transform-origin:70% 50%}
+
+  /* формула нуклеотида собирается по частям */
+  #clx-pn.clx-js .clx-eq>*{opacity:0;transform:translateY(14px) scale(.96);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  #clx-pn .clx-eq.is-in>*{opacity:1;transform:none}
+  #clx-pn .clx-eq.is-in>*:nth-child(2){transition-delay:.12s}
+  #clx-pn .clx-eq.is-in>*:nth-child(3){transition-delay:.24s}
+  #clx-pn .clx-eq.is-in>*:nth-child(4){transition-delay:.36s}
+  #clx-pn .clx-eq.is-in>*:nth-child(5){transition-delay:.48s}
+  #clx-pn .clx-eq.is-in>*:nth-child(6){transition-delay:.6s}
+  #clx-pn .clx-eq.is-in>*:nth-child(7){transition-delay:.8s;animation:clxGlow 1.2s ease-out 1.4s 2}
+  #clx-pn .clx-comp__art{animation:clxFloat 7s ease-in-out infinite}
+
+  /* карточки направлений */
+  #clx-pn.clx-js .clx-fn--4 .clx-fn__item{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1),border-color .2s}
+  #clx-pn .clx-fn--4.is-in .clx-fn__item{opacity:1;transform:none}
+  #clx-pn .clx-fn--4.is-in .clx-fn__item:nth-child(2){transition-delay:.1s}
+  #clx-pn .clx-fn--4.is-in .clx-fn__item:nth-child(3){transition-delay:.2s}
+  #clx-pn .clx-fn--4.is-in .clx-fn__item:nth-child(4){transition-delay:.3s}
+  #clx-pn .clx-fn__item:hover{border-color:var(--wine)}
+  #clx-pn .clx-fn__item:hover .clx-fn__ic{background:var(--wine)}
+  #clx-pn .clx-fn__item:hover .clx-fn__ic svg *{stroke:#fff}
+  #clx-pn .clx-fn__ic{transition:background .25s}
+
+  /* цикл: шаги и соединительная линия появляются по порядку */
+  #clx-pn.clx-js .clx-step{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  #clx-pn .clx-steps.is-in .clx-step{opacity:1;transform:none}
+  #clx-pn .clx-steps.is-in .clx-step:nth-child(2){transition-delay:.35s}
+  #clx-pn .clx-steps.is-in .clx-step:nth-child(3){transition-delay:.7s}
+  #clx-pn .clx-steps.is-in .clx-step:nth-child(4){transition-delay:1.05s}
+  #clx-pn.clx-js .clx-step::after{transform:scaleY(0);transform-origin:top;transition:transform .5s ease}
+  #clx-pn .clx-steps.is-in .clx-step::after{transform:none}
+  #clx-pn .clx-steps.is-in .clx-step:nth-child(1)::after{transition-delay:.25s}
+  #clx-pn .clx-steps.is-in .clx-step:nth-child(2)::after{transition-delay:.6s}
+  #clx-pn .clx-steps.is-in .clx-step:nth-child(3)::after{transition-delay:.95s}
+  @media(min-width:900px){
+    #clx-pn.clx-js .clx-step::after{transform:scaleX(0);transform-origin:left}
+    #clx-pn .clx-steps.is-in .clx-step::after{transform:none}
+  }
+  #clx-pn .clx-chainart{animation:clxFloat 9s ease-in-out infinite}
+  #clx-pn .clx-pin::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid #fff;animation:clxPulse 2.6s ease-out infinite}
+  #clx-pn .clx-pin:nth-of-type(2)::after{animation-delay:.65s}
+  #clx-pn .clx-pin:nth-of-type(3)::after{animation-delay:1.3s}
+  #clx-pn .clx-pin:nth-of-type(4)::after{animation-delay:1.95s}
+
+  /* плашка про ДНК */
+  #clx-pn.clx-js .clx-key{opacity:0;transform:translateY(12px);transition:opacity .6s ease 1.4s,transform .6s ease 1.4s}
+  #clx-pn .clx-key.is-in{opacity:1;transform:none}
+
+  /* система: круг мягко покачивается */
+  #clx-pn .clx-net__art{animation:clxFloat 8s ease-in-out infinite}
+}
+</style>
+
+<div id="clx-pn" lang="ru">
+
+  <!-- HERO -->
+  <section class="clx-hero">
+    <img class="clx-hero__img" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/polynucleotides/hero-chain.webp" alt="Полинуклеотидная цепь" width="1835" height="857">
+    <div class="clx-wrap">
+      <div class="clx-hero__body">
+        <ul class="clx-chips">
+          <li class="clx-chip">20 мг/мл</li>
+          <li class="clx-chip">Полинуклеотиды (PN)</li>
+        </ul>
+        <h1 class="clx-h1">Нуклеотидные цепи и <em>клеточное окружение</em> кожи</h1>
+        <p class="clx-lead">Полинуклеотиды (PN) — биополимерные цепи из нуклеотидных звеньев. В CALYRA LUX&nbsp;5 они поддерживают межклеточный матрикс и естественное обновление кожи вместе с <b>CAP Пептидом&nbsp;5</b> и <b>3D-гиалуроновой кислотой</b>.</p>
+        <div class="clx-btns">
+          <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
+          <a class="clx-btn clx-btn--line" href="#clx-pn-skin" data-clx-scroll>Как работают полинуклеотиды</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- СОСТАВ -->
+  <section class="clx-sec">
+    <div class="clx-wrap">
+      <div class="clx-comp">
+        <img class="clx-comp__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="Эмблема двойной нуклеотидной цепи" width="1000" height="1000" loading="lazy">
+        <div>
+          <h2 class="clx-h2">Длинные цепи из <em>знакомых орга&shy;низму</em> звеньев</h2>
+          <div class="clx-eq" data-anim aria-label="Нуклеотид состоит из азотистого основания, сахара и фосфатной группы">
+            <div class="clx-eq__part"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4l11 6.5v13L17 30 6 23.5v-13z" fill="none" stroke="#651d2d" stroke-width="1.8"/><circle cx="17" cy="17" r="4" fill="#651d2d"/></svg>Азотистое основание</div>
+            <div class="clx-eq__op">+</div>
+            <div class="clx-eq__part"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 5l11 8-4.2 13H10.2L6 13z" fill="none" stroke="#7d878d" stroke-width="1.8"/></svg>Молекула сахара</div>
+            <div class="clx-eq__op">+</div>
+            <div class="clx-eq__part"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="11" fill="none" stroke="#7d878d" stroke-width="1.8"/><text x="17" y="22" text-anchor="middle" font-family="Manrope,Arial" font-weight="700" font-size="13" fill="#7d878d">P</text></svg>Фосфатная группа</div>
+            <div class="clx-eq__op">=</div>
+            <div class="clx-eq__part clx-eq__part--res"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="7" cy="17" r="4" fill="#fff"/><circle cx="17" cy="17" r="4" fill="#fff"/><circle cx="27" cy="17" r="4" fill="#fff"/><path d="M11 17h2M21 17h2" stroke="#fff" stroke-width="2"/></svg>Нуклеотид</div>
+          </div>
+          <p>Нуклеотиды соединяются последовательно <b>фосфодиэфирными связями</b> и образуют цепи разной длины и молекулярной массы.</p>
+          <p>Фосфатные группы придают цепям отрицательный заряд. Благодаря этому полинуклеотиды взаимодействуют с молекулами воды, ионами и компонентами межклеточной среды.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- В КОЖЕ + ФИБРОБЛАСТЫ -->
+  <section class="clx-sec" id="clx-pn-skin" style="padding-top:0">
+    <div class="clx-wrap">
+      <div class="clx-head">
+        <h2 class="clx-h2">Матрикс, вода и <em>клеточный ответ</em></h2>
+        <p class="clx-lead">В водной среде тканей полинуклеотидные цепи распределяются в межклеточном пространстве и формируют вокруг себя гидратированную среду.</p>
+      </div>
+      <div class="clx-skin">
+        <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/polynucleotides/skin-pn.webp" alt="Срез кожи: полинуклеотидные цепи и фибробласты в межклеточном матриксе" width="1400" height="820" loading="lazy">
+        <div>
+          <p class="clx-lead">Действие полинуклеотидов нельзя свести к одному рецептору или одному клеточному процессу. Его рассматривают как сочетание двух факторов:</p>
+          <ul class="clx-roles">
+            <li><b>Свойства цепей</b><span>длинные полимеры связывают воду и формируют гидратированное окружение клеток</span></li>
+            <li><b>Ответ на фрагменты</b><span>при распаде цепей образуются нуклеотиды и нуклеозиды, на которые реагируют клетки</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="clx-subhead">
+        <h3 class="clx-h3">Не прямое «включение» клетки, а <em>поддержка её окружения</em></h3>
+        <p>Фибробласты постоянно взаимодействуют с матриксом. На их состояние влияют гидратация, механические свойства среды и сигнальные молекулы. Научные данные позволяют выделить четыре направления.</p>
+      </div>
+      <div class="clx-fn--4" data-anim>
+        <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6"><path d="M12 3c3.5 4.4 6 7.7 6 11a6 6 0 0 1-12 0c0-3.3 2.5-6.6 6-11z"/></svg></div><h3>Матриксное окружение</h3><p>Гидратированная среда вокруг клеток поддерживает перемещение молекул и контакт фибробластов с матриксом.</p></div>
+        <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6"><path d="M4 12c2-5 6-7 8-7s6 2 8 7c-2 5-6 7-8 7s-6-2-8-7z"/><circle cx="12" cy="12" r="2.6"/></svg></div><h3>Жизнеспособность клеток</h3><p>В лабораторных исследованиях полинуклеотидов (PN) и полидезокси&shy;рибо&shy;нуклеотидов (PDRN) наблюдались изменения жизнеспособности, роста и миграции фибробластов.</p></div>
+        <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="8" r="2"/><circle cx="19" cy="14" r="2"/><path d="M7 11l3-2M14 9.5l3 3" stroke-dasharray="2 2"/></svg></div><h3>Продукты распада</h3><p>Нуклеотиды и нуклеозиды участвуют в клеточной коммуникации и могут повторно использоваться клетками.</p></div>
+        <div class="clx-fn__item"><div class="clx-fn__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.6" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg></div><h3>Тканевое обновление</h3><p>Влияние на организацию матрикса и поведение клеток в процессе восстановления тканей.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЦИКЛ -->
+  <section class="clx-sec clx-cycle">
+    <div class="clx-wrap">
+      <div class="clx-head" style="margin-bottom:0">
+        <div>
+          <ul class="clx-chips"><li class="clx-chip">Жизненный цикл</li></ul>
+          <h2 class="clx-h2">Естественный <em>ферментативный цикл</em></h2>
+        </div>
+        <p class="clx-lead">Полинуклеотиды биодеградируемы: они не остаются в тканях в неизменном виде, а постепенно расщепляются естественными ферментами.</p>
+      </div>
+      <div class="clx-chainart">
+        <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/polynucleotides/fibroblasts.webp" alt="Полинуклеотидная цепь распадается на фрагменты рядом с фибробластами" width="1800" height="658" loading="lazy">
+        <span class="clx-pin" style="left:22%;top:14%" aria-hidden="true">1</span>
+        <span class="clx-pin" style="left:73%;top:44%" aria-hidden="true">2</span>
+        <span class="clx-pin" style="left:92%;top:62%" aria-hidden="true">3</span>
+        <span class="clx-pin" style="left:24%;top:47%" aria-hidden="true">4</span>
+      </div>
+      <ol class="clx-steps" data-anim>
+        <li class="clx-step"><h3>Полимерная цепь</h3><p>Пока цепь сохраняет длину, это крупная пространственная молекула, которая формирует гидратированную среду вокруг клеток.</p></li>
+        <li class="clx-step"><h3>Расщепление</h3><p>Ферменты-нуклеазы постепенно разрезают длинные цепи на более короткие олигонуклеотиды.</p></li>
+        <li class="clx-step"><h3>Нуклеотиды</h3><p>Олигонуклеотиды распадаются на отдельные нуклеотиды и нуклеозиды — вещества, которые естественно присутствуют в организме.</p></li>
+        <li class="clx-step"><h3>Повторное использование</h3><p>Клетки включают эти компоненты в обмен веществ и пути повторного синтеза нуклеотидов.</p></li>
+      </ol>
+      <div class="clx-key" data-anim><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#651d2d" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4" stroke-linecap="round"/></svg><div><b>Полинуклеотиды не изменяют генетическую информацию</b><span>Полинуклеотидные цепи не встраиваются в хромосомы клеток и не влияют на ДНК.</span></div></div>
+    </div>
+  </section>
+
+  <!-- РОЛЬ В СИСТЕМЕ -->
+  <section class="clx-sec">
+    <div class="clx-wrap">
+      <div class="clx-net">
+        <img class="clx-net__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/polynucleotides/system-circle.webp" alt="Единая система: гиалуроновая кислота, полинуклеотиды и фибробласт в центре" width="1000" height="977" loading="lazy">
+        <div>
+          <ul class="clx-chips"><li class="clx-chip">Роль в CALYRA LUX&nbsp;5</li></ul>
+          <h2 class="clx-h2">Естественное обновление <em>внутри общей системы</em></h2>
+          <p class="clx-lead">Полинуклеотиды не работают изолированно. Каждый компонент формулы поддерживает своё звено, а в центре — клетки кожи.</p>
+          <ul class="clx-roles">
+            <li><b>3D-гиалуроновая кислота</b><span>единая гидратированная матрица</span></li>
+            <li><b>Полинуклеотиды (PN)</b><span>матриксное окружение и естественное обновление</span></li>
+            <li><b>CAP Пептид&nbsp;5</b><span>клеточный потенциал и теломерная защита</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="clx-sec" style="padding-top:0">
+    <div class="clx-wrap clx-faq">
+      <div class="clx-faq__aside">
+        <ul class="clx-chips"><li class="clx-chip">Коротко о важном</li></ul>
+        <h2 class="clx-h2">Вопросы <em>и ответы</em></h2>
+        <p class="clx-lead">Не нашли ответ? Специалист расскажет о применении и условиях сотрудничества.</p>
+        <div class="clx-btns"><a class="clx-btn clx-btn--line" href="#popup:price">Задать вопрос</a></div>
+      </div>
+      <div>
+        <details class="clx-qa" open>
+          <summary>Что такое полинуклеотиды простыми словами?<i></i></summary>
+          <div class="clx-qa__a"><p>Это длинные цепи из нуклеотидов — тех же звеньев, из которых построены нуклеиновые кислоты. В коже они формируют гидратированную среду вокруг клеток и постепенно распадаются на компоненты, знакомые организму.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Чем полинуклеотиды (PN) отличаются от полидезокси&shy;рибо&shy;нуклеотидов (PDRN)?<i></i></summary>
+          <div class="clx-qa__a"><p>И те и другие — нуклеотидные цепочки, но полинуклеотиды состоят из более длинных цепей с большей молекулярной массой. За счёт этого они формируют гидратированное окружение, которое поддерживает матрикс кожи.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Изменяют ли полинуклеотиды ДНК клеток?<i></i></summary>
+          <div class="clx-qa__a"><p>Нет. Полинуклеотидные цепи не встраиваются в хромосомы и не изменяют генетическую информацию. Они расщепляются ферментами до нуклеотидов и нуклеозидов, которые клетки используют в обычном обмене веществ.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Как полинуклеотиды действуют в коже?<i></i></summary>
+          <div class="clx-qa__a"><p>Через сочетание двух факторов: длинные цепи связывают воду и создают гидратированное окружение клеток, а продукты их распада участвуют в клеточной коммуникации и обновлении тканей.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Обладают ли полинуклеотиды противовоспалительным действием?<i></i></summary>
+          <div class="clx-qa__a"><p>Противовоспалительные свойства полинуклеотидов описаны в исследованиях: они связаны со снижением провоспалительных цитокинов. В уходе CALYRA LUX&nbsp;5 это проявляется как восстановление и комфорт кожи, в том числе после аппаратных процедур.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>В чём заключается омолаживающий эффект полинуклеотидов?<i></i></summary>
+          <div class="clx-qa__a"><p>Не в одном механизме, а в поддержке среды, в которой работают клетки: гидратации, матрикса и естественного обновления. Внешне это проявляется как более гладкая, упругая и ровная по текстуре кожа.</p></div>
+        </details>
+        <details class="clx-qa">
+          <summary>Безопасны ли полинуклеотиды?<i></i></summary>
+          <div class="clx-qa__a"><p>Полинуклеотиды биодеградируемы и распадаются на вещества, которые естественно присутствуют в организме. Применение — по протоколу специалиста; индивидуальная переносимость может различаться.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="clx-sec" style="padding-top:0">
+    <div class="clx-wrap">
+      <div class="clx-cta">
+        <img class="clx-cta__img" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/product-scene.webp" alt="Упаковка и шприцы CALYRA LUX&nbsp;5" loading="lazy">
+        <div class="clx-cta__body">
+          <h2 class="clx-h2">CALYRA LUX&nbsp;5 <em>для вашей практики</em></h2>
+          <p class="clx-lead">Прайс, протоколы применения и информация об обучении для специалистов.</p>
+          <div class="clx-btns">
+            <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
+            <a class="clx-btn clx-btn--line" href="#popup:order">Заказать продукт</a>
+          </div>
+        </div>
+      </div>
+      <div class="clx-more">
+        <a href="https://calyraluxmin.tilda.ws/technology-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/hero-strands.webp" alt="" loading="lazy" style="object-fit:cover;border-radius:50%"><span>Технология CALYRA LUX&nbsp;5<small>Как работают три компонента</small></span><i>↗</i></a>
+        <a href="https://calyraluxmin.tilda.ws/cap-peptide-5-telomery-kozhi"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/cap-peptide-5.webp" alt="" loading="lazy"><span>CAP Пептид&nbsp;5<small>1000 ppm</small></span><i>↗</i></a>
+        <a href="https://calyraluxmin.tilda.ws/3d-hyaluronic-acid-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/ha-drop.webp" alt="" loading="lazy"><span>3D-гиалуроновая кислота<small>10 мг/мл</small></span><i>↗</i></a>
+      </div>
+      <div class="clx-disclaimer">
+        <span>Профессиональный косметический продукт для наружного применения</span>
+        <span>Информация предназначена для специалистов</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('clx-pn'); if(!root) return;
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    root.classList.add('clx-js');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.25});
+    [].forEach.call(root.querySelectorAll('[data-anim]'),function(el){io.observe(el);});
+  }
+  [].forEach.call(root.querySelectorAll('[data-clx-scroll]'),function(a){
+    a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});
+  });
+})();
+</script>
+<!-- ===== конец блока ===== -->
