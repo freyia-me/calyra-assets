@@ -1,0 +1,349 @@
+<!-- CALYRA LUX 5 — страница для пациентов. Вставлять целиком в блок T123 (HTML-код) в Tilda.
+     Клиники-партнёры добавляются в список CLINICS в конце кода (раздел со скриптом).
+     Кнопка «Оставить заявку» ведёт на попап #popup:clinic — создайте в Tilda всплывающую форму с этой ссылкой. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
+
+<style>
+#calyra-lp{
+  --wine:#651d2d; --ink:#1b2936; --sand:#ddd8d1; --sand-soft:#f4f1ed; --mist:#a9b1b5;
+  --serif:'Prata', Georgia, 'Times New Roman', serif;
+  --sans:'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-family:var(--sans); color:var(--ink); background:#fff;
+  font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; overflow-x:clip;
+}
+#allrecords{overflow:visible!important}
+#calyra-lp *,#calyra-lp *::before,#calyra-lp *::after{box-sizing:border-box;margin:0;padding:0}
+#calyra-lp img{max-width:100%;display:block}
+#calyra-lp a{color:inherit}
+#calyra-lp .cl-wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative}
+#calyra-lp .cl-sec{padding:112px 0;position:relative}
+#calyra-lp .cl-divide::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1152px,calc(100% - 48px));height:1px;background:var(--sand)}
+#calyra-lp h1,#calyra-lp h2,#calyra-lp h3{font-family:var(--serif);font-weight:400;line-height:1.15;color:var(--wine)}
+#calyra-lp h1{font-size:clamp(2.3rem,4.6vw,3.9rem);letter-spacing:-.01em}
+#calyra-lp h2{font-size:clamp(1.9rem,3.6vw,2.9rem);max-width:20ch}
+#calyra-lp h3{font-size:1.4rem;color:var(--ink)}
+#calyra-lp p{max-width:62ch}
+#calyra-lp .cl-lead{font-size:1.15rem}
+#calyra-lp .cl-muted{color:#4a5560}
+#calyra-lp .cl-kicker{font-size:.95rem;color:var(--wine);font-weight:600;margin-bottom:18px;display:block}
+#calyra-lp .cl-ico{width:30px;height:30px;stroke:var(--wine);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* кнопки */
+#calyra-lp .cl-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+#calyra-lp .cl-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:2px;font-family:var(--sans);font-weight:600;font-size:1rem;text-decoration:none;transition:background .25s,color .25s,border-color .25s;border:1.5px solid var(--wine)}
+#calyra-lp .cl-btn-main{background:var(--wine);color:#fff}
+#calyra-lp .cl-btn-main:hover{background:var(--ink);border-color:var(--ink)}
+#calyra-lp .cl-btn-ghost{background:transparent;color:var(--wine)}
+#calyra-lp .cl-btn-ghost:hover{border-color:var(--mist);color:var(--ink)}
+#calyra-lp .cl-btn:focus-visible,#calyra-lp summary:focus-visible,#calyra-lp .cl-tab:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+
+/* ===== ПЕРВЫЙ ЭКРАН ===== */
+#calyra-lp .cl-hero{position:relative;min-height:min(780px,94vh);display:flex;align-items:center;padding:72px 0;overflow:hidden}
+#calyra-lp .cl-hero > .cl-wrap{width:100%}
+#calyra-lp .cl-hero::before{content:"";position:absolute;inset:0 auto 0 0;width:60%;z-index:1;pointer-events:none;background:linear-gradient(to right,#fff 0,#fff 36%,rgba(255,255,255,.85) 62%,rgba(255,255,255,0) 100%)}
+#calyra-lp .cl-hero-bg{position:absolute;top:0;right:0;width:78%;height:100%;object-fit:cover;object-position:right center;animation:clRise 1.6s cubic-bezier(.2,.7,.2,1) both;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 30%),linear-gradient(to bottom,transparent 0,#000 8%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent 0,#000 30%),linear-gradient(to bottom,transparent 0,#000 8%,#000 84%,transparent 100%);mask-composite:intersect}
+#calyra-lp .cl-hero-text{position:relative;z-index:2;max-width:560px}
+#calyra-lp .cl-hero h1{font-size:clamp(2.2rem,4.2vw,3.6rem)}
+#calyra-lp .cl-hero .cl-lead{margin-top:28px;max-width:46ch}
+#calyra-lp .cl-hero .cl-btn-ghost{background:rgba(255,255,255,.75)}
+@keyframes clRise{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+
+/* ===== ЧТО ЭТО ===== */
+#calyra-lp .cl-what{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:56px}
+#calyra-lp .cl-what img{width:120px;height:120px;object-fit:contain;margin-bottom:20px}
+#calyra-lp .cl-what h3{color:var(--wine);margin-bottom:6px}
+#calyra-lp .cl-what .cl-sub{font-size:.9rem;font-weight:600;color:#4a5560;margin-bottom:10px;display:block}
+#calyra-lp .cl-what p{color:#4a5560}
+
+/* ===== РЕЗУЛЬТАТ ===== */
+#calyra-lp .cl-feel{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+#calyra-lp .cl-feel-list{list-style:none;display:grid;gap:36px}
+#calyra-lp .cl-feel-list li{border-left:2px solid var(--wine);padding-left:28px}
+#calyra-lp .cl-feel-list h3{color:var(--wine);font-size:1.5rem;margin-bottom:6px}
+#calyra-lp .cl-feel-list p{color:#4a5560}
+
+/* ===== КУРС ===== */
+#calyra-lp .cl-course{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:56px}
+#calyra-lp .cl-card{background:var(--sand-soft);padding:36px 32px}
+#calyra-lp .cl-card b{display:block;font-family:var(--serif);font-weight:400;font-size:3rem;line-height:1;color:var(--wine)}
+#calyra-lp .cl-card .cl-unit{display:block;font-weight:600;margin:8px 0 18px}
+#calyra-lp .cl-card p{color:#4a5560;font-size:.98rem}
+#calyra-lp .cl-card.dark{background:var(--wine);color:#fff}
+#calyra-lp .cl-card.dark b,#calyra-lp .cl-card.dark p{color:#fff}
+#calyra-lp .cl-note{margin-top:24px;color:#4a5560;font-size:.95rem}
+
+/* ===== ТОЛЬКО У ПАРТНЁРОВ ===== */
+#calyra-lp .cl-only{background:#1b2936;color:#e9e6e2}
+#calyra-lp .cl-only h2{color:#fff}
+#calyra-lp .cl-only .cl-kicker{color:var(--sand)}
+#calyra-lp .cl-only-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+#calyra-lp .cl-only-grid > div > p{margin-top:20px}
+#calyra-lp .cl-reasons{list-style:none;display:grid;gap:28px}
+#calyra-lp .cl-reasons li{display:flex;gap:18px}
+#calyra-lp .cl-reasons .cl-ico{stroke:var(--sand);margin-top:2px}
+#calyra-lp .cl-reasons b{display:block;color:#fff;font-size:1.08rem;margin-bottom:4px}
+#calyra-lp .cl-orig img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+#calyra-lp .cl-check{margin-top:28px}
+#calyra-lp .cl-check h3{color:#fff;font-size:1.3rem;margin-bottom:14px}
+#calyra-lp .cl-check > p{margin-bottom:14px}
+#calyra-lp .cl-check ol{padding-left:22px;display:grid;gap:10px}
+
+/* ===== НАЙТИ КЛИНИКУ ===== */
+#calyra-lp .cl-find-head{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+#calyra-lp .cl-select{position:relative;min-width:280px}
+#calyra-lp .cl-select select{width:100%;appearance:none;-webkit-appearance:none;font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid var(--sand);border-radius:2px;min-height:56px;padding:0 48px 0 18px;cursor:pointer}
+#calyra-lp .cl-select::after{content:"";position:absolute;right:20px;top:50%;width:10px;height:10px;border-right:1.5px solid var(--wine);border-bottom:1.5px solid var(--wine);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+#calyra-lp .cl-select select:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+#calyra-lp .cl-clinics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+#calyra-lp .cl-clinic{border:1px solid var(--sand);padding:28px;display:flex;flex-direction:column;gap:6px}
+#calyra-lp .cl-clinic .cl-city{font-size:.85rem;font-weight:600;color:var(--wine)}
+#calyra-lp .cl-clinic h3{font-size:1.3rem}
+#calyra-lp .cl-clinic p{color:#4a5560;font-size:.96rem}
+#calyra-lp .cl-clinic a{color:var(--wine);font-weight:600;text-decoration:none;margin-top:8px}
+#calyra-lp .cl-clinic a:hover{color:var(--ink)}
+#calyra-lp .cl-empty{margin-top:40px;background:var(--sand-soft);padding:40px;display:flex;justify-content:space-between;align-items:center;gap:32px}
+#calyra-lp .cl-empty h3{color:var(--wine);margin-bottom:6px}
+#calyra-lp .cl-empty .cl-btns{margin-top:0;flex:none}
+
+/* ===== ПРОТИВОПОКАЗАНИЯ ===== */
+#calyra-lp .cl-contra{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
+#calyra-lp .cl-contra ul{columns:2;column-gap:40px;padding-left:20px}
+#calyra-lp .cl-contra li{margin-bottom:10px;break-inside:avoid;color:#4a5560}
+#calyra-lp .cl-warn{margin-top:20px;font-weight:600}
+
+/* ===== ВОПРОСЫ ===== */
+#calyra-lp .cl-faq{max-width:820px;margin:48px auto 0}
+#calyra-lp details{border-bottom:1px solid var(--sand)}
+#calyra-lp summary{list-style:none;cursor:pointer;padding:26px 44px 26px 0;position:relative;font-family:var(--serif);font-size:1.3rem;color:var(--ink)}
+#calyra-lp summary::-webkit-details-marker{display:none}
+#calyra-lp summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;border-right:1.5px solid var(--wine);border-bottom:1.5px solid var(--wine);transform:translateY(-70%) rotate(45deg);transition:transform .3s}
+#calyra-lp details[open] summary::after{transform:translateY(-20%) rotate(-135deg)}
+#calyra-lp details p{padding:0 0 26px}
+
+#calyra-lp .cl-sticky{display:none}
+
+@media (max-width:900px){
+  #calyra-lp{font-size:17px}
+  #calyra-lp .cl-sec{padding:80px 0}
+  #calyra-lp .cl-hero{display:block;min-height:0;padding:0 0 72px}
+  #calyra-lp .cl-hero::before{display:none}
+  #calyra-lp .cl-hero-bg{position:relative;width:100%;height:auto;aspect-ratio:4/3;object-position:72% center;
+    -webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent);mask-image:linear-gradient(to bottom,#000 70%,transparent)}
+  #calyra-lp .cl-hero-text{margin-top:-44px}
+  #calyra-lp .cl-feel,#calyra-lp .cl-only-grid,#calyra-lp .cl-contra,#calyra-lp .cl-find-head{grid-template-columns:1fr;gap:36px}
+  #calyra-lp .cl-what{grid-template-columns:1fr;gap:40px}
+  #calyra-lp .cl-what img{width:90px;height:90px}
+  #calyra-lp .cl-course,#calyra-lp .cl-clinics{grid-template-columns:1fr}
+  #calyra-lp .cl-select{min-width:0}
+  #calyra-lp .cl-empty{flex-direction:column;align-items:stretch;padding:28px 22px}
+  #calyra-lp .cl-contra ul{columns:1}
+  #calyra-lp .cl-btn{width:100%}
+  #calyra-lp .cl-sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:999;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.96);border-top:1px solid var(--sand);transform:translateY(110%);transition:transform .35s}
+  #calyra-lp .cl-sticky.show{transform:none}
+  #calyra-lp .cl-sticky .cl-btn{min-height:50px}
+}
+@media (prefers-reduced-motion:reduce){
+  #calyra-lp *,#calyra-lp *::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<div id="calyra-lp">
+
+<!-- ===== 1. ПЕРВЫЙ ЭКРАН ===== -->
+<section class="cl-hero" id="cl-top">
+  <img class="cl-hero-bg" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Patient/hero-clinic.webp" alt="Косметолог в клинике — партнёре CALYRA LUX 5" fetchpriority="high">
+  <div class="cl-wrap">
+    <div class="cl-hero-text">
+      <span class="cl-kicker">CALYRA LUX 5 · для пациентов</span>
+      <h1>Свежая кожа после первой процедуры и забота о её молодости на весь курс</h1>
+      <p class="cl-lead">CALYRA LUX 5 — профессиональный продукт с тремя активными компонентами в одном шприце. Процедуру проводят только косметологи и клиники — партнёры бренда.</p>
+      <div class="cl-btns">
+        <a class="cl-btn cl-btn-main" href="#cl-find">Найти клинику</a>
+        <a class="cl-btn cl-btn-ghost" href="#cl-course">Как проходит курс</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. ЧТО ЭТО ===== -->
+<section class="cl-sec cl-divide">
+  <div class="cl-wrap">
+    <span class="cl-kicker">Что внутри</span>
+    <h2>Три компонента, каждый со своей задачей</h2>
+    <div class="cl-what">
+      <div><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/icon-ha.webp" alt="" loading="lazy"><h3>3D-гиалуроновая кислота</h3><span class="cl-sub">Увлажнение</span><p>Глубоко увлажняет и делает кожу более упругой и гладкой.</p></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/icon-pn.webp" alt="" loading="lazy"><h3>Полинуклеотиды (PN)</h3><span class="cl-sub">Обновление</span><p>Поддерживают естественное обновление кожи: она выглядит плотнее, ровнее и отдохнувшей.</p></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/icon-peptide.webp" alt="" loading="lazy"><h3>CAP Пептид 5</h3><span class="cl-sub">Долголетие кожи</span><p>Запатентованный пептид, который поддерживает ресурс клеток кожи и их защиту от преждевременного старения.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. ЧТО ВЫ ЗАМЕТИТЕ ===== -->
+<section class="cl-sec cl-divide">
+  <div class="cl-wrap cl-feel">
+    <div>
+      <span class="cl-kicker">Что вы заметите</span>
+      <h2>Результат сразу и с каждой процедурой лучше</h2>
+    </div>
+    <ul class="cl-feel-list">
+      <li><h3>После первой процедуры</h3><p>Кожа выглядит увлажнённой, гладкой и свежей.</p></li>
+      <li><h3>В течение курса</h3><p>Кожа становится плотнее, рельеф ровнее, появляется здоровое сияние.</p></li>
+      <li><h3>После курса</h3><p>Результат поддерживается одной процедурой раз в несколько месяцев.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 4. КУРС ===== -->
+<section class="cl-sec cl-divide" id="cl-course">
+  <div class="cl-wrap">
+    <span class="cl-kicker">Рекомендуемый курс</span>
+    <h2>Сколько процедур понадобится</h2>
+    <div class="cl-course">
+      <div class="cl-card"><b>3–4</b><span class="cl-unit">процедуры</span><p>Для кожи 35–40+. Интервал между процедурами — 4 недели.</p></div>
+      <div class="cl-card"><b>5–6</b><span class="cl-unit">процедур</span><p>Для кожи 50–60+. Интервал — 3–4 недели.</p></div>
+      <div class="cl-card dark"><b>1</b><span class="cl-unit">поддерживающая</span><p>Раз в 4–6 месяцев, чтобы сохранить результат.</p></div>
+    </div>
+    <p class="cl-note">Точное количество процедур специалист подбирает индивидуально — с учётом возраста, типа и состояния кожи.</p>
+  </div>
+</section>
+
+<!-- ===== 5. ТОЛЬКО У ПАРТНЁРОВ ===== -->
+<section class="cl-sec cl-only">
+  <div class="cl-wrap cl-only-grid">
+    <div>
+      <span class="cl-kicker">Важно</span>
+      <h2>Проходите процедуру только у партнёров бренда</h2>
+      <p>CALYRA LUX 5 поставляется только официальным партнёрам. Так вы можете быть уверены и в продукте, и в специалисте.</p>
+      <ul class="cl-reasons" style="margin-top:40px">
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M20 4l13 5v10c0 8-5.5 14-13 17C12.5 33 7 27 7 19V9z"/><path d="M14 20l4 4 8-8"/></svg><div><b>Оригинальный продукт</b><span>Партнёры получают CALYRA LUX 5 напрямую от официального поставщика, без посредников.</span></div></li>
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M4 9c6-2 11-1 16 3 5-4 10-5 16-3v22c-6-2-11-1-16 3-5-4-10-5-16-3z"/><path d="M20 12v22"/></svg><div><b>Обученные специалисты</b><span>Специалисты партнёров знают, как действует продукт, и работают по протоколам бренда.</span></div></li>
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M16 4v12L7 32a3 3 0 0 0 2.6 4.5h20.8A3 3 0 0 0 33 32l-9-16V4"/><path d="M13 4h14M11 27h18"/></svg><div><b>Правильное хранение</b><span>Продукт хранится и поставляется так, чтобы сохранить свойства всех трёх компонентов.</span></div></li>
+    </ul>
+    </div>
+    <div class="cl-orig">
+      <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Patient/product-original.webp" alt="Оригинальная упаковка JeuDérm CALYRA LUX 5 и шприцы 2,5 мл" loading="lazy">
+      <div class="cl-check">
+      <h3>Как убедиться, что продукт оригинальный</h3>
+      <p>Вся продукция CALYRA LUX 5 промаркирована в системе «Честный ЗНАК».</p>
+      <ol>
+        <li>Попросите специалиста показать упаковку JeuDérm CALYRA LUX 5.</li>
+        <li>Отсканируйте код маркировки на упаковке в приложении «Честный ЗНАК» — оно покажет, что продукт оригинальный.</li>
+        <li>Шприц открывают при вас.</li>
+      </ol>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. НАЙТИ КЛИНИКУ ===== -->
+<section class="cl-sec" id="cl-find">
+  <div class="cl-wrap">
+    <div class="cl-find-head">
+      <div>
+        <span class="cl-kicker">Клиники и косметологи — партнёры бренда</span>
+        <h2>Найдите клинику в своём городе</h2>
+      </div>
+      <label class="cl-select" id="clCityWrap" hidden>
+        <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Город</span>
+        <select id="clCity"><option value="">Все города</option></select>
+      </label>
+    </div>
+    <div class="cl-clinics" id="clClinics"></div>
+    <div class="cl-empty" id="clEmpty">
+      <div>
+        <h3 id="clEmptyTitle">Подберём клинику для вас</h3>
+        <p>Оставьте город и телефон — подскажем ближайшего партнёра бренда.</p>
+      </div>
+      <div class="cl-btns"><a class="cl-btn cl-btn-main" href="#popup:clinic">Оставить заявку</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. ПРОТИВОПОКАЗАНИЯ ===== -->
+<section class="cl-sec cl-divide">
+  <div class="cl-wrap cl-contra">
+    <div>
+      <h2>Противопоказания</h2>
+      <p class="cl-warn">Перед процедурой необходима консультация специалиста.</p>
+    </div>
+    <ul>
+      <li>Индивидуальная непереносимость компонентов</li>
+      <li>Беременность и лактация</li>
+      <li>Аутоиммунные и онкологические заболевания</li>
+      <li>Острые инфекционные заболевания, герпес в стадии обострения</li>
+      <li>Воспалительные процессы на коже в зоне процедуры</li>
+      <li>Склонность к образованию келоидных рубцов</li>
+      <li>Нарушения свёртываемости крови</li>
+      <li>Эпилепсия</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 8. ВОПРОСЫ ===== -->
+<section class="cl-sec cl-divide">
+  <div class="cl-wrap">
+    <h2 style="margin:0 auto;text-align:center">Частые вопросы</h2>
+    <div class="cl-faq">
+      <details><summary>Когда будет виден результат?</summary><p>Кожа выглядит более увлажнённой и свежей уже после первой процедуры. Плотность, ровный рельеф и сияние нарастают в течение курса.</p></details>
+      <details><summary>Можно ли сочетать с другими процедурами?</summary><p>Да. CALYRA LUX 5 применяют вместе с RF-лифтингом, после аппаратных процедур и с мезороллером. Подходящий вариант подберёт специалист.</p></details>
+      <details><summary>Сколько стоит процедура?</summary><p>Стоимость устанавливает клиника. Уточните её у партнёра в вашем городе.</p></details>
+      <details><summary>Можно ли купить CALYRA LUX 5 для домашнего ухода?</summary><p>Нет. CALYRA LUX 5 — профессиональный продукт: его применяют только во время процедуры у косметолога или в клинике — партнёре бренда.</p></details>
+      <details><summary>Как проверить, что продукт оригинальный?</summary><p>Вся продукция CALYRA LUX 5 промаркирована в системе «Честный ЗНАК». Попросите специалиста показать упаковку и отсканируйте код маркировки в приложении «Честный ЗНАК».</p></details>
+      <details><summary>Почему нельзя пройти процедуру в любом салоне?</summary><p>Только у партнёров бренда вы можете быть уверены, что продукт оригинальный и хранился правильно, а специалист обучен работе с ним.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="cl-sticky" id="clSticky"><a class="cl-btn cl-btn-main" href="#cl-find">Найти клинику</a></div>
+</div>
+
+<script>
+/* ===== СПИСОК КЛИНИК-ПАРТНЁРОВ =====
+   Чтобы добавить клинику, скопируйте строку-образец, уберите в начале // и впишите данные.
+   link — ссылка на сайт, запись или Telegram клиники (можно оставить пустой: "").
+   Пока список пуст, на странице показывается кнопка «Оставить заявку». */
+var CLINICS = [
+  // { city: "Москва", name: "Название клиники", address: "ул. Примерная, 1", phone: "+7 (900) 000-00-00", link: "https://..." },
+];
+
+(function(){
+  var root=document.getElementById('calyra-lp'); if(!root) return;
+  var list=document.getElementById('clClinics'), sel=document.getElementById('clCity'),
+      wrap=document.getElementById('clCityWrap'), empty=document.getElementById('clEmpty'),
+      emptyTitle=document.getElementById('clEmptyTitle');
+
+  function esc(t){ return String(t||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function render(city){
+    var items=CLINICS.filter(function(c){ return !city || c.city===city; });
+    list.innerHTML=items.map(function(c){
+      return '<div class="cl-clinic"><span class="cl-city">'+esc(c.city)+'</span><h3>'+esc(c.name)+'</h3>'+
+        (c.address?'<p>'+esc(c.address)+'</p>':'')+
+        (c.phone?'<p><a href="tel:'+esc(c.phone.replace(/[^+\d]/g,''))+'" style="margin:0">'+esc(c.phone)+'</a></p>':'')+
+        (c.link?'<a href="'+esc(c.link)+'" target="_blank" rel="noopener">Записаться</a>':'')+'</div>';
+    }).join('');
+    list.hidden=!items.length;
+    emptyTitle.textContent=CLINICS.length?'Не нашли свой город?':'Подберём клинику для вас';
+  }
+  if(CLINICS.length){
+    var cities=CLINICS.map(function(c){return c.city;}).filter(function(c,i,a){return a.indexOf(c)===i;}).sort();
+    cities.forEach(function(c){ var o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
+    wrap.hidden=false;
+    sel.addEventListener('change',function(){ render(sel.value); });
+  }
+  render('');
+
+  /* липкая кнопка на телефоне */
+  var sticky=document.getElementById('clSticky'), hero=document.getElementById('cl-top'), find=document.getElementById('cl-find');
+  function onScroll(){
+    var r=find.getBoundingClientRect(), vh=window.innerHeight;
+    var inFind=r.top<vh && r.bottom>0;
+    sticky.classList.toggle('show',hero.getBoundingClientRect().bottom<0 && !inFind);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
