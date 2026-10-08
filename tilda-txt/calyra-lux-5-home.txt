@@ -110,6 +110,8 @@
 #calyra-editorial .ce-dark-copy .ce-h2 { margin: 27px 0 31px; }
 #calyra-editorial .ce-dark-copy .ce-h2 i { color: #e9b6c5; font-weight: 400; }
 #calyra-editorial .ce-dark-copy > p { color: #a7a8af; max-width: 580px; margin: 0; font-size: 14px; line-height: 1.7; }
+#calyra-editorial .ce-dark-link { margin-top: 34px; color: #fff; border-color: rgba(255,255,255,.27); }
+#calyra-editorial .ce-dark-link em { background: var(--ce-wine); }
 #calyra-editorial .ce-dark-list { margin-top: 45px; border-top: 1px solid rgba(255,255,255,.17); }
 #calyra-editorial .ce-dark-line { min-height: 81px; padding: 20px 0; display: grid; grid-template-columns: 46px 1fr auto; align-items: center; border-bottom: 1px solid rgba(255,255,255,.17); gap: 12px; }
 #calyra-editorial .ce-dark-line span { color: #e8afc0; font-size: 10px; }
@@ -366,6 +368,7 @@
   #calyra-editorial .ce-button:hover { color: #fff; background: #292a31; border-color: #292a31; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(31,32,39,.18), 0 0 24px rgba(131,226,232,.16); }
   #calyra-editorial .ce-button--wine:hover { color: #fff; background: #c11650; border-color: #c11650; box-shadow: 0 17px 38px rgba(168,11,61,.28), 0 0 30px rgba(195,165,255,.22); }
   #calyra-editorial .ce-button:hover em { transform: translate(2px,-2px); background: rgba(255,255,255,.28); }
+  #calyra-editorial .ce-dark-link:hover { color: #202127; background: #fff; border-color: #fff; }
   #calyra-editorial .ce-order-actions .ce-button:not(.ce-button--wine):hover { color: #202127; background: #fff; border-color: #fff; box-shadow: 0 17px 40px rgba(255,255,255,.15), 0 0 28px rgba(131,226,232,.18); }
 }
 
@@ -438,6 +441,7 @@
           <div class="ce-dark-line"><span>02</span><b>Поддержка процессов теломерной защиты</b><small>защита</small></div>
           <div class="ce-dark-line"><span>03</span><b>Поддержка функциональной активности фибробластов</b><small>матрикс</small></div>
         </div>
+        <a class="ce-button ce-dark-link" href="/technology-calyra-lux-5">Как работает технология <em>→</em></a>
       </div>
 
       <div class="ce-package-stage">
@@ -458,19 +462,19 @@
       <div class="ce-formula-row">
         <div class="ce-formula-index">01</div>
         <div class="ce-formula-name"><b>CAP Пептид 5</b><span>Клеточный потенциал · 1000 ppm</span></div>
-        <div class="ce-formula-result"><p>Поддерживает процессы, связанные с теломерной защитой, антиоксидантными механизмами и активностью фибробластов.</p><a class="ce-button ce-formula-link" href="/cap-peptide">Подробнее о CAP Пептиде 5 <em>→</em></a></div>
+        <div class="ce-formula-result"><p>Поддерживает процессы, связанные с теломерной защитой, антиоксидантными механизмами и активностью фибробластов.</p><a class="ce-button ce-formula-link" href="/cap-peptide-5-telomery-kozhi">Подробнее о CAP Пептиде 5 <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#c8b1f0;--f-shadow:rgba(128,91,186,.18);--f-line:rgba(128,91,186,.4)"></div>
       </div>
       <div class="ce-formula-row">
         <div class="ce-formula-index">02</div>
         <div class="ce-formula-name"><b class="ce-formula-long">Полинуклеотиды (PN)</b><span>Обновление и плотность · 20 мг/мл</span></div>
-        <div class="ce-formula-result"><p>Полинуклеотиды поддерживают естественные процессы обновления кожи и создают благоприятную увлажнённую среду — кожа выглядит более плотной, ровной и отдохнувшей.</p><a class="ce-button ce-formula-link" href="/polynucleotides">Подробнее о полинуклеотидах <em>→</em></a></div>
+        <div class="ce-formula-result"><p>Полинуклеотиды поддерживают естественные процессы обновления кожи и создают благоприятную увлажнённую среду — кожа выглядит более плотной, ровной и отдохнувшей.</p><a class="ce-button ce-formula-link" href="/polynucleotides-pn-calyra-lux-5">Подробнее о полинуклеотидах <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#d2a0aa;--f-shadow:rgba(165,32,70,.16);--f-line:rgba(165,32,70,.42)"></div>
       </div>
       <div class="ce-formula-row">
         <div class="ce-formula-index">03</div>
         <div class="ce-formula-name"><b>3D-ГК</b><span>Гидратация и упругость · 10 мг/мл</span></div>
-        <div class="ce-formula-result"><p>Гиалуроновая кислота трёх молекулярных масс — 1200–1600, 900–1100 и 600–800 кДа — образует единую водоудерживающую систему: глубокое увлажнение, упругость и наполненность кожи.</p><a class="ce-button ce-formula-link" href="/hyaluronic">Подробнее о 3D-ГК <em>→</em></a></div>
+        <div class="ce-formula-result"><p>Гиалуроновая кислота трёх молекулярных масс — 1200–1600, 900–1100 и 600–800 кДа — образует единую водоудерживающую систему: глубокое увлажнение, упругость и наполненность кожи.</p><a class="ce-button ce-formula-link" href="/3d-hyaluronic-acid-calyra-lux-5">Подробнее о 3D-ГК <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#a7e4e7;--f-shadow:rgba(64,165,174,.17);--f-line:rgba(64,165,174,.43)"></div>
       </div>
       <div class="ce-formula-cta"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс и состав <em>↗</em></a></div>
@@ -484,17 +488,17 @@
         <p class="ce-text">CALYRA LUX 5 легко встраивается в процедуры, которые уже есть в вашем прайсе. Подробные схемы протоколов — на странице для косметологов.</p>
       </div>
       <div class="ce-protocol-grid">
-        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол совместного применения с радиочастотным лифтингом">
+        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол совместного применения с радиочастотным лифтингом">
           <div class="ce-protocol-top"><span>01</span><span>Радиочастоты</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M12 28c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/><path d="M8 40c9-9 18-9 27 0s18 9 27 0 14-7 18-4"/><path d="M12 52c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/></svg></div>
           <div class="ce-protocol-bottom"><h3>С радиочастотным<br>лифтингом (RF)</h3><span>Смотреть протокол</span></div>
         </a>
-        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол ухода после аппаратных процедур">
+        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол ухода после аппаратных процедур">
           <div class="ce-protocol-top"><span>02</span><span>Восстановление</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 8c2 17 8 23 25 25-17 2-23 8-25 25-2-17-8-23-25-25 17-2 23-8 25-25Z"/><path d="M63 51c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg></div>
           <div class="ce-protocol-bottom"><h3>После аппаратных<br>процедур</h3><span>Смотреть протокол</span></div>
         </a>
-        <a class="ce-protocol" href="/cosmetologists" aria-label="Открыть протокол применения с мезороллером">
+        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол применения с мезороллером">
           <div class="ce-protocol-top"><span>03</span><span>Мезороллер</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><rect x="13" y="19" width="43" height="25" rx="12"/><path d="M56 31h11v17c0 10-8 18-18 18H32"/><circle cx="25" cy="31" r="2"/><circle cx="35" cy="31" r="2"/><circle cx="45" cy="31" r="2"/></svg></div>
           <div class="ce-protocol-bottom"><h3>В протоколе<br>с мезороллером</h3><span>Смотреть протокол</span></div>
@@ -507,7 +511,7 @@
         <div><b>1</b><small>поддерживающая процедура</small><p>Раз в 4–6 месяцев</p></div>
       </div>
       <p class="ce-course-note">Количество процедур и протокол подбираются специалистом индивидуально — с учётом возраста, типа и состояния кожи.</p>
-      <div class="ce-course-cta"><a class="ce-button ce-button--wine" href="/cosmetologists">Больше информации для косметологов <em>→</em></a></div>
+      <div class="ce-course-cta"><a class="ce-button ce-button--wine" href="/cometology">Больше информации для косметологов <em>→</em></a></div>
     </div>
   </section>
 
@@ -565,7 +569,7 @@
           <li>Протоколы применения: радиочастотный лифтинг (RF), аппаратные процедуры, мезороллер</li>
           <li>Консультацию по применению и информацию об обучении</li>
         </ul>
-        <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:order">Заказать продукт</a></div>
+        <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:zakaz">Заказать продукт</a></div>
       </div>
       <img class="ce-order-syringe" data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5">
     </div>
