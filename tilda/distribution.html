@@ -1,0 +1,371 @@
+<!-- CALYRA LUX 5 — страница для дистрибьюторов. Вставлять целиком в блок T123 (HTML-код) в Tilda.
+     Картинки: папка Cosmetology/ в репозитории freyia-me/calyra-assets.
+     Кнопки ведут на попап #popup:distributor — создайте в Tilda всплывающую форму с этой ссылкой. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
+
+<style>
+#calyra-lp{
+  --wine:#651d2d; --ink:#1b2936; --sand:#ddd8d1; --sand-soft:#f4f1ed; --mist:#a9b1b5;
+  --serif:'Prata', Georgia, 'Times New Roman', serif;
+  --sans:'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-family:var(--sans); color:var(--ink); background:#fff;
+  font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; overflow-x:clip;
+}
+#allrecords{overflow:visible!important}
+#calyra-lp *,#calyra-lp *::before,#calyra-lp *::after{box-sizing:border-box;margin:0;padding:0}
+#calyra-lp img{max-width:100%;display:block}
+#calyra-lp a{color:inherit}
+#calyra-lp .cl-wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative}
+#calyra-lp .cl-sec{padding:112px 0;position:relative}
+#calyra-lp .cl-divide::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1152px,calc(100% - 48px));height:1px;background:var(--sand)}
+#calyra-lp h1,#calyra-lp h2,#calyra-lp h3{font-family:var(--serif);font-weight:400;line-height:1.15;color:var(--wine)}
+#calyra-lp h1{font-size:clamp(2.3rem,4.6vw,3.9rem);letter-spacing:-.01em}
+#calyra-lp h2{font-size:clamp(1.9rem,3.6vw,2.9rem);max-width:20ch}
+#calyra-lp h3{font-size:1.4rem;color:var(--ink)}
+#calyra-lp p{max-width:62ch}
+#calyra-lp .cl-lead{font-size:1.15rem}
+#calyra-lp .cl-muted{color:#4a5560}
+#calyra-lp .cl-kicker{font-size:.95rem;color:var(--wine);font-weight:600;margin-bottom:18px;display:block}
+#calyra-lp .cl-ico{width:30px;height:30px;stroke:var(--wine);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* кнопки */
+#calyra-lp .cl-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+#calyra-lp .cl-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:2px;font-family:var(--sans);font-weight:600;font-size:1rem;text-decoration:none;transition:background .25s,color .25s,border-color .25s;border:1.5px solid var(--wine)}
+#calyra-lp .cl-btn-main{background:var(--wine);color:#fff}
+#calyra-lp .cl-btn-main:hover{background:var(--ink);border-color:var(--ink)}
+#calyra-lp .cl-btn-ghost{background:transparent;color:var(--wine)}
+#calyra-lp .cl-btn-ghost:hover{border-color:var(--mist);color:var(--ink)}
+#calyra-lp .cl-btn:focus-visible,#calyra-lp summary:focus-visible,#calyra-lp .cl-tab:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+
+/* ===== ПЕРВЫЙ ЭКРАН ===== */
+#calyra-lp .cl-hero{position:relative;min-height:min(780px,94vh);display:flex;align-items:center;padding:72px 0;overflow:hidden}
+#calyra-lp .cl-hero > .cl-wrap{width:100%}
+#calyra-lp .cl-hero::before{content:"";position:absolute;inset:0 auto 0 0;width:58%;z-index:1;pointer-events:none;background:linear-gradient(to right,#fff 0,#fff 34%,rgba(255,255,255,.82) 62%,rgba(255,255,255,0) 100%)}
+#calyra-lp .cl-hero-bg{position:absolute;top:0;right:0;width:76%;height:100%;object-fit:cover;object-position:right center;animation:clRise 1.6s cubic-bezier(.2,.7,.2,1) both;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 34%),linear-gradient(to bottom,transparent 0,#000 10%,#000 82%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent 0,#000 34%),linear-gradient(to bottom,transparent 0,#000 10%,#000 82%,transparent 100%);mask-composite:intersect}
+#calyra-lp .cl-hero-text{position:relative;z-index:2;max-width:560px}
+#calyra-lp .cl-hero h1{font-size:clamp(2.3rem,4.4vw,3.7rem)}
+#calyra-lp .cl-hero .cl-lead{margin-top:28px;max-width:46ch}
+#calyra-lp .cl-perks{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+#calyra-lp .cl-perks span{border:1px solid var(--sand);padding:8px 14px;font-size:.92rem;border-radius:2px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+#calyra-lp .cl-hero .cl-btn-ghost{background:rgba(255,255,255,.72)}
+#calyra-lp .cl-hub{position:absolute;width:0;height:0}
+#calyra-lp .cl-hub::before,#calyra-lp .cl-hub::after{content:"";position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--wine);animation:clPing 2.6s ease-out infinite}
+#calyra-lp .cl-hub::after{animation-delay:1.3s}
+@keyframes clPing{from{transform:scale(.4);opacity:.9}to{transform:scale(3.4);opacity:0}}
+@keyframes clRise{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+
+/* ===== ПРОДУКТ ===== */
+#calyra-lp .cl-prod-head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+#calyra-lp .cl-prod-head p{margin-top:20px}
+#calyra-lp .cl-syringe{width:min(420px,36vw);transform:rotate(-8deg)}
+#calyra-lp .cl-facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:64px;border-top:1px solid var(--sand)}
+#calyra-lp .cl-fact{padding:28px 24px 0 0}
+#calyra-lp .cl-fact + .cl-fact{padding-left:24px;border-left:1px solid var(--sand)}
+#calyra-lp .cl-fact b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.8vw,3rem);line-height:1.05;color:var(--wine);margin-bottom:10px}
+#calyra-lp .cl-fact span{font-size:.98rem;color:#4a5560;display:block}
+
+/* ===== ЧТО ПОЛУЧАЕТ ПАРТНЁР (вкладки) ===== */
+#calyra-lp .cl-offer{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;margin-top:56px;align-items:start}
+#calyra-lp .cl-tabs{display:grid;gap:8px}
+#calyra-lp .cl-tab{position:relative;text-align:left;background:none;border:0;border-left:2px solid var(--sand);padding:18px 0 18px 26px;font:inherit;color:inherit;cursor:pointer;transition:border-color .4s}
+#calyra-lp .cl-tab b{display:block;font-family:var(--serif);font-weight:400;font-size:1.55rem;line-height:1.2;color:var(--mist);transition:color .4s}
+#calyra-lp .cl-tab span{display:block;font-size:.95rem;color:var(--mist);margin-top:4px;transition:color .4s}
+#calyra-lp .cl-tab::after{content:"";position:absolute;left:-2px;top:0;width:2px;height:100%;background:var(--wine);transform-origin:top;transform:scaleY(0)}
+#calyra-lp .cl-tab.on b{color:var(--wine)}
+#calyra-lp .cl-tab.on span{color:var(--ink)}
+#calyra-lp .cl-tab.on::after{transform:scaleY(1);transition:transform .5s}
+#calyra-lp .cl-tab.on.auto::after{transform:scaleY(1);animation:clFill 5s linear both}
+@keyframes clFill{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+#calyra-lp .cl-pane{display:none;background:var(--sand-soft);padding:40px}
+#calyra-lp .cl-pane.on{display:block;animation:clFade .5s ease both}
+@keyframes clFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#calyra-lp .cl-pane ul{list-style:none;display:grid;gap:26px}
+#calyra-lp .cl-pane li{display:flex;gap:18px;align-items:flex-start}
+#calyra-lp .cl-pane li b{display:block;font-size:1.05rem;margin-bottom:2px}
+#calyra-lp .cl-pane li span{color:#4a5560;font-size:.98rem}
+
+/* ===== КАК НАЧАТЬ ===== */
+#calyra-lp .cl-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:28px;margin-top:64px;padding-top:44px}
+#calyra-lp .cl-track-line{position:absolute;top:10px;left:0;right:0;height:2px;background:var(--sand)}
+#calyra-lp .cl-track-fill{position:absolute;inset:0;background:var(--wine);transform-origin:left;transform:scaleX(0)}
+#calyra-lp .cl-track-step{position:relative}
+#calyra-lp .cl-track-step::before{content:"";position:absolute;top:-41px;left:0;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--wine)}
+#calyra-lp .cl-track-num{font-family:var(--serif);font-size:2.4rem;color:var(--wine);line-height:1;display:block;margin-bottom:12px}
+#calyra-lp .cl-track-step h3{font-size:1.25rem;margin-bottom:8px}
+#calyra-lp .cl-track-step p{font-size:.96rem;color:#4a5560}
+
+/* ===== ТЁМНЫЙ БЛОК ===== */
+#calyra-lp .cl-dark{background:#1b2936;color:#e9e6e2;padding:112px 0 40px;overflow:hidden}
+#calyra-lp .cl-dark-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:8px}
+#calyra-lp .cl-dark-head .cl-btns{margin-top:28px}
+#calyra-lp .cl-dark h2{color:#fff}
+#calyra-lp .cl-dark .cl-kicker{color:var(--sand)}
+#calyra-lp .cl-dark-banner{position:relative;max-width:1400px;margin:0 auto}
+#calyra-lp .cl-dark-banner img{width:100%;height:auto;aspect-ratio:16/9;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 78%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 16%,#000 72%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 78%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 16%,#000 72%,transparent 100%);mask-composite:intersect}
+#calyra-lp .cl-dark .cl-btn-main{background:#fff;color:var(--wine);border-color:#fff}
+#calyra-lp .cl-dark .cl-btn-main:hover{background:var(--sand);border-color:var(--sand)}
+
+/* ===== КОГО ИЩЕМ ===== */
+#calyra-lp .cl-who{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+#calyra-lp .cl-who ul{list-style:none;display:grid;gap:22px;padding-top:8px}
+#calyra-lp .cl-who li{display:flex;gap:16px;align-items:flex-start}
+#calyra-lp .cl-who .cl-ico{width:26px;height:26px;margin-top:2px}
+
+/* ===== ВОПРОСЫ ===== */
+#calyra-lp .cl-faq{max-width:820px;margin:48px auto 0}
+#calyra-lp details{border-bottom:1px solid var(--sand)}
+#calyra-lp summary{list-style:none;cursor:pointer;padding:26px 44px 26px 0;position:relative;font-family:var(--serif);font-size:1.3rem;color:var(--ink)}
+#calyra-lp summary::-webkit-details-marker{display:none}
+#calyra-lp summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;border-right:1.5px solid var(--wine);border-bottom:1.5px solid var(--wine);transform:translateY(-70%) rotate(45deg);transition:transform .3s}
+#calyra-lp details[open] summary::after{transform:translateY(-20%) rotate(-135deg)}
+#calyra-lp details p{padding:0 0 26px}
+
+/* ===== ФИНАЛ ===== */
+#calyra-lp .cl-final-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+#calyra-lp .cl-final h2{font-size:clamp(2.1rem,4.2vw,3.4rem);max-width:14ch}
+#calyra-lp .cl-get{background:var(--sand-soft);padding:40px}
+#calyra-lp .cl-get h3{font-size:1.3rem;margin-bottom:22px}
+#calyra-lp .cl-get ul{list-style:none;display:grid;gap:18px}
+#calyra-lp .cl-get li{display:flex;gap:16px;align-items:center;font-weight:500}
+#calyra-lp .cl-get .cl-ico{width:28px;height:28px}
+
+#calyra-lp .cl-sticky{display:none}
+
+/* ===== ТЕЛЕФОН ===== */
+@media (max-width:900px){
+  #calyra-lp{font-size:17px}
+  #calyra-lp .cl-sec{padding:80px 0}
+  #calyra-lp .cl-hero{display:block;min-height:0;padding:0 0 72px}
+  #calyra-lp .cl-hero-bg{position:relative;width:100%;height:auto;aspect-ratio:4/3;object-position:82% center;
+    -webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent);mask-image:linear-gradient(to bottom,#000 70%,transparent)}
+  #calyra-lp .cl-hero::before{display:none}
+  #calyra-lp .cl-hero-text{margin-top:-44px}
+  #calyra-lp .cl-offer,#calyra-lp .cl-who,#calyra-lp .cl-final-grid{grid-template-columns:1fr;gap:36px}
+  #calyra-lp .cl-prod-head{grid-template-columns:1fr}
+  #calyra-lp .cl-syringe{width:85%;margin:0 auto}
+  #calyra-lp .cl-facts{grid-template-columns:1fr 1fr;margin-top:40px}
+  #calyra-lp .cl-fact,#calyra-lp .cl-fact + .cl-fact{padding:22px 14px 22px 0;border-left:0;border-bottom:1px solid var(--sand)}
+  #calyra-lp .cl-fact:nth-child(even){padding-left:14px;border-left:1px solid var(--sand)}
+  #calyra-lp .cl-tabs{grid-template-columns:repeat(3,1fr);gap:6px}
+  #calyra-lp .cl-tab{border-left:0;border-top:2px solid var(--sand);padding:12px 0 0}
+  #calyra-lp .cl-tab::after{left:0;top:-2px;width:100%;height:2px;transform-origin:left;transform:scaleX(0)}
+  #calyra-lp .cl-tab.on::after{transform:scaleX(1)}
+  #calyra-lp .cl-tab.on.auto::after{animation-name:clFillX}
+  @keyframes clFillX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  #calyra-lp .cl-tab b{font-size:1.05rem}
+  #calyra-lp .cl-tab span{display:none}
+  #calyra-lp .cl-pane{padding:26px 20px}
+  #calyra-lp .cl-track{grid-template-columns:1fr;padding:0 0 0 40px;gap:36px}
+  #calyra-lp .cl-track-line{top:0;bottom:0;left:8px;right:auto;width:2px;height:auto}
+  #calyra-lp .cl-track-fill{transform-origin:top;transform:scaleY(0)}
+  #calyra-lp .cl-track-step::before{top:4px;left:-41px}
+  #calyra-lp .cl-dark{padding:80px 0 24px}
+  #calyra-lp .cl-dark-head{grid-template-columns:1fr;gap:20px}
+  #calyra-lp .cl-get{padding:28px 22px}
+  #calyra-lp .cl-btn{width:100%}
+  #calyra-lp .cl-sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:999;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.96);border-top:1px solid var(--sand);transform:translateY(110%);transition:transform .35s}
+  #calyra-lp .cl-sticky.show{transform:none}
+  #calyra-lp .cl-sticky .cl-btn{min-height:50px}
+}
+@media (prefers-reduced-motion:reduce){
+  #calyra-lp *,#calyra-lp *::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<div id="calyra-lp">
+
+<!-- ===== 1. ПЕРВЫЙ ЭКРАН ===== -->
+<section class="cl-hero" id="cl-top">
+  <img class="cl-hero-bg" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/distribution/hero-map.webp" alt="Карта партнёрской сети по России" fetchpriority="high">
+  <div class="cl-wrap">
+    <div class="cl-hero-text">
+      <span class="cl-kicker">JeuDérm · для дистрибьюторов</span>
+      <h1>Станьте официальным дистрибьютором CALYRA LUX 5 в своём регионе</h1>
+      <p class="cl-lead">Новый продукт категории skin longevity: CAP Пептид 5, PN и 3D-гиалуроновая кислота в одном шприце. Мы закрепляем регион за партнёром, передаём заявки клиник и помогаем с запуском.</p>
+      <div class="cl-perks"><span>Закрепление региона</span><span>Заявки из региона — вам</span><span>Обучение команды</span></div>
+      <div class="cl-btns">
+        <a class="cl-btn cl-btn-main" href="#popup:distributor">Узнать условия</a>
+        <a class="cl-btn cl-btn-ghost" href="#cl-offer">Что получает партнёр</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. ПРОДУКТ, КОТОРЫЙ ЛЕГКО ПРОДАВАТЬ ===== -->
+<section class="cl-sec cl-divide">
+  <div class="cl-wrap">
+    <div class="cl-prod-head">
+      <div>
+        <h2>Продукт, который легко продавать клиникам</h2>
+        <p class="cl-lead cl-muted">CALYRA LUX 5 не требует от клиники нового оборудования: он встраивается в процедуры, которые уже есть в прайсе. А курсовая схема даёт повторные закупки.</p>
+      </div>
+      <img class="cl-syringe" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/Cosmetology/syringe.webp" alt="Шприц CALYRA LUX 5" loading="lazy">
+    </div>
+    <div class="cl-facts">
+      <div class="cl-fact"><b>3 в 1</b><span>CAP Пептид 5, PN и 3D-гиалуроновая кислота в одном шприце</span></div>
+      <div class="cl-fact"><b>3</b><span>готовых протокола: с RF-лифтингом, после аппаратных процедур, с мезороллером</span></div>
+      <div class="cl-fact"><b>3–6</b><span>процедур в курсе плюс поддерживающие раз в 4–6 месяцев</span></div>
+      <div class="cl-fact"><b>22</b><span>патента у производителя, собственное производство в Южной Корее по стандартам ISO и GMP</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. ЧТО ПОЛУЧАЕТ ПАРТНЁР ===== -->
+<section class="cl-sec cl-divide" id="cl-offer">
+  <div class="cl-wrap">
+    <span class="cl-kicker">Что получает партнёр</span>
+    <h2>Мы зарабатываем, когда зарабатываете вы</h2>
+    <div class="cl-offer">
+      <div class="cl-tabs" id="clTabs">
+        <button class="cl-tab on" type="button" aria-pressed="true"><b>Коммерция</b><span>Цены, территория, защита маржи</span></button>
+        <button class="cl-tab" type="button" aria-pressed="false"><b>Продвижение</b><span>Материалы, запуск, клиенты</span></button>
+        <button class="cl-tab" type="button" aria-pressed="false"><b>Сопровождение</b><span>Обучение, документы, менеджер</span></button>
+      </div>
+      <div>
+        <div class="cl-pane on"><ul>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M6 20V8h12l16 16-12 12z"/><circle cx="13" cy="15" r="2.5"/></svg><div><b>Дистрибьюторские цены</b><span>Специальные закупочные цены и бонусы, которые растут вместе с объёмом.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M20 36s-12-10.5-12-20a12 12 0 0 1 24 0c0 9.5-12 20-12 20z"/><circle cx="20" cy="16" r="4"/></svg><div><b>Закрепление региона</b><span>Работаем с одним партнёром на территории, без конкуренции внутри сети.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M20 4l13 5v10c0 8-5.5 14-13 17C12.5 33 7 27 7 19V9z"/><path d="M14 20l4 4 8-8"/></svg><div><b>Единая ценовая политика</b><span>Контролируем рекомендованные цены, чтобы ваша маржа не таяла из-за демпинга.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M5 10h30v20H5z"/><path d="M5 10l15 11 15-11"/></svg><div><b>Заявки из вашего региона</b><span>Все обращения клиник и косметологов с вашей территории передаём вам.</span></div></li>
+        </ul></div>
+        <div class="cl-pane"><ul>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M20 5l15 8-15 8-15-8z"/><path d="M5 20l15 8 15-8M5 27l15 8 15-8"/></svg><div><b>Маркетинговые материалы</b><span>Фото и видео продукта, презентации для клиник, тексты и макеты для соцсетей.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><rect x="5" y="8" width="30" height="27" rx="2"/><path d="M5 16h30M13 4v8M27 4v8"/></svg><div><b>Запуск в регионе</b><span>Помогаем провести презентацию продукта для клиник и косметологов вашего региона.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M10 6h20v6l-6 6v16H16V18l-6-6z"/></svg><div><b>Демо-образцы</b><span>Продукт для презентаций и пробных процедур у ключевых клиентов.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M6 30l9-9 6 6 13-13"/><path d="M26 14h8v8"/></svg><div><b>Акции бренда</b><span>Регулярные предложения для клиник, которые помогают вам привлекать новых клиентов.</span></div></li>
+        </ul></div>
+        <div class="cl-pane"><ul>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M4 9c6-2 11-1 16 3 5-4 10-5 16-3v22c-6-2-11-1-16 3-5-4-10-5-16-3z"/><path d="M20 12v22"/></svg><div><b>Обучение вашей команды</b><span>Как действует продукт, протоколы работы, аргументы для клиник и ответы на возражения.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><circle cx="15" cy="13" r="6"/><path d="M4 34c0-6 5-10 11-10s11 4 11 10M27 8a6 6 0 0 1 0 11M30 24c4 1 6 5 6 10"/></svg><div><b>Обучение для ваших клиентов</b><span>Бесплатное онлайн-обучение для косметологов, которые закупают продукт у вас.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M9 4h16l7 7v25H9z"/><path d="M25 4v7h7M15 20h12M15 26h12"/></svg><div><b>Документы и научное досье</b><span>Сертификаты, составы, протоколы и данные исследований CAP Пептида 5.</span></div></li>
+          <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M8 6h7l3 8-4 3a20 20 0 0 0 9 9l3-4 8 3v7a3 3 0 0 1-3 3A28 28 0 0 1 5 9a3 3 0 0 1 3-3z"/></svg><div><b>Персональный менеджер</b><span>Один человек на связи по заказам, поставкам и любым вопросам.</span></div></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. ТЁМНЫЙ БЛОК: ПОЧЕМУ СЕЙЧАС ===== -->
+<section class="cl-dark">
+  <div class="cl-wrap cl-dark-head">
+    <div>
+      <span class="cl-kicker">Почему сейчас</span>
+      <h2>Будьте первыми с новой категорией в своём регионе</h2>
+    </div>
+    <div>
+      <p>CALYRA LUX 5 — новинка на рынке. Запатентованный CAP Пептид 5 и 20 лет исследований учёных CSIC (Испания) дают клиникам историю, которой ещё нет у конкурентов.</p>
+      <div class="cl-btns"><a class="cl-btn cl-btn-main" href="#popup:distributor">Узнать условия для региона</a></div>
+    </div>
+  </div>
+  <div class="cl-dark-banner">
+    <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/distribution/region-map.webp" alt="Карта партнёрской сети по России" loading="lazy">
+    <span class="cl-hub" style="left:15.7%;top:39.9%" aria-hidden="true"></span>
+  </div>
+</section>
+
+<!-- ===== 5. КАК НАЧАТЬ ===== -->
+<section class="cl-sec">
+  <div class="cl-wrap">
+    <h2>Как начать сотрудничество</h2>
+    <div class="cl-track" id="clTrack">
+      <div class="cl-track-line"><div class="cl-track-fill" id="clTrackFill"></div></div>
+      <div class="cl-track-step"><span class="cl-track-num">1</span><h3>Заявка</h3><p>Оставьте контакт, и менеджер свяжется с вами.</p></div>
+      <div class="cl-track-step"><span class="cl-track-num">2</span><h3>Знакомство</h3><p>Презентуем продукт и обсуждаем ваш регион и клиентскую базу.</p></div>
+      <div class="cl-track-step"><span class="cl-track-num">3</span><h3>Договор</h3><p>Фиксируем условия, территорию и первую поставку.</p></div>
+      <div class="cl-track-step"><span class="cl-track-num">4</span><h3>Запуск</h3><p>Обучаем команду и вместе представляем продукт клиникам.</p></div>
+      <div class="cl-track-step"><span class="cl-track-num">5</span><h3>Рост</h3><p>Передаём заявки, проводим акции, бонусы растут с объёмом.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. КОГО МЫ ИЩЕМ ===== -->
+<section class="cl-sec cl-divide">
+  <div class="cl-wrap cl-who">
+    <div>
+      <span class="cl-kicker">Кого мы ищем</span>
+      <h2>Партнёров, которые знают свой рынок</h2>
+    </div>
+    <ul>
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M8 21l8 8 16-17"/></svg><span>Компании с действующей базой клиник, салонов и косметологов</span></li>
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M8 21l8 8 16-17"/></svg><span>Команда продаж или технолог, который может презентовать продукт</span></li>
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M8 21l8 8 16-17"/></svg><span>Готовность проводить семинары и встречи с клиентами</span></li>
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M8 21l8 8 16-17"/></svg><span>Соблюдение ценовой политики бренда</span></li>
+      <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M8 21l8 8 16-17"/></svg><span>Юридическое лицо или ИП</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 7. ВОПРОСЫ ===== -->
+<section class="cl-sec cl-divide">
+  <div class="cl-wrap">
+    <h2 style="margin:0 auto;text-align:center">Частые вопросы</h2>
+    <div class="cl-faq">
+      <details><summary>Какой минимальный объём закупки?</summary><p>Условия зависят от региона и формата работы. Менеджер расскажет о них на первом созвоне.</p></details>
+      <details><summary>Можно ли получить эксклюзив на регион?</summary><p>Да, мы закрепляем территорию за партнёром. Условия закрепления обсуждаем индивидуально.</p></details>
+      <details><summary>Какие документы есть на продукт?</summary><p>Производство в Южной Корее соответствует стандартам ISO и GMP. Полный пакет документов на продукт предоставим после заявки.</p></details>
+      <details><summary>Помогаете ли вы продавать клиникам?</summary><p>Да: обучаем вашу команду, даём маркетинговые материалы и демо-образцы, помогаем провести презентацию продукта в регионе.</p></details>
+      <details><summary>Я косметолог и хочу купить продукт для себя</summary><p>Для специалистов есть отдельная страница с прайсом и протоколами. <a href="https://calyraluxmin.tilda.ws/cometology" style="color:var(--wine);font-weight:600">Перейти к странице для косметологов</a></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. ФИНАЛ ===== -->
+<section class="cl-sec cl-divide cl-final">
+  <div class="cl-wrap cl-final-grid">
+    <div>
+      <h2>Обсудим условия для вашего региона</h2>
+      <p class="cl-lead" style="margin-top:22px">Оставьте заявку, и менеджер свяжется с вами. Ни к чему не обязывает.</p>
+      <div class="cl-btns"><a class="cl-btn cl-btn-main" href="#popup:distributor">Стать дистрибьютором</a></div>
+    </div>
+    <div class="cl-get">
+      <h3>Что вы получите после заявки</h3>
+      <ul>
+        <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M9 4h16l7 7v25H9z"/><path d="M25 4v7h7M15 20h12M15 26h12"/></svg>Дистрибьюторский прайс и условия</li>
+        <li><svg class="cl-ico" viewBox="0 0 40 40"><rect x="4" y="7" width="32" height="22" rx="2"/><path d="M14 35h12M20 29v6"/></svg>Презентацию продукта</li>
+        <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M16 4v12L7 32a3 3 0 0 0 2.6 4.5h20.8A3 3 0 0 0 33 32l-9-16V4"/><path d="M13 4h14M11 27h18"/></svg>Научное досье по CAP Пептиду 5</li>
+        <li><svg class="cl-ico" viewBox="0 0 40 40"><path d="M8 6h7l3 8-4 3a20 20 0 0 0 9 9l3-4 8 3v7a3 3 0 0 1-3 3A28 28 0 0 1 5 9a3 3 0 0 1 3-3z"/></svg>Созвон с менеджером по вашему региону</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cl-sticky" id="clSticky"><a class="cl-btn cl-btn-main" href="#popup:distributor">Узнать условия</a></div>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('calyra-lp'); if(!root) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* вкладки «Что получает партнёр»: автопоказ до первого клика */
+  var tabs=root.querySelectorAll('.cl-tab'), panes=root.querySelectorAll('.cl-pane'), cur=0, timer=null;
+  function show(i,auto){ cur=i;
+    tabs.forEach(function(t,k){ t.classList.toggle('on',k===i); t.classList.toggle('auto',!!auto&&k===i); t.setAttribute('aria-pressed',k===i); });
+    panes.forEach(function(p,k){ p.classList.toggle('on',k===i); }); }
+  tabs.forEach(function(t,k){ t.addEventListener('click',function(){ clearInterval(timer); timer=null; show(k,false); }); });
+  function startTabs(){ if(reduce) return; show(0,true); timer=setInterval(function(){ show((cur+1)%tabs.length,true); },5000); }
+  if('IntersectionObserver' in window){
+    var to=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ startTabs(); to.disconnect(); } },{threshold:.4});
+    to.observe(document.getElementById('clTabs'));
+  }
+
+  /* шкала «Как начать» + липкая кнопка */
+  var track=document.getElementById('clTrack'), fill=document.getElementById('clTrackFill');
+  var sticky=document.getElementById('clSticky'), hero=document.getElementById('cl-top'), fin=root.querySelector('.cl-final');
+  function onScroll(){
+    var r=track.getBoundingClientRect(), vh=window.innerHeight;
+    var p=Math.max(0,Math.min(1,(vh*0.8-r.top)/(r.height+vh*0.3)));
+    fill.style.transform=(window.innerWidth<=900)?'scaleY('+p+')':'scaleX('+p+')';
+    sticky.classList.toggle('show',hero.getBoundingClientRect().bottom<0 && fin.getBoundingClientRect().top>vh);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+})();
+</script>
