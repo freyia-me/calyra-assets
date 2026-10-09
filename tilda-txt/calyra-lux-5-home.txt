@@ -411,7 +411,7 @@
       <div class="ce-hero-copy">
         <div class="ce-label ce-label--wine">JeuDérm · для косметологов</div>
         <h1 class="ce-h1">Новая эра<br><i>долголетия</i> кожи</h1>
-        <p class="ce-hero-lead">CALYRA LUX 5 — CAP Пептид 5, полинуклеотиды и 3D-гиалуроновая кислота в одном шприце. Комплексная работа с качеством кожи: увлажнённость, плотность, ровный рельеф и сияние.</p>
+        <p class="ce-hero-lead">CALYRA LUX 5 — CAP Пептид 5, полинуклеотиды (PN) и гиалуронат натрия в одном шприце. Комплексная работа с качеством кожи: увлажнённость, плотность, ровный рельеф и сияние.</p>
         <a class="ce-button ce-button--wine" href="#popup:price">Получить прайс для специалистов <em>↗</em></a>
       </div>
 
@@ -419,11 +419,11 @@
         <img class="ce-hero-photo" data-asset="calyra-hero-product.webp" alt="Упаковка JeuDérm CALYRA LUX 5 и два шприца по 2,5 мл на травертиновой подставке">
         <div class="ce-particles" aria-hidden="true"><i style="--x:58.4%;--s:6px;--c:#bea3ef;--d:12.0s;--w:-12.3s;--dx:14px"></i><i style="--x:69.2%;--s:4px;--c:#74d3da;--d:12.2s;--w:-10.1s;--dx:-15px"></i><i style="--x:37.9%;--s:5px;--c:#c0476f;--d:8.6s;--w:-6.1s;--dx:-15px"></i><i style="--x:55.6%;--s:8px;--c:#ffffff;--d:9.2s;--w:-9.5s;--dx:-6px"></i><i style="--x:42.6%;--s:7px;--c:#bea3ef;--d:8.8s;--w:-10.4s;--dx:-22px"></i><i style="--x:58.2%;--s:5px;--c:#74d3da;--d:8.7s;--w:-12.6s;--dx:-30px"></i><i style="--x:63.8%;--s:5px;--c:#c0476f;--d:12.4s;--w:-3.8s;--dx:28px"></i><i style="--x:55.4%;--s:5px;--c:#ffffff;--d:8.9s;--w:-12.6s;--dx:-18px"></i><i style="--x:70.7%;--s:7px;--c:#bea3ef;--d:9.5s;--w:-4.7s;--dx:-20px"></i><i style="--x:41.2%;--s:4px;--c:#74d3da;--d:9.7s;--w:-10.6s;--dx:5px"></i><i style="--x:57.5%;--s:6px;--c:#c0476f;--d:8.3s;--w:-4.6s;--dx:-12px"></i><i style="--x:61.1%;--s:5px;--c:#ffffff;--d:10.4s;--w:-9.2s;--dx:-27px"></i><i style="--x:71.1%;--s:4px;--c:#bea3ef;--d:12.7s;--w:-4.6s;--dx:-6px"></i><i style="--x:55.8%;--s:7px;--c:#74d3da;--d:9.8s;--w:-7.5s;--dx:-29px"></i><i style="--x:37.7%;--s:5px;--c:#c0476f;--d:11.1s;--w:-12.4s;--dx:-23px"></i><i style="--x:44.9%;--s:7px;--c:#ffffff;--d:9.7s;--w:-4.6s;--dx:1px"></i><i style="--x:63.9%;--s:4px;--c:#bea3ef;--d:10.9s;--w:-10.2s;--dx:-8px"></i><i style="--x:46.7%;--s:7px;--c:#74d3da;--d:12.7s;--w:-1.2s;--dx:-10px"></i></div>
         <img class="ce-hero-cutout" data-asset="calyra-hero-product-cutout.webp" alt="" aria-hidden="true">
-        <div class="ce-callouts" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line style="--t:.9s" x1="41" y1="36" x2="28" y2="30"/><line style="--t:1.6s" x1="53.5" y1="40" x2="63" y2="22"/><line style="--t:2.3s" x1="63" y1="67" x2="72" y2="64"/></svg><span class="ce-callout-dot" style="--c:#a80b3d;--t:.9s;left:41%;top:36%"></span><span class="ce-callout-dot" style="--c:#5fc7cf;--t:1.6s;left:53.5%;top:40%"></span><span class="ce-callout-dot" style="--c:#c0476f;--t:2.3s;left:63%;top:67%"></span><div class="ce-callout" style="--t:.9s;right:72%;top:24%"><b>CAP Пептид 5</b><span><em>1000 ppm</em> · клеточный потенциал</span></div><div class="ce-callout" style="--t:1.6s;left:63%;top:15%"><b>3D-гиалуроновая кислота</b><span><em>10 мг/мл</em> · увлажнение и упругость</span></div><div class="ce-callout" style="--t:2.3s;left:72%;top:58%"><b>Полинуклеотиды (PN)</b><span><em>20 мг/мл</em> · обновление кожи</span></div></div>
+        <div class="ce-callouts" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line style="--t:.9s" x1="41" y1="36" x2="28" y2="30"/><line style="--t:1.6s" x1="53.5" y1="40" x2="63" y2="22"/><line style="--t:2.3s" x1="63" y1="67" x2="72" y2="64"/></svg><span class="ce-callout-dot" style="--c:#a80b3d;--t:.9s;left:41%;top:36%"></span><span class="ce-callout-dot" style="--c:#5fc7cf;--t:1.6s;left:53.5%;top:40%"></span><span class="ce-callout-dot" style="--c:#c0476f;--t:2.3s;left:63%;top:67%"></span><div class="ce-callout" style="--t:.9s;right:72%;top:24%"><b>CAP Пептид 5</b><span><em>1000 ppm</em> · клеточный потенциал</span></div><div class="ce-callout" style="--t:1.6s;left:63%;top:15%"><b>Гиалуронат натрия</b><span><em>1%</em> · интенсивное увлажнение</span></div><div class="ce-callout" style="--t:2.3s;left:72%;top:58%"><b>Полинуклеотиды (PN)</b><span><em>2%</em> · обновление кожи</span></div></div>
       </div>
 
       <div class="ce-hero-points" aria-label="Коротко о продукте">
-        <div class="ce-hero-point" style="--point:#bea3ef"><b>3 актива в 1 шприце</b><span>CAP Пептид 5 · полинуклеотиды · 3D&#8209;ГК</span></div>
+        <div class="ce-hero-point" style="--point:#bea3ef"><b>3 актива в 1 шприце</b><span>CAP Пептид 5 · полинуклеотиды · гиалуронат натрия</span></div>
         <div class="ce-hero-point" style="--point:#74d3da"><b>2 × 2,5 мл</b><span>Два шприца в упаковке</span></div>
         <div class="ce-hero-point" style="--point:#b86076"><b>3 протокола</b><span>Радиочастотный лифтинг (RF), аппаратные процедуры, мезороллер</span></div>
         <div class="ce-hero-point" style="--point:#a80b3d"><b>Поддержка</b><span>Консультации и обучение для специалистов</span></div>
@@ -433,8 +433,8 @@
     <div class="ce-composition">
       <div class="ce-wrap ce-composition-row">
         <div class="ce-composition-item"><strong>1000 ppm</strong><span>CAP Пептид 5<br>sh-Oligopeptide-104 SP</span></div>
-        <div class="ce-composition-item"><strong>20 мг/мл</strong><span>Полинуклеотиды<br>(PN)</span></div>
-        <div class="ce-composition-item"><strong>10 мг/мл</strong><span>3D-гиалуроновая<br>кислота</span></div>
+        <div class="ce-composition-item"><strong>2%</strong><span>Полинуклеотиды<br>(PN)</span></div>
+        <div class="ce-composition-item"><strong>1%</strong><span>Гиалуронат<br>натрия</span></div>
       </div>
     </div>
   </section>
@@ -446,7 +446,7 @@
         <h2 class="ce-h2">Не просто увлажнение, а работа на <em>качество и ресурс кожи</em></h2>
       </div>
       <div class="ce-statement-bottom">
-        <p class="ce-text">Большинство продуктов решают одну задачу. В CALYRA LUX 5 три компонента работают в связке: пептид поддерживает клеточный потенциал кожи, полинуклеотиды — её естественное обновление, а 3D-гиалуроновая кислота отвечает за глубокое увлажнение и упругость.</p>
+        <p class="ce-text">Большинство продуктов решают одну задачу. В CALYRA LUX 5 три компонента работают в связке: пептид поддерживает клеточный потенциал кожи, полинуклеотиды — её естественное обновление, а гиалуронат натрия интенсивно увлажняет и поддерживает защитные функции кожи.</p>
         <div class="ce-proofline"><span>Три задачи —<br>одна процедура</span><b>3 в 1</b></div>
       </div>
       <div class="ce-trust">
@@ -473,7 +473,7 @@
       </div>
 
       <div class="ce-package-stage">
-        <div class="ce-package-photo"><img data-asset="calyra-lux-5-box-syringes.jpg" alt="Упаковка JeuDérm CALYRA LUX 5 и два шприца по 2,5 мл"></div>
+        <div class="ce-package-photo"><img data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@034d41d10600/assets/calyra-lux-5-box-reflection.jpg" alt="Упаковка JeuDérm CALYRA LUX 5 и два шприца по 2,5 мл"></div>
         <div class="ce-orbit" aria-hidden="true"></div>
         <div class="ce-dark-tag"><b>1000 ppm</b><span>sh-Oligopeptide-104 SP</span></div>
       </div>
@@ -490,19 +490,19 @@
       <div class="ce-formula-row">
         <div class="ce-formula-index">01</div>
         <div class="ce-formula-name"><b>CAP Пептид 5</b><span>Клеточный потенциал · 1000 ppm</span></div>
-        <div class="ce-formula-result"><p>Поддерживает процессы, связанные с теломерной защитой, антиоксидантными механизмами и активностью фибробластов.</p><a class="ce-button ce-formula-link" href="/cap-peptide-5-telomery-kozhi">Подробнее о CAP Пептиде 5 <em>→</em></a></div>
+        <div class="ce-formula-result"><p>Действует сразу на 5 мишеней старения: поддерживает длину теломер и активность фибробластов, защищает коллаген, повышает уровень антиоксидантных ферментов и снижает воспалительные маркеры.</p><a class="ce-button ce-formula-link" href="/cap-peptide-5-telomery-kozhi">Подробнее о CAP Пептиде 5 <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#c8b1f0;--f-shadow:rgba(128,91,186,.18);--f-line:rgba(128,91,186,.4)"></div>
       </div>
       <div class="ce-formula-row">
         <div class="ce-formula-index">02</div>
-        <div class="ce-formula-name"><b class="ce-formula-long">Полинуклеотиды (PN)</b><span>Обновление и плотность · 20 мг/мл</span></div>
-        <div class="ce-formula-result"><p>Полинуклеотиды поддерживают естественные процессы обновления кожи и создают благоприятную увлажнённую среду — кожа выглядит более плотной, ровной и отдохнувшей.</p><a class="ce-button ce-formula-link" href="/polynucleotides-pn-calyra-lux-5">Подробнее о полинуклеотидах <em>→</em></a></div>
+        <div class="ce-formula-name"><b class="ce-formula-long">Полинуклеотиды (PN)</b><span>Обновление и плотность · 2%</span></div>
+        <div class="ce-formula-result"><p>Высокоочищенные фрагменты ДНК поддерживают синтез коллагена и эластина, увлажняют и защищают кожу от свободных радикалов — она выглядит более плотной, упругой и отдохнувшей.</p><a class="ce-button ce-formula-link" href="/polynucleotides-pn-calyra-lux-5">Подробнее о полинуклеотидах <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#d2a0aa;--f-shadow:rgba(165,32,70,.16);--f-line:rgba(165,32,70,.42)"></div>
       </div>
       <div class="ce-formula-row">
         <div class="ce-formula-index">03</div>
-        <div class="ce-formula-name"><b>3D-ГК</b><span>Гидратация и упругость · 10 мг/мл</span></div>
-        <div class="ce-formula-result"><p>Гиалуроновая кислота трёх молекулярных масс — 1200–1600, 900–1100 и 600–800 кДа — образует единую водоудерживающую систему: глубокое увлажнение, упругость и наполненность кожи.</p><a class="ce-button ce-formula-link" href="/3d-hyaluronic-acid-calyra-lux-5">Подробнее о 3D-ГК <em>→</em></a></div>
+        <div class="ce-formula-name"><b class="ce-formula-long">Гиалуронат натрия</b><span>Увлажнение и защита · 1%</span></div>
+        <div class="ce-formula-result"><p>Натриевая соль гиалуроновой кислоты — более стабильная и устойчивая к окислению форма. Интенсивно увлажняет, поддерживает защитные функции кожи и обновление эпидермиса.</p><a class="ce-button ce-formula-link" href="/3d-hyaluronic-acid-calyra-lux-5">Подробнее о гиалуронате натрия <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#a7e4e7;--f-shadow:rgba(64,165,174,.17);--f-line:rgba(64,165,174,.43)"></div>
       </div>
       <div class="ce-formula-cta"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс и состав <em>↗</em></a></div>
@@ -613,7 +613,7 @@
         <a href="/technology-calyra-lux-5"><span>Технология CALYRA LUX 5</span><em>→</em></a>
         <a href="/cap-peptide-5-telomery-kozhi"><span>CAP Пептид 5</span><em>→</em></a>
         <a href="/polynucleotides-pn-calyra-lux-5"><span>Полинуклеотиды (PN)</span><em>→</em></a>
-        <a href="/3d-hyaluronic-acid-calyra-lux-5"><span>3D-гиалуроновая кислота</span><em>→</em></a>
+        <a href="/3d-hyaluronic-acid-calyra-lux-5"><span>Гиалуронат натрия</span><em>→</em></a>
         <a href="/study"><span>Обучение для косметологов</span><em>→</em></a>
         <a href="/contacts"><span>Контакты</span><em>→</em></a>
       </div>
