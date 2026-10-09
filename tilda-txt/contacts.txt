@@ -108,7 +108,7 @@
         <div class="cl-line"><span>Телефон</span><a href="tel:+74951477040">+7 (495) 147-70-40</a></div>
         <div class="cl-line"><span>Почта</span><a href="mailto:info@revolution.bio">info@revolution.bio</a></div>
         <div class="cl-line"><span>Мессенджеры</span><div class="cl-msg">
-          <a href="https://t.me/revolution_bio" target="_blank" rel="noopener">Телеграм</a>
+          <a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Телеграм</a>
           <a href="https://wa.me/message/67P2PBU2MF5QD1" target="_blank" rel="noopener">Ватсап</a>
           <a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a>
         </div></div>
