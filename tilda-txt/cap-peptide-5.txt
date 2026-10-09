@@ -333,7 +333,7 @@
           <div>
             <p class="clx-lead">CAP Пептид&nbsp;5 направлен на теломерную защиту, функциональный потенциал фибробластов и устойчивость клеточного окружения к окислительному стрессу.</p>
             <div class="clx-btns">
-              <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
+              <a class="clx-btn clx-btn--fill" href="#popup:price_peptide">Получить прайс <i>↗</i></a>
               <a class="clx-btn clx-btn--line" href="#clx-cap-mechanism" data-clx-scroll>Как работает технология</a>
             </div>
           </div>
@@ -502,7 +502,7 @@
         <ul class="clx-chips"><li class="clx-chip">Вопросы и ответы</li></ul>
         <h2 class="clx-h2">Коротко <em>о главном</em></h2>
         <p class="clx-lead">Не нашли ответ? Специалист расскажет о применении и условиях сотрудничества.</p>
-        <div class="clx-btns"><a class="clx-btn clx-btn--line" href="#popup:price">Задать вопрос</a></div>
+        <div class="clx-btns"><a class="clx-btn clx-btn--line" href="#popup:ask-peptide">Задать вопрос</a></div>
       </div>
       <div>
         <details class="clx-qa" open>
@@ -534,15 +534,15 @@
           <h2 class="clx-h2">Технология поддержки <em>молодости кожи</em></h2>
           <p class="clx-lead">CAP Пептид&nbsp;5, полинуклеотиды (PN) и 3D-гиалуроновая кислота объединены в системе, где каждый компонент решает свою задачу.</p>
           <div class="clx-btns">
-            <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
-            <a class="clx-btn clx-btn--line" href="https://calyraluxmin.tilda.ws/technology-calyra-lux-5">О технологии</a>
+            <a class="clx-btn clx-btn--fill" href="#popup:price_peptide">Получить прайс <i>↗</i></a>
+            <a class="clx-btn clx-btn--line" href="/technology-calyra-lux-5">О технологии</a>
           </div>
         </div>
       </div>
       <div class="clx-more">
-        <a href="https://calyraluxmin.tilda.ws/technology-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/hero-strands.webp" alt="" loading="lazy" style="object-fit:cover;border-radius:50%"><span>Технология CALYRA LUX&nbsp;5<small>Как работают три компонента</small></span><i>↗</i></a>
-        <a href="https://calyraluxmin.tilda.ws/polynucleotides-pn-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="" loading="lazy"><span>Полинуклеотиды (PN)<small>20 мг/мл</small></span><i>↗</i></a>
-        <a href="https://calyraluxmin.tilda.ws/3d-hyaluronic-acid-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/ha-drop.webp" alt="" loading="lazy"><span>3D-гиалуроновая кислота<small>10 мг/мл</small></span><i>↗</i></a>
+        <a href="/technology-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/hero-strands.webp" alt="" loading="lazy" style="object-fit:cover;border-radius:50%"><span>Технология CALYRA LUX&nbsp;5<small>Как работают три компонента</small></span><i>↗</i></a>
+        <a href="/polynucleotides-pn-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="" loading="lazy"><span>Полинуклеотиды (PN)<small>20 мг/мл</small></span><i>↗</i></a>
+        <a href="/gialuronat-natriya-calyra-lux-5"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/ha-drop.webp" alt="" loading="lazy"><span>Гиалуронат натрия<small>1%</small></span><i>↗</i></a>
       </div>
       <div class="clx-disclaimer">
         <span>Профессиональный косметический продукт для наружного применения</span>

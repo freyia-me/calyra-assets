@@ -194,7 +194,7 @@
         <div>
           <p class="clx-lead">CALYRA LUX&nbsp;5 объединяет <b>CAP Пептид&nbsp;5</b>, <b>полинуклеотиды (PN)</b> и <b>3D-гиалуроновую кислоту</b> в одной профессиональной системе ухода.</p>
           <div class="clx-btns">
-            <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
+            <a class="clx-btn clx-btn--fill" href="#popup:price_tech">Получить прайс <i>↗</i></a>
             <a class="clx-btn clx-btn--line" href="#clx-components">Состав формулы</a>
           </div>
         </div>
@@ -239,7 +239,7 @@
             <li>уход за кожей с признаками возрастных изменений</li>
           </ul>
           <div class="clx-note"><span>В европейской базе косметических ингредиентов <b>sh-Oligopeptide-104 SP</b> классифицирован как синтетический компонент с кондиционирующими и увлажняющими функциями.</span></div>
-          <a class="clx-btn clx-btn--fill" href="https://calyraluxmin.tilda.ws/cap-peptide-5-telomery-kozhi">Подробнее о CAP Пептиде&nbsp;5 <i>↗</i></a>
+          <a class="clx-btn clx-btn--fill" href="/cap-peptide-5-telomery-kozhi">Подробнее о CAP Пептиде&nbsp;5 <i>↗</i></a>
         </div>
       </div>
 
@@ -260,7 +260,7 @@
             <li>повышение уровня комфорта кожи</li>
           </ul>
           <div class="clx-note"><span>В CALYRA LUX&nbsp;5 полинуклеотиды работают как компонент профессионального косметического ухода: <b>поддержка качества и естественного обновления кожи</b>.</span></div>
-          <a class="clx-btn clx-btn--fill" href="https://calyraluxmin.tilda.ws/polynucleotides-pn-calyra-lux-5">Подробнее о полинуклеотидах <i>↗</i></a>
+          <a class="clx-btn clx-btn--fill" href="/polynucleotides-pn-calyra-lux-5">Подробнее о полинуклеотидах <i>↗</i></a>
         </div>
       </div>
 
@@ -291,7 +291,7 @@
             </div>
           </div>
           <div class="clx-note"><span>Все три фракции относятся к средне- и высокомолекулярной гиалуроновой кислоте. «Компактные» — в сравнении с другими цепями формулы.</span></div>
-          <a class="clx-btn clx-btn--fill" href="https://calyraluxmin.tilda.ws/3d-hyaluronic-acid-calyra-lux-5">Подробнее о 3D-ГК <i>↗</i></a>
+          <a class="clx-btn clx-btn--fill" href="/gialuronat-natriya-calyra-lux-5">Подробнее о гиалуронате натрия <i>↗</i></a>
         </div>
       </div>
     </div>
@@ -349,7 +349,7 @@
         <ul class="clx-chips"><li class="clx-chip">Коротко о важном</li></ul>
         <h2 class="clx-h2">Вопросы <em>и ответы</em></h2>
         <p class="clx-lead">Не нашли ответ? Специалист расскажет о применении и условиях сотрудничества.</p>
-        <div class="clx-btns"><a class="clx-btn clx-btn--line" href="#popup:price">Задать вопрос</a></div>
+        <div class="clx-btns"><a class="clx-btn clx-btn--line" href="#popup:ask-tech">Задать вопрос</a></div>
       </div>
       <div>
         <details class="clx-qa" open>
@@ -385,8 +385,8 @@
           <h2 class="clx-h2">CALYRA LUX&nbsp;5 <em>для вашей практики</em></h2>
           <p class="clx-lead">Прайс, протоколы применения и информация об обучении для специалистов.</p>
           <div class="clx-btns">
-            <a class="clx-btn clx-btn--fill" href="#popup:price">Получить прайс <i>↗</i></a>
-            <a class="clx-btn clx-btn--line" href="#popup:order">Заказать продукт</a>
+            <a class="clx-btn clx-btn--fill" href="#popup:price_tech">Получить прайс <i>↗</i></a>
+            <a class="clx-btn clx-btn--line" href="#popup:zakaz_tech">Заказать продукт</a>
           </div>
         </div>
       </div>
