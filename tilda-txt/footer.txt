@@ -1,0 +1,120 @@
+<!-- CALYRA LUX 5 — подвал сайта. Вставлять целиком в блок T123 (HTML-код) на отдельной странице «Подвал»,
+     затем: Настройки сайта → Шапка и подвал → выбрать эту страницу как подвал для всех страниц. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
+
+<style>
+#calyra-ft{
+  --wine:#651d2d; --wine-soft:#e7acbe; --ink:#1b2936; --sand:#ddd8d1; --mist:#a9b1b5;
+  --serif:'Prata', Georgia, 'Times New Roman', serif;
+  --sans:'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-family:var(--sans); background:var(--ink); color:#d9dde0; font-size:15px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow:hidden; position:relative;
+}
+#calyra-ft *,#calyra-ft *::before,#calyra-ft *::after{box-sizing:border-box;margin:0;padding:0}
+#calyra-ft a{color:inherit;text-decoration:none}
+#calyra-ft .ft-wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative}
+#calyra-ft::before{content:"";position:absolute;width:620px;height:620px;right:-180px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(101,29,45,.55),rgba(101,29,45,0) 70%);pointer-events:none}
+
+/* верх */
+#calyra-ft .ft-top{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.1fr;gap:48px;padding:80px 0 56px}
+#calyra-ft .ft-logo{font-family:var(--serif);font-size:34px;line-height:1;color:#fff;letter-spacing:-.01em}
+#calyra-ft .ft-brand small{display:block;margin-top:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--wine-soft)}
+#calyra-ft .ft-brand p{margin-top:22px;max-width:30ch;color:#aab2b8}
+#calyra-ft .ft-social{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;list-style:none}
+#calyra-ft .ft-social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);color:#fff;transition:background .25s,border-color .25s,transform .25s}
+#calyra-ft .ft-social a:hover{background:var(--wine);border-color:var(--wine);transform:translateY(-2px)}
+#calyra-ft .ft-social svg{width:20px;height:20px;fill:currentColor}
+
+#calyra-ft h3{font-family:var(--serif);font-weight:400;font-size:19px;color:#fff;margin-bottom:18px}
+#calyra-ft .ft-col ul{list-style:none;display:grid;gap:10px}
+#calyra-ft .ft-col a{color:#c3c9cd;transition:color .2s}
+#calyra-ft .ft-col a:hover{color:#fff}
+
+#calyra-ft .ft-contact a.ft-big{display:block;font-family:var(--serif);font-size:22px;line-height:1.3;color:#fff}
+#calyra-ft .ft-contact a.ft-big:hover{color:var(--wine-soft)}
+#calyra-ft .ft-contact p{margin-top:12px;color:#aab2b8;font-size:14px}
+#calyra-ft .ft-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-top:22px;min-height:50px;padding:0 24px;border-radius:2px;background:var(--wine);color:#fff;font-weight:600;font-size:15px;border:1.5px solid var(--wine);transition:background .25s,color .25s}
+#calyra-ft .ft-btn:hover{background:#fff;color:var(--wine);border-color:#fff}
+#calyra-ft a:focus-visible{outline:2px solid var(--wine-soft);outline-offset:3px}
+
+/* низ */
+#calyra-ft .ft-bottom{border-top:1px solid rgba(255,255,255,.14);padding:26px 0 34px;display:grid;gap:14px;font-size:12px;line-height:1.6;color:#8d969c}
+#calyra-ft .ft-bottom b{color:#c3c9cd;font-weight:600}
+#calyra-ft .ft-legal-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+#calyra-ft .ft-legal-row a{color:#c3c9cd;border-bottom:1px solid rgba(255,255,255,.25)}
+#calyra-ft .ft-legal-row a:hover{color:#fff;border-color:#fff}
+
+@media (max-width:980px){
+  #calyra-ft .ft-top{grid-template-columns:1fr 1fr;gap:40px 32px;padding:64px 0 44px}
+}
+@media (max-width:560px){
+  #calyra-ft .ft-top{grid-template-columns:1fr;gap:34px;padding:52px 0 36px}
+  #calyra-ft .ft-btn{width:100%}
+  #calyra-ft .ft-legal-row{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){#calyra-ft *{transition:none!important}}
+</style>
+
+<footer id="calyra-ft">
+  <div class="ft-wrap">
+    <div class="ft-top">
+
+      <div class="ft-brand">
+        <a class="ft-logo" href="/">CALYRA LUX 5</a>
+        <small>JeuDérm · новая эра долголетия кожи</small>
+        <p>Профессиональный косметический продукт: CAP Пептид 5, полинуклеотиды (PN) и гиалуронат натрия в одном шприце.</p>
+        <ul class="ft-social" aria-label="Мы в соцсетях">
+          <li><a href="https://t.me/revolution_bio" target="_blank" rel="noopener" aria-label="Телеграм" title="Телеграм"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 3.6 2.9 10.7c-1.3.5-1.2 1.3-.2 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5ZM9.6 14.3l-.4 4 -1.4-4.6 10.3-6.5-8.5 7.1Z"/></svg></a></li>
+          <li><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener" aria-label="ВКонтакте — сообщество" title="ВКонтакте — сообщество"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.8 17.5c-5.6 0-8.9-3.9-9-10.3h2.8c.1 4.7 2.2 6.7 3.8 7.1V7.2h2.7v4.1c1.6-.2 3.2-2 3.8-4.1h2.6c-.4 2.5-2.3 4.4-3.6 5.1 1.3.6 3.4 2.2 4.2 5.2h-2.9c-.6-2-2.2-3.5-4.1-3.7v3.7h-.3Z"/></svg></a></li>
+          <li><a href="https://vk.com/id1111890044" target="_blank" rel="noopener" aria-label="ВКонтакте — личная страница" title="ВКонтакте — личная страница"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.6-3.8 3.6-6 7.5-6s6.9 2.2 7.5 6h-15Z"/></svg></a></li>
+          <li><a href="https://wa.me/message/67P2PBU2MF5QD1" target="_blank" rel="noopener" aria-label="Ватсап" title="Ватсап"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.6 21.5l4.9-1.3A9.4 9.4 0 1 0 12 2.5Zm0 17.1c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A7.7 7.7 0 1 1 12 19.6Zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.3 6.3 0 0 1-3.1-2.7c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3Z"/></svg></a></li>
+          <li><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener" aria-label="Дзен" title="Дзен"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c-.1 5.4-1.3 8.4-3.3 9.5C7.1 12.5 4.8 12.9 2 13c2.8.1 5.1.5 6.7 1.5 2 1.1 3.2 4.1 3.3 9.5.1-5.4 1.3-8.4 3.3-9.5 1.6-1 3.9-1.4 6.7-1.5-2.8-.1-5.1-.5-6.7-1.5C13.3 10.4 12.1 7.4 12 2Z"/></svg></a></li>
+        </ul>
+      </div>
+
+      <nav class="ft-col" aria-label="Для кого">
+        <h3>Для кого</h3>
+        <ul>
+          <li><a href="/cometology">Косметологам</a></li>
+          <li><a href="/patients">Клиентам</a></li>
+          <li><a href="/distribution-clinics">Дистрибьюторам и клиникам</a></li>
+          <li><a href="/study">Обучение</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ft-col" aria-label="О продукте">
+        <h3>О продукте</h3>
+        <ul>
+          <li><a href="/technology-calyra-lux-5">Технология CALYRA LUX 5</a></li>
+          <li><a href="/cap-peptide-5-telomery-kozhi">CAP Пептид 5</a></li>
+          <li><a href="/polynucleotides-pn-calyra-lux-5">Полинуклеотиды (PN)</a></li>
+          <li><a href="/gialuronat-natriya-calyra-lux-5">Гиалуронат натрия</a></li>
+        </ul>
+      </nav>
+
+      <div class="ft-col ft-contact">
+        <h3>Контакты</h3>
+        <a class="ft-big" href="tel:+74951477040">+7 (495) 147-70-40</a>
+        <a class="ft-big" href="mailto:info@revolution.bio">info@revolution.bio</a>
+        <p>105064, Москва, ул. Земляной Вал, д. 7, помещ. 2/4</p>
+        <a class="ft-btn" href="/contacts">Связаться с нами</a>
+      </div>
+
+    </div>
+
+    <div class="ft-bottom">
+      <p><b>Важно:</b> информация на сайте носит ознакомительный характер и не является публичной офертой. Индивидуальные результаты применения могут различаться. CALYRA LUX 5 — профессиональный косметический продукт для наружного применения.</p>
+      <p>ООО «Революшн Био» · ИНН 9709100594 · КПП 770901001 · ОГРН 1237700714085 · Юридический адрес: 105064, г. Москва, вн. тер. г. муниципальный округ Басманный, ул. Земляной Вал, д. 7, помещ. 2/4</p>
+      <div class="ft-legal-row">
+        <span>© <span id="ftYear">2026</span> ООО «Революшн Био». Все права защищены.</span>
+        <a href="/privacy">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){ var y=document.getElementById('ftYear'); if(y) y.textContent=new Date().getFullYear(); })();
+</script>
