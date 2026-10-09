@@ -425,7 +425,7 @@
       <div class="ce-hero-points" aria-label="Коротко о продукте">
         <div class="ce-hero-point" style="--point:#bea3ef"><b>3 актива в 1 шприце</b><span>CAP Пептид 5 · полинуклеотиды · гиалуронат натрия</span></div>
         <div class="ce-hero-point" style="--point:#74d3da"><b>2 × 2,5 мл</b><span>Два шприца в упаковке</span></div>
-        <div class="ce-hero-point" style="--point:#b86076"><b>3 протокола</b><span>Радиочастотный лифтинг (RF), аппаратные процедуры, мезороллер</span></div>
+        <div class="ce-hero-point" style="--point:#b86076"><b>3 протокола</b><span>Радиочастотный лифтинг (RF), аппаратные процедуры, дермапен</span></div>
         <div class="ce-hero-point" style="--point:#a80b3d"><b>Поддержка</b><span>Консультации и обучение для специалистов</span></div>
       </div>
     </div>
@@ -502,7 +502,7 @@
       <div class="ce-formula-row">
         <div class="ce-formula-index">03</div>
         <div class="ce-formula-name"><b class="ce-formula-long">Гиалуронат натрия</b><span>Увлажнение и защита · 1%</span></div>
-        <div class="ce-formula-result"><p>Натриевая соль гиалуроновой кислоты — более стабильная и устойчивая к окислению форма. Интенсивно увлажняет, поддерживает защитные функции кожи и обновление эпидермиса.</p><a class="ce-button ce-formula-link" href="/3d-hyaluronic-acid-calyra-lux-5">Подробнее о гиалуронате натрия <em>→</em></a></div>
+        <div class="ce-formula-result"><p>Натриевая соль гиалуроновой кислоты — более стабильная и устойчивая к окислению форма. Интенсивно увлажняет, поддерживает защитные функции кожи и обновление эпидермиса.</p><a class="ce-button ce-formula-link" href="/gialuronat-natriya-calyra-lux-5">Подробнее о гиалуронате натрия <em>→</em></a></div>
         <div class="ce-formula-visual" style="--f-color:#a7e4e7;--f-shadow:rgba(64,165,174,.17);--f-line:rgba(64,165,174,.43)"></div>
       </div>
       <div class="ce-formula-cta"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс и состав <em>↗</em></a></div>
@@ -526,10 +526,10 @@
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 8c2 17 8 23 25 25-17 2-23 8-25 25-2-17-8-23-25-25 17-2 23-8 25-25Z"/><path d="M63 51c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg></div>
           <div class="ce-protocol-bottom"><h3>После аппаратных<br>процедур</h3><span>Смотреть протокол</span></div>
         </a>
-        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол применения с мезороллером">
-          <div class="ce-protocol-top"><span>03</span><span>Мезороллер</span></div>
+        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол применения с дермапеном">
+          <div class="ce-protocol-top"><span>03</span><span>Дермапен</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><rect x="13" y="19" width="43" height="25" rx="12"/><path d="M56 31h11v17c0 10-8 18-18 18H32"/><circle cx="25" cy="31" r="2"/><circle cx="35" cy="31" r="2"/><circle cx="45" cy="31" r="2"/></svg></div>
-          <div class="ce-protocol-bottom"><h3>В протоколе<br>с мезороллером</h3><span>Смотреть протокол</span></div>
+          <div class="ce-protocol-bottom"><h3>В протоколе<br>с дермапеном</h3><span>Смотреть протокол</span></div>
         </a>
       </div>
       <div class="ce-course">
@@ -613,7 +613,7 @@
         <a href="/technology-calyra-lux-5"><span>Технология CALYRA LUX 5</span><em>→</em></a>
         <a href="/cap-peptide-5-telomery-kozhi"><span>CAP Пептид 5</span><em>→</em></a>
         <a href="/polynucleotides-pn-calyra-lux-5"><span>Полинуклеотиды (PN)</span><em>→</em></a>
-        <a href="/3d-hyaluronic-acid-calyra-lux-5"><span>Гиалуронат натрия</span><em>→</em></a>
+        <a href="/gialuronat-natriya-calyra-lux-5"><span>Гиалуронат натрия</span><em>→</em></a>
         <a href="/study"><span>Обучение для косметологов</span><em>→</em></a>
         <a href="/contacts"><span>Контакты</span><em>→</em></a>
       </div>
@@ -628,7 +628,7 @@
         <p>Оставьте заявку — пришлём всё, что нужно для старта:</p>
         <ul class="ce-order-list">
           <li>Прайс для специалистов и условия заказа</li>
-          <li>Протоколы применения: радиочастотный лифтинг (RF), аппаратные процедуры, мезороллер</li>
+          <li>Протоколы применения: радиочастотный лифтинг (RF), аппаратные процедуры, дермапен</li>
           <li>Консультацию по применению и информацию об обучении</li>
         </ul>
         <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:zakaz">Заказать продукт</a></div>
