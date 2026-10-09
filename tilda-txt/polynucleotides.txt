@@ -256,11 +256,11 @@
     <div class="clx-wrap">
       <div class="clx-hero__body">
         <ul class="clx-chips">
-          <li class="clx-chip">20 мг/мл</li>
+          <li class="clx-chip">2% в составе</li>
           <li class="clx-chip">Полинуклеотиды (PN)</li>
         </ul>
         <h1 class="clx-h1">Нуклеотидные цепи и <em>клеточное окружение</em> кожи</h1>
-        <p class="clx-lead">Полинуклеотиды (PN) — биополимерные цепи из нуклеотидных звеньев. В CALYRA LUX&nbsp;5 они поддерживают межклеточный матрикс и естественное обновление кожи вместе с <b>CAP Пептидом&nbsp;5</b> и <b>3D-гиалуроновой кислотой</b>.</p>
+        <p class="clx-lead">Полинуклеотиды (PN) — биополимерные цепи из нуклеотидных звеньев. В CALYRA LUX&nbsp;5 они поддерживают межклеточный матрикс и естественное обновление кожи вместе с <b>CAP Пептидом&nbsp;5</b> и <b>гиалуронатом натрия</b>.</p>
         <div class="clx-btns">
           <a class="clx-btn clx-btn--fill" href="#popup:price_pn">Получить прайс <i>↗</i></a>
           <a class="clx-btn clx-btn--line" href="#clx-pn-skin" data-clx-scroll>Как работают полинуклеотиды</a>
@@ -354,13 +354,13 @@
   <section class="clx-sec">
     <div class="clx-wrap">
       <div class="clx-net">
-        <img class="clx-net__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/polynucleotides/system-circle.webp" alt="Единая система: гиалуроновая кислота, полинуклеотиды и фибробласт в центре" width="1000" height="977" loading="lazy">
+        <img class="clx-net__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/polynucleotides/system-circle.webp" alt="Единая система: гиалуронат натрия, полинуклеотиды и фибробласт в центре" width="1000" height="977" loading="lazy">
         <div>
           <ul class="clx-chips"><li class="clx-chip">Роль в CALYRA LUX&nbsp;5</li></ul>
           <h2 class="clx-h2">Естественное обновление <em>внутри общей системы</em></h2>
           <p class="clx-lead">Полинуклеотиды не работают изолированно. Каждый компонент формулы поддерживает своё звено, а в центре — клетки кожи.</p>
           <ul class="clx-roles">
-            <li><b>3D-гиалуроновая кислота</b><span>единая гидратированная матрица</span></li>
+            <li><b>Гиалуронат натрия</b><span>интенсивное увлажнение и защитные функции кожи</span></li>
             <li><b>Полинуклеотиды (PN)</b><span>матриксное окружение и естественное обновление</span></li>
             <li><b>CAP Пептид&nbsp;5</b><span>клеточный потенциал и теломерная защита</span></li>
           </ul>

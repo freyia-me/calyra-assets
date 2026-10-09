@@ -195,7 +195,7 @@
     <span class="cl-kicker">Что внутри</span>
     <h2>Три компонента, каждый со своей задачей</h2>
     <div class="cl-what">
-      <div><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@d88d3d39dbfb/Cosmetology/icon-ha.webp" alt="" loading="lazy"><h3>3D-гиалуроновая кислота</h3><span class="cl-sub">Увлажнение</span><p>Глубоко увлажняет и делает кожу более упругой и гладкой.</p></div>
+      <div><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@d88d3d39dbfb/Cosmetology/icon-ha.webp" alt="" loading="lazy"><h3>Гиалуронат натрия</h3><span class="cl-sub">Увлажнение</span><p>Интенсивно увлажняет и делает кожу мягкой и гладкой.</p></div>
       <div><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@d88d3d39dbfb/Cosmetology/icon-pn.webp" alt="" loading="lazy"><h3>Полинуклеотиды (PN)</h3><span class="cl-sub">Обновление</span><p>Поддерживают естественное обновление кожи: она выглядит плотнее, ровнее и отдохнувшей.</p></div>
       <div><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@d88d3d39dbfb/Cosmetology/icon-peptide.webp" alt="" loading="lazy"><h3>CAP Пептид 5</h3><span class="cl-sub">Долголетие кожи</span><p>Запатентованный пептид, который поддерживает ресурс клеток кожи и их защиту от преждевременного старения.</p></div>
     </div>
@@ -334,7 +334,7 @@
     <h2 style="margin:0 auto;text-align:center">Частые вопросы</h2>
     <div class="cl-faq">
       <details><summary>Когда будет виден результат?</summary><p>Кожа выглядит более увлажнённой и свежей уже после первой процедуры. Плотность, ровный рельеф и сияние нарастают в течение курса.</p></details>
-      <details><summary>Можно ли сочетать с другими процедурами?</summary><p>Да. CALYRA LUX 5 применяют вместе с радиочастотным лифтингом (RF), после аппаратных процедур и с мезороллером. Подходящий вариант подберёт специалист.</p></details>
+      <details><summary>Можно ли сочетать с другими процедурами?</summary><p>Да. CALYRA LUX 5 применяют вместе с радиочастотным лифтингом (RF), после аппаратных процедур и с дермапеном. Подходящий вариант подберёт специалист.</p></details>
       <details><summary>Сколько стоит процедура?</summary><p>Стоимость устанавливает клиника. Уточните её у партнёра в вашем городе.</p></details>
       <details><summary>Можно ли купить CALYRA LUX 5 для домашнего ухода?</summary><p>Нет. CALYRA LUX 5 — профессиональный продукт: его применяют только во время процедуры у косметолога или в клинике — партнёре бренда.</p></details>
       <details><summary>Как проверить, что продукт оригинальный?</summary><p>Вся продукция CALYRA LUX 5 промаркирована в системе «Честный ЗНАК». Попросите специалиста показать упаковку и отсканируйте код маркировки в приложении «Честный ЗНАК».</p></details>
