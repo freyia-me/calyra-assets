@@ -246,7 +246,7 @@
       <div class="clx-panel" role="tabpanel" id="clx-p2" aria-labelledby="clx-t2" hidden>
         <div class="clx-visual">
           <img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@main/technology/pn-dna-emblem.webp" alt="Полинуклеотиды (PN)" loading="lazy">
-          <div class="clx-visual__tag"><span>Полинуклеотиды</span><b>2%</b></div>
+          <div class="clx-visual__tag"><span>1000–1500 кДа</span><b>2%</b></div>
         </div>
         <div>
           <h3 class="clx-h3">Полинуклеотиды (PN)</h3>
@@ -348,7 +348,7 @@
         </details>
         <details class="clx-qa">
           <summary>Чем полинуклеотиды (PN) отличаются от полидезокси&shy;рибо&shy;нуклеотидов (PDRN)?<i></i></summary>
-          <div class="clx-qa__a"><p>И те и другие — нуклеотидные цепочки, но полинуклеотиды состоят из более длинных цепей с большей молекулярной массой. За счёт этого они формируют гидратированное окружение, которое поддерживает матрикс кожи.</p></div>
+          <div class="clx-qa__a"><p>И те и другие — нуклеотидные цепочки, но полинуклеотиды состоят из более длинных цепей с большей молекулярной массой — в CALYRA LUX&nbsp;5 это 1000–1500 кДа. За счёт этого они формируют гидратированное окружение, которое поддерживает матрикс кожи.</p></div>
         </details>
         <details class="clx-qa">
           <summary>Почему в составе гиалуронат натрия, а не гиалуроновая кислота?<i></i></summary>
