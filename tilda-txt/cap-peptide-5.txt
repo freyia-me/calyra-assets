@@ -317,6 +317,28 @@
 #clx-cap .clx-ba__card p.clx-ba__meta{margin:-6px 0 16px;font-size:15px;color:var(--muted);line-height:1.5}
 @media(min-width:760px){#clx-cap .clx-stat b{display:flex;align-items:flex-end;height:58px}}
 </style>
+<style>
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player{margin:0;font:inherit;color:inherit}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-frame{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#1b2936;box-shadow:0 24px 60px rgba(27,41,54,.14)}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-frame img,:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-frame video{background:#000}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,20,.45),rgba(10,14,20,0) 40%);pointer-events:none;transition:opacity .3s}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player.is-on .cv-frame::after{opacity:0}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-play{position:absolute;left:22px;bottom:22px;z-index:2;width:72px;height:72px;margin:0;padding:0;border:0;border-radius:50%;background:var(--cv-accent,#651d2d);cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 8px rgba(255,255,255,.22),0 18px 40px rgba(0,0,0,.25);transition:transform .25s ease,box-shadow .25s ease}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-play span{width:0;height:0;margin-left:6px;border-style:solid;border-width:13px 0 13px 21px;border-color:transparent transparent transparent #fff}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-play:hover{transform:scale(1.06);box-shadow:0 0 0 14px rgba(255,255,255,.26),0 18px 40px rgba(0,0,0,.28)}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-play:focus-visible{outline:2px solid #fff;outline-offset:6px}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-dur{position:absolute;right:16px;bottom:20px;margin:0;z-index:2;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.9);color:#1b2936;font-size:12px;font-weight:600;line-height:1.4}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player.is-on .cv-play,:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player.is-on .cv-dur,:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player.is-on .cv-poster{display:none}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player figcaption{margin:14px 0 0;padding:0;display:grid;gap:2px}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player figcaption b{font-weight:600;font-size:16px;line-height:1.35}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player figcaption span{font-size:14px;opacity:.7}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-player--big figcaption b{font-size:19px}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-grid{display:grid;gap:22px}
+@media(min-width:900px){:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-grid{grid-template-columns:1.55fr 1fr;align-items:start}:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-grid .cv-side{display:grid;gap:22px}}
+:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-single{max-width:960px;margin:0 auto}
+@media(max-width:560px){:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-frame{border-radius:14px}:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-play{width:56px;height:56px;left:14px;bottom:14px}:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-dur{right:12px;bottom:14px}:is(#calyra-lp,#calyra-editorial,#clx-cap,#clx-pn,#clx-tech) .cv-play span{border-width:10px 0 10px 16px;margin-left:5px}}
+</style>
 
 <div id="clx-cap">
 
@@ -495,6 +517,22 @@
     </div>
   </section>
 
+  <!-- ВИДЕО -->
+  <section class="clx-sec" style="padding-top:0">
+    <div class="clx-wrap">
+      <div class="clx-head">
+        <h2 class="clx-h2">История одного <em>пептида</em></h2>
+        <p class="clx-lead">Видео о том, как учёные пришли к CAP Пептиду 5 и что он делает в коже. Со звуком.</p>
+      </div>
+      <div class="cv-single">
+      <figure class="cv-player cv-player--big" data-src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e8b31551f572/video/calyra-cap.mp4" style="--cv-accent:#651d2d">
+        <div class="cv-frame"><img class="cv-poster" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e8b31551f572/video/calyra-cap-poster.jpg" alt="" loading="lazy" width="1280" height="720"><button class="cv-play" type="button" aria-label="Смотреть видео: CAP Пептид 5: история одного пептида"><span></span></button><span class="cv-dur">4:28</span></div>
+        <figcaption><b>CAP Пептид 5: история одного пептида</b><span>От открытия теломеразы до формулы CALYRA LUX 5</span></figcaption>
+      </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="clx-sec" style="padding-top:0">
     <div class="clx-wrap clx-faq">
@@ -566,3 +604,19 @@
 })();
 </script>
 <!-- ===== конец блока ===== -->
+<script>
+(function(){
+  if(window.__cvInit) return; window.__cvInit=true;
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest&&e.target.closest('.cv-play'); if(!btn) return;
+    var fig=btn.closest('.cv-player'), frame=fig.querySelector('.cv-frame');
+    document.querySelectorAll('.cv-player video').forEach(function(v){ v.pause(); });
+    var v=document.createElement('video');
+    v.src=fig.getAttribute('data-src'); v.controls=true; v.playsInline=true; v.setAttribute('playsinline',''); v.preload='auto';
+    v.setAttribute('controlsList','nodownload');
+    frame.appendChild(v); fig.classList.add('is-on');
+    var p=v.play(); if(p&&p.catch) p.catch(function(){});
+    v.focus();
+  });
+})();
+</script>
