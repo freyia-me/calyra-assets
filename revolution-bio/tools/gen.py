@@ -70,20 +70,25 @@ INTRO_ONLY = {'news/item/21-news3.html'}
 
 # Бренды компании: название, подпись, ссылка (строка брендов на первом экране главной)
 BRANDS = [
-    ('JeuDérm', 'Эстетическая гармония', '/jeuderm'),
-    ('Rejusome', 'Регенерация и обновление', '/ekzosomy'),
-    ('Calyra Lux\u00a05', 'Теломерная защита', 'https://calyralux.ru/'),
+    # название, подпись, ссылка, фото продукции (из старого сайта или source/), фото вписано в круг?
+    ('JeuDérm', 'Эстетическая гармония', '/jeuderm', 'media/k2/categories/7.png', True),
+    ('Rejusome', 'Регенерация и обновление', '/ekzosomy', 'media/k2/galleries/227/8.png', False),
+    ('Calyra Lux\u00a05', 'Теломерная защита', 'https://calyralux.ru/', 'source/brand-calyra.webp', False),
 ]
-# Кадры первого экрана главной: файл в source/, номер бренда из BRANDS, фраза.
+# Подписи-«стрелки» на коже (по порядку точек в HERO_SLIDES): текст и в какую сторону уходит линия
+HOTSPOTS = [('Инновационные<br>формулы', 'r'), ('Видимый<br>результат', 'l'), ('Доверие<br>профессионалов', 'r')]
+# Кадры первого экрана главной: файл в source/, номер бренда из BRANDS,
+# точки на коже в процентах кадра (x, y): лоб, скула, линия подбородка.
 # Чтобы добавить кадр — положите фото в source/ и допишите строку.
 HERO_SLIDES = [
-    ('source/hero-1.webp', 1, 'Экзосомальные технологии регенерации'),
-    ('source/hero-2.webp', 0, 'Эстетическая гармония'),
-    ('source/hero-3.webp', 2, 'Теломерная защита кожи'),
-    ('source/hero-4.webp', 1, 'Обновление кожи на клеточном уровне'),
-    ('source/hero-5.webp', 0, 'Профессиональный уход из Южной Кореи'),
-    ('source/hero-6.webp', 2, 'Пептид, полинуклеотиды и гиалуроновая кислота в одном шприце'),
-    ('source/hero-7.webp', 1, 'Регенерация и обновление'),
+    ('source/hero-1.webp', 1, [(55, 37), (37, 58), (62, 71)]),
+    ('source/hero-2.webp', 0, [(55, 25), (40, 52), (62, 68)]),
+    ('source/hero-3.webp', 2, [(57, 24), (43, 50), (62, 66)]),
+    ('source/hero-4.webp', 1, [(57, 24), (43, 50), (63, 66)]),
+    ('source/hero-5.webp', 0, [(55, 24), (31, 49), (62, 70)]),
+    ('source/hero-6.webp', 2, [(52, 26), (30, 49), (66, 63)]),
+    ('source/hero-7.webp', 1, [(57, 23), (29, 49), (70, 60)]),
+    ('source/hero-8.webp', 0, [(62, 27), (40, 45), (66, 58)]),
 ]
 # упоминания бренда, который компания больше не продаёт
 DROPPED = re.compile(r'mint\s*lift', re.I)
@@ -333,7 +338,7 @@ def css():
   --accent:#36cbe0;--accent-ink:#0d262b;--glow:rgba(54,203,224,.35);--r:18px;--r-sm:12px;
   --serif:'PT Serif',Georgia,'Times New Roman',serif;--sans:'Manrope','Helvetica Neue',Arial,sans-serif;
   font-family:var(--sans);font-weight:300;color:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
-  background:radial-gradient(1200px 600px at 85% -10%,rgba(54,203,224,.10),transparent 60%),radial-gradient(900px 500px at -10% 40%,rgba(255,255,255,.04),transparent 60%),var(--bg);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(1200px 600px at 85% -10%,rgba(54,203,224,.10),transparent 60%),radial-gradient(900px 500px at -10% 40%,rgba(255,255,255,.04),transparent 60%),var(--bg);
   overflow-x:hidden;overflow-x:clip;position:relative}
 #rb *,#rb *::before,#rb *::after{box-sizing:border-box}
 #rb img{max-width:100%;height:auto;display:block}
@@ -389,24 +394,48 @@ def css():
 #rb.rb-js .rb-stage__img.is-active{animation:rb-kb 7.5s linear both}
 @keyframes rb-kb{from{transform:scale(1) translateY(0)}to{transform:scale(1.06) translateY(-1.5%)}}
 #rb .rb-stage__inner{position:absolute;inset:0;will-change:transform}
-#rb .rb-stage__tag{position:absolute;z-index:3;left:-10%;bottom:20%;display:block;min-width:230px;max-width:290px;padding:16px 20px;border-radius:16px;text-decoration:none;
-  background:rgba(43,48,53,.55);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 40px -24px rgba(0,0,0,.6);
-  opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}
-#rb .rb-stage__tag.is-active{opacity:1;transform:none;pointer-events:auto;transition-delay:.35s}
-#rb .rb-stage__tag small{display:block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-#rb .rb-stage__tag span{display:block;font-family:var(--serif);font-size:20px;line-height:1.25;color:#fff}
+/* точки-«стрелки» на коже */
+#rb .rb-hs{position:absolute;left:0;width:100%;height:0;top:var(--y);z-index:2;transition:top 1.2s cubic-bezier(.6,0,.2,1);pointer-events:none}
+#rb .rb-hs__dot{position:absolute;left:var(--x);top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(54,203,224,.55),0 0 18px 4px var(--accent);transition:left 1.2s cubic-bezier(.6,0,.2,1)}
+#rb .rb-hs__dot::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid var(--accent);animation:rb-ping 2.4s ease-out infinite}
+@keyframes rb-ping{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
+#rb .rb-hs__line{position:absolute;top:0;height:1px;transition:left 1.2s cubic-bezier(.6,0,.2,1),width 1.2s cubic-bezier(.6,0,.2,1);background-size:200% 100%;animation:rb-flow 3s linear infinite}
+#rb .rb-hs--l .rb-hs__line{left:var(--end);width:calc(var(--x) - var(--end));background-image:linear-gradient(90deg,rgba(54,203,224,.15),var(--accent) 50%,rgba(54,203,224,.15))}
+#rb .rb-hs--r .rb-hs__line{left:var(--x);width:calc(var(--end) - var(--x));background-image:linear-gradient(90deg,rgba(54,203,224,.15),var(--accent) 50%,rgba(54,203,224,.15))}
+@keyframes rb-flow{to{background-position:-200% 0}}
+#rb .rb-hs__label{position:absolute;top:0;transform:translateY(-50%);padding:8px 14px;border-radius:999px;white-space:nowrap;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;color:#fff;
+  background:rgba(43,48,53,.6);border:1px solid rgba(54,203,224,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#rb .rb-hs--l .rb-hs__label{right:calc(100% - var(--end));text-align:right}
+#rb .rb-hs--r .rb-hs__label{left:var(--end)}
+#rb.rb-js .rb-hs{opacity:0;animation:rb-in .8s ease 1s both}#rb.rb-js .rb-hs:nth-of-type(2){animation-delay:1.25s}#rb.rb-js .rb-hs:nth-of-type(3){animation-delay:1.5s}
+@keyframes rb-in{to{opacity:1}}
+/* линии за портретом */
+#rb .rb-intro__lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#rb .rb-intro__lines path{fill:none;stroke-width:1}
+#rb.rb-js .rb-intro__lines path{stroke-dasharray:2400;stroke-dashoffset:2400;animation:rb-draw 3.2s cubic-bezier(.6,0,.2,1) .3s forwards}
+@keyframes rb-draw{to{stroke-dashoffset:0}}
+#rb .rb-intro .rb-wrap{position:relative;z-index:1}
 #rb .rb-intro .rb-wrap--brands{display:block}
-#rb .rb-brands{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);padding:30px 0 34px;position:relative;z-index:2}
-#rb .rb-brand{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:6px 18px;text-decoration:none}
-#rb .rb-brand+.rb-brand::before{content:"";position:absolute;left:0;top:8%;bottom:8%;width:1px;background:var(--line)}
-#rb .rb-brand b{white-space:nowrap;font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,40px);line-height:1.05;letter-spacing:-.01em;color:#fff;transition:color .5s,text-shadow .5s}
-#rb .rb-brand span{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);max-width:220px;line-height:1.7;transition:color .5s}
-#rb .rb-brand::after{content:"";position:absolute;left:50%;top:-31px;width:0;height:2px;background:var(--accent);transform:translateX(-50%);transition:width .6s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px var(--accent)}
-#rb .rb-brand.is-active b{color:var(--accent);text-shadow:0 0 28px rgba(54,203,224,.35)}
-#rb .rb-brand.is-active span{color:#fff}
-#rb .rb-brand.is-active::after{width:60%}
-#rb .rb-brand:hover b{color:var(--accent)}
-#rb .rb-stage__tag:hover{border-color:rgba(54,203,224,.6)}
+#rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* карточки брендов */
+#rb .rb-bcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:26px 0 40px;position:relative;z-index:2}
+#rb .rb-brand{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 42%;align-items:center;min-height:156px;padding:22px 0 22px 24px;border-radius:20px;text-decoration:none;overflow:hidden;
+  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:border-color .6s,box-shadow .6s,transform .5s cubic-bezier(.2,.7,.2,1),background .6s}
+#rb .rb-brand b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.3vw,32px);line-height:1.05;color:#fff;transition:color .6s}
+#rb .rb-brand span{display:block;margin-top:12px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);line-height:1.6;max-width:150px}
+#rb .rb-brand i{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:15px;color:#fff;z-index:2;transition:background .4s,border-color .4s,color .4s}
+#rb .rb-brand__media{position:relative;align-self:stretch;margin:-22px 0}
+#rb .rb-brand__media::before{content:"";position:absolute;right:-18%;top:50%;width:120%;aspect-ratio:1;transform:translateY(-44%);border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.28),rgba(54,203,224,.06) 60%,transparent);transition:opacity .6s;opacity:.5}
+#rb .rb-brand__media img{position:absolute;right:6%;bottom:8%;width:92%;height:78%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-brand__media--round img{right:8%;top:50%;bottom:auto;width:auto;height:auto;aspect-ratio:1;max-height:76%;max-width:92%;transform:translateY(-50%);border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
+#rb .rb-brand:hover{transform:translateY(-4px)}
+#rb .rb-brand:hover i{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+#rb .rb-brand.is-active{border-color:rgba(54,203,224,.75);background:linear-gradient(145deg,rgba(54,203,224,.16),rgba(255,255,255,.04));box-shadow:0 0 0 1px rgba(54,203,224,.25),0 20px 50px -20px rgba(54,203,224,.55),inset 0 1px 0 rgba(255,255,255,.15)}
+#rb .rb-brand.is-active b{color:var(--accent)}
+#rb .rb-brand.is-active .rb-brand__media::before{opacity:1}
+#rb .rb-brand.is-active .rb-brand__media img{transform:scale(1.04)}
+#rb .rb-brand.is-active .rb-brand__media--round img{transform:translateY(-50%) scale(1.04)}
 #rb .rb-stage__dots{position:absolute;z-index:3;left:50%;bottom:5%;transform:translateX(-50%);display:flex;gap:8px}
 #rb .rb-stage__dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
 #rb .rb-stage__dots button::before,#rb .rb-stage__dots button::after{content:"";position:absolute;left:0;top:9px;height:2px;border-radius:2px;background:rgba(255,255,255,.3);width:100%}
@@ -418,9 +447,6 @@ def css():
 #rb .rb-intro__face img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom;
   -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
   mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
-#rb .rb-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:40px;max-width:580px}
-#rb .rb-chip{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word;background:var(--glass);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 18px;font-size:13px;color:var(--muted);line-height:1.35}
-#rb .rb-chip b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--accent)}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
 #rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('""" + deco + """') center/cover no-repeat;opacity:.12;
@@ -523,6 +549,7 @@ def css():
 #rb.rb-js .rb-intro__face{animation:rb-fade 1.4s ease .1s both}
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@media (max-width:1280px){#rb .rb-hs--r{--end:76%!important}}
 @media (max-width:1100px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
   #rb .rb-mnav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}}
@@ -530,13 +557,13 @@ def css():
   #rb .rb-intro{min-height:0;padding:10px 0 50px}
   #rb .rb-intro .rb-wrap{grid-template-columns:minmax(0,1fr)}
   #rb .rb-intro__face{order:-1;justify-self:center;width:min(78%,380px);margin-bottom:-6px}
-  #rb .rb-stage__tag{left:50%;bottom:8%;min-width:0;width:max-content;max-width:88vw;padding:9px 16px;border-radius:12px;text-align:center;transform:translate(-50%,14px)}
-  #rb .rb-stage__tag.is-active{transform:translate(-50%,0)}
-  #rb .rb-stage__tag small{font-size:10px;margin-bottom:2px}#rb .rb-stage__tag span{font-size:15px}
-  #rb .rb-brands{padding:22px 0 26px}#rb .rb-brand b{white-space:normal;font-size:19px}#rb .rb-brand{padding:4px 6px;gap:8px}#rb .rb-brand span{font-size:9px;letter-spacing:.14em}
-  #rb .rb-brand::after{top:-23px}
   #rb .rb-stage__dots{bottom:1%}
-  #rb .rb-intro__text{padding-bottom:50px}}
+  #rb .rb-intro__text{padding-bottom:50px}
+  #rb .rb-hs__label,#rb .rb-hs__line{display:none}
+  #rb .rb-hs__dot{width:8px;height:8px;margin:-4px 0 0 -4px;box-shadow:0 0 0 2px rgba(54,203,224,.5),0 0 10px 2px var(--accent)}
+  #rb .rb-bcards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:20px 24px 34px;scrollbar-width:none}
+  #rb .rb-bcards::-webkit-scrollbar{display:none}
+  #rb .rb-brand{flex:0 0 78%;scroll-snap-align:center;min-height:140px}}
 @media (max-width:820px){#rb{font-size:16px}
   #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap{grid-template-columns:minmax(0,1fr)}
   #rb .rb-product{gap:32px}#rb .rb-product>div:first-child{position:static}
@@ -547,7 +574,7 @@ def css():
   #rb .rb-sec{padding:40px 0 64px}
   #rb .rb-phone{display:none}#rb .rb-logo img,#rb .rb-head[data-scrolled] .rb-logo img{height:52px}
   #rb .rb-head .rb-wrap,#rb .rb-head[data-scrolled] .rb-wrap{min-height:68px}#rb .rb-contact{gap:10px}#rb .rb-contact .rb-btn{padding:9px 16px;font-size:14px}}
-@media (max-width:440px){#rb .rb-contact .rb-btn{display:none}#rb .rb-chip{padding:10px 12px;font-size:12px}#rb .rb-chip b{font-size:19px}}
+@media (max-width:440px){#rb .rb-contact .rb-btn{display:none}}
 @media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
 </style>"""
 
@@ -589,6 +616,7 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
  function show(k){i=(k+n)%n;
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
   [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
+  var hp=(im[i].getAttribute('data-hs')||'').split(';');[].forEach.call(st.querySelectorAll('.rb-hs'),function(e,j){var c=(hp[j]||'').split(',');if(c.length===2){e.style.setProperty('--x',c[0]+'%');e.style.setProperty('--y',c[1]+'%');}});
   var bi=im[i].getAttribute('data-brand');[].forEach.call(r.querySelectorAll('.rb-brand'),function(e){e.classList.toggle('is-active',e.getAttribute('data-brand')===bi);});
   [].forEach.call(dt,function(e,j){e.classList.toggle('is-active',j===i);e.classList.toggle('is-done',j<i);if(j===i)e.setAttribute('aria-current','true');else e.removeAttribute('aria-current');var c=e.cloneNode(true);});}
  function play(){stop();if(rm)return;st.setAttribute('data-playing','');t=setInterval(function(){show(i+1);},ms);}
@@ -744,24 +772,33 @@ def build_home(rel):
     revs = ''
     for rv in lis[4].select('.review')[:3]:
         revs += review_html({'author': text(rv.select_one('.review-author')), 'text': clean(rel, rv.select_one('.review-text')), 'image': None}, anchor=False)
-    slides = [(img(rel, f, 1100), BRANDS[bi][0], t, BRANDS[bi][2], bi) for f, bi, t in HERO_SLIDES]
+    slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi) for f, bi, pts in HERO_SLIDES]
     ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
-    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, t, h, bi) in enumerate(slides))
-    tags_html = ''.join(f'<a class="rb-stage__tag{" is-active" if k == 0 else ""}" href="{h}"{ext(h)}{"" if k == 0 else " tabindex=\"-1\" aria-hidden=\"true\""}><small>{esc(b)}</small><span>{esc(t)}</span></a>' for k, (u, b, t, h, bi) in enumerate(slides))
-    dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, t, h, bi) in enumerate(slides))
+    hs_attr = lambda pts: ';'.join(f'{x},{y}' for x, y in pts)
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(pts)}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, pts, h, bi) in enumerate(slides))
+    hs_html = ''.join(f'<div class="rb-hs rb-hs--{side}" style="--x:{slides[0][2][k][0]}%;--y:{slides[0][2][k][1]}%;--end:{16 if side == "l" else 84}%" aria-hidden="true"><span class="rb-hs__line"></span><i class="rb-hs__dot"></i><span class="rb-hs__label">{label}</span></div>' for k, (label, side) in enumerate(HOTSPOTS))
+    hs_text = ', '.join(strip_tags(l.replace('<br>', ' ')) for l, _ in HOTSPOTS)
+    dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, pts, h, bi) in enumerate(slides))
     first = slides[0][4]
-    brands_html = ''.join(f'<a class="rb-brand{" is-active" if k == first else ""}" href="{h}"{ext(h)} data-brand="{k}"><b>{esc(n)}</b><span>{esc(t)}</span></a>' for k, (n, t, h) in enumerate(BRANDS))
-    chips = ''.join(f'<div class="rb-chip"><b>{esc(text(t.select_one(".about-testimnial-number")))}</b>{esc(text(t.select_one(".about-testimnial-decription")).split("(")[0].strip())}</div>' for t in lis[3].select('.about-testimnial'))
-    body = f'''<section class="rb-intro"><div class="rb-wrap">
+    def bcard(k, n, t, h, photo, rnd):
+        u = img(rel, photo, 700)
+        return (f'<a class="rb-brand{" is-active" if k == first else ""}" href="{h}"{ext(h)} data-brand="{k}"><div><b>{esc(n)}</b><span>{esc(t)}</span></div>'
+                f'<i aria-hidden="true">→</i><div class="rb-brand__media{" rb-brand__media--round" if rnd else ""}"><img src="{u}" alt="" loading="lazy"></div></a>')
+    brands_html = ''.join(bcard(k, *b) for k, b in enumerate(BRANDS))
+    lines_svg = ('<svg class="rb-intro__lines" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">'
+                 '<path d="M-40 760 C 380 640, 620 900, 980 700 S 1380 420, 1500 520" stroke="rgba(255,255,255,.07)"/>'
+                 '<path d="M700 -40 C 760 260, 1020 360, 1180 300 S 1440 160, 1500 220" stroke="rgba(255,255,255,.06)"/>'
+                 '<path d="M-40 820 C 420 700, 700 980, 1060 760 S 1400 520, 1500 600" stroke="rgba(54,203,224,.35)" style="filter:drop-shadow(0 0 6px rgba(54,203,224,.6))"/></svg>')
+    body = f'''<section class="rb-intro">{lines_svg}<div class="rb-wrap">
 <div class="rb-intro__text"><span class="rb-kicker">Революшн Био · для косметологов</span>
 <h1>Инновационные<br>решения для красоты</h1><hr class="rb-rule">
-<p class="rb-intro__lead">{esc(sub)}</p>
+<p class="rb-intro__lead">Официальный дистрибьютор профессиональных препаратов для косметологов брендов JeuDérm, Rejusome и Calyra Lux&nbsp;5 в&nbsp;России.</p>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:callback">Получить консультацию</a><a class="rb-btn" href="/product">Каталог продукции</a></div>
-<div class="rb-chips">{chips}</div></div>
-<div class="rb-intro__face rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="5000">
-<div class="rb-stage__inner">{imgs_html}</div>{tags_html}<div class="rb-stage__dots">{dots_html}</div></div>
 </div>
-<div class="rb-wrap rb-wrap--brands"><nav class="rb-brands" aria-label="Наши бренды">{brands_html}</nav></div></section>
+<div class="rb-intro__face rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="5000">
+<div class="rb-stage__inner">{imgs_html}{hs_html}</div><p class="rb-sr">{esc(hs_text)}</p><div class="rb-stage__dots">{dots_html}</div></div>
+</div>
+<div class="rb-wrap rb-wrap--brands"><nav class="rb-bcards" aria-label="Наши бренды">{brands_html}</nav></div></section>
 <section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"><div class="rb-grid">{cats}</div>
 <div class="rb-btns"><a class="rb-btn" href="/product">Весь каталог</a></div></div></section>
 <section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Обучение</span><h2>Учебный центр</h2><hr class="rb-rule"><div class="rb-rich" style="margin-bottom:34px">{teach_desc}</div>
