@@ -127,8 +127,9 @@ def img(page_rel, src, max_w=1600):
     src = src.strip().strip('\'"')
     if src.startswith('http') and 'revolution.bio' not in src:
         return None  # граватары и прочие внешние — не нужны
-    p = norm_rel(page_rel, src)
-    path = os.path.join(SRC, p)
+    # файлы, присланные отдельно (папка source/ рядом с tools/)
+    own = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', src)
+    path = os.path.normpath(own) if src.startswith('source/') else os.path.join(SRC, norm_rel(page_rel, src))
     if not os.path.isfile(path):
         # кэш K2: если нет XL, пробуем L/M
         for a, b in (('_XL.', '_L.'), ('_L.', '_M.')):
@@ -349,16 +350,20 @@ def css():
 #rb .rb-burger{display:none;background:var(--glass);border:1px solid var(--line);border-radius:999px;color:#fff;padding:9px 18px;font:inherit;font-size:15px;cursor:pointer}
 #rb .rb-mnav{display:none}
 /* первый экран главной */
-#rb .rb-intro{position:relative;min-height:min(calc(100vh - 88px),820px);display:flex;align-items:center;padding:40px 0 60px;overflow:hidden}
+#rb .rb-intro{position:relative;min-height:min(calc(100vh - 88px),820px);display:flex;align-items:flex-end;padding:30px 0 0;overflow:hidden}
 #rb .rb-intro .rb-wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:20px;width:100%}
 #rb .rb-intro__text{position:relative;z-index:2}
 #rb .rb-intro h1{font-size:clamp(30px,4.7vw,66px)}
 #rb .rb-intro__lead{font-size:19px;color:var(--muted);max-width:520px}
-#rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,560px);aspect-ratio:1100/1028}
-#rb .rb-intro__face::before{content:"";position:absolute;inset:8% 6% 10%;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.32),rgba(54,203,224,.08) 60%,transparent);filter:blur(10px)}
-#rb .rb-intro__face::after{content:"";position:absolute;inset:4% 2% 6%;border-radius:50%;border:1px solid rgba(54,203,224,.35)}
-#rb .rb-intro__face img{position:relative;width:100%;height:100%;object-fit:contain;
-  -webkit-mask-image:radial-gradient(ellipse 50% 52% at 50% 46%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 50% 52% at 50% 46%,#000 62%,transparent 100%)}
+#rb .rb-intro{padding-bottom:0}
+#rb .rb-intro .rb-wrap{align-items:end}
+#rb .rb-intro__text{padding-bottom:70px;align-self:center}
+#rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,540px);aspect-ratio:1199/1312;margin-bottom:-1px}
+#rb .rb-intro__face::before{content:"";position:absolute;left:8%;right:8%;top:10%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.34),rgba(54,203,224,.1) 55%,transparent);filter:blur(14px)}
+#rb .rb-intro__face::after{content:"";position:absolute;left:4%;right:4%;top:6%;aspect-ratio:1/1;border-radius:50%;border:1px solid rgba(54,203,224,.35);z-index:0}
+#rb .rb-intro__face img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom;
+  -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
 #rb .rb-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:40px;max-width:580px}
 #rb .rb-chip{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word;background:var(--glass);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 18px;font-size:13px;color:var(--muted);line-height:1.35}
 #rb .rb-chip b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--accent)}
@@ -472,8 +477,8 @@ def css():
 @media (max-width:900px){
   #rb .rb-intro{min-height:0;padding:10px 0 50px}
   #rb .rb-intro .rb-wrap{grid-template-columns:minmax(0,1fr)}
-  #rb .rb-intro__face{order:-1;justify-self:center;width:min(86%,420px);margin-bottom:-30px}
-  #rb .rb-intro__face img{-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 45%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 45%,#000 55%,transparent 100%)}}
+  #rb .rb-intro__face{order:-1;justify-self:center;width:min(78%,380px);margin-bottom:-6px}
+  #rb .rb-intro__text{padding-bottom:50px}}
 @media (max-width:820px){#rb{font-size:16px}
   #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap{grid-template-columns:minmax(0,1fr)}
   #rb .rb-product{gap:32px}#rb .rb-product>div:first-child{position:static}
@@ -659,7 +664,7 @@ def build_home(rel):
     for rv in lis[4].select('.review')[:3]:
         revs += review_html({'author': text(rv.select_one('.review-author')), 'text': clean(rel, rv.select_one('.review-text')), 'image': None}, anchor=False)
     logos = ''.join(f'<img src="{img(rel, im["src"])}" alt="Партнёр" loading="lazy">' for im in lis[4].select('img[src*="partner"]'))
-    face = img(rel, 'images/custom/main_bg.png', 1100)
+    face = img(rel, 'source/hero-face.webp', 1100)
     chips = ''.join(f'<div class="rb-chip"><b>{esc(text(t.select_one(".about-testimnial-number")))}</b>{esc(text(t.select_one(".about-testimnial-decription")).split("(")[0].strip())}</div>' for t in lis[3].select('.about-testimnial'))
     body = f'''<section class="rb-intro"><div class="rb-wrap">
 <div class="rb-intro__text"><span class="rb-kicker">Революшн Био · для косметологов</span>
