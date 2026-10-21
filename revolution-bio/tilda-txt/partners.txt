@@ -57,9 +57,38 @@
 #rb .rb-intro{padding-bottom:0}
 #rb .rb-intro .rb-wrap{align-items:end}
 #rb .rb-intro__text{padding-bottom:70px;align-self:center}
-#rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,540px);aspect-ratio:1199/1312;margin-bottom:-1px}
+#rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,520px);aspect-ratio:1122/1402;margin-bottom:-1px}
 #rb .rb-intro__face::before{content:"";position:absolute;left:8%;right:8%;top:10%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.34),rgba(54,203,224,.1) 55%,transparent);filter:blur(14px)}
 #rb .rb-intro__face::after{content:"";position:absolute;left:4%;right:4%;top:6%;aspect-ratio:1/1;border-radius:50%;border:1px solid rgba(54,203,224,.35);z-index:0}
+#rb .rb-stage__img{position:absolute!important;inset:0;opacity:0;transition:opacity 1.4s ease;will-change:opacity,transform}
+#rb .rb-stage__img.is-active{opacity:1}
+#rb.rb-js .rb-stage__img.is-active{animation:rb-kb 7.5s linear both}
+@keyframes rb-kb{from{transform:scale(1) translateY(0)}to{transform:scale(1.06) translateY(-1.5%)}}
+#rb .rb-stage__inner{position:absolute;inset:0;will-change:transform}
+#rb .rb-stage__tag{position:absolute;z-index:3;left:-10%;bottom:20%;display:block;min-width:230px;max-width:290px;padding:16px 20px;border-radius:16px;text-decoration:none;
+  background:rgba(43,48,53,.55);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 40px -24px rgba(0,0,0,.6);
+  opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+#rb .rb-stage__tag.is-active{opacity:1;transform:none;pointer-events:auto;transition-delay:.35s}
+#rb .rb-stage__tag small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+#rb .rb-stage__tag b{display:block;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;color:#fff}
+#rb .rb-stage__tag span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+#rb .rb-stage__tag:hover{border-color:rgba(54,203,224,.6)}
+#rb .rb-stage__dots{position:absolute;z-index:3;left:50%;bottom:5%;transform:translateX(-50%);display:flex;gap:8px}
+#rb .rb-stage__dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+#rb .rb-stage__dots button::before,#rb .rb-stage__dots button::after{content:"";position:absolute;left:0;top:9px;height:2px;border-radius:2px;background:rgba(255,255,255,.3);width:100%}
+#rb .rb-stage__dots button::after{background:var(--accent);width:0}
+#rb .rb-stage__dots button.is-done::after{width:100%}
+#rb .rb-stage__dots button.is-active::after{animation:rb-prog var(--rb-int,5s) linear both}
+#rb .rb-stage[data-paused] .rb-stage__dots button.is-active::after,#rb .rb-stage:not([data-playing]) .rb-stage__dots button.is-active::after{animation:none;width:100%}
+@keyframes rb-prog{from{width:0}to{width:100%}}
+#rb .rb-marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(0,0,0,.12);padding:20px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+#rb .rb-marquee__track{display:flex;width:max-content;animation:rb-marq 45s linear infinite}
+#rb .rb-marquee:hover .rb-marquee__track{animation-play-state:paused}
+#rb .rb-marquee__track span{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);white-space:nowrap;padding:0 26px;display:inline-flex;align-items:center;gap:52px;color:rgba(255,255,255,.88)}
+#rb .rb-marquee__track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);margin-right:-26px}
+#rb .rb-marquee__track span:nth-child(even){color:var(--muted);font-style:italic}
+@keyframes rb-marq{to{transform:translateX(-50%)}}
 #rb .rb-intro__face img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom;
   -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
   mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
@@ -68,7 +97,7 @@
 #rb .rb-chip b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--accent)}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@cadce9fcadcd/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 #rb .rb-crumbs{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:26px;color:var(--muted)}
 #rb .rb-crumbs a{text-decoration:none}
@@ -177,6 +206,10 @@
   #rb .rb-intro{min-height:0;padding:10px 0 50px}
   #rb .rb-intro .rb-wrap{grid-template-columns:minmax(0,1fr)}
   #rb .rb-intro__face{order:-1;justify-self:center;width:min(78%,380px);margin-bottom:-6px}
+  #rb .rb-stage__tag{left:50%;bottom:8%;min-width:0;width:max-content;max-width:88vw;padding:9px 16px;border-radius:12px;text-align:center;transform:translate(-50%,14px)}
+  #rb .rb-stage__tag.is-active{transform:translate(-50%,0)}
+  #rb .rb-stage__tag small{display:none}#rb .rb-stage__tag b{font-size:18px}#rb .rb-stage__tag span{font-size:12px;margin-top:2px}
+  #rb .rb-stage__dots{bottom:1%}
   #rb .rb-intro__text{padding-bottom:50px}}
 @media (max-width:820px){#rb{font-size:16px}
   #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap{grid-template-columns:minmax(0,1fr)}
@@ -189,11 +222,11 @@
   #rb .rb-phone{display:none}#rb .rb-logo img,#rb .rb-head[data-scrolled] .rb-logo img{height:52px}
   #rb .rb-head .rb-wrap,#rb .rb-head[data-scrolled] .rb-wrap{min-height:68px}#rb .rb-contact{gap:10px}#rb .rb-contact .rb-btn{padding:9px 16px;font-size:14px}}
 @media (max-width:440px){#rb .rb-contact .rb-btn{display:none}#rb .rb-chip{padding:10px 12px;font-size:12px}#rb .rb-chip b{font-size:19px}}
-@media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb .rb-marquee__track{flex-wrap:wrap;width:auto;justify-content:center}#rb .rb-marquee__track span[aria-hidden]{display:none}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
 </style>
 <div id="rb" lang="ru">
 <header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@cadce9fcadcd/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
 <nav class="rb-nav" aria-label="Меню"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a></nav>
 <div class="rb-contact"><a class="rb-phone" href="tel:+74951477040">+7 (495) 147-70-40</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
@@ -224,6 +257,25 @@ r.querySelectorAll('.rb-gal').forEach(function(g){var im=g.querySelector('.rb-ga
  th.forEach(function(t,k){t.addEventListener('click',function(){go(k);});});
  var p=g.querySelector('.rb-gal__nav--prev'),n=g.querySelector('.rb-gal__nav--next');
  if(p)p.addEventListener('click',function(){go(i-1);});if(n)n.addEventListener('click',function(){go(i+1);});});
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+r.querySelectorAll('.rb-stage').forEach(function(st){
+ var im=st.querySelectorAll('.rb-stage__img'),tg=st.querySelectorAll('.rb-stage__tag'),dt=st.querySelectorAll('.rb-stage__dots button'),n=im.length,i=0,t=null,ms=+st.getAttribute('data-interval')||5000;
+ if(n<2)return;st.style.setProperty('--rb-int',ms+'ms');
+ function show(k){i=(k+n)%n;
+  [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
+  [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
+  [].forEach.call(dt,function(e,j){e.classList.toggle('is-active',j===i);e.classList.toggle('is-done',j<i);if(j===i)e.setAttribute('aria-current','true');else e.removeAttribute('aria-current');var c=e.cloneNode(true);});}
+ function play(){stop();if(rm)return;st.setAttribute('data-playing','');t=setInterval(function(){show(i+1);},ms);}
+ function stop(){if(t){clearInterval(t);t=null;}st.removeAttribute('data-playing');}
+ [].forEach.call(dt,function(e,j){e.addEventListener('click',function(){show(j);play();});});
+ st.addEventListener('mouseenter',function(){st.setAttribute('data-paused','');stop();});
+ st.addEventListener('mouseleave',function(){st.removeAttribute('data-paused');show(i);play();});
+ st.addEventListener('focusin',function(){stop();});
+ document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else play();});
+ play();
+ var inner=st.querySelector('.rb-stage__inner');
+ if(!rm&&inner){var tick=false;window.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){var y=Math.min(window.scrollY,900);inner.style.transform='translateY('+(-y*0.12)+'px) scale('+(1+y*0.00012)+')';tick=false;});},{passive:true});}
+});
 var h=r.querySelector('.rb-head');function sc(){if(!h)return;if(window.scrollY>10)h.setAttribute('data-scrolled','');else h.removeAttribute('data-scrolled');}
 sc();window.addEventListener('scroll',sc,{passive:true});
 if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){

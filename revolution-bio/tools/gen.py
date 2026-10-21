@@ -66,6 +66,19 @@ ANCHORS = {}
 # страница со статьёй стороннего автора: переносим только вступление
 INTRO_ONLY = {'news/item/21-news3.html'}
 
+# Кадры первого экрана главной: файл в source/, бренд, фраза, ссылка.
+# Чтобы добавить кадр — положите фото в source/ и допишите строку.
+HERO_SLIDES = [
+    ('source/hero-1.webp', 'Rejusome', 'Экзосомы для обновления кожи', '/ekzosomy'),
+    ('source/hero-2.webp', 'JeuDérm', 'Профессиональная корейская космецевтика', '/jeuderm'),
+    ('source/hero-3.webp', 'Crystal PDRN', 'Глубокое увлажнение и регенерация', '/crystal-pdrn'),
+    ('source/hero-4.webp', 'Rejusome Plus Hair', 'Сила и густота волос', '/trikhologiya'),
+    ('source/hero-5.webp', 'MINT Lift', 'Чёткий овал без операций', '/partners'),
+    ('source/hero-6.webp', 'Rejusome Exo Boost', 'Сияние кожи каждый день', '/kosmecevtika'),
+]
+MARQUEE = ['Rejusome', 'Экзосомы', 'JeuDérm', 'Сияние кожи', 'Crystal PDRN', 'Регенерация', 'MINT Lift',
+           'Молодость', 'Rejusome Exo Boost', 'Увлажнение', 'Трихология', 'Красота без компромиссов']
+
 NAV = [('О компании', '/about'), ('Продукция', '/product'), ('Учебный центр', '/uchebnyj-tsentr'),
        ('Отзывы', '/otzyvy'), ('Новости', '/news'), ('Контакты', '/kontakty')]
 PHONE, PHONE_HREF = '+7 (495) 147-70-40', 'tel:+74951477040'
@@ -358,9 +371,38 @@ def css():
 #rb .rb-intro{padding-bottom:0}
 #rb .rb-intro .rb-wrap{align-items:end}
 #rb .rb-intro__text{padding-bottom:70px;align-self:center}
-#rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,540px);aspect-ratio:1199/1312;margin-bottom:-1px}
+#rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,520px);aspect-ratio:1122/1402;margin-bottom:-1px}
 #rb .rb-intro__face::before{content:"";position:absolute;left:8%;right:8%;top:10%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.34),rgba(54,203,224,.1) 55%,transparent);filter:blur(14px)}
 #rb .rb-intro__face::after{content:"";position:absolute;left:4%;right:4%;top:6%;aspect-ratio:1/1;border-radius:50%;border:1px solid rgba(54,203,224,.35);z-index:0}
+#rb .rb-stage__img{position:absolute!important;inset:0;opacity:0;transition:opacity 1.4s ease;will-change:opacity,transform}
+#rb .rb-stage__img.is-active{opacity:1}
+#rb.rb-js .rb-stage__img.is-active{animation:rb-kb 7.5s linear both}
+@keyframes rb-kb{from{transform:scale(1) translateY(0)}to{transform:scale(1.06) translateY(-1.5%)}}
+#rb .rb-stage__inner{position:absolute;inset:0;will-change:transform}
+#rb .rb-stage__tag{position:absolute;z-index:3;left:-10%;bottom:20%;display:block;min-width:230px;max-width:290px;padding:16px 20px;border-radius:16px;text-decoration:none;
+  background:rgba(43,48,53,.55);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 40px -24px rgba(0,0,0,.6);
+  opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+#rb .rb-stage__tag.is-active{opacity:1;transform:none;pointer-events:auto;transition-delay:.35s}
+#rb .rb-stage__tag small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+#rb .rb-stage__tag b{display:block;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;color:#fff}
+#rb .rb-stage__tag span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+#rb .rb-stage__tag:hover{border-color:rgba(54,203,224,.6)}
+#rb .rb-stage__dots{position:absolute;z-index:3;left:50%;bottom:5%;transform:translateX(-50%);display:flex;gap:8px}
+#rb .rb-stage__dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+#rb .rb-stage__dots button::before,#rb .rb-stage__dots button::after{content:"";position:absolute;left:0;top:9px;height:2px;border-radius:2px;background:rgba(255,255,255,.3);width:100%}
+#rb .rb-stage__dots button::after{background:var(--accent);width:0}
+#rb .rb-stage__dots button.is-done::after{width:100%}
+#rb .rb-stage__dots button.is-active::after{animation:rb-prog var(--rb-int,5s) linear both}
+#rb .rb-stage[data-paused] .rb-stage__dots button.is-active::after,#rb .rb-stage:not([data-playing]) .rb-stage__dots button.is-active::after{animation:none;width:100%}
+@keyframes rb-prog{from{width:0}to{width:100%}}
+#rb .rb-marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(0,0,0,.12);padding:20px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+#rb .rb-marquee__track{display:flex;width:max-content;animation:rb-marq 45s linear infinite}
+#rb .rb-marquee:hover .rb-marquee__track{animation-play-state:paused}
+#rb .rb-marquee__track span{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);white-space:nowrap;padding:0 26px;display:inline-flex;align-items:center;gap:52px;color:rgba(255,255,255,.88)}
+#rb .rb-marquee__track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);margin-right:-26px}
+#rb .rb-marquee__track span:nth-child(even){color:var(--muted);font-style:italic}
+@keyframes rb-marq{to{transform:translateX(-50%)}}
 #rb .rb-intro__face img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom;
   -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
   mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
@@ -478,6 +520,10 @@ def css():
   #rb .rb-intro{min-height:0;padding:10px 0 50px}
   #rb .rb-intro .rb-wrap{grid-template-columns:minmax(0,1fr)}
   #rb .rb-intro__face{order:-1;justify-self:center;width:min(78%,380px);margin-bottom:-6px}
+  #rb .rb-stage__tag{left:50%;bottom:8%;min-width:0;width:max-content;max-width:88vw;padding:9px 16px;border-radius:12px;text-align:center;transform:translate(-50%,14px)}
+  #rb .rb-stage__tag.is-active{transform:translate(-50%,0)}
+  #rb .rb-stage__tag small{display:none}#rb .rb-stage__tag b{font-size:18px}#rb .rb-stage__tag span{font-size:12px;margin-top:2px}
+  #rb .rb-stage__dots{bottom:1%}
   #rb .rb-intro__text{padding-bottom:50px}}
 @media (max-width:820px){#rb{font-size:16px}
   #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap{grid-template-columns:minmax(0,1fr)}
@@ -490,7 +536,7 @@ def css():
   #rb .rb-phone{display:none}#rb .rb-logo img,#rb .rb-head[data-scrolled] .rb-logo img{height:52px}
   #rb .rb-head .rb-wrap,#rb .rb-head[data-scrolled] .rb-wrap{min-height:68px}#rb .rb-contact{gap:10px}#rb .rb-contact .rb-btn{padding:9px 16px;font-size:14px}}
 @media (max-width:440px){#rb .rb-contact .rb-btn{display:none}#rb .rb-chip{padding:10px 12px;font-size:12px}#rb .rb-chip b{font-size:19px}}
-@media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb .rb-marquee__track{flex-wrap:wrap;width:auto;justify-content:center}#rb .rb-marquee__track span[aria-hidden]{display:none}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
 </style>"""
 
 def header(alias):
@@ -524,6 +570,25 @@ r.querySelectorAll('.rb-gal').forEach(function(g){var im=g.querySelector('.rb-ga
  th.forEach(function(t,k){t.addEventListener('click',function(){go(k);});});
  var p=g.querySelector('.rb-gal__nav--prev'),n=g.querySelector('.rb-gal__nav--next');
  if(p)p.addEventListener('click',function(){go(i-1);});if(n)n.addEventListener('click',function(){go(i+1);});});
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+r.querySelectorAll('.rb-stage').forEach(function(st){
+ var im=st.querySelectorAll('.rb-stage__img'),tg=st.querySelectorAll('.rb-stage__tag'),dt=st.querySelectorAll('.rb-stage__dots button'),n=im.length,i=0,t=null,ms=+st.getAttribute('data-interval')||5000;
+ if(n<2)return;st.style.setProperty('--rb-int',ms+'ms');
+ function show(k){i=(k+n)%n;
+  [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
+  [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
+  [].forEach.call(dt,function(e,j){e.classList.toggle('is-active',j===i);e.classList.toggle('is-done',j<i);if(j===i)e.setAttribute('aria-current','true');else e.removeAttribute('aria-current');var c=e.cloneNode(true);});}
+ function play(){stop();if(rm)return;st.setAttribute('data-playing','');t=setInterval(function(){show(i+1);},ms);}
+ function stop(){if(t){clearInterval(t);t=null;}st.removeAttribute('data-playing');}
+ [].forEach.call(dt,function(e,j){e.addEventListener('click',function(){show(j);play();});});
+ st.addEventListener('mouseenter',function(){st.setAttribute('data-paused','');stop();});
+ st.addEventListener('mouseleave',function(){st.removeAttribute('data-paused');show(i);play();});
+ st.addEventListener('focusin',function(){stop();});
+ document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else play();});
+ play();
+ var inner=st.querySelector('.rb-stage__inner');
+ if(!rm&&inner){var tick=false;window.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){var y=Math.min(window.scrollY,900);inner.style.transform='translateY('+(-y*0.12)+'px) scale('+(1+y*0.00012)+')';tick=false;});},{passive:true});}
+});
 var h=r.querySelector('.rb-head');function sc(){if(!h)return;if(window.scrollY>10)h.setAttribute('data-scrolled','');else h.removeAttribute('data-scrolled');}
 sc();window.addEventListener('scroll',sc,{passive:true});
 if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -664,7 +729,12 @@ def build_home(rel):
     for rv in lis[4].select('.review')[:3]:
         revs += review_html({'author': text(rv.select_one('.review-author')), 'text': clean(rel, rv.select_one('.review-text')), 'image': None}, anchor=False)
     logos = ''.join(f'<img src="{img(rel, im["src"])}" alt="Партнёр" loading="lazy">' for im in lis[4].select('img[src*="partner"]'))
-    face = img(rel, 'source/hero-face.webp', 1100)
+    slides = [(img(rel, f, 1100), b, t, h) for f, b, t, h in HERO_SLIDES]
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, t, h) in enumerate(slides))
+    tags_html = ''.join(f'<a class="rb-stage__tag{" is-active" if k == 0 else ""}" href="{h}"{"" if k == 0 else " tabindex=\"-1\" aria-hidden=\"true\""}><small>Бренд</small><b>{esc(b)}</b><span>{esc(t)}</span></a>' for k, (u, b, t, h) in enumerate(slides))
+    dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, t, h) in enumerate(slides))
+    words = ''.join(f'<span>{esc(w)}</span>' for w in MARQUEE)
+    marquee = f'<div class="rb-marquee" role="region" aria-label="Наши бренды и направления"><div class="rb-marquee__track">{words}{words.replace("<span>", "<span aria-hidden=\"true\">")}</div></div>'
     chips = ''.join(f'<div class="rb-chip"><b>{esc(text(t.select_one(".about-testimnial-number")))}</b>{esc(text(t.select_one(".about-testimnial-decription")).split("(")[0].strip())}</div>' for t in lis[3].select('.about-testimnial'))
     body = f'''<section class="rb-intro"><div class="rb-wrap">
 <div class="rb-intro__text"><span class="rb-kicker">Революшн Био · для косметологов</span>
@@ -672,8 +742,10 @@ def build_home(rel):
 <p class="rb-intro__lead">{esc(sub)}</p>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:callback">Получить консультацию</a><a class="rb-btn" href="/product">Каталог продукции</a></div>
 <div class="rb-chips">{chips}</div></div>
-<div class="rb-intro__face"><img src="{face}" alt="Сияющая кожа — результат профессионального ухода" fetchpriority="high"></div>
+<div class="rb-intro__face rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="5000">
+<div class="rb-stage__inner">{imgs_html}</div>{tags_html}<div class="rb-stage__dots">{dots_html}</div></div>
 </div></section>
+{marquee}
 <section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"><div class="rb-grid">{cats}</div>
 <div class="rb-btns"><a class="rb-btn" href="/product">Весь каталог</a></div></div></section>
 <section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Обучение</span><h2>Учебный центр</h2><hr class="rb-rule"><div class="rb-rich" style="margin-bottom:34px">{teach_desc}</div>
