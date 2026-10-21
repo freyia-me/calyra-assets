@@ -56,7 +56,8 @@
 #rb .rb-intro__lead{font-size:19px;color:var(--muted);max-width:520px}
 #rb .rb-intro{padding-bottom:0}
 #rb .rb-intro .rb-wrap{align-items:end}
-#rb .rb-intro__text{padding-bottom:70px;align-self:center}
+#rb .rb-intro__text{padding-bottom:40px;align-self:center}
+#rb .rb-intro{flex-direction:column;align-items:stretch;justify-content:flex-end}
 #rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,520px);aspect-ratio:1122/1402;margin-bottom:-1px}
 #rb .rb-intro__face::before{content:"";position:absolute;left:8%;right:8%;top:10%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.34),rgba(54,203,224,.1) 55%,transparent);filter:blur(14px)}
 #rb .rb-intro__face::after{content:"";position:absolute;left:4%;right:4%;top:6%;aspect-ratio:1/1;border-radius:50%;border:1px solid rgba(54,203,224,.35);z-index:0}
@@ -69,9 +70,19 @@
   background:rgba(43,48,53,.55);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 40px -24px rgba(0,0,0,.6);
   opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 #rb .rb-stage__tag.is-active{opacity:1;transform:none;pointer-events:auto;transition-delay:.35s}
-#rb .rb-stage__tag small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-#rb .rb-stage__tag b{display:block;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;color:#fff}
-#rb .rb-stage__tag span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+#rb .rb-stage__tag small{display:block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+#rb .rb-stage__tag span{display:block;font-family:var(--serif);font-size:20px;line-height:1.25;color:#fff}
+#rb .rb-intro .rb-wrap--brands{display:block}
+#rb .rb-brands{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);padding:30px 0 34px;position:relative;z-index:2}
+#rb .rb-brand{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:6px 18px;text-decoration:none}
+#rb .rb-brand+.rb-brand::before{content:"";position:absolute;left:0;top:8%;bottom:8%;width:1px;background:var(--line)}
+#rb .rb-brand b{white-space:nowrap;font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,40px);line-height:1.05;letter-spacing:-.01em;color:#fff;transition:color .5s,text-shadow .5s}
+#rb .rb-brand span{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);max-width:220px;line-height:1.7;transition:color .5s}
+#rb .rb-brand::after{content:"";position:absolute;left:50%;top:-31px;width:0;height:2px;background:var(--accent);transform:translateX(-50%);transition:width .6s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px var(--accent)}
+#rb .rb-brand.is-active b{color:var(--accent);text-shadow:0 0 28px rgba(54,203,224,.35)}
+#rb .rb-brand.is-active span{color:#fff}
+#rb .rb-brand.is-active::after{width:60%}
+#rb .rb-brand:hover b{color:var(--accent)}
 #rb .rb-stage__tag:hover{border-color:rgba(54,203,224,.6)}
 #rb .rb-stage__dots{position:absolute;z-index:3;left:50%;bottom:5%;transform:translateX(-50%);display:flex;gap:8px}
 #rb .rb-stage__dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
@@ -81,14 +92,6 @@
 #rb .rb-stage__dots button.is-active::after{animation:rb-prog var(--rb-int,5s) linear both}
 #rb .rb-stage[data-paused] .rb-stage__dots button.is-active::after,#rb .rb-stage:not([data-playing]) .rb-stage__dots button.is-active::after{animation:none;width:100%}
 @keyframes rb-prog{from{width:0}to{width:100%}}
-#rb .rb-marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(0,0,0,.12);padding:20px 0;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-#rb .rb-marquee__track{display:flex;width:max-content;animation:rb-marq 45s linear infinite}
-#rb .rb-marquee:hover .rb-marquee__track{animation-play-state:paused}
-#rb .rb-marquee__track span{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);white-space:nowrap;padding:0 26px;display:inline-flex;align-items:center;gap:52px;color:rgba(255,255,255,.88)}
-#rb .rb-marquee__track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);margin-right:-26px}
-#rb .rb-marquee__track span:nth-child(even){color:var(--muted);font-style:italic}
-@keyframes rb-marq{to{transform:translateX(-50%)}}
 #rb .rb-intro__face img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom;
   -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
   mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
@@ -97,7 +100,7 @@
 #rb .rb-chip b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--accent)}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@f2d0b1f9821a/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 #rb .rb-crumbs{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:26px;color:var(--muted)}
 #rb .rb-crumbs a{text-decoration:none}
@@ -171,8 +174,6 @@
 #rb .rb-row__img{background:#fff center/cover no-repeat;min-height:200px;border-radius:var(--r-sm)}
 #rb .rb-row__body{padding:18px 20px 18px 0}
 #rb .rb-row__meta{color:var(--accent);font-size:13px;font-weight:600;margin-bottom:8px}
-#rb .rb-logos{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;margin-top:56px}
-#rb .rb-logos img{height:72px;width:auto;padding:12px 22px;background:var(--glass);border:1px solid var(--line);border-radius:var(--r-sm)}
 /* контакты */
 #rb .rb-contacts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px}
 #rb .rb-ci{display:flex;gap:16px;margin-bottom:26px}
@@ -208,7 +209,9 @@
   #rb .rb-intro__face{order:-1;justify-self:center;width:min(78%,380px);margin-bottom:-6px}
   #rb .rb-stage__tag{left:50%;bottom:8%;min-width:0;width:max-content;max-width:88vw;padding:9px 16px;border-radius:12px;text-align:center;transform:translate(-50%,14px)}
   #rb .rb-stage__tag.is-active{transform:translate(-50%,0)}
-  #rb .rb-stage__tag small{display:none}#rb .rb-stage__tag b{font-size:18px}#rb .rb-stage__tag span{font-size:12px;margin-top:2px}
+  #rb .rb-stage__tag small{font-size:10px;margin-bottom:2px}#rb .rb-stage__tag span{font-size:15px}
+  #rb .rb-brands{padding:22px 0 26px}#rb .rb-brand b{white-space:normal;font-size:19px}#rb .rb-brand{padding:4px 6px;gap:8px}#rb .rb-brand span{font-size:9px;letter-spacing:.14em}
+  #rb .rb-brand::after{top:-23px}
   #rb .rb-stage__dots{bottom:1%}
   #rb .rb-intro__text{padding-bottom:50px}}
 @media (max-width:820px){#rb{font-size:16px}
@@ -222,11 +225,11 @@
   #rb .rb-phone{display:none}#rb .rb-logo img,#rb .rb-head[data-scrolled] .rb-logo img{height:52px}
   #rb .rb-head .rb-wrap,#rb .rb-head[data-scrolled] .rb-wrap{min-height:68px}#rb .rb-contact{gap:10px}#rb .rb-contact .rb-btn{padding:9px 16px;font-size:14px}}
 @media (max-width:440px){#rb .rb-contact .rb-btn{display:none}#rb .rb-chip{padding:10px 12px;font-size:12px}#rb .rb-chip b{font-size:19px}}
-@media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb .rb-marquee__track{flex-wrap:wrap;width:auto;justify-content:center}#rb .rb-marquee__track span[aria-hidden]{display:none}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
 </style>
 <div id="rb" lang="ru">
 <header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@f2d0b1f9821a/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
 <nav class="rb-nav" aria-label="Меню"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr" aria-current="page">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a></nav>
 <div class="rb-contact"><a class="rb-phone" href="tel:+74951477040">+7 (495) 147-70-40</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
@@ -236,15 +239,15 @@
 <h1>Учебный центр</h1><hr class="rb-rule"><div class="rb-lead rb-rich"><p>Учебный центр Revolution Bio предлагает для специалистов в области косметологии различные семинары, курсы, вебинары по направлениям: мезотерапия, биорепарация, биоревитализация, контурная пластика, космецевтика.<br/><br/>Тренеры Revolution Bio являются высококвалифицированными специалистами в области эстетической косметологии, они постоянно осуществляют научно - исследовательскую деятельность, являются спикерами и участниками различных мировых специализированных мероприятий и научных конференций. Обратившись к нам, вы получите уникальные профессиональные знания, познакомитесь с последними достижениями в области косметологии и эстетической медицины.</p></div></div></section><section class="rb-sec" style="padding-top:0"><div class="rb-wrap">
 <div class="rb-btns" style="margin:0 0 50px"><a class="rb-btn rb-btn--fill" href="#popup:signup">Записаться на обучение</a><a class="rb-btn" href="#popup:callback">Стать моделью</a><a class="rb-btn" href="#popup:callback">Стать тренером</a></div>
 <h2>Расписание</h2><hr class="rb-rule"><p class="rb-muted">Мы проводим обучение по всем тематическим направлениям косметологии: биорепарация и биоревитализация, контурная пластика, космецевтика, мезотерапия, нитевой лифтинг, трихология, экзосомы.</p>
-<div class="rb-list"><a class="rb-row" href="/obuchenie-kosmetologov"><div class="rb-row__img" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/cef8e7ed10ffa07bd8535ec35e230013-xl-23f38b.webp')"></div><div class="rb-row__body">
-<div class="rb-row__meta">Дата проведения: 01.02.2023</div><h3>Малые группы и индивидуальное обучение косметологов</h3><p class="rb-muted">Индивидуальное обучение для косметологов и клиник от тренеров Революшн Био. Мы проводим различные практические семинары и вебинары: Эффективные методики биоревитализации и мезотерапии Клеточное омоложение, регенерации кожи, купирование воспалительных…</p><span class="rb-card__more">Подробнее →</span></div></a><a class="rb-row" href="/exosomes-summit-dubrovnik"><div class="rb-row__img" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/97d2860871f3d35e35f6eb0477d3015a-xl-e185ae.webp')"></div><div class="rb-row__body">
+<div class="rb-list"><a class="rb-row" href="/obuchenie-kosmetologov"><div class="rb-row__img" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@f2d0b1f9821a/revolution-bio/img/cef8e7ed10ffa07bd8535ec35e230013-xl-23f38b.webp')"></div><div class="rb-row__body">
+<div class="rb-row__meta">Дата проведения: 01.02.2023</div><h3>Малые группы и индивидуальное обучение косметологов</h3><p class="rb-muted">Индивидуальное обучение для косметологов и клиник от тренеров Революшн Био. Мы проводим различные практические семинары и вебинары: Эффективные методики биоревитализации и мезотерапии Клеточное омоложение, регенерации кожи, купирование воспалительных…</p><span class="rb-card__more">Подробнее →</span></div></a><a class="rb-row" href="/exosomes-summit-dubrovnik"><div class="rb-row__img" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@f2d0b1f9821a/revolution-bio/img/97d2860871f3d35e35f6eb0477d3015a-xl-e185ae.webp')"></div><div class="rb-row__body">
 <div class="rb-row__meta">Дата проведения: 18.05.2026 · Преподаватель: МУКАРАМОВА ЛИЛИЯ ХАБИБУЛОЕВНА</div><h3>Поездка в Хорватию, Дубровник 26</h3><p class="rb-muted">Профессиональная поездка на международный конгресс косметологов Дубровник | 18–22 мая Бренды Реджусом (Rejusome) и ЖеДерм (JeuDerm) В мае Дубровник станет центром притяжения специалистов эстетической медицины со всего мира. Вас ждёт масштабный международный…</p><span class="rb-card__more">Подробнее →</span></div></a></div></div></section>
-<section class="rb-sec"><div class="rb-wrap"><h2>Преподаватели</h2><hr class="rb-rule"><div class="rb-grid"><a class="rb-card" href="/prepodavateli#trener-226"><div class="rb-card__img rb-card__img--cover" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/27b4275cdf67fac8ef7af010ec180724-xl-7d2f67.webp')" role="img" aria-label="Мукарамова Лилия Хабибулоевна"></div><div class="rb-card__body"><div class="rb-card__title">Мукарамова Лилия Хабибулоевна</div><div class="rb-card__text">Главный тренерРеволюшн Био по инъекционным и нитевым методикам, Международный сертифицированный тренер по инъекционным…</div><span class="rb-card__more">Подробнее →</span></div></a><a class="rb-card" href="/prepodavateli#trener-213"><div class="rb-card__img rb-card__img--cover" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/c79015a227b446e15f181d145a9ed4a7-xl-6b4662.webp')" role="img" aria-label="Наталья Валентиновна Андреева"></div><div class="rb-card__body"><div class="rb-card__title">Наталья Валентиновна Андреева</div><div class="rb-card__text">Врач - дерматолог косметолог LA Private Clinic Cтаж работы более 23 лет. Специалист по лазерным и нитевым технологиям…</div><span class="rb-card__more">Подробнее →</span></div></a><a class="rb-card" href="/prepodavateli#trener-30"><div class="rb-card__img rb-card__img--cover" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@e02fd10148eb/revolution-bio/img/1c0ae2205709722b62e843abc0471a55-xl-ab8e69.webp')" role="img" aria-label="Ронжина Виктория Юрьевна"></div><div class="rb-card__body"><div class="rb-card__title">Ронжина Виктория Юрьевна</div><div class="rb-card__text">- Врач-дерматолог, косметолог, ведущий тренер Революшн Био по инъекционным и нитевым методам омоложения…</div><span class="rb-card__more">Подробнее →</span></div></a></div></div></section>
+<section class="rb-sec"><div class="rb-wrap"><h2>Преподаватели</h2><hr class="rb-rule"><div class="rb-grid"><a class="rb-card" href="/prepodavateli#trener-226"><div class="rb-card__img rb-card__img--cover" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@f2d0b1f9821a/revolution-bio/img/27b4275cdf67fac8ef7af010ec180724-xl-7d2f67.webp')" role="img" aria-label="Мукарамова Лилия Хабибулоевна"></div><div class="rb-card__body"><div class="rb-card__title">Мукарамова Лилия Хабибулоевна</div><div class="rb-card__text">Главный тренерРеволюшн Био по инъекционным и нитевым методикам, Международный сертифицированный тренер по инъекционным…</div><span class="rb-card__more">Подробнее →</span></div></a><a class="rb-card" href="/prepodavateli#trener-213"><div class="rb-card__img rb-card__img--cover" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@f2d0b1f9821a/revolution-bio/img/c79015a227b446e15f181d145a9ed4a7-xl-6b4662.webp')" role="img" aria-label="Наталья Валентиновна Андреева"></div><div class="rb-card__body"><div class="rb-card__title">Наталья Валентиновна Андреева</div><div class="rb-card__text">Врач - дерматолог косметолог LA Private Clinic Cтаж работы более 23 лет. Специалист по лазерным и нитевым технологиям…</div><span class="rb-card__more">Подробнее →</span></div></a><a class="rb-card" href="/prepodavateli#trener-30"><div class="rb-card__img rb-card__img--cover" style="background-image:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@f2d0b1f9821a/revolution-bio/img/1c0ae2205709722b62e843abc0471a55-xl-ab8e69.webp')" role="img" aria-label="Ронжина Виктория Юрьевна"></div><div class="rb-card__body"><div class="rb-card__title">Ронжина Виктория Юрьевна</div><div class="rb-card__text">- Врач-дерматолог, косметолог, ведущий тренер Революшн Био по инъекционным и нитевым методам омоложения…</div><span class="rb-card__more">Подробнее →</span></div></a></div></div></section>
 </main>
 <footer class="rb-foot"><div class="rb-wrap">
 <div><p>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены.<br>ИНН: 9709100594 · КПП: 770901001</p>
 <p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
-<nav aria-label="Разделы"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a><a href="/akcii">Акции</a><a href="/partners">Партнёры</a></nav>
+<nav aria-label="Разделы"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a><a href="/akcii">Акции</a></nav>
 <div><p><a href="tel:+74951477040">+7 (495) 147-70-40</a><br><a href="mailto:info@revolution.bio">info@revolution.bio</a><br>Москва, Земляной Вал 7, офис 408</p>
 <div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
 <p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>
@@ -267,6 +270,7 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
  function show(k){i=(k+n)%n;
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
   [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
+  var bi=im[i].getAttribute('data-brand');[].forEach.call(r.querySelectorAll('.rb-brand'),function(e){e.classList.toggle('is-active',e.getAttribute('data-brand')===bi);});
   [].forEach.call(dt,function(e,j){e.classList.toggle('is-active',j===i);e.classList.toggle('is-done',j<i);if(j===i)e.setAttribute('aria-current','true');else e.removeAttribute('aria-current');var c=e.cloneNode(true);});}
  function play(){stop();if(rm)return;st.setAttribute('data-playing','');t=setInterval(function(){show(i+1);},ms);}
  function stop(){if(t){clearInterval(t);t=null;}st.removeAttribute('data-playing');}
