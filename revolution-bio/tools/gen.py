@@ -71,10 +71,10 @@ INTRO_ONLY = {'news/item/21-news3.html'}
 # Бренды компании: название, подпись, ссылка (строка брендов на первом экране главной)
 BRANDS = [
     # название, подпись в карточке, ссылка, фото продукции (из старого сайта или source/), фото вписано в круг?
-    ('JeuDérm', 'Пептидные технологии', '/jeuderm', 'media/k2/categories/7.png', True),
-    ('Rejusome', 'Экзосомальные технологии', '/ekzosomy', 'media/k2/galleries/227/8.png', False),
-    ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', 'https://calyralux.ru/', 'source/brand-calyra.webp', False),
-    ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/crystal-pdrn', 'media/k2/galleries/59/6.png', False),
+    ('JeuDérm', 'Пептидные технологии', '/jeuderm', 'source/round-exo-care.webp', True),
+    ('Rejusome', 'Экзосомальные технологии', '/ekzosomy', 'source/round-rejusome.webp', True),
+    ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', 'https://calyralux.ru/', 'source/round-calyra.webp', True),
+    ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/crystal-pdrn', 'source/round-pdrn.webp', True),
 ]
 # Карточки направлений (готовые изображения с текстом): файл в source/, заголовок, подпись, ссылка.
 # Заголовок и подпись повторяют текст на картинке — они идут в alt и для поиска.
@@ -85,6 +85,15 @@ PRODUCT_CARDS = [
     ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/kosmecevtika'),
     ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/trikhologiya'),
 ]
+# Круглые картинки-«пузыри» в шапке разделов и товаров: адрес страницы -> файл в source/
+PAGE_ART = {
+    '/ekzosomy': ('source/round-rejusome.webp', 'Rejusome Plus и Rejusome'),
+    '/kosmecevtika': ('source/round-exo-care.webp', 'Линейка Rejusome Exo Boost'),
+    '/biorevitalizatsiya': ('source/round-pdrn.webp', 'JeuDérm Crystal PDRN + HA 3%'),
+    '/crystal-pdrn': ('source/round-pdrn.webp', 'JeuDérm Crystal PDRN + HA 3%'),
+    '/rejusome': ('source/round-rejusome.webp', 'Rejusome'),
+    '/rejusome-plus': ('source/round-rejusome.webp', 'Rejusome Plus'),
+}
 # В какую сторону уходит линия от каждой точки на коже: лоб, скула, подбородок
 HOTSPOT_SIDES = ['r', 'l', 'r']
 # Кадры первого экрана главной: по одному на бренд.
@@ -431,13 +440,13 @@ def css():
 #rb .rb-brand{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 38%;align-items:center;min-height:150px;padding:20px 0 20px 20px;border-radius:20px;text-decoration:none;overflow:hidden;
   background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   transition:border-color .6s,box-shadow .6s,transform .5s cubic-bezier(.2,.7,.2,1),background .6s}
-#rb .rb-brand b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.9vw,27px);line-height:1.05;color:#fff;transition:color .6s;white-space:nowrap}
+#rb .rb-brand b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.9vw,27px);line-height:1.05;color:#fff;transition:color .6s}
 #rb .rb-brand span{display:block;margin-top:12px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);line-height:1.6;max-width:150px}
-#rb .rb-brand i{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:15px;color:#fff;z-index:2;transition:background .4s,border-color .4s,color .4s}
+#rb .rb-brand i{display:none;position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:15px;color:#fff;z-index:2;transition:background .4s,border-color .4s,color .4s}
 #rb .rb-brand__media{position:relative;align-self:stretch;margin:-22px 0}
 #rb .rb-brand__media::before{content:"";position:absolute;right:-18%;top:50%;width:120%;aspect-ratio:1;transform:translateY(-44%);border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.28),rgba(54,203,224,.06) 60%,transparent);transition:opacity .6s;opacity:.5}
 #rb .rb-brand__media img{position:absolute;right:6%;bottom:8%;width:92%;height:78%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-#rb .rb-brand__media--round img{right:8%;top:50%;bottom:auto;width:auto;height:auto;aspect-ratio:1;max-height:76%;max-width:92%;transform:translateY(-50%);border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
+#rb .rb-brand__media--round img{right:4%;top:50%;bottom:auto;width:auto;height:auto;aspect-ratio:1;max-height:92%;max-width:100%;transform:translateY(-50%);object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.5))}
 #rb .rb-brand:hover{transform:translateY(-4px)}
 #rb .rb-brand:hover i{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 #rb .rb-brand.is-active{border-color:rgba(54,203,224,.75);background:linear-gradient(145deg,rgba(54,203,224,.16),rgba(255,255,255,.04));box-shadow:0 0 0 1px rgba(54,203,224,.25),0 20px 50px -20px rgba(54,203,224,.55),inset 0 1px 0 rgba(255,255,255,.15)}
@@ -466,6 +475,10 @@ def css():
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
 #rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('""" + deco + """') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
+#rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
+#rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
+#rb.rb-js .rb-hero__art{animation:rb-float 7s ease-in-out infinite}
+@keyframes rb-float{50%{transform:translateY(-10px)}}
 #rb .rb-crumbs{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:26px;color:var(--muted)}
 #rb .rb-crumbs a{text-decoration:none}
 #rb .rb-crumbs a:hover{color:var(--accent)}
@@ -520,7 +533,7 @@ def css():
 /* товар */
 #rb .rb-product{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
 #rb .rb-product>div:first-child{position:sticky;top:96px}
-#rb .rb-gal__main{background:#fff;border-radius:var(--r);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+#rb .rb-gal__main{background:radial-gradient(closest-side,rgba(54,203,224,.12),transparent),#22272b;border-radius:var(--r);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 #rb .rb-gal__main img{max-height:100%;width:auto;object-fit:contain}
 #rb .rb-gal__nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(43,48,53,.75);color:#fff;font-size:22px;line-height:1;cursor:pointer;transition:background .2s}
 #rb .rb-gal__nav:hover{background:var(--accent);color:var(--accent-ink)}
@@ -606,7 +619,8 @@ def css():
   #rb .rb-bcards::-webkit-scrollbar{display:none}
   #rb .rb-brand{flex:0 0 78%;scroll-snap-align:center;min-height:140px}}
 @media (max-width:820px){#rb{font-size:16px}
-  #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap{grid-template-columns:minmax(0,1fr)}
+  #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap,#rb .rb-hero--art .rb-wrap{grid-template-columns:minmax(0,1fr)}
+  #rb .rb-hero__art{width:min(72%,300px);justify-self:center;order:-1}
   #rb .rb-product{gap:32px}#rb .rb-product>div:first-child{position:static}
   #rb .rb-row{grid-template-columns:minmax(0,1fr)}#rb .rb-row__body{padding:6px 12px 14px}
   #rb .rb-stats,#rb .rb-adv{grid-template-columns:minmax(0,1fr)}
@@ -690,9 +704,12 @@ def crumbs(items):
     parts = ['<a href="/">Главная</a>'] + [f'<a href="{h}">{esc(t)}</a>' if h else esc(t) for t, h in items]
     return '<nav class="rb-crumbs" aria-label="Навигация">' + '<span>—</span>'.join(parts) + '</nav>'
 
-def hero(h1, crumb_items, lead=''):
-    return f'''<section class="rb-hero"><div class="rb-wrap">{crumbs(crumb_items)}
-<h1>{esc(h1)}</h1><hr class="rb-rule">{f'<div class="rb-lead rb-rich">{lead}</div>' if lead else ''}</div></section>'''
+def hero(h1, crumb_items, lead='', art=None):
+    text_html = f'''{crumbs(crumb_items)}<h1>{esc(h1)}</h1><hr class="rb-rule">{f'<div class="rb-lead rb-rich">{lead}</div>' if lead else ''}'''
+    if art:
+        u = img('index.html', art[0], 900)
+        return f'''<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div>{text_html}</div><img class="rb-hero__art" src="{u}" alt="{esc(art[1])}"></div></section>'''
+    return f'''<section class="rb-hero"><div class="rb-wrap">{text_html}</div></section>'''
 
 def card(href, image, title, txt='', more='Подробнее', date='', cover=False):
     tag = 'a' if href else 'div'
@@ -830,7 +847,7 @@ def build_home(rel):
     def bcard(k, n, t, h, photo, rnd):
         u = img(rel, photo, 700)
         return (f'<a class="rb-brand{" is-active" if k == first else ""}" href="{h}"{ext(h)} data-brand="{k}"><div><b>{esc(n)}</b><span>{esc(t)}</span></div>'
-                f'<i aria-hidden="true">→</i><div class="rb-brand__media{" rb-brand__media--round" if rnd else ""}"><img src="{u}" alt="" loading="lazy"></div></a>')
+                f'<div class="rb-brand__media{" rb-brand__media--round" if rnd else ""}"><img src="{u}" alt="" loading="lazy"></div></a>')
     brands_html = ''.join(bcard(k, *b) for k, b in enumerate(BRANDS))
     lines_svg = ('<svg class="rb-intro__lines" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">'
                  '<path d="M-40 760 C 380 640, 620 900, 980 700 S 1380 420, 1500 520" stroke="rgba(255,255,255,.07)"/>'
@@ -925,7 +942,7 @@ def build_category(rel, alias):
     for it in s.select('.products-list > .product-item'):
         a = it.select_one('a.product')
         cards += card(map_link(rel, a['href']), bg_url(rel, a), text(a.select_one('.product-title')), shorten(text(a.select_one('.product-description')), 150))
-    body = hero(name, [('Продукция', '/product'), (name, None)]) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-grid">{cards}</div></div></section>
+    body = hero(name, [('Продукция', '/product'), (name, None)], art=PAGE_ART.get(alias)) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-grid">{cards}</div></div></section>
 {f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-rich">{desc}</div></div></section>' if strip_tags(desc) else ''}
 <section class="rb-sec"><div class="rb-wrap"><div class="rb-panel"><span class="rb-kicker">Обратная связь</span><h2>Подберём препараты под ваши задачи</h2><p class="rb-muted">Оставьте заявку — менеджер подберёт препараты и расскажет об условиях для специалистов.</p><a class="rb-btn rb-btn--fill" href="#popup:feedback">Оставить заявку</a></div></div></section>'''
     page(alias, name, body, seo_of(s, name))
@@ -944,6 +961,8 @@ def build_product(rel, alias):
     for g in pp.select('.main-product-photo .sigProLink[href]'):
         u = img(rel, g['href'])
         if u and u not in imgs: imgs.append(u)
+    if alias in PAGE_ART:
+        imgs.insert(0, img(rel, PAGE_ART[alias][0], 1100))
     short = ''.join(clean(rel, x) for x in pp.select('.product-page-right > .product-page-description:not(:has(.itemFullText))'))
     full = clean(rel, pp.select_one('.product-page-right .itemFullText'))
     fields = []
