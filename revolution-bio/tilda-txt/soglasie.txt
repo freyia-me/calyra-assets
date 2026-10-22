@@ -111,6 +111,12 @@
 #rb .rb-brand.is-active .rb-brand__media::before{opacity:1}
 #rb .rb-brand.is-active .rb-brand__media img{transform:scale(1.04)}
 #rb .rb-brand.is-active .rb-brand__media--round img{transform:translateY(-50%) scale(1.04)}
+/* название препарата под лицом: контур и тонкие линии внутри букв */
+#rb .rb-stage__name{position:absolute;z-index:2;left:0;right:0;bottom:10%;text-align:center;pointer-events:none;white-space:nowrap;
+  font-family:var(--serif);font-size:clamp(34px,4.2vw,60px);line-height:1;letter-spacing:.08em;text-transform:uppercase;color:transparent;
+  background:repeating-linear-gradient(180deg,rgba(214,221,226,.62) 0 1px,transparent 1px 4px);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-stroke:.6px rgba(214,221,226,.45);transition:opacity .5s ease,letter-spacing .9s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-stage__name.is-swap{opacity:0;letter-spacing:.16em}
 #rb .rb-stage__dots{position:absolute;z-index:3;left:50%;bottom:5%;transform:translateX(-50%);display:flex;gap:8px}
 #rb .rb-stage__dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
 #rb .rb-stage__dots button::before,#rb .rb-stage__dots button::after{content:"";position:absolute;left:0;top:9px;height:2px;border-radius:2px;background:rgba(255,255,255,.3);width:100%}
@@ -235,6 +241,7 @@
   #rb .rb-stage__dots{bottom:1%}
   #rb .rb-intro__text{padding-bottom:50px}
   #rb .rb-hs__label,#rb .rb-hs__line{display:none}
+  #rb .rb-stage__name{bottom:7%;font-size:clamp(24px,8vw,36px)}
 
   #rb .rb-bcards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:20px 24px 34px;scrollbar-width:none}
   #rb .rb-bcards::-webkit-scrollbar{display:none}
@@ -290,6 +297,7 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
   [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
   var hp=(im[i].getAttribute('data-hs')||'').split(';'),lb=(im[i].getAttribute('data-labels')||'').split('|');
+  var nm=st.querySelector('.rb-stage__name'),nt=im[i].getAttribute('data-name');if(nm&&nt&&nm.textContent!==nt){nm.classList.add('is-swap');setTimeout(function(){nm.textContent=nt;nm.classList.remove('is-swap');},rm?0:500);}
   [].forEach.call(st.querySelectorAll('.rb-hs'),function(e,j){var c=(hp[j]||'').split(',');if(c.length===2){e.style.setProperty('--x',c[0]+'%');e.style.setProperty('--y',c[1]+'%');}
    var l=e.querySelector('.rb-hs__label');if(l&&lb[j]!==undefined&&l.innerHTML!==lb[j]){e.classList.add('is-swap');setTimeout(function(){l.innerHTML=lb[j];e.classList.remove('is-swap');},rm?0:500);}});
   var bi=im[i].getAttribute('data-brand');[].forEach.call(r.querySelectorAll('.rb-brand'),function(e){e.classList.toggle('is-active',e.getAttribute('data-brand')===bi);});

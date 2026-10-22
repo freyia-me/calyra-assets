@@ -436,6 +436,12 @@ def css():
 #rb .rb-brand.is-active .rb-brand__media::before{opacity:1}
 #rb .rb-brand.is-active .rb-brand__media img{transform:scale(1.04)}
 #rb .rb-brand.is-active .rb-brand__media--round img{transform:translateY(-50%) scale(1.04)}
+/* название препарата под лицом: контур и тонкие линии внутри букв */
+#rb .rb-stage__name{position:absolute;z-index:2;left:0;right:0;bottom:10%;text-align:center;pointer-events:none;white-space:nowrap;
+  font-family:var(--serif);font-size:clamp(34px,4.2vw,60px);line-height:1;letter-spacing:.08em;text-transform:uppercase;color:transparent;
+  background:repeating-linear-gradient(180deg,rgba(214,221,226,.62) 0 1px,transparent 1px 4px);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-stroke:.6px rgba(214,221,226,.45);transition:opacity .5s ease,letter-spacing .9s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-stage__name.is-swap{opacity:0;letter-spacing:.16em}
 #rb .rb-stage__dots{position:absolute;z-index:3;left:50%;bottom:5%;transform:translateX(-50%);display:flex;gap:8px}
 #rb .rb-stage__dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
 #rb .rb-stage__dots button::before,#rb .rb-stage__dots button::after{content:"";position:absolute;left:0;top:9px;height:2px;border-radius:2px;background:rgba(255,255,255,.3);width:100%}
@@ -560,6 +566,7 @@ def css():
   #rb .rb-stage__dots{bottom:1%}
   #rb .rb-intro__text{padding-bottom:50px}
   #rb .rb-hs__label,#rb .rb-hs__line{display:none}
+  #rb .rb-stage__name{bottom:7%;font-size:clamp(24px,8vw,36px)}
 
   #rb .rb-bcards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:20px 24px 34px;scrollbar-width:none}
   #rb .rb-bcards::-webkit-scrollbar{display:none}
@@ -617,6 +624,7 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
   [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
   var hp=(im[i].getAttribute('data-hs')||'').split(';'),lb=(im[i].getAttribute('data-labels')||'').split('|');
+  var nm=st.querySelector('.rb-stage__name'),nt=im[i].getAttribute('data-name');if(nm&&nt&&nm.textContent!==nt){nm.classList.add('is-swap');setTimeout(function(){nm.textContent=nt;nm.classList.remove('is-swap');},rm?0:500);}
   [].forEach.call(st.querySelectorAll('.rb-hs'),function(e,j){var c=(hp[j]||'').split(',');if(c.length===2){e.style.setProperty('--x',c[0]+'%');e.style.setProperty('--y',c[1]+'%');}
    var l=e.querySelector('.rb-hs__label');if(l&&lb[j]!==undefined&&l.innerHTML!==lb[j]){e.classList.add('is-swap');setTimeout(function(){l.innerHTML=lb[j];e.classList.remove('is-swap');},rm?0:500);}});
   var bi=im[i].getAttribute('data-brand');[].forEach.call(r.querySelectorAll('.rb-brand'),function(e){e.classList.toggle('is-active',e.getAttribute('data-brand')===bi);});
@@ -777,7 +785,7 @@ def build_home(rel):
     slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
     ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
     hs_attr = lambda pts: ';'.join(f'{x},{y}' for x, y in pts)
-    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(pts)}" data-labels="{esc('|'.join(labels))}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, pts, h, bi, labels) in enumerate(slides))
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(pts)}" data-labels="{esc('|'.join(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, pts, h, bi, labels) in enumerate(slides))
     hs_html = ''.join(f'<div class="rb-hs rb-hs--{side}" style="--x:{slides[0][2][k][0]}%;--y:{slides[0][2][k][1]}%;--end:{16 if side == "l" else 84}%" aria-hidden="true"><span class="rb-hs__line"></span><i class="rb-hs__dot"></i><span class="rb-hs__label">{slides[0][5][k]}</span></div>' for k, side in enumerate(HOTSPOT_SIDES))
     hs_text = ' '.join(f'{b}: ' + ', '.join(strip_tags(l.replace('<br>', ' ')) for l in labels) + '.' for u, b, pts, h, bi, labels in slides)
     dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, pts, h, bi, labels) in enumerate(slides))
@@ -798,7 +806,7 @@ def build_home(rel):
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:callback">Получить консультацию</a><a class="rb-btn" href="/product">Каталог продукции</a></div>
 </div>
 <div class="rb-intro__face rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="6000">
-<div class="rb-stage__inner">{imgs_html}{hs_html}</div><p class="rb-sr">{esc(hs_text)}</p><div class="rb-stage__dots">{dots_html}</div></div>
+<div class="rb-stage__inner">{imgs_html}{hs_html}</div><div class="rb-stage__name" aria-hidden="true">{esc(slides[0][1])}</div><p class="rb-sr">{esc(hs_text)}</p><div class="rb-stage__dots">{dots_html}</div></div>
 </div>
 <div class="rb-wrap rb-wrap--brands"><nav class="rb-bcards" aria-label="Наши бренды">{brands_html}</nav></div></section>
 <section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"><div class="rb-grid">{cats}</div>
