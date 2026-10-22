@@ -76,6 +76,15 @@ BRANDS = [
     ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', 'https://calyralux.ru/', 'source/brand-calyra.webp', False),
     ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/crystal-pdrn', 'media/k2/galleries/59/6.png', False),
 ]
+# Карточки направлений (готовые изображения с текстом): файл в source/, заголовок, подпись, ссылка.
+# Заголовок и подпись повторяют текст на картинке — они идут в alt и для поиска.
+PRODUCT_CARDS = [
+    ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/crystal-pdrn'),
+    ('source/card-serums.webp', 'Стерильные сыворотки', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/ekzosomy'),
+    ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: PN 2% и CAP Peptide 5', 'https://calyralux.ru/'),
+    ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/kosmecevtika'),
+    ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/trikhologiya'),
+]
 # В какую сторону уходит линия от каждой точки на коже: лоб, скула, подбородок
 HOTSPOT_SIDES = ['r', 'l', 'r']
 # Кадры первого экрана главной: по одному на бренд.
@@ -486,6 +495,28 @@ def css():
 #rb .rb-card__more{margin-top:auto;padding-top:10px;color:var(--accent);font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
 #rb a.rb-card:hover .rb-card__more{gap:10px}
 #rb .rb-card__date{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+/* карточки-постеры направлений */
+#rb .rb-pcard{display:flex;flex-direction:column;border-radius:20px;overflow:hidden;text-decoration:none;background:#1f2427;border:1px solid var(--line);scroll-snap-align:start;min-width:0;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .45s}
+#rb .rb-pcard>img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-pcard__more{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);transition:color .3s}
+#rb .rb-pcard__more i{font-style:normal;font-size:16px;transition:transform .3s}
+#rb .rb-pcard:hover{transform:translateY(-6px);border-color:rgba(54,203,224,.6);box-shadow:0 26px 50px -26px rgba(54,203,224,.5)}
+#rb .rb-pcard:hover>img{transform:scale(1.03)}
+#rb .rb-pcard:hover .rb-pcard__more{color:var(--accent)}
+#rb .rb-pcard:hover .rb-pcard__more i{transform:translateX(4px)}
+#rb .rb-pcard__poster{position:relative;display:flex;flex-direction:column;aspect-ratio:4/5;padding:9% 9% 0;overflow:hidden;background:radial-gradient(120% 80% at 70% 100%,rgba(54,203,224,.18),transparent 60%),linear-gradient(160deg,#2a3034,#1b1f22)}
+#rb .rb-pcard__poster b{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.05;color:#fff}
+#rb .rb-pcard__poster hr{width:28%;height:2px;border:0;background:var(--accent);margin:18px 0 14px}
+#rb .rb-pcard__poster span{font-family:var(--serif);font-size:17px;color:rgba(255,255,255,.8)}
+#rb .rb-pcard__poster img{margin-top:auto;width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px 16px 0 0;opacity:.9}
+#rb .rb-pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+#rb .rb-railhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+#rb .rb-railnav{display:flex;gap:10px;margin-bottom:36px}
+#rb .rb-railnav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:#fff;font-size:18px;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
+#rb .rb-railnav button:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+#rb .rb-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*20px)/3.4);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 2px 14px;scrollbar-width:none;outline:none}
+#rb .rb-rail::-webkit-scrollbar{display:none}
 /* товар */
 #rb .rb-product{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
 #rb .rb-product>div:first-child{position:sticky;top:96px}
@@ -555,6 +586,7 @@ def css():
 #rb.rb-js .rb-intro__face{animation:rb-fade 1.4s ease .1s both}
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@media (max-width:1100px){#rb .rb-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-rail{grid-auto-columns:calc((100% - 20px)/2.3)}}
 @media (max-width:1280px){#rb .rb-hs--r{--end:76%!important}#rb .rb-bcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:1100px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
@@ -568,6 +600,8 @@ def css():
   #rb .rb-hs__label,#rb .rb-hs__line{display:none}
   #rb .rb-stage__name{bottom:7%;font-size:clamp(24px,8vw,36px)}
 
+  #rb .rb-rail{grid-auto-columns:78%;margin:0 -24px;padding:6px 24px 14px;scroll-padding:0 24px}
+  #rb .rb-pgrid{grid-template-columns:minmax(0,1fr);gap:18px}#rb .rb-railnav{display:none}
   #rb .rb-bcards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:20px 24px 34px;scrollbar-width:none}
   #rb .rb-bcards::-webkit-scrollbar{display:none}
   #rb .rb-brand{flex:0 0 78%;scroll-snap-align:center;min-height:140px}}
@@ -640,6 +674,7 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
  var inner=st.querySelector('.rb-stage__inner');
  if(!rm&&inner){var tick=false;window.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){var y=Math.min(window.scrollY,900);inner.style.transform='translateY('+(-y*0.12)+'px) scale('+(1+y*0.00012)+')';tick=false;});},{passive:true});}
 });
+r.querySelectorAll('.rb-railnav button').forEach(function(bt){bt.addEventListener('click',function(){var sec=bt.closest('.rb-wrap'),rl=sec&&sec.querySelector('.rb-rail');if(!rl)return;var c=rl.querySelector('.rb-pcard');var w=c?c.getBoundingClientRect().width+20:rl.clientWidth*0.8;rl.scrollBy({left:w*(+bt.getAttribute('data-dir')),behavior:rm?'auto':'smooth'});});});
 var h=r.querySelector('.rb-head');function sc(){if(!h)return;if(window.scrollY>10)h.setAttribute('data-scrolled','');else h.removeAttribute('data-scrolled');}
 sc();window.addEventListener('scroll',sc,{passive:true});
 if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -664,6 +699,11 @@ def card(href, image, title, txt='', more='Подробнее', date='', cover=F
     hr = f' href="{href}"' if href else ''
     im = f'<div class="rb-card__img{" rb-card__img--cover" if cover else ""}" style="background-image:url(\'{image}\')" role="img" aria-label="{esc(title)}"></div>' if image else ''
     return f'''<{tag} class="rb-card"{hr}>{im}<div class="rb-card__body">{f'<div class="rb-card__date">{esc(date)}</div>' if date else ''}<div class="rb-card__title">{esc(title)}</div>{f'<div class="rb-card__text">{esc(txt)}</div>' if txt else ''}{f'<span class="rb-card__more">{more} →</span>' if href and more else ''}</div></{tag}>'''
+
+def pcard(rel, f, title, sub, href):
+    ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
+    return (f'<a class="rb-pcard" href="{href}"{ext}><img src="{img(rel, f, 800)}" alt="{esc(title)}. {esc(sub)}" loading="lazy">'
+            f'<span class="rb-pcard__more">Подробнее <i aria-hidden="true">→</i></span></a>')
 
 def gallery(images, alt):
     if not images:
@@ -764,10 +804,7 @@ def build_home(rel):
     lis = s.select('.custom-slider ul.slides > li')
     sub = text(lis[0].select_one('.main-page-subtitle'))
     # продукция
-    cat_desc = {norm_rel('product.html', a['href']): text(a.select_one('.product-description')) for a in soup('product.html').select('.products-category a.product')}
-    cats = ''
-    for a in lis[1].select('a.product'):
-        cats += card(map_link(rel, a['href']), bg_url(rel, a), text(a.select_one('.product-title')), shorten(cat_desc.get(norm_rel(rel, a['href']), ''), 140))
+    rail = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
     # учебный центр
     teach_desc = clean(rel, lis[2].select_one('.teaching-description'))
     events = ''
@@ -809,7 +846,9 @@ def build_home(rel):
 <div class="rb-stage__inner">{imgs_html}{hs_html}</div><div class="rb-stage__name" aria-hidden="true">{esc(slides[0][1])}</div><p class="rb-sr">{esc(hs_text)}</p><div class="rb-stage__dots">{dots_html}</div></div>
 </div>
 <div class="rb-wrap rb-wrap--brands"><nav class="rb-bcards" aria-label="Наши бренды">{brands_html}</nav></div></section>
-<section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"><div class="rb-grid">{cats}</div>
+<section class="rb-sec"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"></div>
+<div class="rb-railnav"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div></div>
+<div class="rb-rail" tabindex="0" aria-label="Направления продукции">{rail}</div>
 <div class="rb-btns"><a class="rb-btn" href="/product">Весь каталог</a></div></div></section>
 <section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Обучение</span><h2>Учебный центр</h2><hr class="rb-rule"><div class="rb-rich" style="margin-bottom:34px">{teach_desc}</div>
 <div class="rb-grid">{events}</div><div class="rb-btns"><a class="rb-btn" href="/uchebnyj-tsentr">Все программы обучения</a></div></div></section>
@@ -869,10 +908,13 @@ def build_about(rel):
 def build_catalog(rel):
     s = soup(rel)
     desc = clean(rel, s.select_one('.products-category-description'))
-    cards = ''
-    for a in s.select('.products-category a.product'):
-        cards += card(map_link(rel, a['href']), bg_url(rel, a), text(a.select_one('.product-title')), shorten(text(a.select_one('.product-description')), 160))
-    body = hero('Продукция', [('Продукция', None)], desc) + f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-grid">{cards}</div></div></section>'
+    cards = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
+    # у раздела JeuDérm (домашний и профессиональный уход) нет готовой картинки — постер из текста и фото линейки
+    jd = img(rel, 'media/k2/categories/7.png', 700)
+    cards += (f'<a class="rb-pcard rb-pcard--text" href="/jeuderm"><span class="rb-pcard__poster"><b>Уход JeuDérm</b><hr>'
+              f'<span>Профессиональный и домашний уход</span><img src="{jd}" alt="" loading="lazy"></span>'
+              f'<span class="rb-pcard__more">Подробнее <i aria-hidden="true">→</i></span></a>')
+    body = hero('Продукция', [('Продукция', None)], desc) + f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-pgrid">{cards}</div></div></section>'
     page('/product', 'Продукция', body, seo_of(s, 'Продукция'))
 
 def build_category(rel, alias):
