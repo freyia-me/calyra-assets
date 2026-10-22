@@ -71,7 +71,7 @@ INTRO_ONLY = {'news/item/21-news3.html'}
 # Бренды компании: название, подпись, ссылка (строка брендов на первом экране главной)
 BRANDS = [
     # название, подпись в карточке, ссылка, фото продукции (из старого сайта или source/), фото вписано в круг?
-    ('JeuDérm', 'Пептидные технологии', '/jeuderm', 'source/round-exo-care.webp', True),
+    ('JeuDérm', 'Пептидные технологии', '/jeuderm', 'source/round-jeuderm.webp', True),
     ('Rejusome', 'Экзосомальные технологии', '/ekzosomy', 'source/round-rejusome.webp', True),
     ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', 'https://calyralux.ru/', 'source/round-calyra.webp', True),
     ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/crystal-pdrn', 'source/round-pdrn.webp', True),
@@ -84,9 +84,12 @@ PRODUCT_CARDS = [
     ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: PN 2% и CAP Peptide 5', 'https://calyralux.ru/'),
     ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/kosmecevtika'),
     ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/trikhologiya'),
+    ('source/card-jeuderm.webp', 'Пептидная космецевтика JeuDérm', 'Всё, что нужно для кабинета косметолога', '/jeuderm'),
 ]
 # Круглые картинки-«пузыри» в шапке разделов и товаров: адрес страницы -> файл в source/
 PAGE_ART = {
+    '/jeuderm': ('source/round-jeuderm.webp', 'Пептидная космецевтика JeuDérm Expert'),
+    '/jeuderm-professional': ('source/round-jeuderm.webp', 'Профессиональный уход JeuDérm'),
     '/ekzosomy': ('source/round-rejusome.webp', 'Rejusome Plus и Rejusome'),
     '/kosmecevtika': ('source/round-exo-care.webp', 'Линейка Rejusome Exo Boost'),
     '/biorevitalizatsiya': ('source/round-pdrn.webp', 'JeuDérm Crystal PDRN + HA 3%'),
@@ -518,11 +521,6 @@ def css():
 #rb .rb-pcard:hover>img{transform:scale(1.03)}
 #rb .rb-pcard:hover .rb-pcard__more{color:var(--accent)}
 #rb .rb-pcard:hover .rb-pcard__more i{transform:translateX(4px)}
-#rb .rb-pcard__poster{position:relative;display:flex;flex-direction:column;aspect-ratio:3/4;padding:9% 9% 0;overflow:hidden;background:radial-gradient(120% 80% at 70% 100%,rgba(54,203,224,.18),transparent 60%),linear-gradient(160deg,#2a3034,#1b1f22)}
-#rb .rb-pcard__poster b{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.05;color:#fff}
-#rb .rb-pcard__poster hr{width:28%;height:2px;border:0;background:var(--accent);margin:18px 0 14px}
-#rb .rb-pcard__poster span{font-family:var(--serif);font-size:17px;color:rgba(255,255,255,.8)}
-#rb .rb-pcard__poster img{margin-top:auto;width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px 16px 0 0;opacity:.9}
 #rb .rb-pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 #rb .rb-railhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
 #rb .rb-railnav{display:flex;gap:10px;margin-bottom:36px}
@@ -926,11 +924,6 @@ def build_catalog(rel):
     s = soup(rel)
     desc = clean(rel, s.select_one('.products-category-description'))
     cards = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
-    # у раздела JeuDérm (домашний и профессиональный уход) нет готовой картинки — постер из текста и фото линейки
-    jd = img(rel, 'media/k2/categories/7.png', 700)
-    cards += (f'<a class="rb-pcard rb-pcard--text" href="/jeuderm"><span class="rb-pcard__poster"><b>Уход JeuDérm</b><hr>'
-              f'<span>Профессиональный и домашний уход</span><img src="{jd}" alt="" loading="lazy"></span>'
-              f'<span class="rb-pcard__more">Подробнее <i aria-hidden="true">→</i></span></a>')
     body = hero('Продукция', [('Продукция', None)], desc) + f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-pgrid">{cards}</div></div></section>'
     page('/product', 'Продукция', body, seo_of(s, 'Продукция'))
 
