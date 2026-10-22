@@ -1,74 +1,146 @@
 # 301-редиректы: старый адрес (Joomla) -> новый адрес (Tilda)
 # Tilda: Настройки сайта → Ещё → Редиректы (301)
-/component/k2/item/7-doktor-vasilenko-elina	/otzyvy
-/component/k2/item/8-irina	/otzyvy
-/news/item/19-news1	/news
-/news/item/20-news2	/news
-/news/item/21-news3	/news-ekzosomy
-/partners	/jeuderm
-/partners/item/10-rejusome-cream-otzyv	/otzyvy
-/partners/item/14-otzyv	/otzyvy
-/partners/item/193-mintlift-buy-russia	/jeuderm
-/partners/item/195-polina-t	/otzyvy
-/partners/item/196-anna-p	/otzyvy
-/partners/item/197-irina-b	/otzyvy
-/partners/item/198-tat-yana-a	/otzyvy
-/partners/item/200-ol-ga-k	/otzyvy
-/partners/item/201-tat-yana-b	/otzyvy
-/partners/item/202-revolution-group	/jeuderm
-/partners/item/232-mariya	/otzyvy
-/partners/item/233-irina	/otzyvy
-/partners/item/234-olga	/otzyvy
-/partners/item/235-ol-ga	/otzyvy
-/partners/item/236-tat-yana	/otzyvy
-/partners/item/7-doktor-vasilenko-elina	/otzyvy
-/partners/item/8-irina-b	/otzyvy
-/partners/item/9-nauchnyj-tsentr-revolution-group	/otzyvy
-/partners/itemlist/category/16-moscow	/jeuderm
-/partners/itemlist/category/93-otzyvy-tovarov	/otzyvy
-/partners/itemlist/category/95-russia	/jeuderm
-/partners/itemlist/category/98-gruzia	/jeuderm
-/product/item/10-rejusome-cream-otzyv	/otzyvy
-/product/item/13-doktor-elina-vasilenko	/otzyvy
-/product/item/14-otzyv	/otzyvy
-/product/item/195-polina-t	/otzyvy
-/product/item/196-anna-p	/otzyvy
-/product/item/197-irina-b	/otzyvy
-/product/item/198-tat-yana-a	/otzyvy
-/product/item/200-ol-ga-k	/otzyvy
-/product/item/201-tat-yana-b	/otzyvy
-/product/item/207-rejusomeboostcream	/rejusome-exo-boost-cream
-/product/item/227-rejusome	/rejusome
-/product/item/228-rejusome-plus	/rejusome-plus
-/product/item/229-rejusome-plus-hair	/rejusome-plus-hair
-/product/item/230-rejusomeboostserum	/rejusome-exo-boost-serum
-/product/item/231-rejusomeboostmask	/rejusome-exo-boost-mask
-/product/item/232-mariya	/otzyvy
-/product/item/233-irina	/otzyvy
-/product/item/234-olga	/otzyvy
-/product/item/235-ol-ga	/otzyvy
-/product/item/236-tat-yana	/otzyvy
-/product/item/237-rejusomeboostmist	/rejusome-exo-boost-mist
-/product/item/59-crystal-pdrn	/crystal-pdrn
-/product/item/7-doktor-vasilenko-elina	/otzyvy
-/product/item/8-irina-b	/otzyvy
-/product/item/81-jeuderm-homecare	/jeuderm-homecare
-/product/item/82-jeuderm-pofessional	/jeuderm-professional
-/product/item/9-nauchnyj-tsentr-revolution-group	/about
-/product/item/9-nauchnyj-tsentr-revolution-group	/otzyvy
-/product/itemlist/category/11-pro-skincare	/kosmecevtika
-/product/itemlist/category/19-trikhologiya	/trikhologiya
-/product/itemlist/category/4-otzyvy	/otzyvy
-/product/itemlist/category/5-ekzosomy	/ekzosomy
+# Адреса с #p-… открывают на странице бренда окно нужного товара.
+/component/k2/item/7-doktor-vasilenko-elina	/
+/component/k2/item/8-irina	/
+/news	/about
+/news/item/19-news1	/about
+/news/item/20-news2	/about
+/news/item/21-news3	/about
+/partners	/distributor
+/partners/item/193-mintlift-buy-russia	/distributor
+/partners/item/202-revolution-group	/distributor
+/partners/item/232-mariya	/distributor
+/partners/item/233-irina	/distributor
+/partners/item/234-olga	/distributor
+/partners/item/235-ol-ga	/distributor
+/partners/item/236-tat-yana	/distributor
+/partners/itemlist/category/16-moscow	/distributor
+/partners/itemlist/category/93-otzyvy-tovarov	/distributor
+/partners/itemlist/category/95-russia	/distributor
+/partners/itemlist/category/98-gruzia	/distributor
+/partners/itemlist/tag/227rejusome	/distributor
+/partners/itemlist/tag/228rejusomeplus	/distributor
+/partners/itemlist/tag/229rejusomeplushair	/distributor
+/partners/itemlist/tag/230rejusomeboostserum	/distributor
+/partners/itemlist/tag/231rejusomeboostmask	/distributor
+/partners/itemlist/tag/59crystalpdrn	/distributor
+/partners/itemlist/tag/asceplus	/distributor
+/partners/itemlist/tag/asceplusmaruga	/distributor
+/partners/itemlist/tag/exosomes	/distributor
+/partners/itemlist/tag/maruga	/distributor
+/partners/itemlist/tag/rejusome	/distributor
+/partners/itemlist/tag/rejusome mist	/distributor
+/partners/itemlist/tag/rejusomeplus	/distributor
+/partners/itemlist/tag/Экзосомы	/distributor
+/partners/itemlist/tag/косметика с экзосомами	/distributor
+/partners/itemlist/tag/крем с экзосомами	/distributor
+/partners/itemlist/tag/микробиом	/distributor
+/partners/itemlist/tag/микробиом кожи восстановление	/distributor
+/partners/itemlist/tag/омоложение кожи экзосомами	/distributor
+/partners/itemlist/tag/отзыв207rejusomeboostcream	/distributor
+/partners/itemlist/tag/отзывКосмецевтика	/distributor
+/partners/itemlist/tag/отзывМезотерапия1	/distributor
+/partners/itemlist/tag/отзывЭкзосомы	/distributor
+/partners/itemlist/tag/реджесом мист	/distributor
+/partners/itemlist/tag/сыворотка с экзосомами	/distributor
+/partners/itemlist/tag/тоник с экзосомами	/distributor
+/partners/itemlist/tag/экзосом	/distributor
+/partners/itemlist/tag/экзосомы в косметологии	/distributor
+/partners/itemlist/tag/экзосомы для косметологии	/distributor
+/partners/itemlist/user/187-superuser	/distributor
+/product	/#katalog
+/product/item/10-rejusome-cream-otzyv	/#katalog
+/product/item/13-doktor-elina-vasilenko	/#katalog
+/product/item/14-otzyv	/#katalog
+/product/item/195-polina-t	/#katalog
+/product/item/196-anna-p	/#katalog
+/product/item/197-irina-b	/#katalog
+/product/item/198-tat-yana-a	/#katalog
+/product/item/200-ol-ga-k	/#katalog
+/product/item/201-tat-yana-b	/#katalog
+/product/item/207-rejusomeboostcream	/rejusome#p-exo-boost-cream
+/product/item/227-rejusome	/rejusome#p-rejusome
+/product/item/228-rejusome-plus	/rejusome#p-rejusome-plus
+/product/item/229-rejusome-plus-hair	/rejusome#p-rejusome-plus-hair
+/product/item/230-rejusomeboostserum	/rejusome#p-exo-boost-serum
+/product/item/231-rejusomeboostmask	/rejusome#p-exo-boost-mask
+/product/item/232-mariya	/#katalog
+/product/item/233-irina	/#katalog
+/product/item/234-olga	/#katalog
+/product/item/235-ol-ga	/#katalog
+/product/item/236-tat-yana	/#katalog
+/product/item/237-rejusomeboostmist	/rejusome#p-exo-boost-mist
+/product/item/59-crystal-pdrn	/jeuderm?line=pdrn#p-crystal-pdrn
+/product/item/81-jeuderm-homecare	/jeuderm?care=home
+/product/item/82-jeuderm-pofessional	/jeuderm?care=pro
+/product/item/9-nauchnyj-tsentr-revolution-group	/#katalog
+/product/itemlist/category/11-pro-skincare	/rejusome?type=cosmetics
+/product/itemlist/category/19-trikhologiya	/rejusome?type=hair
+/product/itemlist/category/4-otzyvy	/#katalog
+/product/itemlist/category/5-ekzosomy	/rejusome?type=serum
 /product/itemlist/category/7-jeuderm	/jeuderm
-/product/itemlist/category/9-biorevitalizatsiya	/biorevitalizatsiya
-/product/itemlist/category/93-otzyvy-tovarov	/otzyvy
-/sales	/akcii
-/sales/item/15-sale1	/akcii
-/sales/item/16-sale2	/akcii
-/uchebnyj-tsentr/item/210-rejusome-trip-dubrovnik-exosomes-summit	/exosomes-summit-dubrovnik
-/uchebnyj-tsentr/item/213-natalia-valentinovna-andreeva	/prepodavateli
-/uchebnyj-tsentr/item/219-study-cosmetology	/obuchenie-kosmetologov
-/uchebnyj-tsentr/item/226-mukaramova-lilia-coach	/prepodavateli
-/uchebnyj-tsentr/item/30-ronzhina-viktoriya-yur-evna	/prepodavateli
-/uchebnyj-tsentr/itemlist/category/18-teachers	/prepodavateli
+/product/itemlist/category/9-biorevitalizatsiya	/jeuderm?line=pdrn
+/product/itemlist/category/93-otzyvy-tovarov	/#katalog
+/product/itemlist/tag/227rejusome	/#katalog
+/product/itemlist/tag/228rejusomeplus	/#katalog
+/product/itemlist/tag/229rejusomeplushair	/#katalog
+/product/itemlist/tag/230rejusomeboostserum	/#katalog
+/product/itemlist/tag/231rejusomeboostmask	/#katalog
+/product/itemlist/tag/59crystalpdrn	/#katalog
+/product/itemlist/tag/82	/#katalog
+/product/itemlist/tag/Crystal PDRN	/#katalog
+/product/itemlist/tag/JeuDérm	/#katalog
+/product/itemlist/tag/PDRN	/#katalog
+/product/itemlist/tag/VirtaMed	/#katalog
+/product/itemlist/tag/VittenPN	/#katalog
+/product/itemlist/tag/VittenPNPlus	/#katalog
+/product/itemlist/tag/asceplus	/#katalog
+/product/itemlist/tag/asceplusmaruga	/#katalog
+/product/itemlist/tag/exosomes	/#katalog
+/product/itemlist/tag/maruga	/#katalog
+/product/itemlist/tag/rejusome	/#katalog
+/product/itemlist/tag/rejusome cream	/#katalog
+/product/itemlist/tag/rejusome mist	/#katalog
+/product/itemlist/tag/rejusomeplus	/#katalog
+/product/itemlist/tag/Кристал ПДРН	/#katalog
+/product/itemlist/tag/ПДРН	/#katalog
+/product/itemlist/tag/ТэгААА	/#katalog
+/product/itemlist/tag/Экзосомы	/#katalog
+/product/itemlist/tag/виртамед	/#katalog
+/product/itemlist/tag/косметика с экзосомами	/#katalog
+/product/itemlist/tag/крем	/#katalog
+/product/itemlist/tag/крем с экзосомами	/#katalog
+/product/itemlist/tag/микробиом	/#katalog
+/product/itemlist/tag/микробиом кожи восстановление	/#katalog
+/product/itemlist/tag/омоложение	/#katalog
+/product/itemlist/tag/омоложение кожи экзосомами	/#katalog
+/product/itemlist/tag/отзыв207rejusomeboostcream	/#katalog
+/product/itemlist/tag/отзывБиоревитализация	/#katalog
+/product/itemlist/tag/отзывКосмецевтика	/#katalog
+/product/itemlist/tag/отзывМезонити	/#katalog
+/product/itemlist/tag/отзывМезотерапия1	/#katalog
+/product/itemlist/tag/отзывМезотерапия2	/#katalog
+/product/itemlist/tag/отзывТрихология	/#katalog
+/product/itemlist/tag/отзывЭкзосомы	/#katalog
+/product/itemlist/tag/препараты для косметологов	/#katalog
+/product/itemlist/tag/регенерация	/#katalog
+/product/itemlist/tag/реджесом	/#katalog
+/product/itemlist/tag/реджесом мист	/#katalog
+/product/itemlist/tag/сыворотка с экзосомами	/#katalog
+/product/itemlist/tag/тоник с экзосомами	/#katalog
+/product/itemlist/tag/экзосом	/#katalog
+/product/itemlist/tag/экзосомы в косметологии	/#katalog
+/product/itemlist/tag/экзосомы для косметологии	/#katalog
+/product/itemlist/user/187-superuser	/#katalog
+/sales	/kosmetologam
+/sales/item/15-sale1	/kosmetologam
+/sales/item/16-sale2	/kosmetologam
+/uchebnyj-tsentr	/kosmetologam
+/uchebnyj-tsentr/item/210-rejusome-trip-dubrovnik-exosomes-summit	/kosmetologam
+/uchebnyj-tsentr/item/213-natalia-valentinovna-andreeva	/kosmetologam
+/uchebnyj-tsentr/item/219-study-cosmetology	/kosmetologam
+/uchebnyj-tsentr/item/226-mukaramova-lilia-coach	/kosmetologam
+/uchebnyj-tsentr/item/30-ronzhina-viktoriya-yur-evna	/kosmetologam
+/uchebnyj-tsentr/itemlist/category/18-teachers	/kosmetologam
+/uchebnyj-tsentr/itemlist/user/187-superuser	/kosmetologam

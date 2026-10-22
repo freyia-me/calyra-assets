@@ -12,56 +12,9 @@ for d in ('tilda', 'tilda-txt'):
     os.makedirs(os.path.join(OUT, d), exist_ok=True)
 
 # ---------------------------------------------------------------- карта страниц
-# старый файл зеркала -> (новый адрес в Tilda, тип)
-PAGES = {
-    'index.html': ('/', 'home'),
-    'about.html': ('/about', 'about'),
-    'product.html': ('/product', 'catalog'),
-    'product/itemlist/category/7-jeuderm.html': ('/jeuderm', 'category'),
-    'product/itemlist/category/9-biorevitalizatsiya.html': ('/biorevitalizatsiya', 'category'),
-    'product/itemlist/category/5-ekzosomy.html': ('/ekzosomy', 'category'),
-    'product/itemlist/category/19-trikhologiya.html': ('/trikhologiya', 'category'),
-    'product/itemlist/category/11-pro-skincare.html': ('/kosmecevtika', 'category'),
-    'product/item/227-rejusome.html': ('/rejusome', 'product'),
-    'product/item/228-rejusome-plus.html': ('/rejusome-plus', 'product'),
-    'product/item/229-rejusome-plus-hair.html': ('/rejusome-plus-hair', 'product'),
-    'product/item/207-rejusomeboostcream.html': ('/rejusome-exo-boost-cream', 'product'),
-    'product/item/230-rejusomeboostserum.html': ('/rejusome-exo-boost-serum', 'product'),
-    'product/item/231-rejusomeboostmask.html': ('/rejusome-exo-boost-mask', 'product'),
-    'product/item/237-rejusomeboostmist.html': ('/rejusome-exo-boost-mist', 'product'),
-    'product/item/59-crystal-pdrn.html': ('/crystal-pdrn', 'product'),
-    'product/item/81-jeuderm-homecare.html': ('/jeuderm-homecare', 'product'),
-    'product/item/82-jeuderm-pofessional.html': ('/jeuderm-professional', 'product'),
-    'product/itemlist/category/93-otzyvy-tovarov.html': ('/otzyvy', 'reviews'),
-    'uchebnyj-tsentr.html': ('/uchebnyj-tsentr', 'school'),
-    'uchebnyj-tsentr/item/219-study-cosmetology.html': ('/obuchenie-kosmetologov', 'article'),
-    'uchebnyj-tsentr/item/210-rejusome-trip-dubrovnik-exosomes-summit.html': ('/exosomes-summit-dubrovnik', 'article'),
-    'uchebnyj-tsentr/itemlist/category/18-teachers.html': ('/prepodavateli', 'teachers'),
-    'sales.html': ('/akcii', 'sales'),
-    'news.html': ('/news', 'news'),
-    'news/item/21-news3.html': ('/news-ekzosomy', 'article'),
-    'kontakty.html': ('/kontakty', 'contacts'),
-    'policy.html': ('/policy', 'article'),
-    'soglasie.html': ('/soglasie', 'article'),
-}
-# старые адреса, которые сливаются в другие страницы (для редиректов и ссылок)
-EXTRA = {
-    'product/itemlist/category/4-otzyvy.html': '/otzyvy',
-    'partners/itemlist/category/93-otzyvy-tovarov.html': '/otzyvy',
-    # партнёров больше нет: единственный партнёр — JeuDérm
-    'partners.html': '/jeuderm',
-    'partners/itemlist/category/16-moscow.html': '/jeuderm',
-    'partners/itemlist/category/95-russia.html': '/jeuderm',
-    'partners/itemlist/category/98-gruzia.html': '/jeuderm',
-    'partners/item/193-mintlift-buy-russia.html': '/jeuderm',
-    'partners/item/202-revolution-group.html': '/jeuderm',
-    # MINT Lift компания больше не продаёт
-    'news/item/19-news1.html': '/news',
-    'news/item/20-news2.html': '/news',
-    'sales/item/15-sale1.html': '/akcii',
-    'sales/item/16-sale2.html': '/akcii',
-    'product/item/9-nauchnyj-tsentr-revolution-group.html': '/about',
-}
+# новый сайт строится заново; ссылки внутри старых текстов на старые страницы снимаются
+PAGES = {}
+EXTRA = {}
 # заполняется при сборке отзывов/преподавателей: старый файл -> адрес с якорем
 ANCHORS = {}
 
@@ -72,30 +25,25 @@ INTRO_ONLY = {'news/item/21-news3.html'}
 BRANDS = [
     # название, подпись в карточке, ссылка, фото продукции (из старого сайта или source/), фото вписано в круг?
     ('JeuDérm', 'Пептидные технологии', '/jeuderm', 'source/round-jeuderm.webp', True),
-    ('Rejusome', 'Экзосомальные технологии', '/ekzosomy', 'source/round-rejusome.webp', True),
-    ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', 'https://calyralux.ru/', 'source/round-calyra.webp', True),
-    ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/crystal-pdrn', 'source/round-pdrn.webp', True),
+    ('Rejusome', 'Экзосомальные технологии', '/rejusome', 'source/round-rejusome.webp', True),
+    ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', '/calyra-lux-5', 'source/round-calyra.webp', True),
+    ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/jeuderm?line=pdrn', 'source/round-pdrn.webp', True),
 ]
 # Карточки направлений (готовые изображения с текстом): файл в source/, заголовок, подпись, ссылка.
 # Заголовок и подпись повторяют текст на картинке — они идут в alt и для поиска.
 PRODUCT_CARDS = [
-    ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/crystal-pdrn'),
-    ('source/card-serums.webp', 'Стерильные сыворотки', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/ekzosomy'),
-    ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: PN 2% и CAP Peptide 5', 'https://calyralux.ru/'),
-    ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/kosmecevtika'),
-    ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/trikhologiya'),
+    ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/jeuderm?line=pdrn'),
+    ('source/card-serums.webp', 'Стерильные сыворотки', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/rejusome?type=serum'),
+    ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: PN 2% и CAP Peptide 5', '/calyra-lux-5'),
+    ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/rejusome?type=cosmetics'),
+    ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/rejusome?type=hair'),
     ('source/card-jeuderm.webp', 'Пептидная космецевтика JeuDérm', 'Всё, что нужно для кабинета косметолога', '/jeuderm'),
 ]
 # Круглые картинки-«пузыри» в шапке разделов и товаров: адрес страницы -> файл в source/
 PAGE_ART = {
     '/jeuderm': ('source/round-jeuderm.webp', 'Пептидная космецевтика JeuDérm Expert'),
-    '/jeuderm-professional': ('source/round-jeuderm.webp', 'Профессиональный уход JeuDérm'),
-    '/ekzosomy': ('source/round-rejusome.webp', 'Rejusome Plus и Rejusome'),
-    '/kosmecevtika': ('source/round-exo-care.webp', 'Линейка Rejusome Exo Boost'),
-    '/biorevitalizatsiya': ('source/round-pdrn.webp', 'JeuDérm Crystal PDRN + HA 3%'),
-    '/crystal-pdrn': ('source/round-pdrn.webp', 'JeuDérm Crystal PDRN + HA 3%'),
-    '/rejusome': ('source/round-rejusome.webp', 'Rejusome'),
-    '/rejusome-plus': ('source/round-rejusome.webp', 'Rejusome Plus'),
+    '/rejusome': ('source/round-rejusome.webp', 'Rejusome Plus и Rejusome'),
+    '/calyra-lux-5': ('source/round-calyra.webp', 'Calyra Lux 5'),
 }
 # Текст раскрытой карточки бренда на первом экране (по порядку BRANDS)
 BRAND_DESC = [
@@ -115,7 +63,7 @@ BRAND_ICON = [
 TRUST = [
     ('<path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 6 3-6M12 21L9 9M12 21l3-12"/>', '100%', 'оригинальная продукция'),
     ('<path d="M6 2.5h9l5 5V21.5H6z"/><path d="M15 2.5v5h5M9 14.5l2 2 4-4"/>', '', 'Официальный дистрибьютор в России'),
-    ('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>', '10 000+', 'косметологов доверяют'),
+    ('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>', '15 000', 'клиентов в нашей базе'),
     ('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.2 2.7 3 6 3s6-1.8 6-3v-5M22 9v6"/>', '', 'Поддержка и обучение специалистов'),
 ]
 # Кадры первого экрана главной: по одному на бренд.
@@ -130,8 +78,8 @@ HERO_SLIDES = [
 # упоминания бренда, который компания больше не продаёт
 DROPPED = re.compile(r'mint\s*lift', re.I)
 
-NAV = [('О компании', '/about'), ('Продукция', '/product'), ('Учебный центр', '/uchebnyj-tsentr'),
-       ('Отзывы', '/otzyvy'), ('Новости', '/news'), ('Контакты', '/kontakty')]
+NAV = [('JeuDérm', '/jeuderm'), ('Rejusome', '/rejusome'), ('Calyra Lux 5', '/calyra-lux-5'),
+       ('Косметологам', '/kosmetologam'), ('Пациентам', '/pacientam'), ('О компании', '/about'), ('Контакты', '/kontakty')]
 PHONE, PHONE_HREF = '+7 (495) 147-70-40', 'tel:+74951477040'
 EMAIL = 'info@revolution.bio'
 
@@ -401,8 +349,8 @@ def css():
 #rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
 #rb .rb-head .rb-wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:88px}
 #rb .rb-logo img{height:66px;width:auto}
-#rb .rb-nav{display:flex;gap:6px;font-size:15px}
-#rb .rb-nav a{text-decoration:none;padding:8px 14px;border-radius:999px;color:var(--muted);transition:color .2s,background .2s}
+#rb .rb-nav{display:flex;gap:2px;font-size:14.5px}
+#rb .rb-nav a{text-decoration:none;padding:8px 11px;white-space:nowrap;border-radius:999px;color:var(--muted);transition:color .2s,background .2s}
 #rb .rb-nav a:hover{color:#fff;background:var(--glass)}
 #rb .rb-nav a[aria-current]{color:var(--accent);background:rgba(54,203,224,.1)}
 #rb .rb-contact{display:flex;align-items:center;gap:18px}
@@ -568,6 +516,99 @@ def css():
 #rb .rb-railnav button:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 #rb .rb-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*20px)/3.4);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 2px 14px;scrollbar-width:none;outline:none}
 #rb .rb-rail::-webkit-scrollbar{display:none}
+/* каталог товаров с фильтрами и окном (как на сайте JeuDérm) */
+#rb .rb-filters{display:flex;flex-wrap:wrap;gap:14px 28px;margin-bottom:26px}
+#rb .rb-filter{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+#rb .rb-filter>span{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+#rb .rb-filter>div{display:flex;flex-wrap:wrap;gap:6px}
+#rb .rb-filter button{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:#fff;font:inherit;font-size:14px;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+#rb .rb-filter button:hover{border-color:rgba(54,203,224,.6)}
+#rb .rb-filter button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+#rb .rb-prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+#rb .rb-prod{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;text-decoration:none;background:var(--glass);border:1px solid var(--line);transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .4s;min-width:0}
+#rb .rb-prod[hidden]{display:none}
+#rb .rb-prod:hover{transform:translateY(-5px);border-color:rgba(54,203,224,.6);box-shadow:0 24px 48px -26px rgba(54,203,224,.5)}
+#rb .rb-prod__ph{position:relative;display:block;aspect-ratio:1;background:radial-gradient(closest-side,rgba(54,203,224,.14),transparent),#22272b}
+#rb .rb-prod__ph img{width:100%;height:100%;object-fit:contain;padding:8%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-prod:hover .rb-prod__ph img{transform:scale(1.04)}
+#rb .rb-prod__tags{position:absolute;left:12px;top:12px;display:flex;gap:6px}
+#rb .rb-prod__tags span{padding:3px 9px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.12em;background:rgba(43,48,53,.8);border:1px solid rgba(54,203,224,.4);color:var(--accent)}
+#rb .rb-prod__bd{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
+#rb .rb-prod__en{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+#rb .rb-prod__bd b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.2;color:#fff}
+#rb .rb-prod__desc{font-size:14px;color:var(--muted)}
+#rb .rb-prod__more{margin-top:auto;padding-top:8px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+#rb .rb-cat__empty{color:var(--muted)}
+#rb .rb-dlg{padding:0;border:1px solid rgba(54,203,224,.35);border-radius:22px;background:#252a2e;color:#fff;width:min(980px,calc(100vw - 32px));max-height:calc(100vh - 40px);box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
+#rb .rb-dlg::backdrop{background:rgba(15,18,20,.72);backdrop-filter:blur(6px)}
+#rb .rb-dlg[open]{animation:rb-dlg .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes rb-dlg{from{opacity:0;transform:translateY(16px) scale(.98)}}
+#rb .rb-dlg__in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+#rb .rb-dlg__ph{background:radial-gradient(closest-side,rgba(54,203,224,.18),transparent),#1e2326;display:flex;align-items:center;justify-content:center;min-height:320px}
+#rb .rb-dlg__ph img{width:100%;height:100%;max-height:560px;object-fit:contain;padding:8%}
+#rb .rb-dlg__bd{position:relative;padding:34px 34px 30px;overflow:auto;max-height:calc(100vh - 42px)}
+#rb .rb-dlg__bd h3{font-size:26px;margin:8px 40px 10px 0}
+#rb .rb-dlg__x{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+#rb .rb-dlg__x:hover{background:var(--accent);color:var(--accent-ink)}
+#rb .rb-dlg__meta{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+#rb .rb-dlg__desc{color:var(--muted)}
+#rb .rb-dlg__dl{margin:18px 0 6px;border-top:1px solid var(--line)}
+#rb .rb-dl{padding:14px 0;border-bottom:1px solid var(--line)}
+#rb .rb-dl dt{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+#rb .rb-dl dd{margin:0;font-size:14.5px;color:rgba(255,255,255,.85)}
+#rb .rb-dl dd p{margin:0 0 .6em}
+#rb .rb-dl dd ul{margin:0;padding-left:1.1em}
+/* общие блоки страниц */
+#rb .rb-feats{display:grid;gap:18px;grid-template-columns:repeat(4,minmax(0,1fr))}
+#rb .rb-feats--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+#rb .rb-feats--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+#rb .rb-feat{padding:24px;border-radius:18px;background:var(--glass);border:1px solid var(--line)}
+#rb .rb-feat svg{width:48px;height:48px;padding:12px;margin-bottom:16px;border-radius:50%;border:1px solid rgba(54,203,224,.45);fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+#rb .rb-feat b{display:block;font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.2;margin-bottom:8px}
+#rb .rb-feat b a{text-decoration:none}#rb .rb-feat b a:hover{color:var(--accent)}
+#rb .rb-feat p{margin:0;font-size:14.5px;color:var(--muted)}
+#rb .rb-stats.rb-stats--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+#rb .rb-rich a.rb-btn{color:#fff}#rb .rb-rich a.rb-btn--fill{color:var(--accent-ink)}
+#rb .rb-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+#rb .rb-split .rb-feats{grid-template-columns:repeat(2,minmax(0,1fr))}
+#rb .rb-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+#rb .rb-tile{display:block;text-decoration:none;transition:border-color .3s,transform .4s}
+#rb .rb-tile:hover{border-color:rgba(54,203,224,.6);transform:translateY(-4px)}
+#rb .rb-tile h3{font-size:clamp(24px,2.4vw,32px)}
+#rb .rb-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:st}
+#rb .rb-steps li{counter-increment:st;padding:24px;border-radius:18px;border:1px solid var(--line);background:var(--glass)}
+#rb .rb-steps li::before{content:"0" counter(st);display:block;font-family:var(--serif);font-size:34px;line-height:1;color:var(--accent);margin-bottom:14px}
+#rb .rb-steps b{display:block;font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:6px}
+#rb .rb-steps p{margin:0;font-size:14.5px;color:var(--muted)}
+#rb .rb-faq{max-width:900px;border-bottom:1px solid var(--line)}
+#rb .rb-qa{border-top:1px solid var(--line)}
+#rb .rb-qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;font-family:var(--serif);font-size:19px}
+#rb .rb-qa summary::-webkit-details-marker{display:none}
+#rb .rb-qa summary i{flex:0 0 34px;height:34px;border-radius:50%;border:1px solid var(--line);position:relative;transition:background .3s,border-color .3s}
+#rb .rb-qa summary i::before,#rb .rb-qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.4px;background:var(--accent);transform:translate(-50%,-50%)}
+#rb .rb-qa summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:opacity .3s}
+#rb .rb-qa[open] summary i{background:var(--accent);border-color:var(--accent)}
+#rb .rb-qa[open] summary i::before{background:var(--accent-ink)}
+#rb .rb-qa[open] summary i::after{opacity:0}
+#rb .rb-qa__a{padding:0 50px 20px 0;color:var(--muted)}
+#rb .rb-qa__a a{color:var(--accent)}
+#rb .rb-cta{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+#rb .rb-cta h2{margin-bottom:8px}#rb .rb-cta p{margin:0}#rb .rb-cta .rb-btns{margin-top:0}
+#rb .rb-events{display:flex;flex-direction:column;gap:14px}
+#rb .rb-event{display:grid;grid-template-columns:96px minmax(0,1fr);gap:6px 18px;padding:20px;border-radius:18px;border:1px solid var(--line);background:var(--glass)}
+#rb .rb-event__date{grid-row:span 2;font-family:var(--serif);font-size:22px;line-height:1.1;color:var(--accent)}
+#rb .rb-event h3{font-size:19px;margin:0 0 6px}#rb .rb-event p{margin:0;font-size:14px}
+#rb .rb-event .rb-btn{grid-column:2;justify-self:start;padding:9px 18px;font-size:14px;margin-top:8px}
+#rb .rb-videos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+#rb .rb-video{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(54,203,224,.1),var(--glass));text-decoration:none;transition:border-color .3s,transform .4s}
+#rb .rb-video:hover{border-color:rgba(54,203,224,.6);transform:translateY(-4px)}
+#rb .rb-video__n{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+#rb .rb-video b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.2}
+#rb .rb-video p{margin:0;font-size:14px;color:var(--muted)}
+#rb .rb-quote blockquote{margin:0 0 18px;font-family:var(--serif);font-size:clamp(20px,2vw,26px);line-height:1.45}
+#rb .rb-letter{display:block;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;max-width:420px;justify-self:center}
+#rb .rb-warn{margin:0 0 30px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
+#rb .rb-404{padding:90px 0 120px}
 /* товар */
 #rb .rb-product{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
 #rb .rb-product>div:first-child{position:sticky;top:96px}
@@ -638,6 +679,11 @@ def css():
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
 @media (max-width:1280px){#rb .rb-holo{right:1%;top:7%}}
+@media (max-width:1100px){#rb .rb-feats,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-split{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){#rb .rb-feats,#rb .rb-feats--3,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4,#rb .rb-duo,#rb .rb-split .rb-feats{grid-template-columns:minmax(0,1fr)}
+  #rb .rb-dlg__in{grid-template-columns:minmax(0,1fr)}#rb .rb-dlg__ph{min-height:0;max-height:38vh}#rb .rb-dlg__bd{padding:24px 20px;max-height:none}
+  #rb .rb-dlg{max-height:calc(100vh - 20px);overflow:auto}#rb .rb-prods{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #rb .rb-prod__bd{padding:12px}#rb .rb-prod__bd b{font-size:16px}#rb .rb-prod__desc{display:none}#rb .rb-qa__a{padding-right:0}}
 @media (max-width:1024px){
   #rb .rb-intro{min-height:0;padding:6px 0 40px}
   #rb .rb-intro>.rb-wrap{grid-template-columns:minmax(0,1fr);gap:34px}
@@ -653,7 +699,7 @@ def css():
 @media (max-width:520px){#rb .rb-bcol{grid-template-columns:minmax(0,1fr)}#rb .rb-stage__pts{font-size:8px;white-space:normal;max-width:84%;margin:8px auto 0;line-height:1.7}
   #rb .rb-trust__bar{grid-template-columns:minmax(0,1fr)}#rb .rb-trust__item+.rb-trust__item::before{left:22%;right:22%;top:0;bottom:auto;width:auto;height:1px}#rb .rb-trust__item{padding:16px 18px}}
 @media (max-width:1100px){#rb .rb-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-rail{grid-auto-columns:calc((100% - 20px)/2.3)}}
-@media (max-width:1100px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
+@media (max-width:1240px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
   #rb .rb-mnav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}}
 @media (max-width:900px){
@@ -689,7 +735,7 @@ def footer():
     return f'''<footer class="rb-foot"><div class="rb-wrap">
 <div><p>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены.<br>ИНН: 9709100594 · КПП: 770901001</p>
 <p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
-<nav aria-label="Разделы">{links}<a href="/akcii">Акции</a></nav>
+<nav aria-label="Разделы">{links}<a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a></nav>
 <div><p><a href="{PHONE_HREF}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a><br>Москва, Земляной Вал 7, офис 408</p>
 <div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
 <p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>
@@ -747,6 +793,28 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
  draw();window.addEventListener('resize',draw);window.addEventListener('load',draw);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);
  if('ResizeObserver' in window)new ResizeObserver(draw).observe(sec);
  play();
+});
+r.querySelectorAll('.rb-cat').forEach(function(cat){
+ var cards=[].slice.call(cat.querySelectorAll('.rb-prod')),groups=[].slice.call(cat.querySelectorAll('.rb-filter')),dlg=cat.querySelector('.rb-dlg'),empty=cat.querySelector('.rb-cat__empty'),st={};
+ var q=new URLSearchParams(location.search);
+ function apply(){var n=0;cards.forEach(function(c){var ok=Object.keys(st).every(function(k){return st[k]==='all'||(c.getAttribute('data-'+k)||'').split(' ').indexOf(st[k])>-1;});c.hidden=!ok;if(ok)n++;});if(empty)empty.hidden=n>0;}
+ function set(k,v,push){st[k]=v;groups.forEach(function(g){if(g.getAttribute('data-f')===k)[].forEach.call(g.querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-v')===v));});});
+  apply();if(push&&history.replaceState){var u=new URLSearchParams(location.search);if(v==='all')u.delete(k);else u.set(k,v);var qs=u.toString();history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);}}
+ groups.forEach(function(g){var k=g.getAttribute('data-f'),v=q.get(k);if(v&&!g.querySelector('[data-v="'+v+'"]'))v=null;set(k,v||'all',false);
+  [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
+ function open(c){if(!dlg||!c)return;var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
+  dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
+  dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var pd=c.querySelector('.rb-prod__pd');
+  dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('');
+  if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}dlg.querySelector('.rb-dlg__bd').scrollTop=0;
+  if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#p-'+c.getAttribute('data-id'));}
+ function close(){if(dlg.open){if(dlg.close)dlg.close();else dlg.removeAttribute('open');}}
+ if(dlg){dlg.addEventListener('close',function(){if(/^#p-/.test(location.hash)&&history.replaceState)history.replaceState(null,'',location.pathname+location.search);});
+  dlg.querySelector('.rb-dlg__x').addEventListener('click',close);dlg.addEventListener('click',function(e){if(e.target===dlg)close();});
+  [].forEach.call(dlg.querySelectorAll('[data-close]'),function(a){a.addEventListener('click',close);});}
+ cards.forEach(function(c){c.addEventListener('click',function(e){e.preventDefault();open(c);});});
+ function fromHash(){var m=location.hash.match(/^#p-([\\w-]+)/);if(!m)return;var c=cat.querySelector('.rb-prod[data-id="'+m[1]+'"]');if(c){if(c.hidden)groups.forEach(function(g){set(g.getAttribute('data-f'),'all',false);});c.scrollIntoView({block:'center'});open(c);}}
+ fromHash();window.addEventListener('hashchange',fromHash);
 });
 r.querySelectorAll('.rb-railnav button').forEach(function(bt){bt.addEventListener('click',function(){var sec=bt.closest('.rb-wrap'),rl=sec&&sec.querySelector('.rb-rail');if(!rl)return;var c=rl.querySelector('.rb-pcard');var w=c?c.getBoundingClientRect().width+20:rl.clientWidth*0.8;rl.scrollBy({left:w*(+bt.getAttribute('data-dir')),behavior:rm?'auto':'smooth'});});});
 var h=r.querySelector('.rb-head');function sc(){if(!h)return;if(window.scrollY>10)h.setAttribute('data-scrolled','');else h.removeAttribute('data-scrolled');}
@@ -823,138 +891,171 @@ def seo_of(s, fallback_title):
         t = f'{t} — Революшн Био'
     return {'title': t, 'description': meta(s, 'description'), 'keywords': meta(s, 'keywords')}
 
-# ---------------------------------------------------------------- сбор отзывов и преподавателей (нужно до вёрстки ссылок)
-def collect_reviews():
-    seen, out = set(), []
-    for rel in ('product/itemlist/category/93-otzyvy-tovarov.html', 'product/itemlist/category/4-otzyvy.html'):
-        s = soup(rel)
-        for it in cat_items(rel, s):
-            ir = it['href_rel']
-            if not ir:
-                continue
-            m = re.search(r'/(\d+)-[^/]+\.html$', ir)
-            iid = m.group(1) if m else ir
-            if iid in seen:
-                continue
-            seen.add(iid)
-            path = ir if os.path.isfile(os.path.join(SRC, ir)) else None
-            if path:
-                d = k2_item(path, soup(path))
-                txt = (d['intro'] or '') + ('\n' + d['full'] if d['full'] else '')
-                image = d['image']
-            else:
-                txt, image = it['intro'], it['image']
-            if DROPPED.search(strip_tags(txt)):
-                ANCHORS[ir] = '/otzyvy'
-                continue
-            out.append({'id': f'otzyv-{iid}', 'author': it['title'], 'text': txt, 'image': image, 'rel': ir})
-    for r in out:
-        for pref in ('product/item/', 'partners/item/'):
-            ANCHORS[pref + os.path.basename(r['rel'])] = f'/otzyvy#{r["id"]}'
-    # отзывы из модуля главной ссылаются на /component/k2/item/7-..., 8-...
-    return out
+# ---------------------------------------------------------------- данные товаров
+DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
+JD_LINES = [  # линейки JeuDérm: ключ, название, подпись
+    ('reformage', 'Reform Age', 'Возрастной уход 30+'),
+    ('acno', 'Acno Active', 'Жирная и проблемная кожа'),
+    ('atocare', 'Ato Care', 'Чувствительная кожа'),
+    ('pro', 'ПРО-уход', 'Средства для процедур'),
+    ('novazymo', 'Nova · Zymo', 'Обновление кожи'),
+    ('hair', 'Hair Genesis', 'Кожа головы и волосы'),
+    ('pdrn', 'Crystal PDRN', 'PDRN + HA 3%'),
+]
+RJ_TYPES = [('serum', 'Стерильные сыворотки'), ('cosmetics', 'Экзосомный уход'), ('hair', 'Трихология')]
+CARE_LABEL = {'pro': 'ПРО', 'home': 'Дом'}
 
-def collect_teachers():
-    rel = 'uchebnyj-tsentr/itemlist/category/18-teachers.html'
-    s = soup(rel)
+
+def jd_products():
     out = []
-    for it in cat_items(rel, s):
-        ir = it['href_rel']
-        m = re.search(r'/(\d+)-[^/]+\.html$', ir or '')
-        iid = m.group(1) if m else str(len(out))
-        if any(t['name'] == it['title'] for t in out):
-            ANCHORS[ir] = f'/prepodavateli#{next(t for t in out if t["name"] == it["title"])["id"]}'
-            continue
-        d = k2_item(ir, soup(ir)) if ir and os.path.isfile(os.path.join(SRC, ir)) else None
-        out.append({'id': f'trener-{iid}', 'name': it['title'], 'image': (d and d['image']) or it['image'],
-                    'text': ((d['intro'] + '\n' + d['full']) if d else it['intro'])})
-        if ir:
-            ANCHORS[ir] = f'/prepodavateli#trener-{iid}'
+    for p in json.load(open(os.path.join(DATA, 'jeuderm-products.json'), encoding='utf-8')):
+        out.append(dict(id=p['id'], en=p['en'], title=p['title'], desc=p['desc'], img=p['img'], alt=p.get('alt') or p['title'],
+                        care=p['care'].split(), lines=p['lines'], vol=p.get('vol'), care_t=p.get('care_t'),
+                        fields=[(k, esc(v)) for k, v in p['fields']]))
     return out
 
-REVIEWS = collect_reviews()
-TEACHERS = collect_teachers()
 
-# ---------------------------------------------------------------- страницы
-def build_home(rel):
+def old_product(rel, pid, en, title=None, **extra):
+    """товар со старого сайта: короткое описание, «Состав», «Показания», полный текст, фото"""
     s = soup(rel)
-    lis = s.select('.custom-slider ul.slides > li')
-    sub = text(lis[0].select_one('.main-page-subtitle'))
-    # продукция
-    rail = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
-    # учебный центр
-    teach_desc = clean(rel, lis[2].select_one('.teaching-description'))
-    events = ''
-    for a in lis[2].select('a.teaching-event'):
-        when = text(a.select_one('.teaching-event-date'))
-        events += card(map_link(rel, a['href']), bg_url(rel, a.select_one('.teaching-event-left')),
-                       text(a.select_one('.teaching-event-right-title')), shorten(text(a.select_one('.teaching-event-right-text')), 150), date=when, cover=True)
-    # о компании
-    about_desc = clean(rel, lis[3].select_one('.about-description'))
-    stats = ''.join(f'<div><div class="rb-stat__num">{esc(text(t.select_one(".about-testimnial-number")))}</div><div class="rb-stat__txt">{esc(text(t.select_one(".about-testimnial-decription")))}</div></div>' for t in lis[3].select('.about-testimnial'))
-    # отзывы — первые три с главной
-    revs = ''
-    for rv in lis[4].select('.review')[:3]:
-        revs += review_html({'author': text(rv.select_one('.review-author')), 'text': clean(rel, rv.select_one('.review-text')), 'image': None}, anchor=False)
-    slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
-    ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
-    # 4 точки на маске (лоб, скула, линия челюсти, подбородок) — по одной на карточку бренда
-    def mask_pts(p):
-        (fx, fy), (cx, cy), (hx, hy) = p
-        return [(fx, fy), (cx, cy), (round((cx + hx) / 2) - 3, round((cy + hy) / 2) + 1), (hx, hy)]
-    hs_attr = lambda p: ';'.join(f'{x},{y}' for x, y in mask_pts(p))
-    plain = lambda labels: ' · '.join(strip_tags(l.replace('<br>', ' ')) for l in labels)
-    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
-    sr_text = ' '.join(f'{b}: {plain(labels)}.' for u, b, p, h, bi, labels in slides)
-    dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
-    first = slides[0][4]
-    def bcard(k, n, t, h, photo, rnd):
-        act = k == first
-        return (f'<div class="rb-brand{" is-active" if act else ""}" data-brand="{k}">'
-                f'<button class="rb-brand__head" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-brand-{k}"><img src="{img(rel, photo, 300)}" alt="" loading="lazy">'
-                f'<div><b>{esc(n)}</b><span>{esc(t)}</span></div><i aria-hidden="true"></i></button>'
-                f'<div class="rb-brand__body" id="rb-brand-{k}"><div><p>{esc(BRAND_DESC[k])}</p><a href="{h}"{ext(h)}>Подробнее →</a></div></div></div>')
-    labels_of = {bi: labels for f, bi, p, labels in HERO_SLIDES}
-    # пункты «голограммы»: подписи бренда без повтора заголовка
-    def holo_items(k):
-        items = [strip_tags(l.replace('<br>', ' ')) for l in labels_of.get(k, [])]
-        return [t for t in items if t.lower() != BRANDS[k][1].lower()]
-    holos = ''.join(f'<div class="rb-holo{" is-active" if k == first else ""}" data-brand="{k}" aria-hidden="true"><div class="rb-holo__top"><svg viewBox="0 0 24 24">{BRAND_ICON[k]}</svg><b>{esc(BRANDS[k][1])}</b></div>'
-                    f'<ul>{"".join(f"<li>{esc(t)}</li>" for t in holo_items(k))}</ul></div>' for k in range(len(BRANDS)))
-    pts_html = ''.join(f'<button class="rb-pt{" is-active" if k == first else ""}" type="button" data-brand="{k}" aria-label="{esc(BRANDS[k][0].replace(chr(160), " "))}"></button>' for k in range(len(BRANDS)))
-    trust_html = '<section class="rb-trust"><div class="rb-wrap"><div class="rb-trust__bar">' + ''.join(
-        f'<div class="rb-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true">{ic}</svg><div>{f"<b>{esc(big)}</b>" if big else ""}<span>{esc(small)}</span></div></div>' for ic, big, small in TRUST) + '</div></div></section>'
-    brands_html = ''.join(bcard(k, *b) for k, b in enumerate(BRANDS))
-    links_svg = '<svg class="rb-links" aria-hidden="true">' + ''.join(
-        f'<g class="rb-link{" is-active" if k == first else ""}"><path class="rb-link__base"/><path class="rb-link__pulse" pathLength="100"/><path class="rb-link__spark" pathLength="100"/></g>' for k in range(len(BRANDS))) + '<path class="rb-link__holo"/></svg>'
-    deco_svg = ('<svg class="rb-intro__deco" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">'
-                '<path d="M-40 780 C 380 660, 620 900, 980 720 S 1380 440, 1500 540" stroke="rgba(255,255,255,.06)"/>'
-                '<path d="M760 -40 C 820 240, 1060 340, 1220 290 S 1440 170, 1500 230" stroke="rgba(255,255,255,.05)"/></svg>')
-    body = f'''<section class="rb-intro">{deco_svg}<div class="rb-intro__glow"></div>{links_svg}<div class="rb-wrap">
-<nav class="rb-bcol" aria-label="Наши бренды">{brands_html}</nav>
-<div class="rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="6000">{imgs_html}{pts_html}{holos}
-<div class="rb-stage__cap" aria-hidden="true"><span class="rb-stage__name">{esc(slides[0][1])}</span><span class="rb-stage__pts">{esc(plain(slides[0][5]))}</span></div>
-<p class="rb-sr">{esc(sr_text)}</p><div class="rb-stage__dots">{dots_html}</div></div>
-<div class="rb-intro__text"><span class="rb-kicker">Революшн Био</span>
-<h1>Инновационные решения для косметологов</h1><hr class="rb-rule">
-<p class="rb-intro__lead">Официальный дистрибьютор препаратов для косметологов JeuDérm, Rejusome, Calyra Lux&nbsp;5 и&nbsp;Crystal&nbsp;PDRN в&nbsp;России.</p>
-<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a><a class="rb-btn" href="/product">Каталог продукции</a></div>
-</div></div></section>
-{trust_html}
-<section class="rb-sec"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"></div>
-<div class="rb-railnav"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div></div>
-<div class="rb-rail" tabindex="0" aria-label="Направления продукции">{rail}</div>
-<div class="rb-btns"><a class="rb-btn" href="/product">Весь каталог</a></div></div></section>
-<section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Обучение</span><h2>Учебный центр</h2><hr class="rb-rule"><div class="rb-rich" style="margin-bottom:34px">{teach_desc}</div>
-<div class="rb-grid">{events}</div><div class="rb-btns"><a class="rb-btn" href="/uchebnyj-tsentr">Все программы обучения</a></div></div></section>
-<section class="rb-sec"><div class="rb-wrap"><div class="rb-panel"><span class="rb-kicker">О компании</span><h2>Революшн Био</h2><hr class="rb-rule"><div class="rb-rich">{about_desc}</div>
-<div class="rb-stats">{stats}</div><a class="rb-btn" href="/about">Подробнее о компании</a></div></div></section>
-<section class="rb-sec"><div class="rb-wrap"><span class="rb-kicker">Нам доверяют</span><h2>Отзывы</h2><hr class="rb-rule"><div class="rb-reviews">{revs}</div>
-<div class="rb-btns"><a class="rb-btn" href="/otzyvy">Все отзывы</a></div></div></section>
-{contacts_section(rel, s, h='h2')}'''
-    seo = seo_of(s, 'Революшн Био')
-    seo['title'] = 'Революшн Био — инновационные препараты для косметологов' if seo['title'] in ('Home — Революшн Био', '') else seo['title']
-    page('/', 'Главная', body, seo)
+    pp = s.select_one('.product-page')
+    main = pp.select_one('.main-product-photo a.product-photo')
+    photos = []
+    for a in ([main] if main is not None else []) + pp.select('.main-product-photo .sigProLink[href]'):
+        u = img(rel, a.get('href'), 1100)
+        if u and u not in photos:
+            photos.append(u)
+    short = ' '.join(strip_tags(clean(rel, x)) for x in pp.select('.product-page-right > .product-page-description:not(:has(.itemFullText))'))
+    fields = []
+    for t in pp.select('.product-ex-title'):
+        v = clean(rel, t.find_next_sibling(class_='product-ex-value'))
+        if strip_tags(v):
+            fields.append((text(t), v))
+    full = clean(rel, pp.select_one('.product-page-right .itemFullText'))
+    if strip_tags(full):
+        fields.append(('Описание', full))
+    h1 = title or title_of(s)
+    d = dict(id=pid, en=en, title=h1, desc=shorten(short, 170), img=photos[0] if photos else None, alt=h1, photos=photos,
+             care=['pro'], lines=[], vol=None, care_t=None, fields=fields, old=rel)
+    d.update(extra)
+    return d
+
+
+def rj_products():
+    P = 'product/item/'
+    return [
+        old_product(P + '227-rejusome.html', 'rejusome', 'Rejusome', 'Rejusome — стерильная сыворотка с экзосомами', type='serum', vol='20 мг + 5 мл'),
+        old_product(P + '228-rejusome-plus.html', 'rejusome-plus', 'Rejusome Plus', 'Rejusome Plus — готовый раствор с экзосомами', type='serum', vol='2 мл'),
+        old_product(P + '229-rejusome-plus-hair.html', 'rejusome-plus-hair', 'Rejusome Plus · Hair', 'Rejusome Plus для кожи головы и волос', type='hair'),
+        old_product(P + '207-rejusomeboostcream.html', 'exo-boost-cream', 'Exo Boost Cream', 'Крем с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
+        old_product(P + '230-rejusomeboostserum.html', 'exo-boost-serum', 'Exo Boost Serum', 'Сыворотка с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
+        old_product(P + '231-rejusomeboostmask.html', 'exo-boost-mask', 'Exo Boost Mask', 'Маска-бустер с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
+        old_product(P + '237-rejusomeboostmist.html', 'exo-boost-mist', 'Exo Boost Mist', 'Мист-тоник с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
+    ]
+
+
+def pdrn_product():
+    d = old_product('product/item/59-crystal-pdrn.html', 'crystal-pdrn', 'Crystal PDRN + HA 3%', 'Crystal PDRN — восстановление качества кожи', lines=['pdrn'], vol='5 ампул × 5 мл')
+    d['img'] = img('index.html', 'source/round-pdrn.webp', 1100)
+    return d
+
+
+CALYRA = dict(id='calyra-lux-5', en='Calyra Lux 5', title='CALYRA LUX 5 — CAP Пептид 5, PN и гиалуронат натрия в одном шприце',
+              desc='Комплексная работа с качеством кожи: увлажнённость, плотность, ровный рельеф и сияние.',
+              care=['pro'], lines=[], vol='2 шприца × 2,5 мл', care_t='Профессиональный уход',
+              fields=[('Состав', 'CAP Пептид 5 (sh-Oligopeptide-104 SP) — 1000 ppm<br>Полинуклеотиды (PN) — 2%<br>Гиалуронат натрия — 1%'),
+                      ('Действие', 'Пептид поддерживает клеточный потенциал кожи и процессы теломерной защиты, полинуклеотиды — её естественное обновление, гиалуронат натрия интенсивно увлажняет.'),
+                      ('Протоколы', 'Радиочастотный лифтинг (RF), аппаратные процедуры, дермапен.'),
+                      ('Производство', 'Корея, корейские и испанские биотехнологии, стандарты ISO · GMP.')])
+
+
+# ---------------------------------------------------------------- каталог с фильтрами и окном товара
+def product_card(p, attrs):
+    tags = ''.join(f'<span>{CARE_LABEL[c]}</span>' for c in p['care'] if c in CARE_LABEL)
+    meta = ' · '.join(x for x in (p.get('vol'), p.get('care_t')) if x)
+    fields = ''.join(f'<div class="rb-dl"><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in p['fields'])
+    return (f'<a class="rb-prod" href="#p-{p["id"]}" data-id="{p["id"]}" {attrs}>'
+            f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"><span class="rb-prod__tags">{tags}</span></span>'
+            f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span><span class="rb-prod__more">Подробнее <i aria-hidden="true">→</i></span></span>'
+            f'<span class="rb-prod__pd" hidden><span class="rb-prod__meta">{esc(meta)}</span>{fields}</span></a>')
+
+
+def catalog(products, groups):
+    """groups: [(ключ фильтра, подпись, [(значение, название)])]; у товара атрибут data-<ключ> со списком значений"""
+    filt = ''
+    for key, label, opts in groups:
+        btns = f'<button type="button" data-v="all" aria-pressed="true">Все</button>' + ''.join(
+            f'<button type="button" data-v="{v}" aria-pressed="false">{esc(n)}</button>' for v, n in opts)
+        filt += f'<div class="rb-filter" role="group" aria-label="{esc(label)}" data-f="{key}"><span>{esc(label)}</span><div>{btns}</div></div>'
+    def attrs(p):
+        a = {'care': ' '.join(p['care']), 'line': ' '.join(p.get('lines', [])), 'type': p.get('type', '')}
+        return ' '.join(f'data-{k}="{v}"' for k, v in a.items())
+    cards = ''.join(product_card(p, attrs(p)) for p in products)
+    return f'''<div class="rb-cat"><div class="rb-filters">{filt}</div><div class="rb-prods">{cards}</div>
+<p class="rb-cat__empty" hidden>По этому сочетанию фильтров товаров нет — выберите другой вариант.</p>
+<dialog class="rb-dlg" aria-labelledby="rb-dlg-t"><div class="rb-dlg__in"><div class="rb-dlg__ph"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
+<div class="rb-dlg__bd"><button class="rb-dlg__x" type="button" aria-label="Закрыть">×</button><span class="rb-prod__en"></span><h3 id="rb-dlg-t"></h3><div class="rb-dlg__meta"></div><p class="rb-dlg__desc"></p><dl class="rb-dlg__dl"></dl>
+<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price" data-close>Узнать цену</a><a class="rb-btn" href="#popup:feedback" data-close>Задать вопрос</a></div></div></div></dialog></div>'''
+
+
+# ---------------------------------------------------------------- общие блоки
+def section(kicker, h2, inner, cls=''):
+    return f'<section class="rb-sec {cls}"><div class="rb-wrap">{f"<span class=\"rb-kicker\">{esc(kicker)}</span>" if kicker else ""}<h2>{h2}</h2><hr class="rb-rule">{inner}</div></section>'
+
+
+def feats(items, cols=4):
+    """карточки-преимущества: (иконка svg или '', заголовок, текст)"""
+    return f'<div class="rb-feats rb-feats--{cols}">' + ''.join(
+        f'<div class="rb-feat">{f"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">{ic}</svg>" if ic else ""}<b>{t}</b><p>{x}</p></div>' for ic, t, x in items) + '</div>'
+
+
+def steps(items):
+    return '<ol class="rb-steps">' + ''.join(f'<li><b>{esc(t)}</b><p>{x}</p></li>' for t, x in items) + '</ol>'
+
+
+def faq(items):
+    return '<div class="rb-faq">' + ''.join(f'<details class="rb-qa"{" open" if k == 0 else ""}><summary>{esc(q)}<i aria-hidden="true"></i></summary><div class="rb-qa__a">{a}</div></details>' for k, (q, a) in enumerate(items)) + '</div>'
+
+
+def cta(title, text_, btn='Узнать цену', href='#popup:price', btn2=None):
+    b2 = f'<a class="rb-btn" href="{btn2[1]}">{btn2[0]}</a>' if btn2 else ''
+    return f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-panel rb-cta"><div><h2>{title}</h2><p class="rb-muted">{text_}</p></div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="{href}">{btn}</a>{b2}</div></div></div></section>'
+
+
+def stats(items):
+    return '<div class="rb-stats rb-stats--4">' + ''.join(f'<div><div class="rb-stat__num">{n}</div><div class="rb-stat__txt">{t}</div></div>' for n, t in items) + '</div>'
+
+
+ICON = {
+    'gift': '<path d="M3 9h18v4H3zM5 13v8h14v-8M12 9v12M12 9c-1.5-3-5-4-5.5-2S9 9 12 9zm0 0c1.5-3 5-4 5.5-2S15 9 12 9z"/>',
+    'stairs': '<path d="M3 20h5v-5h5v-5h5V5h3M3 20v1M21 5V4"/>',
+    'play': '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/>',
+    'users': '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-5.5 6.5-5.5s6.5 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18.5 14.8c2 .6 3 2.3 3 5.2"/>',
+    'doc': '<path d="M6 2.5h9l5 5V21.5H6z"/><path d="M15 2.5v5h5M9 13h7M9 17h5"/>',
+    'chat': '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/>',
+    'truck': '<path d="M2 6h12v10H2zM14 9h4l4 4v3h-8"/><circle cx="6.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>',
+    'shield': BRAND_ICON[3],
+    'flask': '<path d="M9 2.5h6M10 2.5v6L4.5 19a1.8 1.8 0 0 0 1.6 2.5h11.8a1.8 1.8 0 0 0 1.6-2.5L14 8.5v-6M7 14h10"/>',
+    'globe': '<circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.8 3 2.8 16 0 19M12 2.5c-2.8 3-2.8 16 0 19"/>',
+    'star': '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+    'heart': '<path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/>',
+    'search': '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/>',
+}
+WEBINARS = [  # записи на Рутубе (из раздела «Обучение» сайта JeuDérm)
+    ('Обновляющая система Нова Комплекс', 'Механизм действия, показания и ограничения, выбор пациента и ключевые этапы процедуры.', 'd7302347806e412731e8452d92509b13'),
+    ('Обновляющая система Зимо Комплекс', 'Действие Zymo, протокол и нюансы для разного возраста и типа кожи, включая чувствительную.', 'c266156ecd63023ff5dcac2c25901baf'),
+    ('Пептидные решения для здоровья и молодости кожи', 'Для специалистов, которые хотят расширить арсенал проверенными препаратами.', 'be7dc7a49613fefc73a1bb21cc9b99ec'),
+    ('Ангельское совершенство кожи', 'Система мягкого молекулярного обновления: гладкость, ровный тон и сияние без раздражения.', 'ecc180120e27f8f7743990dc621770f4'),
+]
+RUTUBE = 'https://rutube.ru/channel/42947212/'
+UPCOMING = [  # ближайшие вебинары — обновляйте список
+    ('10 ноября', 'Пилинг без перегрузки: контролируемое обновление кожи с JeuDérm',
+     'Практический вебинар о Molecular Exfoliate: грамотные сочетания, частые ошибки и домашнее сопровождение клиента.'),
+    ('24 ноября', 'Calyra Lux 5: знакомство с новинкой',
+     'Концепция и ключевые компоненты продукта, чем он отличается от привычных решений и как включить его в практику.'),
+]
+WARN = '<p class="rb-warn">Имеются противопоказания. Перед применением необходима консультация специалиста.</p>'
+
 
 def contacts_section(rel, s, h='h1'):
     el = s.select_one('.contact-info') or soup('kontakty.html').select_one('.contact-info')
@@ -972,229 +1073,327 @@ def contacts_section(rel, s, h='h1'):
 <iframe class="rb-map" title="Карта: Революшн Био" loading="lazy" src="https://yandex.ru/map-widget/v1/?um=constructor%3A6803285ddfeb9e98a988d37f868485f1206350bc7beb3cbd2119804af2401e11&amp;source=constructor"></iframe>
 </div></div></section>'''
 
-def build_contacts(rel):
-    s = soup(rel)
-    page('/kontakty', 'Контакты', hero('Контакты', [('Контакты', None)]) + contacts_section(rel, s), seo_of(s, 'Контакты'))
 
-def build_about(rel):
+# ---------------------------------------------------------------- страницы
+def build_home():
+    rel = 'index.html'
     s = soup(rel)
-    a = s.select_one('.about-custom .about-custom') or s.select_one('.about-custom')
-    parts = []
-    adv = ''
-    for ch in a.find_all(recursive=False):
-        cl = ' '.join(ch.get('class') or [])
-        if 'about-inner-advantages' in cl:
-            adv = '<div class="rb-adv">' + ''.join(f'<figure style="margin:0"><img src="{img(rel, x.find("img")["src"])}" alt=""><div>{esc(text(x.select_one(".about-inner-advantage-description")).replace(" ", "", 1) if False else x.select_one(".about-inner-advantage-description").get_text("", strip=True))}</div></figure>' for x in ch.select('.about-inner-advantage')) + '</div>'
-            parts.append(adv)
-        elif 'about-inner-title' in cl:
-            parts.append(f'<h2>{esc(text(ch))}</h2>')
-        elif 'about-inner-subtitle' in cl:
-            parts.append(f'<h3>{esc(text(ch))}</h3>')
-        else:
-            c = clean(rel, ch)
-            if strip_tags(c):
-                parts.append(c if c.lstrip().startswith('<') else f'<p>{c}</p>')
-    title = strip_tags(parts.pop(0)) if parts and parts[0].startswith('<h2>') else 'О компании'
-    sub = [('Акции', '/akcii'), ('Новости', '/news')]
-    btns = ''.join(f'<a class="rb-btn" href="{h}">{t}</a>' for t, h in sub)
-    body = hero('О компании', [('О компании', None)]) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><h2>{esc(title)}</h2><div class="rb-rich">{''.join(parts)}</div><div class="rb-btns">{btns}</div></div></section>'''
-    page('/about', 'О компании', body, seo_of(s, 'О компании'))
-
-def build_catalog(rel):
-    s = soup(rel)
-    desc = clean(rel, s.select_one('.products-category-description'))
-    cards = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
-    body = hero('Продукция', [('Продукция', None)], desc) + f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-pgrid">{cards}</div></div></section>'
-    page('/product', 'Продукция', body, seo_of(s, 'Продукция'))
-
-def build_category(rel, alias):
-    s = soup(rel)
-    name = title_of(s)
-    desc = clean(rel, s.select_one('.products-subcategory-description'))
-    cards = ''
-    for it in s.select('.products-list > .product-item'):
-        a = it.select_one('a.product')
-        cards += card(map_link(rel, a['href']), bg_url(rel, a), text(a.select_one('.product-title')), shorten(text(a.select_one('.product-description')), 150))
-    body = hero(name, [('Продукция', '/product'), (name, None)], art=PAGE_ART.get(alias)) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-grid">{cards}</div></div></section>
-{f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-rich">{desc}</div></div></section>' if strip_tags(desc) else ''}
-<section class="rb-sec"><div class="rb-wrap"><div class="rb-panel"><span class="rb-kicker">Обратная связь</span><h2>Подберём препараты под ваши задачи</h2><p class="rb-muted">Оставьте заявку — менеджер подберёт препараты и расскажет об условиях для специалистов.</p><a class="rb-btn rb-btn--fill" href="#popup:feedback">Оставить заявку</a></div></div></section>'''
-    page(alias, name, body, seo_of(s, name))
-    return name
-
-CAT_OF = {}
-def build_product(rel, alias):
-    s = soup(rel)
-    d = k2_item(rel, s)
-    pp = s.select_one('.product-page')
-    main = pp.select_one('.main-product-photo a.product-photo')
-    imgs = []
-    if main and main.get('href'):
-        u = img(rel, main['href'])
-        if u: imgs.append(u)
-    for g in pp.select('.main-product-photo .sigProLink[href]'):
-        u = img(rel, g['href'])
-        if u and u not in imgs: imgs.append(u)
-    if alias in PAGE_ART:
-        imgs.insert(0, img(rel, PAGE_ART[alias][0], 1100))
-    short = ''.join(clean(rel, x) for x in pp.select('.product-page-right > .product-page-description:not(:has(.itemFullText))'))
-    full = clean(rel, pp.select_one('.product-page-right .itemFullText'))
-    fields = []
-    for t in pp.select('.product-ex-title'):
-        v = t.find_next_sibling(class_='product-ex-value')
-        val = clean(rel, v)
-        if strip_tags(val):
-            fields.append((text(t), val))
-    fhtml = ''.join(f'<details class="rb-field"{" open" if k == 0 else ""}><summary>{esc(l)}</summary><div class="rb-field__val rb-rich">{v}</div></details>' for k, (l, v) in enumerate(fields))
-    # отзывы и рекомендации
-    revs = ''
-    for rv in s.select('.product-page-reviews .review'):
-        btn = rv.select_one('.review-btn')
-        link = map_link(rel, btn['href']) if btn else None
-        rid = link.split('#')[1] if link and '#' in link else None
-        full_r = next((r for r in REVIEWS if r['id'] == rid), None)
-        revs += review_html(full_r or {'author': text(rv.select_one('.review-author')), 'text': clean(rel, rv.select_one('.review-text')), 'image': None}, anchor=False)
-    recs = ''
-    for a in s.select('.recomended-products a.product'):
-        recs += card(map_link(rel, a['href']), bg_url(rel, a), text(a.select_one('.product-title')), shorten(text(a.select_one('.product-description')), 120))
-    bc = s.select('.breadcrumb a, .breadcrumbs a, ul.breadcrumb li a')
-    cat = CAT_OF.get(rel)
-    crumb = [('Продукция', '/product')] + ([cat] if cat else []) + [(d['title'], None)]
-    body = hero(d['title'], crumb) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-product">
-<div>{gallery(imgs, d['title'])}<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:order">Заказать товар</a><a class="rb-btn" href="#popup:callback">Получить консультацию</a></div></div>
-<div class="rb-rich">{short}<div class="rb-fields">{fhtml}</div>{f'<div style="margin-top:26px">{full}</div>' if strip_tags(full) else ''}</div>
+    rail = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
+    slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
+    ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
+    def mask_pts(p):
+        (fx, fy), (cx, cy), (hx, hy) = p
+        return [(fx, fy), (cx, cy), (round((cx + hx) / 2) - 3, round((cy + hy) / 2) + 1), (hx, hy)]
+    hs_attr = lambda p: ';'.join(f'{x},{y}' for x, y in mask_pts(p))
+    plain = lambda labels: ' · '.join(strip_tags(l.replace('<br>', ' ')) for l in labels)
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
+    sr_text = ' '.join(f'{b}: {plain(labels)}.' for u, b, p, h, bi, labels in slides)
+    dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
+    first = slides[0][4]
+    def bcard(k, n, t, h, photo, rnd):
+        act = k == first
+        return (f'<div class="rb-brand{" is-active" if act else ""}" data-brand="{k}">'
+                f'<button class="rb-brand__head" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-brand-{k}"><img src="{img(rel, photo, 300)}" alt="" loading="lazy">'
+                f'<div><b>{esc(n)}</b><span>{esc(t)}</span></div><i aria-hidden="true"></i></button>'
+                f'<div class="rb-brand__body" id="rb-brand-{k}"><div><p>{esc(BRAND_DESC[k])}</p><a href="{h}"{ext(h)}>Подробнее →</a></div></div></div>')
+    labels_of = {bi: labels for f, bi, p, labels in HERO_SLIDES}
+    def holo_items(k):
+        items = [strip_tags(l.replace('<br>', ' ')) for l in labels_of.get(k, [])]
+        return [t for t in items if t.lower() != BRANDS[k][1].lower()]
+    holos = ''.join(f'<div class="rb-holo{" is-active" if k == first else ""}" data-brand="{k}" aria-hidden="true"><div class="rb-holo__top"><svg viewBox="0 0 24 24">{BRAND_ICON[k]}</svg><b>{esc(BRANDS[k][1])}</b></div>'
+                    f'<ul>{"".join(f"<li>{esc(t)}</li>" for t in holo_items(k))}</ul></div>' for k in range(len(BRANDS)))
+    pts_html = ''.join(f'<button class="rb-pt{" is-active" if k == first else ""}" type="button" data-brand="{k}" aria-label="{esc(BRANDS[k][0].replace(chr(160), " "))}"></button>' for k in range(len(BRANDS)))
+    trust_html = '<section class="rb-trust"><div class="rb-wrap"><div class="rb-trust__bar">' + ''.join(
+        f'<div class="rb-trust__item"><svg viewBox="0 0 24 24" aria-hidden="true">{ic}</svg><div>{f"<b>{esc(big)}</b>" if big else ""}<span>{esc(small)}</span></div></div>' for ic, big, small in TRUST) + '</div></div></section>'
+    brands_html = ''.join(bcard(k, *b) for k, b in enumerate(BRANDS))
+    links_svg = '<svg class="rb-links" aria-hidden="true">' + ''.join(
+        f'<g class="rb-link{" is-active" if k == first else ""}"><path class="rb-link__base"/><path class="rb-link__pulse" pathLength="100"/><path class="rb-link__spark" pathLength="100"/></g>' for k in range(len(BRANDS))) + '<path class="rb-link__holo"/></svg>'
+    deco_svg = ('<svg class="rb-intro__deco" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">'
+                '<path d="M-40 780 C 380 660, 620 900, 980 720 S 1380 440, 1500 540" stroke="rgba(255,255,255,.06)"/>'
+                '<path d="M760 -40 C 820 240, 1060 340, 1220 290 S 1440 170, 1500 230" stroke="rgba(255,255,255,.05)"/></svg>')
+    cosmo = feats([(ICON['gift'], '−15% на первый заказ', 'Стартовая скидка для новых специалистов и клиник.'),
+                   (ICON['stairs'], 'Накопительная система', 'Чем больше закупок — тем выгоднее условия.'),
+                   (ICON['play'], 'Вебинары 2 раза в месяц', 'По вторникам: протоколы, сочетания, новинки.'),
+                   (ICON['users'], 'Обучение и протоколы', 'Индивидуально и в группах, материалы для кабинета.')])
+    body = f'''<section class="rb-intro">{deco_svg}<div class="rb-intro__glow"></div>{links_svg}<div class="rb-wrap">
+<nav class="rb-bcol" aria-label="Наши бренды">{brands_html}</nav>
+<div class="rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="6000">{imgs_html}{pts_html}{holos}
+<div class="rb-stage__cap" aria-hidden="true"><span class="rb-stage__name">{esc(slides[0][1])}</span><span class="rb-stage__pts">{esc(plain(slides[0][5]))}</span></div>
+<p class="rb-sr">{esc(sr_text)}</p><div class="rb-stage__dots">{dots_html}</div></div>
+<div class="rb-intro__text"><span class="rb-kicker">Революшн Био</span>
+<h1>Инновационные решения для косметологов</h1><hr class="rb-rule">
+<p class="rb-intro__lead">Официальный дистрибьютор препаратов для косметологов JeuDérm, Rejusome, Calyra Lux&nbsp;5 и&nbsp;Crystal&nbsp;PDRN в&nbsp;России.</p>
+<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a><a class="rb-btn" href="#katalog">Каталог продукции</a></div>
 </div></div></section>
-{f'<section class="rb-sec"><div class="rb-wrap"><h2>Отзывы о продукции</h2><p class="rb-muted">Вот что говорят люди, которые уже пользовались этим средством</p><div class="rb-reviews">{revs}</div></div></section>' if revs else ''}
-{f'<section class="rb-sec"><div class="rb-wrap"><h2>Рекомендованные товары</h2><p class="rb-muted">Эти товары могут вас заинтересовать</p><div class="rb-grid">{recs}</div></div></section>' if recs else ''}'''
-    page(alias, d['title'], body, seo_of(s, d['title']))
+{trust_html}
+<section class="rb-sec" id="katalog"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"></div>
+<div class="rb-railnav"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div></div>
+<div class="rb-rail" tabindex="0" aria-label="Направления продукции">{rail}</div></div></section>
+<section class="rb-sec"><div class="rb-wrap"><div class="rb-split"><div><span class="rb-kicker">Для косметологов</span><h2>Работайте с официальным дистрибьютором</h2><hr class="rb-rule">
+<p class="rb-lead">Оригинальная продукция с документами, обучение и поддержка менеджера. Цены — после заявки: менеджер свяжется с вами и подберёт условия.</p>
+<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="/kosmetologam">Косметологам</a><a class="rb-btn" href="#popup:price">Узнать цену</a></div></div>{cosmo}</div></div></section>
+<section class="rb-sec"><div class="rb-wrap"><div class="rb-duo">
+<a class="rb-panel rb-tile" href="/pacientam"><span class="rb-kicker">Пациентам</span><h3>Как работают процедуры и где их пройти</h3><p class="rb-muted">Что дают препараты JeuDérm, Rejusome и Calyra Lux&nbsp;5, как подготовиться к процедуре и ухаживать за кожей после.</p><span class="rb-card__more">Подробнее →</span></a>
+<a class="rb-panel rb-tile" href="/distributor"><span class="rb-kicker">Партнёрам</span><h3>Стать дистрибьютором в вашем регионе</h3><p class="rb-muted">Прямые поставки, обучение команды, маркетинговые материалы и персональный менеджер.</p><span class="rb-card__more">Узнать условия →</span></a>
+</div></div></section>
+<section class="rb-sec"><div class="rb-wrap"><div class="rb-panel"><span class="rb-kicker">О компании</span><h2>Революшн Био</h2><hr class="rb-rule">
+<p class="rb-lead">Официальный дистрибьютор южнокорейского производителя VIRTA-MED KOREA в России: поставки, логистика, обучение специалистов и маркетинговая поддержка — напрямую от производителя, без посредников.</p>
+{stats(ABOUT_STATS)}<div class="rb-btns"><a class="rb-btn" href="/about">О компании</a><a class="rb-btn" href="/proizvoditel">О производителе</a></div></div></div></section>
+{contacts_section(rel, s, h='h2')}{WARN_SEC}'''
+    page('/', 'Главная', body, {'title': 'Революшн Био — инновационные препараты для косметологов',
+                                 'description': 'Официальный дистрибьютор JeuDérm, Rejusome, Calyra Lux 5 и Crystal PDRN в России. Оригинальная продукция, обучение и поддержка косметологов.',
+                                 'keywords': meta(s, 'keywords')})
+
+
+def build_jeuderm(products):
+    lines = [(k, n) for k, n, _ in JD_LINES]
+    intro = ('<p>Южнокорейская профессиональная космецевтика на пептидах и пробиотиках. Эффективность формул подтверждена исследованиями '
+             'в Дерматологическом центре Национального университета Чунгнам и в Университете Ханнам.</p>')
+    lines_html = feats([('', f'{esc(n)}', esc(t)) for k, n, t in JD_LINES], cols=4)
+    body = hero('JeuDérm', [('JeuDérm', None)], intro, art=PAGE_ART.get('/jeuderm')) + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{stats([('50 000+', 'процедур в клиниках и центрах'), ('20+', 'стран, где работают с брендом'), ('6', 'направлений ухода — ПРО и домашний'), ('ISO · GMP', 'стандарты производства')])}</div></section>
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция JeuDérm</h2><hr class="rb-rule">
+<p class="rb-muted" style="margin-bottom:28px">Выберите уход для кабинета или дома и линейку под задачу кожи. Нажмите на товар, чтобы открыть состав и применение.</p>
+{catalog(products, [('care', 'Уход', [('pro', 'Профессиональный'), ('home', 'Домашний')]), ('line', 'Линейка', lines)])}</div></section>
+{section('Линейки', 'Уход по задачам кожи', lines_html)}
+{cta('Цены и протоколы — по запросу', 'Оставьте заявку: менеджер пришлёт прайс для специалистов и протоколы процедур.', btn2=('Официальный сайт JeuDérm', 'https://jeuderm-russia.ru/'))}{WARN_SEC}'''
+    page('/jeuderm', 'JeuDérm', body, {'title': 'JeuDérm — пептидная космецевтика из Кореи для косметологов | Революшн Био',
+                                       'description': 'Профессиональный и домашний уход JeuDérm: Reform Age, Acno Active, Ato Care, Nova·Zymo, Hair Genesis, Crystal PDRN. Официальный дистрибьютор в России.',
+                                       'keywords': 'JeuDérm, ЖеДерм, пептидная космецевтика, профессиональная косметика, Корея, Crystal PDRN'})
+
+
+def build_rejusome(products):
+    s = soup('product/itemlist/category/5-ekzosomy.html')
+    desc = clean('product/itemlist/category/5-ekzosomy.html', s.select_one('.products-subcategory-description'))
+    intro = '<p>Стерильные сыворотки и космецевтика с экзосомами для глубокого восстановления и обновления кожи — в кабинете и дома.</p>'
+    body = hero('Rejusome', [('Rejusome', None)], intro, art=PAGE_ART.get('/rejusome')) + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция Rejusome</h2><hr class="rb-rule">
+{catalog(products, [('type', 'Направление', RJ_TYPES)])}</div></section>
+{section('Технология', 'Что такое экзосомы', f'<div class="rb-rich">{desc}</div>') if strip_tags(desc) else ''}
+{cta('Цены — по запросу', 'Оставьте заявку: менеджер пришлёт прайс и расскажет о протоколах.')}{WARN_SEC}'''
+    page('/rejusome', 'Rejusome', body, {'title': 'Rejusome — стерильные сыворотки и космецевтика с экзосомами | Революшн Био',
+                                         'description': 'Rejusome, Rejusome Plus и линейка Exo Boost: экзосомы для восстановления кожи и волос. Официальный дистрибьютор в России.',
+                                         'keywords': 'Rejusome, Реджусом, экзосомы, сыворотка с экзосомами, Exo Boost'})
+
+
+def build_calyra():
+    p = dict(CALYRA, img=img('index.html', 'source/round-calyra.webp', 1100), alt='Calyra Lux 5')
+    body = hero('Calyra Lux 5', [('Calyra Lux 5', None)], '<p>Новая эра долголетия кожи: CAP Пептид 5, полинуклеотиды (PN) и гиалуронат натрия в одном шприце.</p>', art=PAGE_ART.get('/calyra-lux-5')) + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{stats([('1000 ppm', 'CAP Пептид 5 · клеточный потенциал'), ('2%', 'полинуклеотиды (PN) · обновление'), ('1%', 'гиалуронат натрия · увлажнение'), ('3 в 1', 'три актива в одном шприце')])}</div></section>
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-split"><img class="rb-hero__art" src="{p['img']}" alt="Calyra Lux 5" loading="lazy">
+<div><span class="rb-kicker">Продукт</span><h2>{esc(p['title'])}</h2><hr class="rb-rule"><p class="rb-dlg__meta">{esc(p['vol'])} · {esc(p['care_t'])}</p><p class="rb-muted">{esc(p['desc'])}</p>
+<dl class="rb-dlg__dl">{''.join(f'<div class="rb-dl"><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in p['fields'])}</dl><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a></div></div></div></div></section>
+{section('Почему это новинка', 'Работа на качество и ресурс кожи', feats([
+        (BRAND_ICON[2], 'Теломерная защита', 'Запатентованный CAP Пептид 5 поддерживает клеточный потенциал и процессы теломерной защиты.'),
+        (BRAND_ICON[0], 'Обновление', 'Полинуклеотиды поддерживают естественное обновление кожи.'),
+        (ICON['flask'], 'Увлажнение', 'Гиалуронат натрия интенсивно увлажняет и поддерживает защитные функции.'),
+        (ICON['star'], '3 протокола', 'Радиочастотный лифтинг, аппаратные процедуры, дермапен.')]))}
+{cta('Узнать цену и записаться на обучение', 'Подробно о составе, технологии и протоколах — на официальном сайте Calyra Lux 5.', btn2=('Сайт Calyra Lux 5', 'https://calyralux.ru/'))}{WARN_SEC}'''
+    page('/calyra-lux-5', 'Calyra Lux 5', body, {'title': 'Calyra Lux 5 — CAP Пептид 5, PN и гиалуронат натрия | Революшн Био',
+                                                 'description': 'CALYRA LUX 5: теломерная защита и долголетие кожи. CAP Пептид 5 1000 ppm, PN 2%, гиалуронат натрия 1% в одном шприце.',
+                                                 'keywords': 'Calyra Lux 5, Калюра Люкс 5, CAP Пептид 5, полинуклеотиды, долголетие кожи'})
+
+
+def build_kosmetologam():
+    up = ''.join(f'<article class="rb-event"><span class="rb-event__date">{esc(d)}</span><div><h3>{esc(t)}</h3><p class="rb-muted">{esc(x)}</p></div><a class="rb-btn" href="#popup:signup">Записаться</a></article>' for d, t, x in UPCOMING)
+    vids = ''.join(f'<a class="rb-video" href="https://rutube.ru/video/{v}/" target="_blank" rel="noopener"><span class="rb-video__n">Вебинар {k + 1:02d}</span><b>{esc(t)}</b><p>{esc(x)}</p><span class="rb-card__more">Смотреть на Рутубе →</span></a>' for k, (t, x, v) in enumerate(WEBINARS))
+    body = hero('Косметологам', [('Косметологам', None)], '<p>Оригинальная продукция с документами, выгодные условия, обучение и поддержка — от официального дистрибьютора в России.</p>') + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{feats([
+        (ICON['gift'], '−15% на первый заказ', 'Стартовая скидка для новых специалистов и клиник.'),
+        (ICON['stairs'], 'Накопительная система лояльности', 'Скидка растёт вместе с объёмом закупок.'),
+        (ICON['shield'], 'Оригинальная продукция', 'Прямые поставки от производителя, документы на всю продукцию.'),
+        (ICON['chat'], 'Персональный менеджер', 'Подбор ассортимента, протоколы и ответы на вопросы.')])}</div></section>
+{section('Обучение', 'Вебинары и обучение', f"""<div class="rb-split"><div class="rb-rich"><p><strong>Вебинары — по вторникам, 2 раза в месяц.</strong> Разбираем протоколы, сочетания препаратов и новинки. Время и ссылку на эфир сообщает менеджер.</p>
+<p><strong>Индивидуальное и групповое обучение</strong> — по согласованию: в учебном центре или в вашей клинике при запуске препаратов.</p>
+<p>Партнёр по обучению — институт косметологии «Дом Русской Косметики»: программы с документами государственного образца, НМО и ФИС ФРДО.</p>
+<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:signup">Записаться на обучение</a><a class="rb-btn" href="{RUTUBE}" target="_blank" rel="noopener">Канал на Рутубе</a></div></div>
+<div><h3 style="margin-top:0">Ближайшие вебинары</h3><div class="rb-events">{up}</div></div></div>""")}
+{section('Записи', 'Смотрите вебинары на Рутубе', f'<div class="rb-videos">{vids}</div>')}
+{section('Как заказать', 'Четыре шага до первой поставки', steps([
+        ('Заявка', 'Оставьте заявку на сайте или напишите в мессенджер.'),
+        ('Консультация', 'Менеджер свяжется с вами, пришлёт прайс и поможет подобрать препараты.'),
+        ('Счёт и оплата', 'Оформляем заказ с учётом скидки −15% на первый заказ.'),
+        ('Доставка', 'Отправляем продукцию по России вместе с документами.')]))}
+{section('Вопросы', 'Частые вопросы', faq([
+        ('Почему на сайте нет цен?', '<p>Цены для специалистов присылает менеджер после заявки — так мы учитываем вашу скидку и объём закупки.</p>'),
+        ('Как получить скидку −15%?', '<p>Скидка действует на первый заказ для новых клиентов. Укажите в заявке, что заказываете впервые.</p>'),
+        ('Как работает накопительная система?', '<p>Скидка растёт вместе с суммой ваших закупок. Подробные условия расскажет менеджер.</p>'),
+        ('Где посмотреть записи вебинаров?', f'<p>Часть записей — на нашем <a href="{RUTUBE}" target="_blank" rel="noopener">канале на Рутубе</a>, остальные — по запросу у менеджера.</p>'),
+        ('Есть ли документы на продукцию?', '<p>Да, продукция поставляется напрямую от производителя с документами. Производство работает по стандартам ISO и GMP.</p>')]))}
+{cta('Получите прайс для специалистов', 'Оставьте заявку — менеджер свяжется с вами, пришлёт цены и расскажет об условиях.')}{WARN_SEC}'''
+    page('/kosmetologam', 'Косметологам', body, {'title': 'Косметологам — условия, скидки и обучение | Революшн Био',
+                                                 'description': 'Скидка −15% на первый заказ, накопительная система лояльности, вебинары 2 раза в месяц и обучение по препаратам JeuDérm, Rejusome и Calyra Lux 5.',
+                                                 'keywords': 'косметологам, обучение косметологов, вебинары, JeuDérm, Rejusome, Calyra Lux 5'})
+
+
+def build_pacientam():
+    body = hero('Пациентам', [('Пациентам', None)], '<p>Как работают процедуры с препаратами JeuDérm, Rejusome и Calyra Lux&nbsp;5, как подготовиться и как сохранить результат.</p>') + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{feats([
+        (BRAND_ICON[0], 'Возрастные изменения', 'Пептидный уход JeuDérm Reform Age и Calyra Lux 5 — для плотности, увлажнённости и сияния кожи.'),
+        (BRAND_ICON[1], 'Восстановление кожи', 'Сыворотки с экзосомами Rejusome — для глубокого восстановления и ровного тона.'),
+        (ICON['heart'], 'Чувствительная и проблемная кожа', 'Линейки JeuDérm Ato Care и Acno Active — для реактивной и склонной к акне кожи.'),
+        (ICON['users'], 'Кожа головы и волосы', 'Rejusome Plus Hair и JeuDérm Hair Genesis — для кожи головы и роста волос.')])}</div></section>
+{section('Процедура', 'Как проходит курс', steps([
+        ('Консультация', 'Специалист оценивает состояние кожи и подбирает препараты и протокол.'),
+        ('Процедура', 'Препарат вводится или наносится по протоколу производителя — в кабинете косметолога.'),
+        ('Курс', 'Обычно рекомендуется курс из нескольких процедур; точную схему определяет специалист.'),
+        ('Домашний уход', 'Средства для дома помогают сохранить результат между визитами.')]))}
+{section('Вопросы', 'Частые вопросы', faq([
+        ('Где пройти процедуру?', '<p>Оставьте заявку — мы подскажем косметолога или клинику, которые работают с нашими препаратами.</p>'),
+        ('Можно ли купить препараты самостоятельно?', '<p>Профессиональные препараты применяет специалист. Средства для домашнего ухода подберёт ваш косметолог.</p>'),
+        ('Есть ли противопоказания?', '<p>Да, как у любых процедур. Перед курсом обязательно проконсультируйтесь со специалистом.</p>')]))}
+{cta('Подскажем, где пройти процедуру', 'Оставьте заявку — мы свяжемся с вами и порекомендуем специалиста.', btn='Задать вопрос', href='#popup:feedback')}{WARN_SEC}'''
+    page('/pacientam', 'Пациентам', body, {'title': 'Пациентам — процедуры с JeuDérm, Rejusome и Calyra Lux 5 | Революшн Био',
+                                           'description': 'Что дают процедуры с препаратами JeuDérm, Rejusome и Calyra Lux 5, как проходит курс и где найти специалиста.',
+                                           'keywords': 'процедуры, косметолог, экзосомы, пептиды, уход за кожей'})
+
+
+def build_about():
+    rel = 'about.html'
+    s = soup(rel)
+    body = hero('О компании', [('О компании', None)], '<p>ООО «Революшн Био» — официальный дистрибьютор продукции южнокорейского производителя VIRTA-MED KOREA в России.</p>') + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{stats(ABOUT_STATS)}</div></section>
+{section('Что мы делаем', 'Больше, чем поставка косметики', feats([
+        (ICON['shield'], 'Прямые поставки', 'Оригинальная продукция напрямую от производителя — с документами, без посредников.'),
+        (ICON['truck'], 'Логистика по России', 'Доставляем профессиональные и домашние средства клиникам, косметологам и партнёрам.'),
+        (ICON['users'], 'Обучение', 'Вебинары, обучение в клиниках и в малых группах, международные симпозиумы.'),
+        (ICON['doc'], 'Маркетинговая поддержка', 'Протоколы, материалы и сопровождение для специалистов и дистрибьюторов.')]))}
+<section class="rb-sec"><div class="rb-wrap"><div class="rb-panel rb-quote"><span class="rb-kicker">Научный руководитель</span>
+<blockquote>«Работая в эстетической медицине более 20 лет, я перепробовала множество брендов, но именно ЖеДерм стал для меня настоящим открытием. Это инструмент, который помогает достигать видимых и устойчивых результатов у клиентов».</blockquote>
+<p><b>Лилия Мукарамова</b><br><span class="rb-muted">Научный руководитель Революшн Био, международный тренер</span></p></div></div></section>
+{section('Реквизиты', 'ООО «Революшн Био»', '<div class="rb-rich"><p>105064, Москва, ул. Земляной Вал, д. 7, пом. 2/4<br>ИНН 9709100594 · КПП 770901001 · ОГРН 1237700714085</p></div><div class="rb-btns"><a class="rb-btn" href="/proizvoditel">О производителе</a><a class="rb-btn" href="/distributor">Стать дистрибьютором</a></div>')}
+{cta('Работайте с официальным дистрибьютором', 'Новым клиентам — −15% на первый заказ.')}'''
+    page('/about', 'О компании', body, {'title': 'О компании Революшн Био — официальный дистрибьютор в России',
+                                        'description': 'Революшн Био — официальный дистрибьютор JeuDérm, Rejusome и Calyra Lux 5: прямые поставки, логистика, обучение и поддержка специалистов.',
+                                        'keywords': meta(s, 'keywords')})
+
+
+def build_proizvoditel():
+    letter = 'https://cdn.jsdelivr.net/gh/freyia-me/-@16606b2/images/home/distributor-letter.webp'
+    body = hero('Производитель', [('Производитель', None)], '<p>VIRTA-MED KOREA Co., LTD — южнокорейская компания из Тэджона, производитель профессиональной космецевтики JeuDérm, Rejusome и Calyra Lux&nbsp;5.</p>') + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{stats([('ISO · GMP', 'международные стандарты производства'), ('50 000+', 'процедур в клиниках и центрах'), ('20+', 'стран, где работают с продукцией'), ('Корея', 'Тэджон, собственное производство')])}</div></section>
+{section('Наука', 'Клинически протестированные формулы', feats([
+        (ICON['flask'], 'Исследования', 'Эффективность средств подтверждена в Дерматологическом центре Национального университета Чунгнам и в Университете Ханнам.'),
+        (ICON['shield'], 'Стандарты качества', 'Производство работает по международным стандартам ISO и GMP.'),
+        (BRAND_ICON[0], 'Биотехнологии', 'Пептиды, пробиотики, экзосомы, полинуклеотиды и PDRN в основе формул.'),
+        (ICON['globe'], 'Международный опыт', 'Продукцию используют специалисты более чем в 20 странах.')]))}
+<section class="rb-sec"><div class="rb-wrap"><div class="rb-split"><div><span class="rb-kicker">Официальное подтверждение</span><h2>Письмо производителя</h2><hr class="rb-rule">
+<p class="rb-lead">Производитель подтверждает: ООО «Революшн Био» уполномочено представлять бренд, осуществлять продажи, маркетинговую поддержку и логистику на всей территории России.</p>
+<p class="rb-muted">VIRTA-MED KOREA Co., LTD · подписано CEO Tatyana Jeon · 01.11.2025</p></div>
+<a class="rb-letter" href="{letter}" target="_blank" rel="noopener"><img src="{letter}" alt="Письмо производителя об официальном дистрибьюторе" loading="lazy"></a></div></div></section>
+{section('Бренды', 'Продукция производителя', feats([
+        (BRAND_ICON[0], '<a href="/jeuderm">JeuDérm</a>', 'Пептидная космецевтика: профессиональный и домашний уход.'),
+        (BRAND_ICON[1], '<a href="/rejusome">Rejusome</a>', 'Стерильные сыворотки и космецевтика с экзосомами.'),
+        (BRAND_ICON[2], '<a href="/calyra-lux-5">Calyra Lux 5</a>', 'CAP Пептид 5, PN и гиалуронат натрия в одном шприце.'),
+        (BRAND_ICON[3], '<a href="/jeuderm?line=pdrn">Crystal PDRN</a>', 'PDRN + HA 3% — восстановление качества кожи.')]))}'''
+    page('/proizvoditel', 'Производитель', body, {'title': 'Производитель VIRTA-MED KOREA — JeuDérm, Rejusome, Calyra Lux 5 | Революшн Био',
+                                                  'description': 'VIRTA-MED KOREA Co., LTD (Тэджон, Корея): производство по стандартам ISO и GMP, клинически протестированные формулы.',
+                                                  'keywords': 'VIRTA-MED KOREA, производитель, JeuDérm, Корея, ISO, GMP'})
+
+
+def build_distributor():
+    body = hero('Стать дистрибьютором', [('Стать дистрибьютором', None)], '<p>Работаем с дистрибьюторами, клиниками эстетической медицины и косметологическими центрами — напрямую от официального дистрибьютора в России.</p>') + f'''
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-btns" style="margin-top:0"><a class="rb-btn rb-btn--fill" href="#popup:partner">Узнать условия</a><a class="rb-btn" href="https://wa.me/79253428202" target="_blank" rel="noopener">Написать в WhatsApp</a></div></div></section>
+{section('Что получает партнёр', 'Почему с нами выгодно', feats([
+        (ICON['shield'], 'Оригинальная продукция', 'Прямые поставки, документы на всю продукцию.'),
+        (ICON['star'], 'Полный портфель', 'Препараты для кабинета и домашний уход: клиенты возвращаются между процедурами.'),
+        (ICON['users'], 'Обучение команды', 'Бесплатное обучение специалистов, протоколы, вебинары.'),
+        (ICON['doc'], 'Маркетинговая поддержка', 'Фото продуктов, описания, материалы для соцсетей и презентации.'),
+        (ICON['chat'], 'Персональный менеджер', 'Помощь с запуском, ассортиментом и первыми продажами.'),
+        (ICON['stairs'], 'Растущие условия', 'Условия улучшаются вместе с объёмом закупок.')], cols=3))}
+{section('Как начать', 'Четыре шага до партнёрства', steps([
+        ('Заявка', 'Оставьте заявку или напишите в мессенджер — расскажите о регионе и компании.'),
+        ('Предложение', 'Менеджер пришлёт прайс для партнёров и условия сотрудничества.'),
+        ('Договор и первая поставка', 'Подбираем стартовый ассортимент под рынок региона.'),
+        ('Обучение и запуск', 'Обучаем команду, передаём протоколы и материалы, сопровождаем первые продажи.')]))}
+{cta('Получите прайс для партнёров', 'Пришлём условия сотрудничества, прайс и материалы о брендах.', btn='Получить прайс', href='#popup:partner')}'''
+    page('/distributor', 'Стать дистрибьютором', body, {'title': 'Стать дистрибьютором JeuDérm, Rejusome, Calyra Lux 5 | Революшн Био',
+                                                        'description': 'Партнёрство для дистрибьюторов и клиник: прямые поставки, обучение, маркетинговая поддержка и персональный менеджер.',
+                                                        'keywords': 'стать дистрибьютором, партнёрство, JeuDérm, Rejusome'})
+
+
+def build_contacts():
+    s = soup('kontakty.html')
+    page('/kontakty', 'Контакты', hero('Контакты', [('Контакты', None)]) + contacts_section('kontakty.html', s), seo_of(s, 'Контакты'))
+
+
+def build_404():
+    body = '''<section class="rb-hero rb-404"><div class="rb-wrap"><span class="rb-kicker">Ошибка 404</span><h1>Страница не найдена</h1><hr class="rb-rule">
+<p class="rb-lead">Возможно, страница переехала: мы обновили сайт и собрали всю продукцию на страницах брендов.</p>
+<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="/">На главную</a><a class="rb-btn" href="/jeuderm">JeuDérm</a><a class="rb-btn" href="/rejusome">Rejusome</a><a class="rb-btn" href="/calyra-lux-5">Calyra Lux 5</a></div></div></section>'''
+    page('/404', 'Страница не найдена', body, {'title': 'Страница не найдена — Революшн Био', 'description': '', 'keywords': ''})
+
 
 def build_article(rel, alias):
     s = soup(rel)
     d = k2_item(rel, s)
-    v = s.select_one('.itemView')
-    custom = v.select_one('.item-new-custom') if v else None
-    if custom:
-        im = custom.select_one('.item-new-custom-img img')
-        d['image'] = d['image'] or (img(rel, im['src']) if im else None)
-    if rel in INTRO_ONLY:
-        d['full'] = ''
-        REPORT.append(f'{alias}: перенесено только вступление (полный текст — перепечатка сторонней статьи)')
-    section = {'news': [('Новости', '/news')], 'uchebnyj-tsentr': [('Учебный центр', '/uchebnyj-tsentr')]}.get(rel.split('/')[0], [])
-    fields = ''.join(f'<p><strong>{esc(l)}:</strong> {strip_tags(v_) if len(strip_tags(v_)) < 80 else v_}</p>' for l, v_ in d['fields'])
-    pic = f'<img src="{d["image"]}" alt="{esc(d["title"])}" style="max-width:640px;width:100%;margin:0 0 30px">' if d['image'] else ''
-    gal = ''.join(f'<img src="{u}" alt="" loading="lazy">' for u in d['gallery'])
-    extra = ''
-    if alias in ('/obuchenie-kosmetologov', '/exosomes-summit-dubrovnik'):
-        extra = '<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:signup">Записаться</a><a class="rb-btn" href="/uchebnyj-tsentr">Все программы</a></div>'
-    if rel in INTRO_ONLY:
-        extra = '<p class="rb-muted">Полный текст статьи доступен по запросу — напишите нам.</p>'
-    body = hero(d['title'], section + [(d['title'], None)]) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-rich">{pic}{fields}{d['intro']}{d['full']}{gal}</div>{extra}</div></section>'''
+    body = hero(d['title'], [(d['title'], None)]) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-rich">{d['intro']}{d['full']}</div></div></section>'''
     page(alias, d['title'], body, seo_of(s, d['title']))
 
-def build_reviews(rel):
-    s = soup(rel)
-    body = hero('Отзывы', [('Отзывы', None)], '<p>Отзывы косметологов, пациентов и партнёров о препаратах и обучении Революшн Био.</p>') + \
-        f'<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-reviews">{"".join(review_html(r) for r in REVIEWS)}</div></div></section>'
-    page('/otzyvy', 'Отзывы', body, seo_of(s, 'Отзывы'))
 
-def build_school(rel):
-    s = soup(rel)
-    intro = clean(rel, s.select_one('.intrduction'))
-    rows = ''
-    for ev in s.select('.schedule-event'):
-        a = ev.select_one('a.schedule-event-title')
-        href = map_link(rel, a['href']) if a else None
-        cv = ev.select_one('.catItemView')
-        ci = cat_items(rel, BeautifulSoup(f'<div>{cv}</div>', 'lxml')) if cv else []
-        when = text(ev.select_one('.teachingnormdate')) or 'По запросу'
-        teacher = text(ev.select_one('.schedule-event-teacher')).replace('Преподаватель:', '').strip()
-        title = text(a)
-        ir = norm_rel(rel, a['href']) if a else None
-        d = k2_item(ir, soup(ir)) if ir and os.path.isfile(os.path.join(SRC, ir)) else None
-        image = (ci[0]['image'] if ci else None) or (d and d['image'])
-        intro_ev = shorten((ci[0]['intro'] if ci else '') or (d and (d['intro'] or d['full'])) or '', 260)
-        rows += f'''<a class="rb-row" href="{href or '#popup:signup'}"><div class="rb-row__img" style="{f"background-image:url('{image}')" if image else ''}"></div><div class="rb-row__body">
-<div class="rb-row__meta">Дата проведения: {esc(when)}{f' · Преподаватель: {esc(teacher)}' if teacher else ''}</div><h3>{esc(title)}</h3><p class="rb-muted">{esc(intro_ev)}</p><span class="rb-card__more">Подробнее →</span></div></a>'''
-    directions = [text(o) for o in s.select('select option')][1:8]
-    tcards = ''.join(card(f'/prepodavateli#{t["id"]}', t['image'], t['name'], shorten(t['text'], 120), cover=True) for t in TEACHERS)
-    body = hero('Учебный центр', [('Учебный центр', None)], intro) + f'''<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">
-<div class="rb-btns" style="margin:0 0 50px"><a class="rb-btn rb-btn--fill" href="#popup:signup">Записаться на обучение</a><a class="rb-btn" href="#popup:callback">Стать моделью</a><a class="rb-btn" href="#popup:callback">Стать тренером</a></div>
-<h2>Расписание</h2><hr class="rb-rule"><p class="rb-muted">Мы проводим обучение по всем тематическим направлениям косметологии: {esc(', '.join(directions).lower())}.</p>
-<div class="rb-list">{rows}</div></div></section>
-<section class="rb-sec"><div class="rb-wrap"><h2>Преподаватели</h2><hr class="rb-rule"><div class="rb-grid">{tcards}</div></div></section>'''
-    page('/uchebnyj-tsentr', 'Учебный центр', body, seo_of(s, 'Учебный центр'))
+ABOUT_STATS = [('с 2022', 'года на рынке'), ('15 000', 'клиентов в нашей базе'), ('5', 'инновационных технологий: пептиды, экзосомы, PN, PDRN, CAP Пептид 5'), ('ISO · GMP', 'стандарты производства')]
+WARN_SEC = f'<div class="rb-wrap">{WARN}</div>'
 
-def build_teachers(rel):
-    s = soup(rel)
-    rows = ''.join(f'''<article class="rb-row" id="{t['id']}"><div class="rb-row__img" style="{f"background-image:url('{t['image']}')" if t['image'] else ''}"></div><div class="rb-row__body"><h3>{esc(t['name'])}</h3><div class="rb-rich">{t['text']}</div></div></article>''' for t in TEACHERS)
-    body = hero('Преподаватели', [('Учебный центр', '/uchebnyj-tsentr'), ('Преподаватели', None)]) + f'<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-list">{rows}</div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:signup">Записаться на обучение</a></div></div></section>'
-    page('/prepodavateli', 'Преподаватели', body, seo_of(s, 'Преподаватели'))
+JD = jd_products() + [pdrn_product()]
+RJ = rj_products()
+build_home()
+build_jeuderm(JD)
+build_rejusome(RJ)
+build_calyra()
+build_kosmetologam()
+build_pacientam()
+build_about()
+build_proizvoditel()
+build_distributor()
+build_contacts()
+build_404()
+build_article('policy.html', '/policy')
+build_article('soglasie.html', '/soglasie')
 
-def build_sales(rel):
-    s = soup(rel)
-    rows = ''
-    for sale in s.select('.sales-list > .sale'):
-        a = sale.select_one('.sale-title a')
-        ir = norm_rel(rel, a['href']) if a else None
-        d = k2_item(ir, soup(ir)) if ir and os.path.isfile(os.path.join(SRC, ir)) else None
-        image = (d and d['image']) or bg_url(rel, sale.select_one('.sale-img'))
-        txt = (d['intro'] + d['full']) if d else clean(rel, sale.select_one('.sale-description'))
-        when = text(sale.select_one('.salesdate'))
-        rows += f'''<article class="rb-row"><div class="rb-row__img" style="{f"background-image:url('{image}')" if image else ''}"></div><div class="rb-row__body">{f'<div class="rb-row__meta">Действует с {esc(when)}</div>' if when else ''}<h3>{esc(text(a))}</h3><div class="rb-rich">{txt}</div><a class="rb-btn" href="#popup:discount">Получить скидку</a></div></article>'''
-    body = hero('Акции и спецпредложения', [('О компании', '/about'), ('Акции', None)], '<p>Всегда рады предложить нашим клиентам интересные условия.</p>') + f'<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-list">{rows}</div></div></section>'
-    page('/akcii', 'Акции', body, seo_of(s, 'Акции'))
-
-def build_news(rel):
-    s = soup(rel)
-    cards = ''
-    for n in s.select('.news-list > .new'):
-        a = n.select_one('.read-more a')
-        if DROPPED.search(text(n)):
-            continue
-        cards += card(map_link(rel, a['href']) if a else None, bg_url(rel, n.select_one('.new-img')), text(n.select_one('.new-title')),
-                      shorten(text(n.select_one('.new-description')), 160), date=text(n.select_one('.news-date-create')), cover=True)
-    body = hero('Новости', [('О компании', '/about'), ('Новости', None)], '<p>Последние новости компании.</p>') + f'<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-grid">{cards}</div></div></section>'
-    page('/news', 'Новости', body, seo_of(s, 'Новости'))
-
-# категории товаров -> чтобы в крошках товара была категория
-for rel, (alias, kind) in PAGES.items():
-    if kind == 'category':
-        cs = soup(rel)
-        for a in cs.select('.products-list a.product'):
-            CAT_OF.setdefault(norm_rel(rel, a['href']), (title_of(cs), alias))
-
-for rel, (alias, kind) in PAGES.items():
-    f = {'home': build_home, 'about': build_about, 'catalog': build_catalog, 'contacts': build_contacts,
-         'reviews': build_reviews, 'school': build_school, 'teachers': build_teachers, 'sales': build_sales,
-         'news': build_news}.get(kind)
-    if f:
-        f(rel)
-    elif kind == 'category':
-        build_category(rel, alias)
-    elif kind == 'product':
-        build_product(rel, alias)
-    elif kind == 'article':
-        build_article(rel, alias)
-
-# ---------------------------------------------------------------- редиректы и SEO
-redirects = []
+# ---------------------------------------------------------------- редиректы со старого сайта и SEO
 def old_url(rel):
     return '/' if rel == 'index.html' else '/' + rel[:-5]
-for rel, (alias, _) in PAGES.items():
-    if old_url(rel) != alias:
-        redirects.append((old_url(rel), alias))
-for rel, alias in EXTRA.items():
-    redirects.append((old_url(rel), alias))
-for rel, a in ANCHORS.items():
-    redirects.append((old_url(rel), a.split('#')[0]))
-redirects.append(('/component/k2/item/7-doktor-vasilenko-elina', '/otzyvy'))
-redirects.append(('/component/k2/item/8-irina', '/otzyvy'))
-redirects = sorted(set(redirects))
+
+OLD_PRODUCT = {p['old']: f'/rejusome#p-{p["id"]}' for p in RJ}
+OLD_PRODUCT['product/item/59-crystal-pdrn.html'] = '/jeuderm?line=pdrn#p-crystal-pdrn'
+OLD_PRODUCT['product/item/81-jeuderm-homecare.html'] = '/jeuderm?care=home'
+OLD_PRODUCT['product/item/82-jeuderm-pofessional.html'] = '/jeuderm?care=pro'
+OLD_CAT = {
+    '7-jeuderm': '/jeuderm', '9-biorevitalizatsiya': '/jeuderm?line=pdrn', '5-ekzosomy': '/rejusome?type=serum',
+    '19-trikhologiya': '/rejusome?type=hair', '11-pro-skincare': '/rejusome?type=cosmetics',
+}
+def new_url(rel):
+    if rel in OLD_PRODUCT:
+        return OLD_PRODUCT[rel]
+    m = re.match(r'product/itemlist/category/([^/]+)\.html$', rel)
+    if m and m.group(1) in OLD_CAT:
+        return OLD_CAT[m.group(1)]
+    first = rel.split('/')[0].replace('.html', '')
+    return {'index': None, 'about': None, 'kontakty': None, 'policy': None, 'soglasie': None,
+            'product': '/#katalog', 'uchebnyj-tsentr': '/kosmetologam', 'sales': '/kosmetologam', 'news': '/about',
+            'partners': '/distributor'}.get(first, '/')
+
+redirects = set()
+for root_, dirs, files in os.walk(SRC):
+    for f in files:
+        if not f.endswith('.html'):
+            continue
+        rel = os.path.relpath(os.path.join(root_, f), SRC).replace(os.sep, '/')
+        if rel.startswith(('templates/', 'media/', 'components/', 'modules/', 'plugins/', 'cache/', 'images/')):
+            continue
+        dst = new_url(rel)
+        if dst and dst != old_url(rel):
+            redirects.add((old_url(rel), dst))
+redirects.add(('/component/k2/item/7-doktor-vasilenko-elina', '/'))
+redirects.add(('/component/k2/item/8-irina', '/'))
+redirects = sorted(redirects)
 with open(os.path.join(OUT, 'redirects.txt'), 'w', encoding='utf-8') as f:
-    f.write('# 301-редиректы: старый адрес (Joomla) -> новый адрес (Tilda)\n# Tilda: Настройки сайта → Ещё → Редиректы (301)\n')
+    f.write('# 301-редиректы: старый адрес (Joomla) -> новый адрес (Tilda)\n# Tilda: Настройки сайта → Ещё → Редиректы (301)\n'
+            '# Адреса с #p-… открывают на странице бренда окно нужного товара.\n')
     for a, b in redirects:
         f.write(f'{a}\t{b}\n')
 with open(os.path.join(OUT, 'seo-pages.txt'), 'w', encoding='utf-8') as f:
     for alias, name, t, dsc, kw in SEO:
         f.write(f'{alias}  (файл tilda/{name}.html)\n  Title: {t}\n  Description: {dsc}\n  Keywords: {kw}\n\n')
-json.dump({'pages': [s[0] for s in SEO], 'images': len(IMAGES), 'redirects': len(redirects), 'report': REPORT,
-           'reviews': len(REVIEWS), 'teachers': len(TEACHERS)}, sys.stdout, ensure_ascii=False, indent=1)
+json.dump({'pages': [s[0] for s in SEO], 'images': len(IMAGES), 'redirects': len(redirects), 'products': {'jeuderm': len(JD), 'rejusome': len(RJ)}},
+          sys.stdout, ensure_ascii=False, indent=1)
