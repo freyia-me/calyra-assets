@@ -70,25 +70,22 @@ INTRO_ONLY = {'news/item/21-news3.html'}
 
 # Бренды компании: название, подпись, ссылка (строка брендов на первом экране главной)
 BRANDS = [
-    # название, подпись, ссылка, фото продукции (из старого сайта или source/), фото вписано в круг?
-    ('JeuDérm', 'Эстетическая гармония', '/jeuderm', 'media/k2/categories/7.png', True),
-    ('Rejusome', 'Регенерация и обновление', '/ekzosomy', 'media/k2/galleries/227/8.png', False),
-    ('Calyra Lux\u00a05', 'Теломерная защита', 'https://calyralux.ru/', 'source/brand-calyra.webp', False),
+    # название, подпись в карточке, ссылка, фото продукции (из старого сайта или source/), фото вписано в круг?
+    ('JeuDérm', 'Пептидные технологии', '/jeuderm', 'media/k2/categories/7.png', True),
+    ('Rejusome', 'Экзосомальные технологии', '/ekzosomy', 'media/k2/galleries/227/8.png', False),
+    ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', 'https://calyralux.ru/', 'source/brand-calyra.webp', False),
+    ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/crystal-pdrn', 'media/k2/galleries/59/6.png', False),
 ]
-# Подписи-«стрелки» на коже (по порядку точек в HERO_SLIDES): текст и в какую сторону уходит линия
-HOTSPOTS = [('Инновационные<br>формулы', 'r'), ('Видимый<br>результат', 'l'), ('Доверие<br>профессионалов', 'r')]
-# Кадры первого экрана главной: файл в source/, номер бренда из BRANDS,
-# точки на коже в процентах кадра (x, y): лоб, скула, линия подбородка.
-# Чтобы добавить кадр — положите фото в source/ и допишите строку.
+# В какую сторону уходит линия от каждой точки на коже: лоб, скула, подбородок
+HOTSPOT_SIDES = ['r', 'l', 'r']
+# Кадры первого экрана главной: по одному на бренд.
+# Файл в source/ (лица выровнены по размеру), номер бренда из BRANDS,
+# точки на коже в процентах кадра (x, y): лоб, скула, подбородок, и три подписи к ним.
 HERO_SLIDES = [
-    ('source/hero-1.webp', 1, [(55, 37), (37, 58), (62, 71)]),
-    ('source/hero-2.webp', 0, [(55, 25), (40, 52), (62, 68)]),
-    ('source/hero-3.webp', 2, [(57, 24), (43, 50), (62, 66)]),
-    ('source/hero-4.webp', 1, [(57, 24), (43, 50), (63, 66)]),
-    ('source/hero-5.webp', 0, [(55, 24), (31, 49), (62, 70)]),
-    ('source/hero-6.webp', 2, [(52, 26), (30, 49), (66, 63)]),
-    ('source/hero-7.webp', 1, [(57, 23), (29, 49), (70, 60)]),
-    ('source/hero-8.webp', 0, [(62, 27), (40, 45), (66, 58)]),
+    ('source/face-a.webp', 0, [(55, 29), (36, 54), (58, 72)], ['Пептидные<br>технологии', 'Для всех<br>типов кожи', 'Клинические<br>исследования в Корее']),
+    ('source/face-b.webp', 1, [(63, 28), (44, 53), (66, 70)], ['Экзосомальные<br>технологии', 'Стерильные сыворотки<br>и космецевтика', 'Улучшение<br>качества кожи']),
+    ('source/face-c.webp', 2, [(56, 29), (36, 54), (58, 72)], ['Теломерная защита<br>и долголетие', 'PN и CAP<br>Пептид 5', 'Результат после<br>1 процедуры']),
+    ('source/face-d.webp', 3, [(57, 29), (38, 54), (60, 72)], ['PDRN-<br>технологии', 'Полинуклеотиды<br>и факторы роста', 'Увлажнение<br>и регенерация']),
 ]
 # упоминания бренда, который компания больше не продаёт
 DROPPED = re.compile(r'mint\s*lift', re.I)
@@ -387,8 +384,7 @@ def css():
 #rb .rb-intro__text{padding-bottom:40px;align-self:center}
 #rb .rb-intro{flex-direction:column;align-items:stretch;justify-content:flex-end}
 #rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,520px);aspect-ratio:1122/1402;margin-bottom:-1px}
-#rb .rb-intro__face::before{content:"";position:absolute;left:8%;right:8%;top:10%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.34),rgba(54,203,224,.1) 55%,transparent);filter:blur(14px)}
-#rb .rb-intro__face::after{content:"";position:absolute;left:4%;right:4%;top:6%;aspect-ratio:1/1;border-radius:50%;border:1px solid rgba(54,203,224,.35);z-index:0}
+#rb .rb-intro__face::before{content:"";position:absolute;left:12%;right:12%;top:18%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.16),transparent);filter:blur(20px)}
 #rb .rb-stage__img{position:absolute!important;inset:0;opacity:0;transition:opacity 1.4s ease;will-change:opacity,transform}
 #rb .rb-stage__img.is-active{opacity:1}
 #rb.rb-js .rb-stage__img.is-active{animation:rb-kb 7.5s linear both}
@@ -396,17 +392,21 @@ def css():
 #rb .rb-stage__inner{position:absolute;inset:0;will-change:transform}
 /* точки-«стрелки» на коже */
 #rb .rb-hs{position:absolute;left:0;width:100%;height:0;top:var(--y);z-index:2;transition:top 1.2s cubic-bezier(.6,0,.2,1);pointer-events:none}
-#rb .rb-hs__dot{position:absolute;left:var(--x);top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(54,203,224,.55),0 0 18px 4px var(--accent);transition:left 1.2s cubic-bezier(.6,0,.2,1)}
-#rb .rb-hs__dot::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid var(--accent);animation:rb-ping 2.4s ease-out infinite}
+#rb .rb-hs__dot{position:absolute;left:var(--x);top:0;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;transition:left 1.2s cubic-bezier(.6,0,.2,1);animation:rb-twinkle 3s ease-in-out infinite;filter:drop-shadow(0 0 4px var(--accent))}
+#rb .rb-hs__dot::before,#rb .rb-hs__dot::after{content:"";position:absolute;background:#fff;border-radius:1px}
+#rb .rb-hs__dot::before{left:5px;top:0;width:1.2px;height:11px}
+#rb .rb-hs__dot::after{top:5px;left:0;height:1.2px;width:11px}
+@keyframes rb-twinkle{0%,100%{opacity:1;transform:rotate(0) scale(1)}50%{opacity:.65;transform:rotate(45deg) scale(.8)}}
 @keyframes rb-ping{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
 #rb .rb-hs__line{position:absolute;top:0;height:1px;transition:left 1.2s cubic-bezier(.6,0,.2,1),width 1.2s cubic-bezier(.6,0,.2,1);background-size:200% 100%;animation:rb-flow 3s linear infinite}
 #rb .rb-hs--l .rb-hs__line{left:var(--end);width:calc(var(--x) - var(--end));background-image:linear-gradient(90deg,rgba(54,203,224,.15),var(--accent) 50%,rgba(54,203,224,.15))}
 #rb .rb-hs--r .rb-hs__line{left:var(--x);width:calc(var(--end) - var(--x));background-image:linear-gradient(90deg,rgba(54,203,224,.15),var(--accent) 50%,rgba(54,203,224,.15))}
 @keyframes rb-flow{to{background-position:-200% 0}}
-#rb .rb-hs__label{position:absolute;top:0;transform:translateY(-50%);padding:8px 14px;border-radius:999px;white-space:nowrap;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;color:#fff;
+#rb .rb-hs__label{position:absolute;top:0;transform:translateY(-50%);transition:opacity .45s ease;padding:8px 14px;border-radius:999px;white-space:nowrap;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;color:#fff;
   background:rgba(43,48,53,.6);border:1px solid rgba(54,203,224,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 #rb .rb-hs--l .rb-hs__label{right:calc(100% - var(--end));text-align:right}
 #rb .rb-hs--r .rb-hs__label{left:var(--end)}
+#rb .rb-hs.is-swap .rb-hs__label{opacity:0}
 #rb.rb-js .rb-hs{opacity:0;animation:rb-in .8s ease 1s both}#rb.rb-js .rb-hs:nth-of-type(2){animation-delay:1.25s}#rb.rb-js .rb-hs:nth-of-type(3){animation-delay:1.5s}
 @keyframes rb-in{to{opacity:1}}
 /* линии за портретом */
@@ -418,11 +418,11 @@ def css():
 #rb .rb-intro .rb-wrap--brands{display:block}
 #rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* карточки брендов */
-#rb .rb-bcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:26px 0 40px;position:relative;z-index:2}
-#rb .rb-brand{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 42%;align-items:center;min-height:156px;padding:22px 0 22px 24px;border-radius:20px;text-decoration:none;overflow:hidden;
+#rb .rb-bcards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:26px 0 40px;position:relative;z-index:2}
+#rb .rb-brand{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 38%;align-items:center;min-height:150px;padding:20px 0 20px 20px;border-radius:20px;text-decoration:none;overflow:hidden;
   background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   transition:border-color .6s,box-shadow .6s,transform .5s cubic-bezier(.2,.7,.2,1),background .6s}
-#rb .rb-brand b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.3vw,32px);line-height:1.05;color:#fff;transition:color .6s}
+#rb .rb-brand b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.9vw,27px);line-height:1.05;color:#fff;transition:color .6s;white-space:nowrap}
 #rb .rb-brand span{display:block;margin-top:12px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);line-height:1.6;max-width:150px}
 #rb .rb-brand i{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:15px;color:#fff;z-index:2;transition:background .4s,border-color .4s,color .4s}
 #rb .rb-brand__media{position:relative;align-self:stretch;margin:-22px 0}
@@ -445,8 +445,8 @@ def css():
 #rb .rb-stage[data-paused] .rb-stage__dots button.is-active::after,#rb .rb-stage:not([data-playing]) .rb-stage__dots button.is-active::after{animation:none;width:100%}
 @keyframes rb-prog{from{width:0}to{width:100%}}
 #rb .rb-intro__face img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom;
-  -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
-  mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
 #rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('""" + deco + """') center/cover no-repeat;opacity:.12;
@@ -549,7 +549,7 @@ def css():
 #rb.rb-js .rb-intro__face{animation:rb-fade 1.4s ease .1s both}
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
-@media (max-width:1280px){#rb .rb-hs--r{--end:76%!important}}
+@media (max-width:1280px){#rb .rb-hs--r{--end:76%!important}#rb .rb-bcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:1100px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
   #rb .rb-mnav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}}
@@ -560,7 +560,7 @@ def css():
   #rb .rb-stage__dots{bottom:1%}
   #rb .rb-intro__text{padding-bottom:50px}
   #rb .rb-hs__label,#rb .rb-hs__line{display:none}
-  #rb .rb-hs__dot{width:8px;height:8px;margin:-4px 0 0 -4px;box-shadow:0 0 0 2px rgba(54,203,224,.5),0 0 10px 2px var(--accent)}
+
   #rb .rb-bcards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:20px 24px 34px;scrollbar-width:none}
   #rb .rb-bcards::-webkit-scrollbar{display:none}
   #rb .rb-brand{flex:0 0 78%;scroll-snap-align:center;min-height:140px}}
@@ -616,7 +616,9 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
  function show(k){i=(k+n)%n;
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
   [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
-  var hp=(im[i].getAttribute('data-hs')||'').split(';');[].forEach.call(st.querySelectorAll('.rb-hs'),function(e,j){var c=(hp[j]||'').split(',');if(c.length===2){e.style.setProperty('--x',c[0]+'%');e.style.setProperty('--y',c[1]+'%');}});
+  var hp=(im[i].getAttribute('data-hs')||'').split(';'),lb=(im[i].getAttribute('data-labels')||'').split('|');
+  [].forEach.call(st.querySelectorAll('.rb-hs'),function(e,j){var c=(hp[j]||'').split(',');if(c.length===2){e.style.setProperty('--x',c[0]+'%');e.style.setProperty('--y',c[1]+'%');}
+   var l=e.querySelector('.rb-hs__label');if(l&&lb[j]!==undefined&&l.innerHTML!==lb[j]){e.classList.add('is-swap');setTimeout(function(){l.innerHTML=lb[j];e.classList.remove('is-swap');},rm?0:500);}});
   var bi=im[i].getAttribute('data-brand');[].forEach.call(r.querySelectorAll('.rb-brand'),function(e){e.classList.toggle('is-active',e.getAttribute('data-brand')===bi);});
   [].forEach.call(dt,function(e,j){e.classList.toggle('is-active',j===i);e.classList.toggle('is-done',j<i);if(j===i)e.setAttribute('aria-current','true');else e.removeAttribute('aria-current');var c=e.cloneNode(true);});}
  function play(){stop();if(rm)return;st.setAttribute('data-playing','');t=setInterval(function(){show(i+1);},ms);}
@@ -772,13 +774,13 @@ def build_home(rel):
     revs = ''
     for rv in lis[4].select('.review')[:3]:
         revs += review_html({'author': text(rv.select_one('.review-author')), 'text': clean(rel, rv.select_one('.review-text')), 'image': None}, anchor=False)
-    slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi) for f, bi, pts in HERO_SLIDES]
+    slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
     ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
     hs_attr = lambda pts: ';'.join(f'{x},{y}' for x, y in pts)
-    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(pts)}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, pts, h, bi) in enumerate(slides))
-    hs_html = ''.join(f'<div class="rb-hs rb-hs--{side}" style="--x:{slides[0][2][k][0]}%;--y:{slides[0][2][k][1]}%;--end:{16 if side == "l" else 84}%" aria-hidden="true"><span class="rb-hs__line"></span><i class="rb-hs__dot"></i><span class="rb-hs__label">{label}</span></div>' for k, (label, side) in enumerate(HOTSPOTS))
-    hs_text = ', '.join(strip_tags(l.replace('<br>', ' ')) for l, _ in HOTSPOTS)
-    dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, pts, h, bi) in enumerate(slides))
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(pts)}" data-labels="{esc('|'.join(labels))}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, pts, h, bi, labels) in enumerate(slides))
+    hs_html = ''.join(f'<div class="rb-hs rb-hs--{side}" style="--x:{slides[0][2][k][0]}%;--y:{slides[0][2][k][1]}%;--end:{16 if side == "l" else 84}%" aria-hidden="true"><span class="rb-hs__line"></span><i class="rb-hs__dot"></i><span class="rb-hs__label">{slides[0][5][k]}</span></div>' for k, side in enumerate(HOTSPOT_SIDES))
+    hs_text = ' '.join(f'{b}: ' + ', '.join(strip_tags(l.replace('<br>', ' ')) for l in labels) + '.' for u, b, pts, h, bi, labels in slides)
+    dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, pts, h, bi, labels) in enumerate(slides))
     first = slides[0][4]
     def bcard(k, n, t, h, photo, rnd):
         u = img(rel, photo, 700)
@@ -792,10 +794,10 @@ def build_home(rel):
     body = f'''<section class="rb-intro">{lines_svg}<div class="rb-wrap">
 <div class="rb-intro__text"><span class="rb-kicker">Революшн Био · для косметологов</span>
 <h1>Инновационные<br>решения для красоты</h1><hr class="rb-rule">
-<p class="rb-intro__lead">Официальный дистрибьютор профессиональных препаратов для косметологов брендов JeuDérm, Rejusome и Calyra Lux&nbsp;5 в&nbsp;России.</p>
+<p class="rb-intro__lead">Официальный дистрибьютор профессиональных препаратов для косметологов JeuDérm, Rejusome, Calyra Lux&nbsp;5 и&nbsp;Crystal&nbsp;PDRN в&nbsp;России.</p>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:callback">Получить консультацию</a><a class="rb-btn" href="/product">Каталог продукции</a></div>
 </div>
-<div class="rb-intro__face rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="5000">
+<div class="rb-intro__face rb-stage" role="region" aria-roledescription="слайдер" aria-label="Бренды Революшн Био" data-interval="6000">
 <div class="rb-stage__inner">{imgs_html}{hs_html}</div><p class="rb-sr">{esc(hs_text)}</p><div class="rb-stage__dots">{dots_html}</div></div>
 </div>
 <div class="rb-wrap rb-wrap--brands"><nav class="rb-bcards" aria-label="Наши бренды">{brands_html}</nav></div></section>

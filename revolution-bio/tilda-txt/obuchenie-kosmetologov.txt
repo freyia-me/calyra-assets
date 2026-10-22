@@ -59,8 +59,7 @@
 #rb .rb-intro__text{padding-bottom:40px;align-self:center}
 #rb .rb-intro{flex-direction:column;align-items:stretch;justify-content:flex-end}
 #rb .rb-intro__face{position:relative;justify-self:end;width:min(100%,520px);aspect-ratio:1122/1402;margin-bottom:-1px}
-#rb .rb-intro__face::before{content:"";position:absolute;left:8%;right:8%;top:10%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.34),rgba(54,203,224,.1) 55%,transparent);filter:blur(14px)}
-#rb .rb-intro__face::after{content:"";position:absolute;left:4%;right:4%;top:6%;aspect-ratio:1/1;border-radius:50%;border:1px solid rgba(54,203,224,.35);z-index:0}
+#rb .rb-intro__face::before{content:"";position:absolute;left:12%;right:12%;top:18%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(closest-side,rgba(54,203,224,.16),transparent);filter:blur(20px)}
 #rb .rb-stage__img{position:absolute!important;inset:0;opacity:0;transition:opacity 1.4s ease;will-change:opacity,transform}
 #rb .rb-stage__img.is-active{opacity:1}
 #rb.rb-js .rb-stage__img.is-active{animation:rb-kb 7.5s linear both}
@@ -68,17 +67,21 @@
 #rb .rb-stage__inner{position:absolute;inset:0;will-change:transform}
 /* точки-«стрелки» на коже */
 #rb .rb-hs{position:absolute;left:0;width:100%;height:0;top:var(--y);z-index:2;transition:top 1.2s cubic-bezier(.6,0,.2,1);pointer-events:none}
-#rb .rb-hs__dot{position:absolute;left:var(--x);top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(54,203,224,.55),0 0 18px 4px var(--accent);transition:left 1.2s cubic-bezier(.6,0,.2,1)}
-#rb .rb-hs__dot::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid var(--accent);animation:rb-ping 2.4s ease-out infinite}
+#rb .rb-hs__dot{position:absolute;left:var(--x);top:0;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;transition:left 1.2s cubic-bezier(.6,0,.2,1);animation:rb-twinkle 3s ease-in-out infinite;filter:drop-shadow(0 0 4px var(--accent))}
+#rb .rb-hs__dot::before,#rb .rb-hs__dot::after{content:"";position:absolute;background:#fff;border-radius:1px}
+#rb .rb-hs__dot::before{left:5px;top:0;width:1.2px;height:11px}
+#rb .rb-hs__dot::after{top:5px;left:0;height:1.2px;width:11px}
+@keyframes rb-twinkle{0%,100%{opacity:1;transform:rotate(0) scale(1)}50%{opacity:.65;transform:rotate(45deg) scale(.8)}}
 @keyframes rb-ping{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
 #rb .rb-hs__line{position:absolute;top:0;height:1px;transition:left 1.2s cubic-bezier(.6,0,.2,1),width 1.2s cubic-bezier(.6,0,.2,1);background-size:200% 100%;animation:rb-flow 3s linear infinite}
 #rb .rb-hs--l .rb-hs__line{left:var(--end);width:calc(var(--x) - var(--end));background-image:linear-gradient(90deg,rgba(54,203,224,.15),var(--accent) 50%,rgba(54,203,224,.15))}
 #rb .rb-hs--r .rb-hs__line{left:var(--x);width:calc(var(--end) - var(--x));background-image:linear-gradient(90deg,rgba(54,203,224,.15),var(--accent) 50%,rgba(54,203,224,.15))}
 @keyframes rb-flow{to{background-position:-200% 0}}
-#rb .rb-hs__label{position:absolute;top:0;transform:translateY(-50%);padding:8px 14px;border-radius:999px;white-space:nowrap;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;color:#fff;
+#rb .rb-hs__label{position:absolute;top:0;transform:translateY(-50%);transition:opacity .45s ease;padding:8px 14px;border-radius:999px;white-space:nowrap;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;color:#fff;
   background:rgba(43,48,53,.6);border:1px solid rgba(54,203,224,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 #rb .rb-hs--l .rb-hs__label{right:calc(100% - var(--end));text-align:right}
 #rb .rb-hs--r .rb-hs__label{left:var(--end)}
+#rb .rb-hs.is-swap .rb-hs__label{opacity:0}
 #rb.rb-js .rb-hs{opacity:0;animation:rb-in .8s ease 1s both}#rb.rb-js .rb-hs:nth-of-type(2){animation-delay:1.25s}#rb.rb-js .rb-hs:nth-of-type(3){animation-delay:1.5s}
 @keyframes rb-in{to{opacity:1}}
 /* линии за портретом */
@@ -90,11 +93,11 @@
 #rb .rb-intro .rb-wrap--brands{display:block}
 #rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* карточки брендов */
-#rb .rb-bcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:26px 0 40px;position:relative;z-index:2}
-#rb .rb-brand{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 42%;align-items:center;min-height:156px;padding:22px 0 22px 24px;border-radius:20px;text-decoration:none;overflow:hidden;
+#rb .rb-bcards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:26px 0 40px;position:relative;z-index:2}
+#rb .rb-brand{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 38%;align-items:center;min-height:150px;padding:20px 0 20px 20px;border-radius:20px;text-decoration:none;overflow:hidden;
   background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   transition:border-color .6s,box-shadow .6s,transform .5s cubic-bezier(.2,.7,.2,1),background .6s}
-#rb .rb-brand b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.3vw,32px);line-height:1.05;color:#fff;transition:color .6s}
+#rb .rb-brand b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.9vw,27px);line-height:1.05;color:#fff;transition:color .6s;white-space:nowrap}
 #rb .rb-brand span{display:block;margin-top:12px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);line-height:1.6;max-width:150px}
 #rb .rb-brand i{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:15px;color:#fff;z-index:2;transition:background .4s,border-color .4s,color .4s}
 #rb .rb-brand__media{position:relative;align-self:stretch;margin:-22px 0}
@@ -117,11 +120,11 @@
 #rb .rb-stage[data-paused] .rb-stage__dots button.is-active::after,#rb .rb-stage:not([data-playing]) .rb-stage__dots button.is-active::after{animation:none;width:100%}
 @keyframes rb-prog{from{width:0}to{width:100%}}
 #rb .rb-intro__face img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:bottom;
-  -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
-  mask-image:linear-gradient(180deg,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@67c42090b119/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@aae333ebe62b/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 #rb .rb-crumbs{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:26px;color:var(--muted)}
 #rb .rb-crumbs a{text-decoration:none}
@@ -221,7 +224,7 @@
 #rb.rb-js .rb-intro__face{animation:rb-fade 1.4s ease .1s both}
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
-@media (max-width:1280px){#rb .rb-hs--r{--end:76%!important}}
+@media (max-width:1280px){#rb .rb-hs--r{--end:76%!important}#rb .rb-bcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:1100px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
   #rb .rb-mnav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}}
@@ -232,7 +235,7 @@
   #rb .rb-stage__dots{bottom:1%}
   #rb .rb-intro__text{padding-bottom:50px}
   #rb .rb-hs__label,#rb .rb-hs__line{display:none}
-  #rb .rb-hs__dot{width:8px;height:8px;margin:-4px 0 0 -4px;box-shadow:0 0 0 2px rgba(54,203,224,.5),0 0 10px 2px var(--accent)}
+
   #rb .rb-bcards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:20px 24px 34px;scrollbar-width:none}
   #rb .rb-bcards::-webkit-scrollbar{display:none}
   #rb .rb-brand{flex:0 0 78%;scroll-snap-align:center;min-height:140px}}
@@ -251,14 +254,14 @@
 </style>
 <div id="rb" lang="ru">
 <header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@67c42090b119/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@aae333ebe62b/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
 <nav class="rb-nav" aria-label="Меню"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a></nav>
 <div class="rb-contact"><a class="rb-phone" href="tel:+74951477040">+7 (495) 147-70-40</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
 </div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a><a href="tel:+74951477040">+7 (495) 147-70-40</a></nav></header>
 <main>
 <section class="rb-hero"><div class="rb-wrap"><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span><a href="/uchebnyj-tsentr">Учебный центр</a><span>—</span>Малые группы и индивидуальное обучение косметологов</nav>
-<h1>Малые группы и индивидуальное обучение косметологов</h1><hr class="rb-rule"></div></section><section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-rich"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@67c42090b119/revolution-bio/img/cef8e7ed10ffa07bd8535ec35e230013-xl-23f38b.webp" alt="Малые группы и индивидуальное обучение косметологов" style="max-width:640px;width:100%;margin:0 0 30px"><p>Индивидуальное обучение для косметологов и клиник от тренеров Революшн Био.</p>
+<h1>Малые группы и индивидуальное обучение косметологов</h1><hr class="rb-rule"></div></section><section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-rich"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@aae333ebe62b/revolution-bio/img/cef8e7ed10ffa07bd8535ec35e230013-xl-23f38b.webp" alt="Малые группы и индивидуальное обучение косметологов" style="max-width:640px;width:100%;margin:0 0 30px"><p>Индивидуальное обучение для косметологов и клиник от тренеров Революшн Био.</p>
 <p>Мы проводим различные практические семинары и вебинары:</p>
 <ul><li>Эффективные методики биоревитализации и мезотерапии</li><li>Клеточное омоложение, регенерации кожи, купирование воспалительных процессов в коже при помощи профессиональных препаратов на основе экзосом</li><li>Комплексный подход к решению различных задач ваших пациентов: проблемная кожа, рубцы, пигментация, возрастные изменения</li><li>Современная трихология: препараты на основе экзосом - единственные препараты, решающие проблемы качества кожи головы и роста волос одновременно. Виды алопеции и эффективные программы по восстановлению роста волос.</li></ul>
 <p>Стоимость обучения рассчитывается индивидуально. Для более подробной информации пишите на почту <a href="mailto:info@revolution.bio">info@revolution.bio</a></p></div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:signup">Записаться</a><a class="rb-btn" href="/uchebnyj-tsentr">Все программы</a></div></div></section>
@@ -289,7 +292,9 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
  function show(k){i=(k+n)%n;
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);if(j===i){e.style.animation='none';void e.offsetWidth;e.style.animation='';}});
   [].forEach.call(tg,function(e,j){var a=j===i;e.classList.toggle('is-active',a);if(a){e.removeAttribute('tabindex');e.removeAttribute('aria-hidden');}else{e.setAttribute('tabindex','-1');e.setAttribute('aria-hidden','true');}});
-  var hp=(im[i].getAttribute('data-hs')||'').split(';');[].forEach.call(st.querySelectorAll('.rb-hs'),function(e,j){var c=(hp[j]||'').split(',');if(c.length===2){e.style.setProperty('--x',c[0]+'%');e.style.setProperty('--y',c[1]+'%');}});
+  var hp=(im[i].getAttribute('data-hs')||'').split(';'),lb=(im[i].getAttribute('data-labels')||'').split('|');
+  [].forEach.call(st.querySelectorAll('.rb-hs'),function(e,j){var c=(hp[j]||'').split(',');if(c.length===2){e.style.setProperty('--x',c[0]+'%');e.style.setProperty('--y',c[1]+'%');}
+   var l=e.querySelector('.rb-hs__label');if(l&&lb[j]!==undefined&&l.innerHTML!==lb[j]){e.classList.add('is-swap');setTimeout(function(){l.innerHTML=lb[j];e.classList.remove('is-swap');},rm?0:500);}});
   var bi=im[i].getAttribute('data-brand');[].forEach.call(r.querySelectorAll('.rb-brand'),function(e){e.classList.toggle('is-active',e.getAttribute('data-brand')===bi);});
   [].forEach.call(dt,function(e,j){e.classList.toggle('is-active',j===i);e.classList.toggle('is-done',j<i);if(j===i)e.setAttribute('aria-current','true');else e.removeAttribute('aria-current');var c=e.cloneNode(true);});}
  function play(){stop();if(rm)return;st.setAttribute('data-playing','');t=setInterval(function(){show(i+1);},ms);}
