@@ -511,14 +511,14 @@ def css():
 /* карточки-постеры направлений */
 #rb .rb-pcard{display:flex;flex-direction:column;border-radius:20px;overflow:hidden;text-decoration:none;background:#1f2427;border:1px solid var(--line);scroll-snap-align:start;min-width:0;
   transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .45s}
-#rb .rb-pcard>img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-pcard>img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 #rb .rb-pcard__more{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);transition:color .3s}
 #rb .rb-pcard__more i{font-style:normal;font-size:16px;transition:transform .3s}
 #rb .rb-pcard:hover{transform:translateY(-6px);border-color:rgba(54,203,224,.6);box-shadow:0 26px 50px -26px rgba(54,203,224,.5)}
 #rb .rb-pcard:hover>img{transform:scale(1.03)}
 #rb .rb-pcard:hover .rb-pcard__more{color:var(--accent)}
 #rb .rb-pcard:hover .rb-pcard__more i{transform:translateX(4px)}
-#rb .rb-pcard__poster{position:relative;display:flex;flex-direction:column;aspect-ratio:4/5;padding:9% 9% 0;overflow:hidden;background:radial-gradient(120% 80% at 70% 100%,rgba(54,203,224,.18),transparent 60%),linear-gradient(160deg,#2a3034,#1b1f22)}
+#rb .rb-pcard__poster{position:relative;display:flex;flex-direction:column;aspect-ratio:3/4;padding:9% 9% 0;overflow:hidden;background:radial-gradient(120% 80% at 70% 100%,rgba(54,203,224,.18),transparent 60%),linear-gradient(160deg,#2a3034,#1b1f22)}
 #rb .rb-pcard__poster b{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.05;color:#fff}
 #rb .rb-pcard__poster hr{width:28%;height:2px;border:0;background:var(--accent);margin:18px 0 14px}
 #rb .rb-pcard__poster span{font-family:var(--serif);font-size:17px;color:rgba(255,255,255,.8)}

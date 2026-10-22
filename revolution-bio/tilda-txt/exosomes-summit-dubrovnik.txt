@@ -130,7 +130,7 @@
   mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 70%,transparent 98%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@26799d5e1fe8/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@0c7621107db3/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 #rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
 #rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
@@ -168,14 +168,14 @@
 /* карточки-постеры направлений */
 #rb .rb-pcard{display:flex;flex-direction:column;border-radius:20px;overflow:hidden;text-decoration:none;background:#1f2427;border:1px solid var(--line);scroll-snap-align:start;min-width:0;
   transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .45s}
-#rb .rb-pcard>img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-pcard>img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 #rb .rb-pcard__more{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);transition:color .3s}
 #rb .rb-pcard__more i{font-style:normal;font-size:16px;transition:transform .3s}
 #rb .rb-pcard:hover{transform:translateY(-6px);border-color:rgba(54,203,224,.6);box-shadow:0 26px 50px -26px rgba(54,203,224,.5)}
 #rb .rb-pcard:hover>img{transform:scale(1.03)}
 #rb .rb-pcard:hover .rb-pcard__more{color:var(--accent)}
 #rb .rb-pcard:hover .rb-pcard__more i{transform:translateX(4px)}
-#rb .rb-pcard__poster{position:relative;display:flex;flex-direction:column;aspect-ratio:4/5;padding:9% 9% 0;overflow:hidden;background:radial-gradient(120% 80% at 70% 100%,rgba(54,203,224,.18),transparent 60%),linear-gradient(160deg,#2a3034,#1b1f22)}
+#rb .rb-pcard__poster{position:relative;display:flex;flex-direction:column;aspect-ratio:3/4;padding:9% 9% 0;overflow:hidden;background:radial-gradient(120% 80% at 70% 100%,rgba(54,203,224,.18),transparent 60%),linear-gradient(160deg,#2a3034,#1b1f22)}
 #rb .rb-pcard__poster b{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.05;color:#fff}
 #rb .rb-pcard__poster hr{width:28%;height:2px;border:0;background:var(--accent);margin:18px 0 14px}
 #rb .rb-pcard__poster span{font-family:var(--serif);font-size:17px;color:rgba(255,255,255,.8)}
@@ -291,13 +291,13 @@
 </style>
 <div id="rb" lang="ru">
 <header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@26799d5e1fe8/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@0c7621107db3/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
 <nav class="rb-nav" aria-label="Меню"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a></nav>
 <div class="rb-contact"><a class="rb-phone" href="tel:+74951477040">+7 (495) 147-70-40</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
 </div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню"><a href="/about">О компании</a><a href="/product">Продукция</a><a href="/uchebnyj-tsentr">Учебный центр</a><a href="/otzyvy">Отзывы</a><a href="/news">Новости</a><a href="/kontakty">Контакты</a><a href="tel:+74951477040">+7 (495) 147-70-40</a></nav></header>
 <main>
-<section class="rb-hero"><div class="rb-wrap"><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span><a href="/uchebnyj-tsentr">Учебный центр</a><span>—</span>Поездка в Хорватию, Дубровник 26</nav><h1>Поездка в Хорватию, Дубровник 26</h1><hr class="rb-rule"></div></section><section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-rich"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@26799d5e1fe8/revolution-bio/img/97d2860871f3d35e35f6eb0477d3015a-xl-e185ae.webp" alt="Поездка в Хорватию, Дубровник 26" style="max-width:640px;width:100%;margin:0 0 30px"><h3>Профессиональная поездка на международный конгресс косметологов</h3>
+<section class="rb-hero"><div class="rb-wrap"><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span><a href="/uchebnyj-tsentr">Учебный центр</a><span>—</span>Поездка в Хорватию, Дубровник 26</nav><h1>Поездка в Хорватию, Дубровник 26</h1><hr class="rb-rule"></div></section><section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-rich"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@0c7621107db3/revolution-bio/img/97d2860871f3d35e35f6eb0477d3015a-xl-e185ae.webp" alt="Поездка в Хорватию, Дубровник 26" style="max-width:640px;width:100%;margin:0 0 30px"><h3>Профессиональная поездка на международный конгресс косметологов</h3>
 <p><strong>Дубровник | 18–22 мая</strong><br/> <strong>Бренды Реджусом (Rejusome) и ЖеДерм (JeuDerm)</strong></p>
 <p>В мае Дубровник станет центром притяжения специалистов эстетической медицины со всего мира. Вас ждёт масштабный международный конгресс при поддержке брендов <strong>Реджусом (Rejusome) и ЖеДерм (JeuDerm)</strong>, где объединятся знания, инновации и передовые клинические практики.</p>
 <p>Это не просто событие — это пространство для роста, вдохновения и профессионального развития.</p>
