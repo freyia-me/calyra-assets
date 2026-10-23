@@ -31,6 +31,9 @@ BRANDS = [
 ]
 # Карточки направлений (готовые изображения с текстом): файл в source/, заголовок, подпись, ссылка.
 # Заголовок и подпись повторяют текст на картинке — они идут в alt и для поиска.
+# Подпись на свёрнутой панели и цвет черты — по порядку PRODUCT_CARDS
+CARD_TABS = [('PDRN', '#e0457b'), ('Стерильные сыворотки', '#2a7de1'), ('Теломерная защита', '#d1185a'),
+             ('Экзосомный уход', '#5aa9e6'), ('Трихология', '#ae57b9'), ('Пептидная космецевтика', '#cd555b')]
 PRODUCT_CARDS = [
     ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/jeuderm?line=pdrn'),
     ('source/card-serums.webp', 'Стерильные сыворотки', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/rejusome?type=serum'),
@@ -649,6 +652,16 @@ def css():
 #rb .rb-pan.is-active::after{background:linear-gradient(180deg,transparent 30%,rgba(22,26,29,.78) 55%,rgba(22,26,29,.97) 80%)}
 #rb .rb-pan.is-active .rb-pan__tab{opacity:0;pointer-events:none}
 #rb .rb-pan.is-active .rb-pan__bd{opacity:1;transform:none;pointer-events:auto;transition-delay:.25s}
+#rb .rb-pans--poster{height:clamp(480px,44vw,620px)}
+#rb .rb-pans--poster .rb-pan.is-active{flex-grow:3.6}
+#rb .rb-pans--poster .rb-pan>img{object-position:50% 72%;transition:filter .7s,transform 1.2s cubic-bezier(.2,.7,.2,1),object-position .7s}
+#rb .rb-pans--poster .rb-pan.is-active>img{object-position:center top}
+#rb .rb-pans--poster .rb-pan:not(.is-active)>img{transform:scale(1.35);transform-origin:50% 85%}
+#rb .rb-pans--poster .rb-pan::after{background:linear-gradient(180deg,rgba(30,34,38,.97) 0,rgba(30,34,38,.55) 38%,rgba(30,34,38,.2) 60%,rgba(30,34,38,.9))}
+#rb .rb-pans--poster .rb-pan.is-active::after{background:linear-gradient(180deg,transparent 78%,rgba(22,26,29,.75))}
+#rb .rb-pans--poster .rb-pan__bd{padding:0 22px 22px;text-shadow:none}
+#rb .rb-pans--poster .rb-pan__bd .rb-btn{padding:11px 22px;font-size:14px;letter-spacing:0;text-transform:none;color:var(--accent-ink)}
+#rb .rb-pans--poster .rb-pan__bd .rb-btn:hover{color:var(--accent-ink)}
 @media (min-width:901px){#rb .rb-pan__tab{writing-mode:vertical-rl;transform:rotate(180deg);align-items:center;justify-content:flex-start;padding:26px 0 0}}
 @media (max-width:900px){#rb .rb-railhead{flex-direction:column;align-items:flex-start;gap:0}#rb .rb-railhead p{margin-bottom:24px!important}
   #rb .rb-pans{flex-direction:column;height:auto;gap:8px}
@@ -657,7 +670,8 @@ def css():
   #rb .rb-pan__tab{align-items:center;justify-content:flex-start;padding:0 20px 0 54px;font-size:12px}
   #rb .rb-pan::before{top:50%;left:20px;width:18px;margin-top:-1px;transition:opacity .4s}
   #rb .rb-pan.is-active::before{top:0;left:0;width:34px;margin:0}
-  #rb .rb-pan__bd{padding:22px 20px}}
+  #rb .rb-pan__bd{padding:22px 20px}
+  #rb .rb-pans--poster .rb-pan.is-active{height:calc((100vw - 48px) * 1.333)}}
 /* товар */
 #rb .rb-product{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
 #rb .rb-product>div:first-child{position:sticky;top:96px}
@@ -913,6 +927,18 @@ def panels(rel):
                   f'<a href="{href}#katalog" data-filter="{href.split("?")[1] if "?" in href else ""}">Смотреть средства <i aria-hidden="true">→</i></a></div></div>')
     return f'<div class="rb-pans">{items}</div>'
 
+def poster_panels(rel):
+    """гармошка из карточек-постеров: на постере уже есть заголовок, поэтому на панели только ссылка"""
+    items = ''
+    for k, ((f, title, sub, href), (tab, col)) in enumerate(zip(PRODUCT_CARDS, CARD_TABS)):
+        act = k == 0
+        ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
+        items += (f'<div class="rb-pan{" is-active" if act else ""}" style="--c:{col}">'
+                  f'<img src="{img(rel, f, 900)}" alt="{esc(title)}. {esc(sub)}" loading="lazy">'
+                  f'<button class="rb-pan__tab" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-pp-{k}">{esc(tab)}</button>'
+                  f'<div class="rb-pan__bd" id="rb-pp-{k}"><a class="rb-btn rb-btn--fill" href="{href}"{ext}>Подробнее <i aria-hidden="true">→</i></a></div></div>')
+    return f'<div class="rb-pans rb-pans--poster">{items}</div>'
+
 def pcard(rel, f, title, sub, href):
     ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
     return (f'<a class="rb-pcard" href="{href}"{ext}><img src="{img(rel, f, 800)}" alt="{esc(title)}. {esc(sub)}" loading="lazy">'
@@ -1143,7 +1169,6 @@ def contacts_section(rel, s, h='h1'):
 def build_home():
     rel = 'index.html'
     s = soup(rel)
-    rail = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
     slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
     ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
     def mask_pts(p):
@@ -1192,8 +1217,8 @@ def build_home():
 </div></div></section>
 {trust_html}
 <section class="rb-sec" id="katalog"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"></div>
-<div class="rb-railnav"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div></div>
-<div class="rb-rail" tabindex="0" aria-label="Направления продукции">{rail}</div></div></section>
+<p class="rb-muted" style="max-width:420px;margin-bottom:36px">Выберите направление — внутри препараты для процедур и домашний уход. Цены — после заявки.</p></div>
+{poster_panels(rel)}</div></section>
 <section class="rb-sec"><div class="rb-wrap"><div class="rb-split"><div><span class="rb-kicker">Для косметологов</span><h2>Работайте с официальным дистрибьютором</h2><hr class="rb-rule">
 <p class="rb-lead">Оригинальная продукция с документами, обучение и поддержка менеджера. Цены — после заявки: менеджер свяжется с вами и подберёт условия.</p>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="/kosmetologam">Косметологам</a><a class="rb-btn" href="#popup:price">Узнать цену</a></div></div>{cosmo}</div></div></section>

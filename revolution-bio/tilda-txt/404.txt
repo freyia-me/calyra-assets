@@ -319,6 +319,16 @@
 #rb .rb-pan.is-active::after{background:linear-gradient(180deg,transparent 30%,rgba(22,26,29,.78) 55%,rgba(22,26,29,.97) 80%)}
 #rb .rb-pan.is-active .rb-pan__tab{opacity:0;pointer-events:none}
 #rb .rb-pan.is-active .rb-pan__bd{opacity:1;transform:none;pointer-events:auto;transition-delay:.25s}
+#rb .rb-pans--poster{height:clamp(480px,44vw,620px)}
+#rb .rb-pans--poster .rb-pan.is-active{flex-grow:3.6}
+#rb .rb-pans--poster .rb-pan>img{object-position:50% 72%;transition:filter .7s,transform 1.2s cubic-bezier(.2,.7,.2,1),object-position .7s}
+#rb .rb-pans--poster .rb-pan.is-active>img{object-position:center top}
+#rb .rb-pans--poster .rb-pan:not(.is-active)>img{transform:scale(1.35);transform-origin:50% 85%}
+#rb .rb-pans--poster .rb-pan::after{background:linear-gradient(180deg,rgba(30,34,38,.97) 0,rgba(30,34,38,.55) 38%,rgba(30,34,38,.2) 60%,rgba(30,34,38,.9))}
+#rb .rb-pans--poster .rb-pan.is-active::after{background:linear-gradient(180deg,transparent 78%,rgba(22,26,29,.75))}
+#rb .rb-pans--poster .rb-pan__bd{padding:0 22px 22px;text-shadow:none}
+#rb .rb-pans--poster .rb-pan__bd .rb-btn{padding:11px 22px;font-size:14px;letter-spacing:0;text-transform:none;color:var(--accent-ink)}
+#rb .rb-pans--poster .rb-pan__bd .rb-btn:hover{color:var(--accent-ink)}
 @media (min-width:901px){#rb .rb-pan__tab{writing-mode:vertical-rl;transform:rotate(180deg);align-items:center;justify-content:flex-start;padding:26px 0 0}}
 @media (max-width:900px){#rb .rb-railhead{flex-direction:column;align-items:flex-start;gap:0}#rb .rb-railhead p{margin-bottom:24px!important}
   #rb .rb-pans{flex-direction:column;height:auto;gap:8px}
@@ -327,7 +337,8 @@
   #rb .rb-pan__tab{align-items:center;justify-content:flex-start;padding:0 20px 0 54px;font-size:12px}
   #rb .rb-pan::before{top:50%;left:20px;width:18px;margin-top:-1px;transition:opacity .4s}
   #rb .rb-pan.is-active::before{top:0;left:0;width:34px;margin:0}
-  #rb .rb-pan__bd{padding:22px 20px}}
+  #rb .rb-pan__bd{padding:22px 20px}
+  #rb .rb-pans--poster .rb-pan.is-active{height:calc((100vw - 48px) * 1.333)}}
 /* товар */
 #rb .rb-product{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
 #rb .rb-product>div:first-child{position:sticky;top:96px}

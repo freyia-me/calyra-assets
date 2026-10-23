@@ -132,11 +132,13 @@ jeuderm-russia.ru и rejusome.com, — отдельно загружать их 
 Тексты: `BRANDS`, `BRAND_DESC`, `HERO_SLIDES` (подписи-преимущества), `TRUST` в `tools/gen.py`.
 
 ## Каталог
-**Главная** — лента из шести карточек-постеров (`source/card-*.webp`), листается стрелками или
-пальцем: JeuDérm PDRN → `/jeuderm?line=pdrn`, Стерильные сыворотки → `/rejusome?type=serum`,
+**Главная** — «гармошка» из шести карточек-постеров (`source/card-*.webp`), как на сайте JeuDérm:
+открытая карточка видна целиком с кнопкой «Подробнее», остальные узкие, приглушённые, с подписью.
+На компьютере карточка раскрывается при наведении, на телефоне — по нажатию (столбиком).
+JeuDérm PDRN → `/jeuderm?line=pdrn`, Стерильные сыворотки → `/rejusome?type=serum`,
 Теломерная защита → `/calyra-lux-5`, Экзосомный уход → `/rejusome?type=cosmetics`,
 Трихология → `/rejusome?type=hair`, Пептидная космецевтика JeuDérm → `/jeuderm`.
-Список — `PRODUCT_CARDS` в `tools/gen.py`.
+Карточки — `PRODUCT_CARDS`, подписи и цвета панелей — `CARD_TABS` в `tools/gen.py`.
 
 **Страница JeuDérm** — блок «Уход по задачам кожи»: вертикальные панели-«шторки» с фото линеек
 (Reform Age, Acno Active, Ato Care, Hair Genesis, Nova · Zymo, ПРО-уход, Crystal PDRN).
