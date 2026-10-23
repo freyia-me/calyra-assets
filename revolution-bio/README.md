@@ -14,6 +14,7 @@
 | `seo-pages.txt` | Title, Description и Keywords для каждой страницы |
 | `data/jeuderm-products.json` | Товары JeuDérm (с сайта jeuderm-russia.ru): названия, фото, состав, применение |
 | `data/rejusome-products.json` | Товары Rejusome (с сайта rejusome.com): названия, фото, состав, показания, курс |
+| `source/photo-*.webp` | Оригинальные фото продукции (Rejusome Plus, Exo Boost Cream, Serum, Eye Cream, Lip Balm) — в карточках и окнах товаров |
 | `tools/gen.py` | Скрипт, которым собраны страницы (для повторной сборки) |
 
 Что убрано при переносе: рекламный вирусный скрипт `highperformanceformat.com`

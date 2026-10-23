@@ -151,7 +151,7 @@
 #rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@4d3b40a43765/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 #rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
 #rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
@@ -218,7 +218,12 @@
 #rb .rb-prod__ph{position:relative;display:block;aspect-ratio:1;background:radial-gradient(closest-side,rgba(54,203,224,.14),transparent),#22272b}
 #rb .rb-prod__ph img{width:100%;height:100%;object-fit:contain;padding:8%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 #rb .rb-prod:hover .rb-prod__ph img{transform:scale(1.04)}
-#rb .rb-prod__tags{position:absolute;left:12px;top:12px;display:flex;gap:6px}
+#rb .rb-prod--photo .rb-prod__ph{aspect-ratio:4/5;background:#e9edf0}
+#rb .rb-prod--photo .rb-prod__ph{overflow:hidden}
+#rb .rb-prod--photo .rb-prod__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;padding:0}
+#rb .rb-dlg--photo .rb-dlg__ph img{object-fit:cover;padding:0;max-height:none;height:100%}
+#rb .rb-dlg--photo .rb-dlg__ph{padding:0;align-items:stretch}
+#rb .rb-prod__tags{z-index:1;position:absolute;left:12px;top:12px;display:flex;gap:6px}
 #rb .rb-prod__tags span{padding:3px 9px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.12em;background:rgba(43,48,53,.8);border:1px solid rgba(54,203,224,.4);color:var(--accent)}
 #rb .rb-prod__bd{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
 #rb .rb-prod__en{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
@@ -453,15 +458,15 @@
 </style>
 <div id="rb" lang="ru">
 <header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@4d3b40a43765/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
 <nav class="rb-nav" aria-label="Меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5" aria-current="page">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a></nav>
 <div class="rb-contact"><a class="rb-phone" href="tel:+74951477040">+7 (495) 147-70-40</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
 </div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5" aria-current="page">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a><a href="tel:+74951477040">+7 (495) 147-70-40</a></nav></header>
 <main>
-<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span>Calyra Lux 5</nav><h1>Calyra Lux 5</h1><hr class="rb-rule"><div class="rb-lead rb-rich"><p>Новая эра долголетия кожи: CAP Пептид 5, полинуклеотиды (PN) и гиалуронат натрия в одном шприце.</p></div></div><img class="rb-hero__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/round-calyra-d98cba.webp" alt="Calyra Lux 5"></div></section>
+<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span>Calyra Lux 5</nav><h1>Calyra Lux 5</h1><hr class="rb-rule"><div class="rb-lead rb-rich"><p>Новая эра долголетия кожи: CAP Пептид 5, полинуклеотиды (PN) и гиалуронат натрия в одном шприце.</p></div></div><img class="rb-hero__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@4d3b40a43765/revolution-bio/img/round-calyra-d98cba.webp" alt="Calyra Lux 5"></div></section>
 <section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-stats rb-stats--4"><div><div class="rb-stat__num">1000 ppm</div><div class="rb-stat__txt">CAP Пептид 5 · клеточный потенциал</div></div><div><div class="rb-stat__num">2%</div><div class="rb-stat__txt">полинуклеотиды (PN) · обновление</div></div><div><div class="rb-stat__num">1%</div><div class="rb-stat__txt">гиалуронат натрия · увлажнение</div></div><div><div class="rb-stat__num">3 в 1</div><div class="rb-stat__txt">три актива в одном шприце</div></div></div></div></section>
-<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-split"><img class="rb-hero__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/round-calyra-d98cba.webp" alt="Calyra Lux 5" loading="lazy">
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-split"><img class="rb-hero__art" src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@4d3b40a43765/revolution-bio/img/round-calyra-d98cba.webp" alt="Calyra Lux 5" loading="lazy">
 <div><span class="rb-kicker">Продукт</span><h2>CALYRA LUX 5 — CAP Пептид 5, PN и гиалуронат натрия в одном шприце</h2><hr class="rb-rule"><p class="rb-dlg__meta">2 шприца × 2,5 мл · Профессиональный уход</p><p class="rb-muted">Комплексная работа с качеством кожи: увлажнённость, плотность, ровный рельеф и сияние.</p>
 <dl class="rb-dlg__dl"><div class="rb-dl"><dt>Состав</dt><dd>CAP Пептид 5 (sh-Oligopeptide-104 SP) — 1000 ppm<br>Полинуклеотиды (PN) — 2%<br>Гиалуронат натрия — 1%</dd></div><div class="rb-dl"><dt>Действие</dt><dd>Пептид поддерживает клеточный потенциал кожи и процессы теломерной защиты, полинуклеотиды — её естественное обновление, гиалуронат натрия интенсивно увлажняет.</dd></div><div class="rb-dl"><dt>Протоколы</dt><dd>Радиочастотный лифтинг (RF), аппаратные процедуры, дермапен.</dd></div><div class="rb-dl"><dt>Производство</dt><dd>Корея, корейские и испанские биотехнологии, стандарты ISO · GMP.</dd></div></dl><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a></div></div></div></div></section>
 <section class="rb-sec "><div class="rb-wrap"><span class="rb-kicker">Почему это новинка</span><h2>Работа на качество и ресурс кожи</h2><hr class="rb-rule"><div class="rb-feats rb-feats--4"><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2c0 5 10 5 10 10S7 17 7 22M17 2c0 5-10 5-10 10s10 5 10 10M8.5 5h7M8.5 19h7M10 9.5h4M10 14.5h4"/></svg><b>Теломерная защита</b><p>Запатентованный CAP Пептид 5 поддерживает клеточный потенциал и процессы теломерной защиты.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.5 7h7M7.3 9.2l3.4 6.6M16.7 9.2l-3.4 6.6"/></svg><b>Обновление</b><p>Полинуклеотиды поддерживают естественное обновление кожи.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2.5h6M10 2.5v6L4.5 19a1.8 1.8 0 0 0 1.6 2.5h11.8a1.8 1.8 0 0 0 1.6-2.5L14 8.5v-6M7 14h10"/></svg><b>Увлажнение</b><p>Гиалуронат натрия интенсивно увлажняет и поддерживает защитные функции.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><b>3 протокола</b><p>Радиочастотный лифтинг, аппаратные процедуры, дермапен.</p></div></div></div></section>
@@ -537,10 +542,11 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
   apply();if(push&&history.replaceState){var u=new URLSearchParams(location.search);if(v==='all')u.delete(k);else u.set(k,v);var qs=u.toString();history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);}}
  groups.forEach(function(g){var k=g.getAttribute('data-f'),v=q.get(k);if(v&&!g.querySelector('[data-v="'+v+'"]'))v=null;set(k,v||'all',false);
   [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
- function open(c){if(!dlg||!c)return;var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
+ function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
   dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
   dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var pd=c.querySelector('.rb-prod__pd');
-  dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('');
+  dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;var u=pd.getAttribute('data-url'),more=u?'<div class="rb-dl"><dt>Подробнее</dt><dd><a href="'+u+'" target="_blank" rel="noopener">Описание, протоколы и результаты на сайте бренда →</a></dd></div>':'';
+  dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('')+more;
   if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}dlg.querySelector('.rb-dlg__bd').scrollTop=0;
   if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#p-'+c.getAttribute('data-id'));}
  function close(){if(dlg.open){if(dlg.close)dlg.close();else dlg.removeAttribute('open');}}

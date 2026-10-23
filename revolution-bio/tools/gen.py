@@ -552,7 +552,12 @@ def css():
 #rb .rb-prod__ph{position:relative;display:block;aspect-ratio:1;background:radial-gradient(closest-side,rgba(54,203,224,.14),transparent),#22272b}
 #rb .rb-prod__ph img{width:100%;height:100%;object-fit:contain;padding:8%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 #rb .rb-prod:hover .rb-prod__ph img{transform:scale(1.04)}
-#rb .rb-prod__tags{position:absolute;left:12px;top:12px;display:flex;gap:6px}
+#rb .rb-prod--photo .rb-prod__ph{aspect-ratio:4/5;background:#e9edf0}
+#rb .rb-prod--photo .rb-prod__ph{overflow:hidden}
+#rb .rb-prod--photo .rb-prod__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;padding:0}
+#rb .rb-dlg--photo .rb-dlg__ph img{object-fit:cover;padding:0;max-height:none;height:100%}
+#rb .rb-dlg--photo .rb-dlg__ph{padding:0;align-items:stretch}
+#rb .rb-prod__tags{z-index:1;position:absolute;left:12px;top:12px;display:flex;gap:6px}
 #rb .rb-prod__tags span{padding:3px 9px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.12em;background:rgba(43,48,53,.8);border:1px solid rgba(54,203,224,.4);color:var(--accent)}
 #rb .rb-prod__bd{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
 #rb .rb-prod__en{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
@@ -868,10 +873,11 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
   apply();if(push&&history.replaceState){var u=new URLSearchParams(location.search);if(v==='all')u.delete(k);else u.set(k,v);var qs=u.toString();history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);}}
  groups.forEach(function(g){var k=g.getAttribute('data-f'),v=q.get(k);if(v&&!g.querySelector('[data-v="'+v+'"]'))v=null;set(k,v||'all',false);
   [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
- function open(c){if(!dlg||!c)return;var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
+ function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
   dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
   dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var pd=c.querySelector('.rb-prod__pd');
-  dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('');
+  dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;var u=pd.getAttribute('data-url'),more=u?'<div class="rb-dl"><dt>Подробнее</dt><dd><a href="'+u+'" target="_blank" rel="noopener">Описание, протоколы и результаты на сайте бренда →</a></dd></div>':'';
+  dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('')+more;
   if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}dlg.querySelector('.rb-dlg__bd').scrollTop=0;
   if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#p-'+c.getAttribute('data-id'));}
  function close(){if(dlg.open){if(dlg.close)dlg.close();else dlg.removeAttribute('open');}}
@@ -1043,8 +1049,8 @@ def rj_products():
     out = []
     for p in json.load(open(os.path.join(DATA, 'rejusome-products.json'), encoding='utf-8')):
         fields = [(k, v) for k, v in p['fields']]
-        fields.append(('Подробнее', f'<a href="{p["url"]}" target="_blank" rel="noopener">Описание, протоколы и результаты на rejusome.com →</a>'))
-        out.append(dict(p, type=' '.join(p['type']), fields=fields))
+        im = img('index.html', p['photo'], 1200) if p.get('photo') else p['img']
+        out.append(dict(p, img=im, type=' '.join(p['type']), fields=fields, photo_card=True))
     return out
 
 
@@ -1068,10 +1074,12 @@ def product_card(p, attrs):
     tags = ''.join(f'<span>{CARE_LABEL[c]}</span>' for c in p['care'] if c in CARE_LABEL)
     meta = ' · '.join(x for x in (p.get('vol'), p.get('care_t')) if x)
     fields = ''.join(f'<div class="rb-dl"><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in p['fields'])
-    return (f'<a class="rb-prod" href="#p-{p["id"]}" data-id="{p["id"]}" {attrs}>'
+    # ссылку на сайт бренда добавляет окно товара: ссылка внутри ссылки-карточки ломает разметку
+    url_attr = f' data-url="{p["url"]}"' if p.get('url') else ''
+    return (f'<a class="rb-prod{" rb-prod--photo" if p.get("photo_card") else ""}" href="#p-{p["id"]}" data-id="{p["id"]}" {attrs}>'
             f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"><span class="rb-prod__tags">{tags}</span></span>'
             f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span><span class="rb-prod__more">Подробнее <i aria-hidden="true">→</i></span></span>'
-            f'<span class="rb-prod__pd" hidden><span class="rb-prod__meta">{esc(meta)}</span>{fields}</span></a>')
+            f'<span class="rb-prod__pd" hidden{url_attr}><span class="rb-prod__meta">{esc(meta)}</span>{fields}</span></a>')
 
 
 def catalog(products, groups):
