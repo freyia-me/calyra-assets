@@ -151,7 +151,7 @@
 #rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@da915096eb33/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 #rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
 #rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
@@ -440,16 +440,16 @@
 </style>
 <div id="rb" lang="ru">
 <header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@da915096eb33/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
 <nav class="rb-nav" aria-label="Меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty" aria-current="page">Контакты</a></nav>
 <div class="rb-contact"><a class="rb-phone" href="tel:+74951477040">+7 (495) 147-70-40</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
 </div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty" aria-current="page">Контакты</a><a href="tel:+74951477040">+7 (495) 147-70-40</a></nav></header>
 <main>
 <section class="rb-hero"><div class="rb-wrap"><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span>Контакты</nav><h1>Контакты</h1><hr class="rb-rule"></div></section><section class="rb-sec" id="kontakty"><div class="rb-wrap"><div class="rb-contacts"><div>
-<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@da915096eb33/revolution-bio/img/address-e256fe.webp" alt=""><div><b>Адрес</b>Москва, Земляной Вал 7, офис 408</div></div>
-<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@da915096eb33/revolution-bio/img/mail-e48cd4.webp" alt=""><div><b>E-mail</b><a href="mailto:info@revolution.bio">info@revolution.bio</a></div></div>
-<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@da915096eb33/revolution-bio/img/phone-49452f.webp" alt=""><div><b>Телефоны и мессенджеры</b><a href="tel:+74951477040">+7 (495) 147-70-40</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp: +7 925 084-30-90</a>
+<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/address-e256fe.webp" alt=""><div><b>Адрес</b>Москва, Земляной Вал 7, офис 408</div></div>
+<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/mail-e48cd4.webp" alt=""><div><b>E-mail</b><a href="mailto:info@revolution.bio">info@revolution.bio</a></div></div>
+<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/phone-49452f.webp" alt=""><div><b>Телефоны и мессенджеры</b><a href="tel:+74951477040">+7 (495) 147-70-40</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp: +7 925 084-30-90</a>
 <a href="https://wa.me/79253428202" target="_blank" rel="noopener">WhatsApp: +7 925 342-82-02</a>
 <a href="https://t.me/revolution_bio" target="_blank" rel="noopener">Telegram: @revolution_bio</a>
 <a href="https://t.me/+79250843090" target="_blank" rel="noopener">Telegram: +7 925 084-30-90</a></div></div>
@@ -543,6 +543,10 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
 });
 r.querySelectorAll('.rb-pans').forEach(function(w){var ps=[].slice.call(w.querySelectorAll('.rb-pan'));
  function act(p){ps.forEach(function(x){var a=x===p;x.classList.toggle('is-active',a);x.querySelector('.rb-pan__tab').setAttribute('aria-expanded',String(a));});}
+ [].forEach.call(w.querySelectorAll('[data-filter]'),function(a){a.addEventListener('click',function(e){var f=(a.getAttribute('data-filter')||'').split('='),cat=r.querySelector('.rb-cat');
+  if(!cat||f.length<2)return;var b=cat.querySelector('.rb-filter[data-f="'+f[0]+'"] button[data-v="'+f[1]+'"]');if(!b)return;e.preventDefault();
+  var all=cat.querySelectorAll('.rb-filter button[data-v="all"]');[].forEach.call(all,function(x){if(x!==b)x.click();});b.click();
+  var k=r.querySelector('#katalog');if(k)k.scrollIntoView({behavior:rm?'auto':'smooth'});});});
  ps.forEach(function(p){var t=p.querySelector('.rb-pan__tab');t.addEventListener('click',function(){act(p);});
   if(matchMedia('(hover:hover) and (min-width:901px)').matches)p.addEventListener('mouseenter',function(){act(p);});});});
 r.querySelectorAll('.rb-railnav button').forEach(function(bt){bt.addEventListener('click',function(){var sec=bt.closest('.rb-wrap'),rl=sec&&sec.querySelector('.rb-rail');if(!rl)return;var c=rl.querySelector('.rb-pcard');var w=c?c.getBoundingClientRect().width+20:rl.clientWidth*0.8;rl.scrollBy({left:w*(+bt.getAttribute('data-dir')),behavior:rm?'auto':'smooth'});});});

@@ -39,16 +39,8 @@ PRODUCT_CARDS = [
     ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/rejusome?type=hair'),
     ('source/card-jeuderm.webp', 'Пептидная космецевтика JeuDérm', 'Всё, что нужно для кабинета косметолога', '/jeuderm'),
 ]
-# Каталог-«шторки» на главной: фото, цвет линейки, подпись на панели, бренд · линейка, заголовок, текст, ссылка
+# «Шторки» линеек на странице JeuDérm: фото, цвет линейки, подпись, бренд · линейка, заголовок, текст, ссылка (фильтр каталога)
 CATALOG_PANELS = [
-    ('source/panel-rj-plus.webp', '#2a7de1', 'Экзосомы', 'Rejusome', 'Стерильные сыворотки с экзосомами',
-     'Реджусом и Реджусом Плюс — для регенерации кожи лица, тела и кожи головы. Только для специалистов.', '/rejusome?type=serum'),
-    ('source/panel-rj-cream.webp', '#5aa9e6', 'Экзосомный уход', 'Rejusome Exo Boost', 'Космецевтика с экзосомами',
-     'Крем, сыворотка, крем для глаз, маска, спрей-тоник и бальзам для губ — продлевают результат процедур дома.', '/rejusome?type=cosmetics'),
-    ('source/panel-calyra.webp', '#d1185a', 'Долголетие кожи', 'Calyra Lux 5', 'Теломерная защита',
-     'CAP Пептид 5, полинуклеотиды 2% и гиалуронат натрия в одном шприце — работа с качеством и ресурсом кожи.', '/calyra-lux-5'),
-    ('source/panel-pdrn.webp', '#e0457b', 'Восстановление', 'JeuDérm · Crystal PDRN', 'PDRN + HA 3%',
-     'Полинуклеотиды, факторы роста и пептиды — восстановление качества кожи, увлажнение и регенерация.', '/jeuderm?line=pdrn'),
     ('source/panel-reform.webp', '#cd555b', 'Возрастной уход', 'JeuDérm · Reform Age', 'Возрастной уход 30+',
      'Пептидный уход для упругости и плотности кожи — в кабинете и дома.', '/jeuderm?line=reformage'),
     ('source/panel-acno.webp', '#ab0a3d', 'Проблемная кожа', 'JeuDérm · Acno Active', 'Жирная и проблемная кожа',
@@ -61,6 +53,8 @@ CATALOG_PANELS = [
      'Кислотные и энзимные системы обновления без агрессивного повреждения и долгой реабилитации.', '/jeuderm?line=novazymo'),
     ('source/panel-pro.webp', '#65666b', 'ПРО-уход', 'JeuDérm · ПРО', 'Средства для кабинета',
      'Маски, массажное масло, эксфолиант и дренажный гель — косметолог подбирает их под задачу процедуры.', '/jeuderm?line=pro'),
+    ('source/panel-pdrn.webp', '#e0457b', 'Восстановление', 'JeuDérm · Crystal PDRN', 'PDRN + HA 3%',
+     'Полинуклеотиды, факторы роста и пептиды — восстановление качества кожи, увлажнение и регенерация.', '/jeuderm?line=pdrn'),
 ]
 # Круглые картинки-«пузыри» в шапке разделов и товаров: адрес страницы -> файл в source/
 PAGE_ART = {
@@ -873,6 +867,10 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
 });
 r.querySelectorAll('.rb-pans').forEach(function(w){var ps=[].slice.call(w.querySelectorAll('.rb-pan'));
  function act(p){ps.forEach(function(x){var a=x===p;x.classList.toggle('is-active',a);x.querySelector('.rb-pan__tab').setAttribute('aria-expanded',String(a));});}
+ [].forEach.call(w.querySelectorAll('[data-filter]'),function(a){a.addEventListener('click',function(e){var f=(a.getAttribute('data-filter')||'').split('='),cat=r.querySelector('.rb-cat');
+  if(!cat||f.length<2)return;var b=cat.querySelector('.rb-filter[data-f="'+f[0]+'"] button[data-v="'+f[1]+'"]');if(!b)return;e.preventDefault();
+  var all=cat.querySelectorAll('.rb-filter button[data-v="all"]');[].forEach.call(all,function(x){if(x!==b)x.click();});b.click();
+  var k=r.querySelector('#katalog');if(k)k.scrollIntoView({behavior:rm?'auto':'smooth'});});});
  ps.forEach(function(p){var t=p.querySelector('.rb-pan__tab');t.addEventListener('click',function(){act(p);});
   if(matchMedia('(hover:hover) and (min-width:901px)').matches)p.addEventListener('mouseenter',function(){act(p);});});});
 r.querySelectorAll('.rb-railnav button').forEach(function(bt){bt.addEventListener('click',function(){var sec=bt.closest('.rb-wrap'),rl=sec&&sec.querySelector('.rb-rail');if(!rl)return;var c=rl.querySelector('.rb-pcard');var w=c?c.getBoundingClientRect().width+20:rl.clientWidth*0.8;rl.scrollBy({left:w*(+bt.getAttribute('data-dir')),behavior:rm?'auto':'smooth'});});});
@@ -912,7 +910,7 @@ def panels(rel):
                   f'<img src="{img(rel, f, 1000)}" alt="" loading="lazy">'
                   f'<button class="rb-pan__tab" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-pan-{k}">{esc(short)}</button>'
                   f'<div class="rb-pan__bd" id="rb-pan-{k}"><span class="rb-pan__n">{k + 1:02d} · {esc(brand)}</span><h3>{esc(title)}</h3><p>{esc(txt)}</p>'
-                  f'<a href="{href}">Смотреть средства <i aria-hidden="true">→</i></a></div></div>')
+                  f'<a href="{href}#katalog" data-filter="{href.split("?")[1] if "?" in href else ""}">Смотреть средства <i aria-hidden="true">→</i></a></div></div>')
     return f'<div class="rb-pans">{items}</div>'
 
 def pcard(rel, f, title, sub, href):
@@ -1145,6 +1143,7 @@ def contacts_section(rel, s, h='h1'):
 def build_home():
     rel = 'index.html'
     s = soup(rel)
+    rail = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
     slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
     ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
     def mask_pts(p):
@@ -1192,9 +1191,9 @@ def build_home():
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a><a class="rb-btn" href="#katalog">Каталог продукции</a></div>
 </div></div></section>
 {trust_html}
-<section class="rb-sec" id="katalog"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция по задачам кожи</h2><hr class="rb-rule"></div>
-<p class="rb-muted" style="max-width:420px;margin-bottom:36px">Выберите направление — внутри препараты для процедур и домашний уход. Цены — после заявки.</p></div>
-{panels(rel)}</div></section>
+<section class="rb-sec" id="katalog"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"></div>
+<div class="rb-railnav"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div></div>
+<div class="rb-rail" tabindex="0" aria-label="Направления продукции">{rail}</div></div></section>
 <section class="rb-sec"><div class="rb-wrap"><div class="rb-split"><div><span class="rb-kicker">Для косметологов</span><h2>Работайте с официальным дистрибьютором</h2><hr class="rb-rule">
 <p class="rb-lead">Оригинальная продукция с документами, обучение и поддержка менеджера. Цены — после заявки: менеджер свяжется с вами и подберёт условия.</p>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="/kosmetologam">Косметологам</a><a class="rb-btn" href="#popup:price">Узнать цену</a></div></div>{cosmo}</div></div></section>
@@ -1215,13 +1214,12 @@ def build_jeuderm(products):
     lines = [(k, n) for k, n, _ in JD_LINES]
     intro = ('<p>Южнокорейская профессиональная космецевтика на пептидах и пробиотиках. Эффективность формул подтверждена исследованиями '
              'в Дерматологическом центре Национального университета Чунгнам и в Университете Ханнам.</p>')
-    lines_html = feats([('', f'{esc(n)}', esc(t)) for k, n, t in JD_LINES], cols=4)
     body = hero('JeuDérm', [('JeuDérm', None)], intro, art=PAGE_ART.get('/jeuderm')) + f'''
 <section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{stats([('50 000+', 'процедур в клиниках и центрах'), ('20+', 'стран, где работают с брендом'), ('6', 'направлений ухода — ПРО и домашний'), ('ISO · GMP', 'стандарты производства')])}</div></section>
-<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция JeuDérm</h2><hr class="rb-rule">
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Линейки</span><h2>Уход по задачам кожи</h2><hr class="rb-rule">{panels('index.html')}</div></section>
+<section class="rb-sec" id="katalog" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция JeuDérm</h2><hr class="rb-rule">
 <p class="rb-muted" style="margin-bottom:28px">Выберите уход для кабинета или дома и линейку под задачу кожи. Нажмите на товар, чтобы открыть состав и применение.</p>
 {catalog(products, [('care', 'Уход', [('pro', 'Профессиональный'), ('home', 'Домашний')]), ('line', 'Линейка', lines)])}</div></section>
-{section('Линейки', 'Уход по задачам кожи', lines_html)}
 {cta('Цены и протоколы — по запросу', 'Оставьте заявку: менеджер пришлёт прайс для специалистов и протоколы процедур.', btn2=('Официальный сайт JeuDérm', 'https://jeuderm-russia.ru/'))}{WARN_SEC}'''
     page('/jeuderm', 'JeuDérm', body, {'title': 'JeuDérm — пептидная космецевтика из Кореи для косметологов | Революшн Био',
                                        'description': 'Профессиональный и домашний уход JeuDérm: Reform Age, Acno Active, Ato Care, Nova·Zymo, Hair Genesis, Crystal PDRN. Официальный дистрибьютор в России.',
