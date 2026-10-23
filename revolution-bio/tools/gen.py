@@ -1156,7 +1156,7 @@ def jd_products():
             comp = ''.join(f'<li><b>{esc(g)}</b> — {esc(t)}</li>' for g, t in p['comp'])
             at = next((i for i, (k, _) in enumerate(fields) if k == 'Как применять'), len(fields))
             fields.insert(at, ('Состав', f'<details class="rb-comp"><summary>Все группы компонентов · {len(p["comp"])}</summary><ul>{comp}</ul></details>'))
-        out.append(dict(id=p['id'], en=p['en'], title=p['title'], desc=p['desc'], img=p['img'], alt=p.get('alt') or p['title'],
+        out.append(dict(id=p['id'], en=p['en'], title=p['title'], desc=p['desc'], img=img('index.html', p['img'], 900) if p['img'].startswith('source/') else p['img'], alt=p.get('alt') or p['title'],
                         care=p['care'].split(), lines=p['lines'], vol=p.get('vol'), care_t=p.get('care_t'),
                         ppm=f'Пептиды {p["ppm"]}' if p.get('ppm') else None,
                         key=p.get('key') or key_parts(dict(p['fields']).get('Активные ингредиенты', '')),
