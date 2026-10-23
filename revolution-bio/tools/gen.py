@@ -56,8 +56,6 @@ CATALOG_PANELS = [
      'Кислотные и энзимные системы обновления без агрессивного повреждения и долгой реабилитации.', '/jeuderm?line=novazymo'),
     ('source/panel-pro.webp', '#65666b', 'ПРО-уход', 'JeuDérm · ПРО', 'Средства для кабинета',
      'Маски, массажное масло, эксфолиант и дренажный гель — косметолог подбирает их под задачу процедуры.', '/jeuderm?line=pro'),
-    ('source/panel-pdrn.webp', '#e0457b', 'Восстановление', 'JeuDérm · Crystal PDRN', 'PDRN + HA 3%',
-     'Полинуклеотиды, факторы роста и пептиды — восстановление качества кожи, увлажнение и регенерация.', '/jeuderm?line=pdrn'),
 ]
 # Круглые картинки-«пузыри» в шапке разделов и товаров: адрес страницы -> файл в source/
 PAGE_ART = {
@@ -98,6 +96,25 @@ HERO_SLIDES = [
 # упоминания бренда, который компания больше не продаёт
 DROPPED = re.compile(r'mint\s*lift', re.I)
 
+# Главное меню: пункт без подменю — (название, ссылка); с подменю — (название, None, [(название, подпись, ссылка)])
+MENU = [
+    ('Главная', '/'),
+    ('Препараты', None, [
+        ('JeuDérm', 'Пептидная космецевтика', '/jeuderm'),
+        ('Rejusome', 'Экзосомальные технологии', '/rejusome'),
+        ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', '/calyra-lux-5'),
+        ('Crystal PDRN', 'PDRN + HA 3%', '/crystal-pdrn')]),
+    ('Для профессионалов', None, [
+        ('Косметологам', 'Скидки, система лояльности, заказ', '/kosmetologam'),
+        ('Обучение и вебинары', 'Вебинары по вторникам, записи', '/kosmetologam#obuchenie'),
+        ('Стать дистрибьютором', 'Партнёрство в вашем регионе', '/distributor')]),
+    ('Для пациентов', '/pacientam'),
+    ('О компании', None, [
+        ('Революшн Био', 'Официальный дистрибьютор', '/about'),
+        ('Производитель', 'VIRTA-MED KOREA · ISO · GMP', '/proizvoditel'),
+        ('Контакты', 'Телефоны, мессенджеры, адрес', '/kontakty')]),
+]
+# ссылки в подвале
 NAV = [('JeuDérm', '/jeuderm'), ('Rejusome', '/rejusome'), ('Calyra Lux 5', '/calyra-lux-5'), ('Crystal PDRN', '/crystal-pdrn'),
        ('Косметологам', '/kosmetologam'), ('Пациентам', '/pacientam'), ('О компании', '/about'), ('Контакты', '/kontakty')]
 PHONE, PHONE_HREF = '+7 (495) 147-70-40', 'tel:+74951477040'
@@ -375,6 +392,36 @@ def css():
 #rb .rb-nav a{text-decoration:none;padding:8px 11px;white-space:nowrap;border-radius:999px;color:var(--muted);transition:color .2s,background .2s}
 #rb .rb-nav a:hover{color:#fff;background:var(--glass)}
 #rb .rb-nav a[aria-current]{color:var(--accent);background:rgba(54,203,224,.1)}
+#rb .rb-nav{align-items:center}
+#rb .rb-nav__top{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:0;border-radius:999px;background:none;color:var(--muted);font:inherit;font-size:15px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:color .2s,background .2s}
+#rb .rb-nav__top:hover,#rb .rb-dd:hover>.rb-nav__top,#rb .rb-dd.is-open>.rb-nav__top{color:#fff;background:var(--glass)}
+#rb .rb-dd.is-on>.rb-nav__top,#rb .rb-nav__top[aria-current]{color:var(--accent)}
+#rb .rb-nav__top i{width:7px;height:7px;border-right:1.4px solid currentColor;border-bottom:1.4px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .3s}
+#rb .rb-dd{position:relative}
+#rb .rb-dd:hover>.rb-nav__top i,#rb .rb-dd.is-open>.rb-nav__top i{transform:translateY(1px) rotate(225deg)}
+#rb .rb-dd__panel{position:absolute;left:50%;top:calc(100% + 14px);z-index:60;width:300px;padding:14px;border-radius:18px;display:flex;flex-direction:column;gap:2px;
+  background:linear-gradient(160deg,rgba(54,203,224,.16),rgba(20,28,33,.92) 45%);border:1px solid rgba(54,203,224,.45);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 0 30px rgba(54,203,224,.18),0 30px 60px -30px rgba(0,0,0,.8),inset 0 0 24px rgba(54,203,224,.07);
+  opacity:0;visibility:hidden;transform:translate(-50%,8px) scale(.98);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.7,.2,1),visibility .3s}
+#rb .rb-dd__panel::before{content:"";position:absolute;left:50%;top:-14px;width:1px;height:14px;background:linear-gradient(transparent,var(--accent))}
+#rb .rb-dd__panel::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(143,240,255,.06) 0 1px,transparent 1px 3px)}
+#rb .rb-dd:hover>.rb-dd__panel,#rb .rb-dd.is-open>.rb-dd__panel,#rb .rb-dd:focus-within>.rb-dd__panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+#rb .rb-dd:hover>.rb-dd__panel{animation:rb-flick .7s steps(1)}
+#rb .rb-dd__title{padding:4px 12px 8px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+#rb .rb-dd__panel a{position:relative;z-index:1;display:block;padding:10px 12px 10px 26px;border-radius:12px;text-decoration:none;transition:background .25s}
+#rb .rb-dd__panel a::before{content:"";position:absolute;left:12px;top:17px;width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);opacity:.5;transition:opacity .25s}
+#rb .rb-dd__panel a b{display:block;font-family:var(--serif);font-weight:400;font-size:17px;color:#fff;line-height:1.25}
+#rb .rb-dd__panel a small{display:block;font-size:12px;color:rgba(214,235,240,.7);margin-top:2px}
+#rb .rb-dd__panel a:hover,#rb .rb-dd__panel a[aria-current]{background:rgba(54,203,224,.12)}
+#rb .rb-dd__panel a:hover::before,#rb .rb-dd__panel a[aria-current]::before{opacity:1}
+#rb .rb-dd__panel a[aria-current] b{color:var(--accent)}
+#rb .rb-mgroup{border-bottom:1px solid var(--line)}
+#rb .rb-mgroup summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:18px}
+#rb .rb-mgroup summary::-webkit-details-marker{display:none}
+#rb .rb-mgroup summary i{width:8px;height:8px;border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(45deg);transition:transform .3s}
+#rb .rb-mgroup[open] summary i{transform:rotate(225deg)}
+#rb .rb-mnav .rb-mgroup a{display:block;padding:10px 0 10px 16px;font-size:16px;color:var(--muted);border-bottom:0;border-left:1px solid rgba(54,203,224,.4)}
+#rb .rb-mnav a[aria-current]{color:var(--accent)}
 #rb .rb-contact{display:flex;align-items:center;gap:18px}
 #rb .rb-phone{font-family:var(--serif);font-size:18px;text-decoration:none;white-space:nowrap}
 #rb .rb-phone:hover{color:var(--accent)}
@@ -590,11 +637,22 @@ def css():
 #rb .rb-feats{display:grid;gap:18px;grid-template-columns:repeat(4,minmax(0,1fr))}
 #rb .rb-feats--3{grid-template-columns:repeat(3,minmax(0,1fr))}
 #rb .rb-feats--2{grid-template-columns:repeat(2,minmax(0,1fr))}
-#rb .rb-feat{padding:24px;border-radius:18px;background:var(--glass);border:1px solid var(--line)}
-#rb .rb-feat svg{width:48px;height:48px;padding:12px;margin-bottom:16px;border-radius:50%;border:1px solid rgba(54,203,224,.45);fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+#rb .rb-feat{position:relative;overflow:hidden;padding:26px 24px 24px;border-radius:20px;isolation:isolate;
+  background:linear-gradient(160deg,rgba(54,203,224,.1),rgba(255,255,255,.03) 42%,rgba(255,255,255,.02));border:1px solid rgba(54,203,224,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .45s}
+#rb .rb-feat::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,0%),rgba(54,203,224,.22),transparent 70%),repeating-linear-gradient(0deg,rgba(143,240,255,.05) 0 1px,transparent 1px 3px)}
+#rb .rb-feat::after{content:"";position:absolute;right:16px;top:16px;width:14px;height:14px;border-top:1px solid rgba(54,203,224,.6);border-right:1px solid rgba(54,203,224,.6);border-radius:0 4px 0 0;transition:width .4s,height .4s}
+#rb .rb-feat:hover{transform:translateY(-6px);border-color:rgba(54,203,224,.65);box-shadow:0 0 0 1px rgba(54,203,224,.15),0 26px 50px -26px rgba(54,203,224,.55),inset 0 1px 0 rgba(255,255,255,.1)}
+#rb .rb-feat:hover::before{opacity:1}
+#rb .rb-feat:hover::after{width:28px;height:28px}
+#rb .rb-feat svg{position:relative;width:52px;height:52px;padding:13px;margin-bottom:18px;border-radius:50%;border:1px solid rgba(54,203,224,.55);
+  background:radial-gradient(closest-side,rgba(54,203,224,.22),transparent);box-shadow:0 0 18px rgba(54,203,224,.25);fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:box-shadow .4s,transform .5s}
+#rb .rb-feat:hover svg{box-shadow:0 0 0 6px rgba(54,203,224,.08),0 0 26px rgba(54,203,224,.5);transform:rotate(-8deg) scale(1.05)}
 #rb .rb-feat b{display:block;font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.2;margin-bottom:8px}
 #rb .rb-feat b a{text-decoration:none}#rb .rb-feat b a:hover{color:var(--accent)}
 #rb .rb-feat p{margin:0;font-size:14.5px;color:var(--muted)}
+#rb .rb-feat::marker{content:none}
 #rb .rb-stats.rb-stats--4{grid-template-columns:repeat(4,minmax(0,1fr))}
 #rb .rb-rich a.rb-btn{color:#fff}#rb .rb-rich a.rb-btn--fill{color:var(--accent-ink)}
 #rb .rb-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
@@ -605,7 +663,9 @@ def css():
 #rb .rb-tile--alt{background:radial-gradient(120% 90% at 100% 0,rgba(54,203,224,.28),transparent 60%),linear-gradient(160deg,rgba(54,203,224,.16),rgba(54,203,224,.05));border-color:rgba(54,203,224,.35)}
 #rb .rb-tile h3{font-size:clamp(24px,2.4vw,32px)}
 #rb .rb-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:st}
-#rb .rb-steps li{counter-increment:st;padding:24px;border-radius:18px;border:1px solid var(--line);background:var(--glass)}
+#rb .rb-steps li{counter-increment:st;position:relative;overflow:hidden;padding:24px;border-radius:20px;border:1px solid rgba(54,203,224,.22);background:linear-gradient(160deg,rgba(54,203,224,.1),rgba(255,255,255,.03) 45%);transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .45s}
+#rb .rb-steps li:hover{transform:translateY(-6px);border-color:rgba(54,203,224,.65);box-shadow:0 26px 50px -26px rgba(54,203,224,.55)}
+#rb .rb-steps li::after{content:"";position:absolute;left:24px;right:24px;top:66px;height:1px;background:linear-gradient(90deg,var(--accent),transparent);opacity:.5}
 #rb .rb-steps li::before{content:"0" counter(st);display:block;font-family:var(--serif);font-size:34px;line-height:1;color:var(--accent);margin-bottom:14px}
 #rb .rb-steps b{display:block;font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:6px}
 #rb .rb-steps p{margin:0;font-size:14.5px;color:var(--muted)}
@@ -781,9 +841,9 @@ def css():
 @media (max-width:520px){#rb .rb-bcol{grid-template-columns:minmax(0,1fr)}#rb .rb-stage__pts{font-size:8px;white-space:normal;max-width:84%;margin:8px auto 0;line-height:1.7}
   #rb .rb-trust__bar{grid-template-columns:minmax(0,1fr)}#rb .rb-trust__item+.rb-trust__item::before{left:22%;right:22%;top:0;bottom:auto;width:auto;height:1px}#rb .rb-trust__item{padding:16px 18px}}
 @media (max-width:1100px){#rb .rb-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-rail{grid-auto-columns:calc((100% - 20px)/2.3)}}
-@media (max-width:1460px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
+@media (max-width:1100px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
-  #rb .rb-mnav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}}
+  #rb .rb-mnav>a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}#rb .rb-mnav a{text-decoration:none}}
 @media (max-width:900px){
   #rb .rb-rail{grid-auto-columns:78%;margin:0 -24px;padding:6px 24px 14px;scroll-padding:0 24px}
   #rb .rb-pgrid{grid-template-columns:minmax(0,1fr);gap:18px}#rb .rb-railnav{display:none}}
@@ -804,20 +864,31 @@ def css():
 
 def header(alias):
     logo = img('index.html', 'images/custom/logo.svg')
-    links = ''.join(f'<a href="{h}"{" aria-current=\"page\"" if h == alias else ""}>{t}</a>' for t, h in NAV)
+    cur = lambda h: ' aria-current="page"' if h == alias else ''
+    desk, mob = '', ''
+    for k, it in enumerate(MENU):
+        if it[1]:
+            desk += f'<a class="rb-nav__top" href="{it[1]}"{cur(it[1])}>{it[0]}</a>'
+            mob += f'<a href="{it[1]}"{cur(it[1])}>{it[0]}</a>'
+            continue
+        on = any(h.split('#')[0] == alias for _, _, h in it[2])
+        items = ''.join(f'<a href="{h}"{cur(h)}><b>{t}</b><small>{esc(d)}</small></a>' for t, d, h in it[2])
+        desk += (f'<div class="rb-dd{" is-on" if on else ""}"><button class="rb-nav__top" type="button" aria-expanded="false" aria-controls="rb-dd-{k}">{it[0]}<i aria-hidden="true"></i></button>'
+                 f'<div class="rb-dd__panel" id="rb-dd-{k}"><span class="rb-dd__title">{it[0]}</span>{items}</div></div>')
+        mob += f'<details class="rb-mgroup"{" open" if on else ""}><summary>{it[0]}<i aria-hidden="true"></i></summary>' + ''.join(f'<a href="{h}"{cur(h)}>{t}</a>' for t, d, h in it[2]) + '</details>'
     return f'''<header class="rb-head"><div class="rb-wrap">
 <a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="{logo}" alt="Революшн Био"></a>
-<nav class="rb-nav" aria-label="Меню">{links}</nav>
+<nav class="rb-nav" aria-label="Меню">{desk}</nav>
 <div class="rb-contact"><a class="rb-phone" href="{PHONE_HREF}">{PHONE}</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
-</div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню">{links}<a href="{PHONE_HREF}">{PHONE}</a></nav></header>'''
+</div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню">{mob}<a href="{PHONE_HREF}">{PHONE}</a></nav></header>'''
 
 def footer():
     links = ''.join(f'<a href="{h}">{t}</a>' for t, h in NAV)
     return f'''<footer class="rb-foot"><div class="rb-wrap">
 <div><p>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены.<br>ИНН: 9709100594 · КПП: 770901001</p>
 <p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
-<nav aria-label="Разделы">{links}<a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a></nav>
+<nav aria-label="Разделы">{links}<a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a></nav>
 <div><p><a href="{PHONE_HREF}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a><br>Москва, Земляной Вал 7, офис 408</p>
 <div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="{MAX_URL}" target="_blank" rel="noopener">MAX</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
 <p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>
@@ -827,6 +898,12 @@ JS = '''<script>
 (function(){var r=document.getElementById('rb');if(!r)return;
 var b=r.querySelector('.rb-burger'),m=r.querySelector('.rb-mnav');
 if(b&&m)b.addEventListener('click',function(){var o=m.hasAttribute('data-open');if(o)m.removeAttribute('data-open');else m.setAttribute('data-open','');b.setAttribute('aria-expanded',String(!o));});
+r.querySelectorAll('.rb-dd').forEach(function(d){var t=d.querySelector('.rb-nav__top');
+ t.addEventListener('click',function(e){e.stopPropagation();var o=!d.classList.contains('is-open');r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});
+  d.classList.toggle('is-open',o);t.setAttribute('aria-expanded',String(o));});});
+document.addEventListener('click',function(){r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
+r.querySelectorAll('.rb-feat').forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px');});});
 var y=r.querySelector('[data-rb-year]');if(y)y.textContent=new Date().getFullYear();
 r.querySelectorAll('.rb-gal').forEach(function(g){var im=g.querySelector('.rb-gal__main img'),th=[].slice.call(g.querySelectorAll('.rb-gal__thumbs button')),i=0;
  function go(n){if(!th.length)return;i=(n+th.length)%th.length;im.src=th[i].getAttribute('data-src');th.forEach(function(t,k){if(k===i)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current');});}
@@ -1014,7 +1091,6 @@ JD_LINES = [  # линейки JeuDérm: ключ, название, подпи�
     ('pro', 'ПРО-уход', 'Средства для процедур'),
     ('novazymo', 'Nova · Zymo', 'Обновление кожи'),
     ('hair', 'Hair Genesis', 'Кожа головы и волосы'),
-    ('pdrn', 'Crystal PDRN', 'PDRN + HA 3%'),
 ]
 RJ_TYPES = [('serum', 'Стерильные сыворотки'), ('cosmetics', 'Экзосомный уход'), ('hair', 'Трихология')]
 CARE_LABEL = {'pro': 'ПРО', 'home': 'Дом'}
@@ -1065,12 +1141,6 @@ def rj_products():
     return out
 
 
-def pdrn_product():
-    d = old_product('product/item/59-crystal-pdrn.html', 'crystal-pdrn', 'Crystal PDRN + HA 3%', 'Crystal PDRN — восстановление качества кожи', lines=['pdrn'], vol='5 ампул × 5 мл')
-    d['img'] = img('index.html', 'source/round-pdrn.webp', 1100)
-    return d
-
-
 CALYRA = dict(id='calyra-lux-5', en='Calyra Lux 5', title='CALYRA LUX 5 — CAP Пептид 5, PN и гиалуронат натрия в одном шприце',
               desc='Комплексная работа с качеством кожи: увлажнённость, плотность, ровный рельеф и сияние.',
               care=['pro'], lines=[], vol='2 шприца × 2,5 мл', care_t='Профессиональный уход',
@@ -1112,8 +1182,8 @@ def catalog(products, groups):
 
 
 # ---------------------------------------------------------------- общие блоки
-def section(kicker, h2, inner, cls=''):
-    return f'<section class="rb-sec {cls}"><div class="rb-wrap">{f"<span class=\"rb-kicker\">{esc(kicker)}</span>" if kicker else ""}<h2>{h2}</h2><hr class="rb-rule">{inner}</div></section>'
+def section(kicker, h2, inner, cls='', sid=''):
+    return f'<section class="rb-sec {cls}"{f" id={chr(34)}{sid}{chr(34)}" if sid else ""}><div class="rb-wrap">{f"<span class=\"rb-kicker\">{esc(kicker)}</span>" if kicker else ""}<h2>{h2}</h2><hr class="rb-rule">{inner}</div></section>'
 
 
 def feats(items, cols=4):
@@ -1396,7 +1466,7 @@ def build_kosmetologam():
 <p><strong>Индивидуальное и групповое обучение</strong> — по согласованию: в учебном центре или в вашей клинике при запуске препаратов.</p>
 <p>Партнёр по обучению — институт косметологии «Дом Русской Косметики»: программы с документами государственного образца, НМО и ФИС ФРДО.</p>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:signup">Записаться на обучение</a><a class="rb-btn" href="{RUTUBE}" target="_blank" rel="noopener">Канал на Рутубе</a></div></div>
-<div><h3 style="margin-top:0">Ближайшие вебинары</h3><div class="rb-events">{up}</div></div></div>""")}
+<div><h3 style="margin-top:0">Ближайшие вебинары</h3><div class="rb-events">{up}</div></div></div>""", sid='obuchenie')}
 {section('Записи', 'Смотрите вебинары на Рутубе', f'<div class="rb-videos">{vids}</div>')}
 {section('Как заказать', 'Четыре шага до первой поставки', steps([
         ('Заявка', 'Оставьте заявку на сайте или напишите в мессенджер.'),
@@ -1474,7 +1544,7 @@ def build_proizvoditel():
         (BRAND_ICON[0], '<a href="/jeuderm">JeuDérm</a>', 'Пептидная космецевтика: профессиональный и домашний уход.'),
         (BRAND_ICON[1], '<a href="/rejusome">Rejusome</a>', 'Стерильные сыворотки и космецевтика с экзосомами.'),
         (BRAND_ICON[2], '<a href="/calyra-lux-5">Calyra Lux 5</a>', 'CAP Пептид 5, PN и гиалуронат натрия в одном шприце.'),
-        (BRAND_ICON[3], '<a href="/jeuderm?line=pdrn">Crystal PDRN</a>', 'PDRN + HA 3% — восстановление качества кожи.')]))}'''
+        (BRAND_ICON[3], '<a href="/crystal-pdrn">Crystal PDRN</a>', 'PDRN + HA 3% — восстановление качества кожи.')]))}'''
     page('/proizvoditel', 'Производитель', body, {'title': 'Производитель VIRTA-MED KOREA — JeuDérm, Rejusome, Calyra Lux 5 | Революшн Био',
                                                   'description': 'VIRTA-MED KOREA Co., LTD (Тэджон, Корея): производство по стандартам ISO и GMP, клинически протестированные формулы.',
                                                   'keywords': 'VIRTA-MED KOREA, производитель, JeuDérm, Корея, ISO, GMP'})
@@ -1523,7 +1593,7 @@ def build_article(rel, alias):
 ABOUT_STATS = [('с 2022', 'года на рынке'), ('15 000', 'клиентов в нашей базе'), ('5', 'инновационных технологий: пептиды, экзосомы, PN, PDRN, CAP Пептид 5'), ('ISO · GMP', 'стандарты производства')]
 WARN_SEC = f'<div class="rb-wrap">{WARN}</div>'
 
-JD = jd_products() + [pdrn_product()]
+JD = jd_products()
 RJ = rj_products()
 build_home()
 build_jeuderm(JD)
