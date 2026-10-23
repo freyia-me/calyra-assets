@@ -18,6 +18,11 @@
   Description: CALYRA LUX 5: теломерная защита и долголетие кожи. CAP Пептид 5 1000 ppm, PN 2%, гиалуронат натрия 1% в одном шприце.
   Keywords: Calyra Lux 5, Калюра Люкс 5, CAP Пептид 5, полинуклеотиды, долголетие кожи
 
+/crystal-pdrn  (файл tilda/crystal-pdrn.html)
+  Title: Crystal PDRN (JeuDérm) — PDRN + HA 3% для косметологов | Революшн Био
+  Description: Комплексный биорепарант Crystal PDRN: 6 000 ppm полинуклеотидов, 2 000 ppm пептидов, 18 факторов роста, гиалуроновая кислота. Состав, показания, курс, результаты.
+  Keywords: Crystal PDRN, Кристал ПДРН, PDRN, полинуклеотиды, биорепарант, JeuDérm
+
 /kosmetologam  (файл tilda/kosmetologam.html)
   Title: Косметологам — условия, скидки и обучение | Революшн Био
   Description: Скидка −15% на первый заказ, накопительная система лояльности, вебинары 2 раза в месяц и обучение по препаратам JeuDérm, Rejusome и Calyra Lux 5.

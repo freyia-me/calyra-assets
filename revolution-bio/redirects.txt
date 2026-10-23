@@ -71,7 +71,7 @@
 /product/item/235-ol-ga	/#katalog
 /product/item/236-tat-yana	/#katalog
 /product/item/237-rejusomeboostmist	/rejusome#p-exo-boost-mist
-/product/item/59-crystal-pdrn	/jeuderm?line=pdrn#p-crystal-pdrn
+/product/item/59-crystal-pdrn	/crystal-pdrn
 /product/item/81-jeuderm-homecare	/jeuderm?care=home
 /product/item/82-jeuderm-pofessional	/jeuderm?care=pro
 /product/item/9-nauchnyj-tsentr-revolution-group	/#katalog
@@ -80,7 +80,7 @@
 /product/itemlist/category/4-otzyvy	/#katalog
 /product/itemlist/category/5-ekzosomy	/rejusome?type=serum
 /product/itemlist/category/7-jeuderm	/jeuderm
-/product/itemlist/category/9-biorevitalizatsiya	/jeuderm?line=pdrn
+/product/itemlist/category/9-biorevitalizatsiya	/crystal-pdrn
 /product/itemlist/category/93-otzyvy-tovarov	/#katalog
 /product/itemlist/tag/227rejusome	/#katalog
 /product/itemlist/tag/228rejusomeplus	/#katalog

@@ -35,6 +35,7 @@
 #rb .rb-head{position:sticky;top:0;z-index:50;background:rgba(43,48,53,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 #rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
 #rb .rb-head .rb-wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:88px}
+#rb .rb-logo{flex:none}
 #rb .rb-logo img{height:66px;width:auto}
 #rb .rb-nav{display:flex;gap:2px;font-size:14.5px}
 #rb .rb-nav a{text-decoration:none;padding:8px 11px;white-space:nowrap;border-radius:999px;color:var(--muted);transition:color .2s,background .2s}
@@ -43,7 +44,7 @@
 #rb .rb-contact{display:flex;align-items:center;gap:18px}
 #rb .rb-phone{font-family:var(--serif);font-size:18px;text-decoration:none;white-space:nowrap}
 #rb .rb-phone:hover{color:var(--accent)}
-#rb .rb-contact .rb-btn{padding:10px 22px;font-size:15px}
+#rb .rb-contact .rb-btn{padding:10px 22px;font-size:15px;white-space:nowrap}
 #rb .rb-burger{display:none;background:var(--glass);border:1px solid var(--line);border-radius:999px;color:#fff;padding:9px 18px;font:inherit;font-size:15px;cursor:pointer}
 #rb .rb-mnav{display:none}
 /* первый экран главной: бренды — лицо — текст */
@@ -151,7 +152,7 @@
 #rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@00dc91726c5b/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@d521facbf010/revolution-bio/img/inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 #rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
 #rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
@@ -303,6 +304,16 @@
 #rb .rb-letter{display:block;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;max-width:420px;justify-self:center}
 #rb .rb-warn{margin:0 0 30px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
 #rb .rb-404{padding:90px 0 120px}
+#rb .rb-pdrn-media{position:relative;width:100%;max-width:420px;justify-self:end;aspect-ratio:2/3}
+#rb .rb-pdrn-media img{width:100%;height:100%;object-fit:cover;border-radius:24px;border:1px solid var(--line)}
+#rb .rb-pdrn-media video{position:absolute;right:-8%;bottom:-6%;width:42%;aspect-ratio:9/16;object-fit:cover;border-radius:18px;border:2px solid rgba(255,255,255,.55);box-shadow:0 24px 50px -20px rgba(0,0,0,.7);background:#000}
+@media (min-width:821px){#rb .rb-hero--art:has(.rb-pdrn-media) .rb-wrap{grid-template-columns:minmax(0,1fr) minmax(0,420px);padding-bottom:40px}}
+#rb .rb-bas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#rb .rb-ba{margin:0;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+#rb .rb-ba img{width:100%;display:block}
+#rb .rb-ba figcaption{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:space-around;pointer-events:none}
+#rb .rb-ba figcaption span{padding:4px 12px;border-radius:999px;background:rgba(43,48,53,.8);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+@media (max-width:820px){#rb .rb-bas{grid-template-columns:minmax(0,1fr)}#rb .rb-pdrn-media{justify-self:center;width:min(78%,320px);margin:6px 0 34px;order:0}}
 /* каталог-«шторки» на главной */
 #rb .rb-pans{display:flex;gap:8px;height:clamp(460px,44vw,600px)}
 #rb .rb-pan{position:relative;flex:1 1 0;min-width:0;border-radius:18px;overflow:hidden;background:#1d2124;border:1px solid var(--line);transition:flex-grow .7s cubic-bezier(.2,.7,.2,1),border-color .5s}
@@ -436,7 +447,7 @@
 @media (max-width:520px){#rb .rb-bcol{grid-template-columns:minmax(0,1fr)}#rb .rb-stage__pts{font-size:8px;white-space:normal;max-width:84%;margin:8px auto 0;line-height:1.7}
   #rb .rb-trust__bar{grid-template-columns:minmax(0,1fr)}#rb .rb-trust__item+.rb-trust__item::before{left:22%;right:22%;top:0;bottom:auto;width:auto;height:1px}#rb .rb-trust__item{padding:16px 18px}}
 @media (max-width:1100px){#rb .rb-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-rail{grid-auto-columns:calc((100% - 20px)/2.3)}}
-@media (max-width:1240px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
+@media (max-width:1460px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
   #rb .rb-mnav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}}
 @media (max-width:900px){
@@ -458,11 +469,11 @@
 </style>
 <div id="rb" lang="ru">
 <header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@00dc91726c5b/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
-<nav class="rb-nav" aria-label="Меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam" aria-current="page">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a></nav>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@d521facbf010/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
+<nav class="rb-nav" aria-label="Меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/crystal-pdrn">Crystal PDRN</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam" aria-current="page">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a></nav>
 <div class="rb-contact"><a class="rb-phone" href="tel:+74951477040">+7 (495) 147-70-40</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
-</div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam" aria-current="page">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a><a href="tel:+74951477040">+7 (495) 147-70-40</a></nav></header>
+</div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/crystal-pdrn">Crystal PDRN</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam" aria-current="page">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a><a href="tel:+74951477040">+7 (495) 147-70-40</a></nav></header>
 <main>
 <section class="rb-hero"><div class="rb-wrap"><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span>Пациентам</nav><h1>Пациентам</h1><hr class="rb-rule"><div class="rb-lead rb-rich"><p>Как работают процедуры с препаратами JeuDérm, Rejusome и Calyra Lux&nbsp;5, как подготовиться и как сохранить результат.</p></div></div></section>
 <section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-feats rb-feats--4"><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.5 7h7M7.3 9.2l3.4 6.6M16.7 9.2l-3.4 6.6"/></svg><b>Возрастные изменения</b><p>Пептидный уход JeuDérm Reform Age и Calyra Lux 5 — для плотности, увлажнённости и сияния кожи.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2.5h6M10 2.5v4L6.5 12v8a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-8L14 6.5v-4M6.5 14h11"/></svg><b>Восстановление кожи</b><p>Сыворотки с экзосомами Rejusome — для глубокого восстановления и ровного тона.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><b>Чувствительная и проблемная кожа</b><p>Линейки JeuDérm Ato Care и Acno Active — для реактивной и склонной к акне кожи.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-5.5 6.5-5.5s6.5 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18.5 14.8c2 .6 3 2.3 3 5.2"/></svg><b>Кожа головы и волосы</b><p>Rejusome Plus Hair и JeuDérm Hair Genesis — для кожи головы и роста волос.</p></div></div></div></section>
@@ -473,7 +484,7 @@
 <footer class="rb-foot"><div class="rb-wrap">
 <div><p>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены.<br>ИНН: 9709100594 · КПП: 770901001</p>
 <p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
-<nav aria-label="Разделы"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a><a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a></nav>
+<nav aria-label="Разделы"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/crystal-pdrn">Crystal PDRN</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a><a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a></nav>
 <div><p><a href="tel:+74951477040">+7 (495) 147-70-40</a><br><a href="mailto:info@revolution.bio">info@revolution.bio</a><br>Москва, Земляной Вал 7, офис 408</p>
 <div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://max.ru/u/f9LHodD0cOLKBWLODghgiSo7Io7UdoSgD9WyEFyj38AwuRwPD6M5HL3syog" target="_blank" rel="noopener">MAX</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
 <p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>

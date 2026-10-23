@@ -27,7 +27,7 @@ BRANDS = [
     ('JeuDérm', 'Пептидные технологии', '/jeuderm', 'source/round-jeuderm.webp', True),
     ('Rejusome', 'Экзосомальные технологии', '/rejusome', 'source/round-rejusome.webp', True),
     ('Calyra Lux\u00a05', 'Теломерная защита и долголетие', '/calyra-lux-5', 'source/round-calyra.webp', True),
-    ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/jeuderm?line=pdrn', 'source/round-pdrn.webp', True),
+    ('Crystal PDRN', 'Полинуклеотиды и регенерация', '/crystal-pdrn', 'source/round-pdrn.webp', True),
 ]
 # Карточки направлений (готовые изображения с текстом): файл в source/, заголовок, подпись, ссылка.
 # Заголовок и подпись повторяют текст на картинке — они идут в alt и для поиска.
@@ -35,7 +35,7 @@ BRANDS = [
 CARD_TABS = [('PDRN', '#e0457b'), ('Стерильные сыворотки', '#2a7de1'), ('Теломерная защита', '#d1185a'),
              ('Экзосомный уход', '#5aa9e6'), ('Трихология', '#ae57b9'), ('Пептидная космецевтика', '#cd555b')]
 PRODUCT_CARDS = [
-    ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/jeuderm?line=pdrn'),
+    ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/crystal-pdrn'),
     ('source/card-serums.webp', 'Стерильные сыворотки', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/rejusome?type=serum'),
     ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: PN 2% и CAP Peptide 5', '/calyra-lux-5'),
     ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/rejusome?type=cosmetics'),
@@ -98,7 +98,7 @@ HERO_SLIDES = [
 # упоминания бренда, который компания больше не продаёт
 DROPPED = re.compile(r'mint\s*lift', re.I)
 
-NAV = [('JeuDérm', '/jeuderm'), ('Rejusome', '/rejusome'), ('Calyra Lux 5', '/calyra-lux-5'),
+NAV = [('JeuDérm', '/jeuderm'), ('Rejusome', '/rejusome'), ('Calyra Lux 5', '/calyra-lux-5'), ('Crystal PDRN', '/crystal-pdrn'),
        ('Косметологам', '/kosmetologam'), ('Пациентам', '/pacientam'), ('О компании', '/about'), ('Контакты', '/kontakty')]
 PHONE, PHONE_HREF = '+7 (495) 147-70-40', 'tel:+74951477040'
 EMAIL = 'info@revolution.bio'
@@ -369,6 +369,7 @@ def css():
 #rb .rb-head{position:sticky;top:0;z-index:50;background:rgba(43,48,53,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 #rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
 #rb .rb-head .rb-wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:88px}
+#rb .rb-logo{flex:none}
 #rb .rb-logo img{height:66px;width:auto}
 #rb .rb-nav{display:flex;gap:2px;font-size:14.5px}
 #rb .rb-nav a{text-decoration:none;padding:8px 11px;white-space:nowrap;border-radius:999px;color:var(--muted);transition:color .2s,background .2s}
@@ -377,7 +378,7 @@ def css():
 #rb .rb-contact{display:flex;align-items:center;gap:18px}
 #rb .rb-phone{font-family:var(--serif);font-size:18px;text-decoration:none;white-space:nowrap}
 #rb .rb-phone:hover{color:var(--accent)}
-#rb .rb-contact .rb-btn{padding:10px 22px;font-size:15px}
+#rb .rb-contact .rb-btn{padding:10px 22px;font-size:15px;white-space:nowrap}
 #rb .rb-burger{display:none;background:var(--glass);border:1px solid var(--line);border-radius:999px;color:#fff;padding:9px 18px;font:inherit;font-size:15px;cursor:pointer}
 #rb .rb-mnav{display:none}
 /* первый экран главной: бренды — лицо — текст */
@@ -637,6 +638,16 @@ def css():
 #rb .rb-letter{display:block;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;max-width:420px;justify-self:center}
 #rb .rb-warn{margin:0 0 30px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
 #rb .rb-404{padding:90px 0 120px}
+#rb .rb-pdrn-media{position:relative;width:100%;max-width:420px;justify-self:end;aspect-ratio:2/3}
+#rb .rb-pdrn-media img{width:100%;height:100%;object-fit:cover;border-radius:24px;border:1px solid var(--line)}
+#rb .rb-pdrn-media video{position:absolute;right:-8%;bottom:-6%;width:42%;aspect-ratio:9/16;object-fit:cover;border-radius:18px;border:2px solid rgba(255,255,255,.55);box-shadow:0 24px 50px -20px rgba(0,0,0,.7);background:#000}
+@media (min-width:821px){#rb .rb-hero--art:has(.rb-pdrn-media) .rb-wrap{grid-template-columns:minmax(0,1fr) minmax(0,420px);padding-bottom:40px}}
+#rb .rb-bas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#rb .rb-ba{margin:0;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+#rb .rb-ba img{width:100%;display:block}
+#rb .rb-ba figcaption{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:space-around;pointer-events:none}
+#rb .rb-ba figcaption span{padding:4px 12px;border-radius:999px;background:rgba(43,48,53,.8);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+@media (max-width:820px){#rb .rb-bas{grid-template-columns:minmax(0,1fr)}#rb .rb-pdrn-media{justify-self:center;width:min(78%,320px);margin:6px 0 34px;order:0}}
 /* каталог-«шторки» на главной */
 #rb .rb-pans{display:flex;gap:8px;height:clamp(460px,44vw,600px)}
 #rb .rb-pan{position:relative;flex:1 1 0;min-width:0;border-radius:18px;overflow:hidden;background:#1d2124;border:1px solid var(--line);transition:flex-grow .7s cubic-bezier(.2,.7,.2,1),border-color .5s}
@@ -770,7 +781,7 @@ def css():
 @media (max-width:520px){#rb .rb-bcol{grid-template-columns:minmax(0,1fr)}#rb .rb-stage__pts{font-size:8px;white-space:normal;max-width:84%;margin:8px auto 0;line-height:1.7}
   #rb .rb-trust__bar{grid-template-columns:minmax(0,1fr)}#rb .rb-trust__item+.rb-trust__item::before{left:22%;right:22%;top:0;bottom:auto;width:auto;height:1px}#rb .rb-trust__item{padding:16px 18px}}
 @media (max-width:1100px){#rb .rb-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-rail{grid-auto-columns:calc((100% - 20px)/2.3)}}
-@media (max-width:1240px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
+@media (max-width:1460px){#rb .rb-nav{display:none}#rb .rb-burger{display:inline-block}
   #rb .rb-mnav[data-open]{display:flex;flex-direction:column;padding:8px 24px 22px}
   #rb .rb-mnav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}}
 @media (max-width:900px){
@@ -1277,6 +1288,83 @@ def build_rejusome(products):
                                          'keywords': 'Rejusome, Реджусом, экзосомы, сыворотка с экзосомами, Exo Boost'})
 
 
+def asset(src):
+    """скопировать файл (видео и т. п.) из source/ в img/ как есть"""
+    path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', src))
+    data = open(path, 'rb').read()
+    base, ext = os.path.splitext(os.path.basename(path))
+    name = f'{base}-{hashlib.md5(data).hexdigest()[:6]}{ext}'
+    open(os.path.join(IMG_DIR, name), 'wb').write(data)
+    return f'{CDN}/img/{name}'
+
+
+PDRN_COMP = [
+    ('Полинуклеотиды (PDRN) — 6 000 ppm', 'Среднемолекулярный PDRN 50–1 500 кДа (Sodium DNA) — оптимальный размер для регенерации кожи.'),
+    ('Пептиды — 2 000 ppm', 'Palmitoyl Tripeptide-5, Copper Tripeptide-1 (GHK-Cu), Octapeptide-7, Acetyl Hexapeptide-8, Galloyl Pentapeptide-33, Biotinoyl Tripeptide-1, Nicotinoyl Tripeptide-1.'),
+    ('18 факторов роста', 'EGF, IGF-1, PDGF, bFGF, KGF, VEGF, TGF-β, aFGF и другие биомиметические пептиды (sh-Oligopeptide, sh-Polypeptide).'),
+    ('15 аминокислот', 'Валин, треонин, пролин, лизин, глицин, гистидин, цистеин, аланин, глутатион, глутамин, серин, тирозин, аргинин, глутаминовая кислота, лейцин.'),
+    ('Минералы и увлажнение', 'Цинк, магний, кальций, медь, кремний; гиалуронат натрия, гидролизованная и нативная гиалуроновая кислота, гидролизованный коллаген.'),
+    ('5 витаминов', 'Пантенол, аденозин, биотин, ниацинамид, токоферол.'),
+]
+
+
+def build_pdrn():
+    """Crystal PDRN — по презентации «Комплексные биорепаранты» (фото, видео и результаты — в source/)"""
+    photo = img('index.html', 'source/photo-crystal-pdrn.webp', 1200)
+    video, poster = asset('source/pdrn-video.mp4'), img('index.html', 'source/pdrn-video-poster.webp', 720)
+    results = ''.join(
+        f'<figure class="rb-ba"><img src="{img("index.html", f"source/pdrn-result-{k}.webp", 1212)}" '
+        f'alt="Crystal PDRN: кожа до и после курса процедур, пример {k}" loading="lazy">'
+        f'<figcaption><span>До</span><span>После</span></figcaption></figure>' for k in range(1, 6))
+    tech = ('<div class="rb-split"><div class="rb-rich">'
+            '<p><strong>PDRN (полидезоксирибонуклеотид)</strong> — фрагменты ДНК, полученные из молок лососевых рыб. '
+            'Такая ДНК не содержит активных белков, поэтому не вызывает аллергии, а после очистки и ферментативного гидролиза чистота превышает 95%.</p>'
+            '<p>Эффективность зависит от размера молекул: быстрее и качественнее регенерация идёт со <strong>среднемолекулярным PDRN 50–1 500 кДа</strong> — именно он входит в Crystal PDRN.</p>'
+            '<p>PDRN воздействует на аденозиновые A2A-рецепторы фибробластов: запускает синтез собственного коллагена, усиливает противовоспалительные процессы '
+            'и рост сосудов (VEGF), снижает активность ферментов, разрушающих матрикс.</p></div>'
+            + feats([(ICON['heart'], 'Ранозаживляющее', 'Ускоряет закрытие ран и улучшает качество заживления.'),
+                     (ICON['shield'], 'Противовоспалительное', 'Снижает уровень провоспалительных цитокинов.'),
+                     (ICON['flask'], 'Увлажняющее', 'Фибробласты производят новые гликозаминогликаны.'),
+                     (ICON['star'], 'Осветляющее и антиоксидантное', 'Снижает синтез меланина и оксидативный стресс.')], cols=2)
+            + '</div>')
+    head = (f'<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div>{crumbs([("JeuDérm", "/jeuderm"), ("Crystal PDRN", None)])}'
+            '<span class="rb-kicker">JeuDérm · PDRN + HA 3%</span><h1>Crystal PDRN</h1><hr class="rb-rule">'
+            '<div class="rb-lead rb-rich"><p>Комплексный биорепарант: синергия полинуклеотидов, пептидных биорегуляторов и гиалуроновой кислоты — '
+            'работает не только с признаками, но и с причиной проблемы кожи.</p></div>'
+            '<div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a><a class="rb-btn" href="#rezultaty">Результаты</a></div></div>'
+            f'<div class="rb-pdrn-media"><img src="{photo}" alt="Флакон Crystal PDRN + HA 3%, 5 мл" fetchpriority="high">'
+            f'<video src="{video}" poster="{poster}" autoplay muted loop playsinline preload="metadata" aria-label="Crystal PDRN — видео"></video></div></div></section>')
+    indic = ('<section class="rb-sec"><div class="rb-wrap"><div class="rb-split"><div><span class="rb-kicker">Показания</span><h2>Для каких задач</h2><hr class="rb-rule">'
+             '<div class="rb-rich"><ul><li>Акне и постакне</li><li>Хроно- и фотостарение</li><li>«Стрессовая» кожа, кожа курильщика</li>'
+             '<li>Купероз, сосудистые звёздочки, розацеа</li><li>Гиперпигментация</li><li>Выпадение и поредение волос</li>'
+             '<li>Рубцы и стрии, в том числе послеродовые</li><li>Подготовка и реабилитация после хирургических вмешательств, нитевого лифтинга, лазерных процедур</li></ul></div></div>'
+             '<div class="rb-panel"><span class="rb-kicker">Противопоказания</span><div class="rb-rich"><ul><li>Возраст до 18 лет</li>'
+             '<li>Аутоиммунные и острые инфекционные заболевания</li><li>Беременность и лактация</li><li>Воспаления на коже в зоне процедуры</li></ul></div></div></div></div></section>')
+    body = (head
+            + f'<section class="rb-sec" style="padding-top:0"><div class="rb-wrap">{stats([("6 000 ppm", "полинуклеотидов (PDRN)"), ("2 000 ppm", "пептидов, 8 видов"), ("18", "факторов роста"), ("5 × 5 мл", "ампул в упаковке")])}</div></section>'
+            + section('Технология', 'Что такое PDRN', tech)
+            + section('Состав', 'Мультикомпонентная формула', faq(PDRN_COMP))
+            + section('Преимущества', 'Почему выбирают Crystal PDRN', feats([
+                (ICON['shield'], 'Высокая очистка ДНК', 'Запатентованная технология очистки полинуклеотидов.'),
+                (ICON['heart'], 'Без аллергических реакций', 'Нет белковой структуры — нет иммунного ответа.'),
+                (ICON['star'], 'Безболезненно', 'Пептид — аналог энкефалина делает введение комфортным.'),
+                (ICON['gift'], 'Результат после 1 процедуры', 'Без реабилитационного периода.')]))
+            + indic
+            + section('Курс', 'Схема процедур', steps([
+                ('Стимулирующие процедуры', '2 процедуры в месяц, интервал 7–14 дней.'),
+                ('Базовый курс', '3 процедуры с интервалом 7–14 дней.'),
+                ('Интенсивный курс', '5 процедур с интервалом 7–14 дней — для выраженных задач.'),
+                ('Поддержка', '1 процедура в 3 месяца, чтобы сохранить результат.')]))
+            + f'<section class="rb-sec" id="rezultaty"><div class="rb-wrap"><span class="rb-kicker">Результаты</span><h2>До и после курса</h2><hr class="rb-rule">'
+              f'<div class="rb-bas">{results}</div><p class="rb-muted" style="margin-top:18px;font-size:14px">Фото из практики косметологов. Результат индивидуален и зависит от исходного состояния кожи.</p></div></section>'
+            + cta('Узнать цену и получить протокол', 'Оставьте заявку — менеджер пришлёт прайс для специалистов и протокол процедур Crystal PDRN.', btn2=('Все средства JeuDérm', '/jeuderm'))
+            + WARN_SEC)
+    page('/crystal-pdrn', 'Crystal PDRN', body, {
+        'title': 'Crystal PDRN (JeuDérm) — PDRN + HA 3% для косметологов | Революшн Био',
+        'description': 'Комплексный биорепарант Crystal PDRN: 6 000 ppm полинуклеотидов, 2 000 ppm пептидов, 18 факторов роста, гиалуроновая кислота. Состав, показания, курс, результаты.',
+        'keywords': 'Crystal PDRN, Кристал ПДРН, PDRN, полинуклеотиды, биорепарант, JeuDérm'})
+
+
 def build_calyra():
     p = dict(CALYRA, img=img('index.html', 'source/round-calyra.webp', 1100), alt='Calyra Lux 5')
     body = hero('Calyra Lux 5', [('Calyra Lux 5', None)], '<p>Новая эра долголетия кожи: CAP Пептид 5, полинуклеотиды (PN) и гиалуронат натрия в одном шприце.</p>', art=PAGE_ART.get('/calyra-lux-5')) + f'''
@@ -1441,6 +1529,7 @@ build_home()
 build_jeuderm(JD)
 build_rejusome(RJ)
 build_calyra()
+build_pdrn()
 build_kosmetologam()
 build_pacientam()
 build_about()
@@ -1456,11 +1545,11 @@ def old_url(rel):
     return '/' if rel == 'index.html' else '/' + rel[:-5]
 
 OLD_PRODUCT = {o: f'/rejusome#p-{p["id"]}' for p in RJ for o in p['old']}
-OLD_PRODUCT['product/item/59-crystal-pdrn.html'] = '/jeuderm?line=pdrn#p-crystal-pdrn'
+OLD_PRODUCT['product/item/59-crystal-pdrn.html'] = '/crystal-pdrn'
 OLD_PRODUCT['product/item/81-jeuderm-homecare.html'] = '/jeuderm?care=home'
 OLD_PRODUCT['product/item/82-jeuderm-pofessional.html'] = '/jeuderm?care=pro'
 OLD_CAT = {
-    '7-jeuderm': '/jeuderm', '9-biorevitalizatsiya': '/jeuderm?line=pdrn', '5-ekzosomy': '/rejusome?type=serum',
+    '7-jeuderm': '/jeuderm', '9-biorevitalizatsiya': '/crystal-pdrn', '5-ekzosomy': '/rejusome?type=serum',
     '19-trikhologiya': '/rejusome?type=hair', '11-pro-skincare': '/rejusome?type=cosmetics',
 }
 def new_url(rel):
