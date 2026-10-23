@@ -382,6 +382,23 @@ def css():
 #rb .rb-btn--fill{background:var(--accent);color:var(--accent-ink)}
 #rb .rb-btn--fill:hover{background:#5fd8e9;color:var(--accent-ink)}
 #rb .rb-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+/* фоновые линии — отсылки к технологиям: ДНК (PN, PDRN), пептиды, экзосомы */
+#rb .rb-bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#rb .rb-bgfx svg{position:absolute;inset:-10% -5%;width:110%;height:120%;transform:translate3d(0,calc(var(--sy,0) * -0.12px),0)}
+#rb .rb-bgfx path,#rb .rb-bgfx line,#rb .rb-bgfx circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke}
+#rb .rb-bgfx__dna path{stroke:rgba(54,203,224,.16);stroke-dasharray:6 10;animation:rb-flowline 40s linear infinite}
+#rb .rb-bgfx__dna line{stroke:rgba(54,203,224,.08)}
+#rb .rb-bgfx__dna{animation:rb-drift 60s ease-in-out infinite alternate}
+#rb .rb-bgfx__pep path{stroke:rgba(255,255,255,.07)}
+#rb .rb-bgfx__pep circle{stroke:rgba(54,203,224,.22);fill:rgba(54,203,224,.05)}
+#rb .rb-bgfx__pep{animation:rb-drift 50s ease-in-out -12s infinite alternate-reverse}
+#rb .rb-bgfx__exo circle{stroke:rgba(54,203,224,.12)}
+#rb .rb-bgfx__exo{transform-origin:1180px 620px;animation:rb-breathe 14s ease-in-out infinite}
+@keyframes rb-flowline{to{stroke-dashoffset:-400}}
+@keyframes rb-drift{from{transform:translate(-40px,0)}to{transform:translate(60px,30px)}}
+@keyframes rb-breathe{50%{transform:scale(1.06) translate(-10px,8px)}}
+#rb>header,#rb>main,#rb>footer{position:relative;z-index:1}
+#rb>header{z-index:50}
 /* шапка */
 #rb .rb-head{position:sticky;top:0;z-index:50;background:rgba(43,48,53,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 #rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
@@ -613,6 +630,12 @@ def css():
 #rb .rb-prod__desc{font-size:14px;color:var(--muted)}
 #rb .rb-prod__more{margin-top:auto;padding-top:8px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 #rb .rb-cat__empty{color:var(--muted)}
+#rb .rb-keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+#rb .rb-keys span{padding:4px 10px;border-radius:999px;font-size:11.5px;line-height:1.3;color:#dffbff;background:rgba(54,203,224,.12);border:1px solid rgba(54,203,224,.35)}
+#rb .rb-dlg__keys{margin:14px 0 4px}
+#rb .rb-dlg__klabel{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#rb .rb-dlg__keys .rb-keys span{font-size:13px;padding:6px 12px;box-shadow:0 0 14px rgba(54,203,224,.15)}
+#rb .rb-dl dd ol{margin:0;padding-left:1.2em}#rb .rb-dl dd li{margin-bottom:4px}#rb .rb-dl dd b{color:#fff;font-weight:600}
 #rb .rb-dlg{padding:0;border:1px solid rgba(54,203,224,.35);border-radius:22px;background:#252a2e;color:#fff;width:min(980px,calc(100vw - 32px));max-height:calc(100vh - 40px);box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
 #rb .rb-dlg::backdrop{background:rgba(15,18,20,.72);backdrop-filter:blur(6px)}
 #rb .rb-dlg[open]{animation:rb-dlg .45s cubic-bezier(.2,.7,.2,1)}
@@ -803,14 +826,20 @@ def css():
 #rb .rb-ci a:hover{color:var(--accent)}
 #rb .rb-map{min-height:420px;border:0;width:100%;height:100%;border-radius:var(--r)}
 /* подвал */
-#rb .rb-foot{border-top:1px solid var(--line);padding:56px 0 40px;font-size:14px;color:var(--muted);background:rgba(0,0,0,.12)}
-#rb .rb-foot .rb-wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
-#rb .rb-foot a{text-decoration:none}
+#rb .rb-foot{position:relative;border-top:1px solid rgba(54,203,224,.18);padding:56px 0 26px;font-size:14px;color:var(--muted);background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.22))}
+#rb .rb-foot a{text-decoration:none;color:inherit;transition:color .2s}
 #rb .rb-foot a:hover{color:var(--accent)}
-#rb .rb-foot nav{display:flex;flex-direction:column;gap:8px}
-#rb .rb-social{display:flex;gap:10px;flex-wrap:wrap}
-#rb .rb-social a{border:1px solid var(--line);border-radius:999px;padding:6px 14px;transition:border-color .2s}
+#rb .rb-fgrid{display:grid;grid-template-columns:1.5fr repeat(4,minmax(0,1fr));gap:16px}
+#rb .rb-fcard{display:flex;flex-direction:column;gap:9px;padding:22px;border-radius:18px;border:1px solid rgba(54,203,224,.18);background:linear-gradient(160deg,rgba(54,203,224,.07),rgba(255,255,255,.02) 50%)}
+#rb .rb-fcard__t{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+#rb .rb-fcard--main{grid-row:span 2}
+#rb .rb-fphone{font-family:var(--serif);font-size:22px;color:#fff!important}
+#rb .rb-fcard .rb-btns{margin-top:8px}
+#rb .rb-social{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+#rb .rb-social a{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:13px}
 #rb .rb-social a:hover{border-color:var(--accent)}
+#rb .rb-fbottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:rgba(255,255,255,.5)}
+#rb .rb-fbottom>span{display:flex;flex-wrap:wrap;gap:6px 20px}
 /* появление при прокрутке (только если работает JS) */
 #rb.rb-js .rb-reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 #rb.rb-js .rb-reveal.is-in{opacity:1;transform:none}
@@ -821,11 +850,12 @@ def css():
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
 @media (max-width:1280px){#rb .rb-holo{right:1%;top:7%}}
-@media (max-width:1100px){#rb .rb-feats,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-split{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1100px){#rb .rb-fgrid{grid-template-columns:repeat(3,minmax(0,1fr))}#rb .rb-fcard--main{grid-column:1/-1;grid-row:auto}
+  #rb .rb-feats,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-split{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){#rb .rb-feats,#rb .rb-feats--3,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4,#rb .rb-duo,#rb .rb-split .rb-feats{grid-template-columns:minmax(0,1fr)}
   #rb .rb-dlg__in{grid-template-columns:minmax(0,1fr)}#rb .rb-dlg__ph{min-height:0;max-height:38vh}#rb .rb-dlg__bd{padding:24px 20px;max-height:none}
   #rb .rb-dlg{max-height:calc(100vh - 20px);overflow:auto}#rb .rb-prods{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  #rb .rb-prod__bd{padding:12px}#rb .rb-prod__bd b{font-size:16px}#rb .rb-prod__desc{display:none}#rb .rb-qa__a{padding-right:0}}
+  #rb .rb-prod__bd{padding:12px}#rb .rb-prod__bd b{font-size:16px}#rb .rb-prod__desc,#rb .rb-prod__bd .rb-keys{display:none}#rb .rb-qa__a{padding-right:0}}
 @media (max-width:1024px){
   #rb .rb-intro{min-height:0;padding:6px 0 40px}
   #rb .rb-intro>.rb-wrap{grid-template-columns:minmax(0,1fr);gap:34px}
@@ -848,7 +878,8 @@ def css():
   #rb .rb-rail{grid-auto-columns:78%;margin:0 -24px;padding:6px 24px 14px;scroll-padding:0 24px}
   #rb .rb-pgrid{grid-template-columns:minmax(0,1fr);gap:18px}#rb .rb-railnav{display:none}}
 @media (max-width:820px){#rb{font-size:16px}
-  #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap,#rb .rb-hero--art .rb-wrap{grid-template-columns:minmax(0,1fr)}
+  #rb .rb-product,#rb .rb-contacts,#rb .rb-hero--art .rb-wrap{grid-template-columns:minmax(0,1fr)}
+  #rb .rb-fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-fcard--main{grid-column:1/-1;grid-row:auto}
   #rb .rb-hero__art{width:min(72%,300px);justify-self:center;order:-1}
   #rb .rb-product{gap:32px}#rb .rb-product>div:first-child{position:static}
   #rb .rb-row{grid-template-columns:minmax(0,1fr)}#rb .rb-row__body{padding:6px 12px 14px}
@@ -884,15 +915,22 @@ def header(alias):
 </div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню">{mob}<a href="{PHONE_HREF}">{PHONE}</a></nav></header>'''
 
 def footer():
-    links = ''.join(f'<a href="{h}">{t}</a>' for t, h in NAV)
+    groups = [(it[0], [(t, h) for t, d, h in it[2]]) for it in MENU if not it[1]]
+    groups.insert(2, ('Пациентам', [('Как проходит процедура', '/pacientam'), ('Где пройти процедуру', '/pacientam#voprosy'), ('Задать вопрос', '#popup:feedback')]))
+    cols = ''.join(f'<div class="rb-fcard"><span class="rb-fcard__t">{t}</span>' + ''.join(f'<a href="{h}">{n}</a>' for n, h in links) + '</div>' for t, links in groups)
+    soc = ''.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in (
+        ('Telegram', 'https://t.me/revolutionbio'), ('WhatsApp', 'https://wa.me/79250843090'), ('MAX', MAX_URL),
+        ('ВКонтакте', 'https://vk.com/revolutionbio'), ('Дзен', 'https://dzen.ru/revolutionbio')))
     return f'''<footer class="rb-foot"><div class="rb-wrap">
-<div><p>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены.<br>ИНН: 9709100594 · КПП: 770901001</p>
-<p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
-<nav aria-label="Разделы">{links}<a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a></nav>
-<div><p><a href="{PHONE_HREF}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a><br>Москва, Земляной Вал 7, офис 408</p>
-<div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="{MAX_URL}" target="_blank" rel="noopener">MAX</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
-<p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>
+<div class="rb-fgrid">
+<div class="rb-fcard rb-fcard--main"><span class="rb-fcard__t">Связаться с нами</span><a class="rb-fphone" href="{PHONE_HREF}">{PHONE}</a>
+<a href="mailto:{EMAIL}">{EMAIL}</a><span class="rb-muted">Москва, Земляной Вал 7, офис 408</span>
+<div class="rb-social">{soc}</div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:feedback">Обратная связь</a></div></div>
+{cols}</div>
+<div class="rb-fbottom"><span>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены · ИНН 9709100594 · КПП 770901001</span>
+<span><a href="/policy">Политика обработки персональных данных</a><a href="/soglasie">Согласие на обработку персональных данных</a></span></div>
 </div></footer>'''
+
 
 JS = '''<script>
 (function(){var r=document.getElementById('rb');if(!r)return;
@@ -904,6 +942,7 @@ r.querySelectorAll('.rb-dd').forEach(function(d){var t=d.querySelector('.rb-nav_
 document.addEventListener('click',function(){r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
 r.querySelectorAll('.rb-feat').forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px');});});
+var bg=r.querySelector('.rb-bgfx');if(bg&&!rm){var bt=false;window.addEventListener('scroll',function(){if(bt)return;bt=true;requestAnimationFrame(function(){bg.style.setProperty('--sy',window.scrollY);bt=false;});},{passive:true});}
 var y=r.querySelector('[data-rb-year]');if(y)y.textContent=new Date().getFullYear();
 r.querySelectorAll('.rb-gal').forEach(function(g){var im=g.querySelector('.rb-gal__main img'),th=[].slice.call(g.querySelectorAll('.rb-gal__thumbs button')),i=0;
  function go(n){if(!th.length)return;i=(n+th.length)%th.length;im.src=th[i].getAttribute('data-src');th.forEach(function(t,k){if(k===i)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current');});}
@@ -963,7 +1002,7 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
   [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
  function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
   dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
-  dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var pd=c.querySelector('.rb-prod__pd');
+  dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var ks=c.querySelector('.rb-keys'),dk=dlg.querySelector('.rb-dlg__keys');if(dk)dk.innerHTML=ks?'<span class="rb-dlg__klabel">Ключевые компоненты</span>'+ks.outerHTML:'';var pd=c.querySelector('.rb-prod__pd');
   dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;var u=pd.getAttribute('data-url'),more=u?'<div class="rb-dl"><dt>Подробнее</dt><dd><a href="'+u+'" target="_blank" rel="noopener">Описание, протоколы и результаты на сайте бренда →</a></dd></div>':'';
   dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('')+more;
   if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}dlg.querySelector('.rb-dlg__bd').scrollTop=0;
@@ -1066,7 +1105,7 @@ def page(alias, title, body, seo):
      Формы: создайте на странице блок «Форма в попапе» (BF502N) со ссылкой #popup:callback
      и второй с #popup:feedback — см. README.md. -->
 '''
-    doc = head + FONTS + '\n' + css() + f'\n<div id="rb" lang="ru">\n{header(alias)}\n<main>\n{body}\n</main>\n{footer()}\n</div>\n' + JS + '\n'
+    doc = head + FONTS + '\n' + css() + f'\n<div id="rb" lang="ru">\n{BGFX}\n{header(alias)}\n<main>\n{body}\n</main>\n{footer()}\n</div>\n' + JS + '\n'
     name = 'home' if alias == '/' else alias.strip('/')
     for d, ext in (('tilda', '.html'), ('tilda-txt', '.txt')):
         with open(os.path.join(OUT, d, name + ext), 'w', encoding='utf-8') as f:
@@ -1075,6 +1114,7 @@ def page(alias, title, body, seo):
 
 SEO = []
 REPORT = []
+BGFX = '<div class="rb-bgfx" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><g class="rb-bgfx__dna"><path d="M-60 120 C 180 40, 300 220, 540 140 S 900 60, 1140 160 S 1440 260, 1560 180"/><path d="M-60 180 C 180 260, 300 80, 540 160 S 900 260, 1140 140 S 1440 60, 1560 140"/><line x1="60" y1="132" x2="60" y2="168"/><line x1="180" y1="98" x2="180" y2="210"/><line x1="300" y1="132" x2="300" y2="174"/><line x1="420" y1="170" x2="420" y2="138"/><line x1="540" y1="140" x2="540" y2="160"/><line x1="660" y1="112" x2="660" y2="190"/><line x1="780" y1="96" x2="780" y2="220"/><line x1="900" y1="112" x2="900" y2="214"/><line x1="1020" y1="150" x2="1020" y2="160"/><line x1="1140" y1="160" x2="1140" y2="140"/><line x1="1260" y1="186" x2="1260" y2="104"/><line x1="1380" y1="200" x2="1380" y2="96"/></g><g class="rb-bgfx__pep"><path d="M80 760 L220 700 L340 742 L470 676 L600 716 L720 652"/><circle cx="80" cy="760" r="5"/><circle cx="220" cy="700" r="5"/><circle cx="340" cy="742" r="5"/><circle cx="470" cy="676" r="5"/><circle cx="600" cy="716" r="5"/><circle cx="720" cy="652" r="5"/></g><g class="rb-bgfx__exo"><circle cx="1180" cy="620" r="46"/><circle cx="1180" cy="620" r="25"/><circle cx="1290" cy="720" r="26"/><circle cx="1290" cy="720" r="14"/><circle cx="1080" cy="760" r="18"/><circle cx="1080" cy="760" r="10"/><circle cx="980" cy="430" r="14"/><circle cx="980" cy="430" r="8"/></g></svg></div>'
 
 def seo_of(s, fallback_title):
     t = title_of(s) or fallback_title
@@ -1096,12 +1136,19 @@ RJ_TYPES = [('serum', 'Стерильные сыворотки'), ('cosmetics', 
 CARE_LABEL = {'pro': 'ПРО', 'home': 'Дом'}
 
 
+def key_parts(text, n=3):
+    """первые активы из списка «Активные ингредиенты» — для акцента в карточке"""
+    parts = [x.strip(' .') for x in re.split(r',\s*(?![^()]*\))', text) if x.strip(' .')]
+    return parts[:n]
+
+
 def jd_products():
     out = []
     for p in json.load(open(os.path.join(DATA, 'jeuderm-products.json'), encoding='utf-8')):
         out.append(dict(id=p['id'], en=p['en'], title=p['title'], desc=p['desc'], img=p['img'], alt=p.get('alt') or p['title'],
                         care=p['care'].split(), lines=p['lines'], vol=p.get('vol'), care_t=p.get('care_t'),
-                        fields=[(k, esc(v)) for k, v in p['fields']]))
+                        key=p.get('key') or key_parts(dict(p['fields']).get('Активные ингредиенты', '')),
+                        fields=[(k, v if '<' in v else esc(v)) for k, v in p['fields']]))
     return out
 
 
@@ -1157,9 +1204,10 @@ def product_card(p, attrs):
     fields = ''.join(f'<div class="rb-dl"><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in p['fields'])
     # ссылку на сайт бренда добавляет окно товара: ссылка внутри ссылки-карточки ломает разметку
     url_attr = f' data-url="{p["url"]}"' if p.get('url') else ''
+    keys = ('<span class="rb-keys">' + ''.join(f'<span>{esc(k)}</span>' for k in p['key']) + '</span>') if p.get('key') else ''
     return (f'<a class="rb-prod{" rb-prod--photo" if p.get("photo_card") else ""}" href="#p-{p["id"]}" data-id="{p["id"]}" {attrs}>'
             f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"{f" style={chr(34)}object-position:{p[chr(102)+'ocus']}{chr(34)}" if p.get("focus") else ""}><span class="rb-prod__tags">{tags}</span></span>'
-            f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span><span class="rb-prod__more">Подробнее <i aria-hidden="true">→</i></span></span>'
+            f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span>{keys}<span class="rb-prod__more">Подробнее <i aria-hidden="true">→</i></span></span>'
             f'<span class="rb-prod__pd" hidden{url_attr}><span class="rb-prod__meta">{esc(meta)}</span>{fields}</span></a>')
 
 
@@ -1177,7 +1225,7 @@ def catalog(products, groups):
     return f'''<div class="rb-cat"><div class="rb-filters">{filt}</div><div class="rb-prods">{cards}</div>
 <p class="rb-cat__empty" hidden>По этому сочетанию фильтров товаров нет — выберите другой вариант.</p>
 <dialog class="rb-dlg" aria-labelledby="rb-dlg-t"><div class="rb-dlg__in"><div class="rb-dlg__ph"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
-<div class="rb-dlg__bd"><button class="rb-dlg__x" type="button" aria-label="Закрыть">×</button><span class="rb-prod__en"></span><h3 id="rb-dlg-t"></h3><div class="rb-dlg__meta"></div><p class="rb-dlg__desc"></p><dl class="rb-dlg__dl"></dl>
+<div class="rb-dlg__bd"><button class="rb-dlg__x" type="button" aria-label="Закрыть">×</button><span class="rb-prod__en"></span><h3 id="rb-dlg-t"></h3><div class="rb-dlg__meta"></div><p class="rb-dlg__desc"></p><div class="rb-dlg__keys"></div><dl class="rb-dlg__dl"></dl>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price" data-close>Узнать цену</a><a class="rb-btn" href="#popup:feedback" data-close>Задать вопрос</a></div></div></div></dialog></div>'''
 
 
@@ -1232,7 +1280,7 @@ WEBINARS = [  # записи на Рутубе (из раздела «Обуче
 ]
 RUTUBE = 'https://rutube.ru/channel/42947212/'
 UPCOMING = [  # ближайшие вебинары — обновляйте список
-    ('10 ноября', 'Пилинг без перегрузки: контролируемое обновление кожи с JeuDérm',
+    ('10 ноября', 'Эксфолиация без перегрузки: контролируемое обновление кожи с JeuDérm',
      'Практический вебинар о Molecular Exfoliate: грамотные сочетания, частые ошибки и домашнее сопровождение клиента.'),
     ('24 ноября', 'Calyra Lux 5: знакомство с новинкой',
      'Концепция и ключевые компоненты продукта, чем он отличается от привычных решений и как включить его в практику.'),
@@ -1500,7 +1548,7 @@ def build_pacientam():
 {section('Вопросы', 'Частые вопросы', faq([
         ('Где пройти процедуру?', '<p>Оставьте заявку — мы подскажем косметолога или клинику, которые работают с нашими препаратами.</p>'),
         ('Можно ли купить препараты самостоятельно?', '<p>Профессиональные препараты применяет специалист. Средства для домашнего ухода подберёт ваш косметолог.</p>'),
-        ('Есть ли противопоказания?', '<p>Да, как у любых процедур. Перед курсом обязательно проконсультируйтесь со специалистом.</p>')]))}
+        ('Есть ли противопоказания?', '<p>Да, как у любых процедур. Перед курсом обязательно проконсультируйтесь со специалистом.</p>')]), sid='voprosy')}
 {cta('Подскажем, где пройти процедуру', 'Оставьте заявку — мы свяжемся с вами и порекомендуем специалиста.', btn='Задать вопрос', href='#popup:feedback')}{WARN_SEC}'''
     page('/pacientam', 'Пациентам', body, {'title': 'Пациентам — процедуры с JeuDérm, Rejusome и Calyra Lux 5 | Революшн Био',
                                            'description': 'Что дают процедуры с препаратами JeuDérm, Rejusome и Calyra Lux 5, как проходит курс и где найти специалиста.',

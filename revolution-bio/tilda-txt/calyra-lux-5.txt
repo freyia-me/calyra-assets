@@ -31,6 +31,23 @@
 #rb .rb-btn--fill{background:var(--accent);color:var(--accent-ink)}
 #rb .rb-btn--fill:hover{background:#5fd8e9;color:var(--accent-ink)}
 #rb .rb-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+/* фоновые линии — отсылки к технологиям: ДНК (PN, PDRN), пептиды, экзосомы */
+#rb .rb-bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#rb .rb-bgfx svg{position:absolute;inset:-10% -5%;width:110%;height:120%;transform:translate3d(0,calc(var(--sy,0) * -0.12px),0)}
+#rb .rb-bgfx path,#rb .rb-bgfx line,#rb .rb-bgfx circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke}
+#rb .rb-bgfx__dna path{stroke:rgba(54,203,224,.16);stroke-dasharray:6 10;animation:rb-flowline 40s linear infinite}
+#rb .rb-bgfx__dna line{stroke:rgba(54,203,224,.08)}
+#rb .rb-bgfx__dna{animation:rb-drift 60s ease-in-out infinite alternate}
+#rb .rb-bgfx__pep path{stroke:rgba(255,255,255,.07)}
+#rb .rb-bgfx__pep circle{stroke:rgba(54,203,224,.22);fill:rgba(54,203,224,.05)}
+#rb .rb-bgfx__pep{animation:rb-drift 50s ease-in-out -12s infinite alternate-reverse}
+#rb .rb-bgfx__exo circle{stroke:rgba(54,203,224,.12)}
+#rb .rb-bgfx__exo{transform-origin:1180px 620px;animation:rb-breathe 14s ease-in-out infinite}
+@keyframes rb-flowline{to{stroke-dashoffset:-400}}
+@keyframes rb-drift{from{transform:translate(-40px,0)}to{transform:translate(60px,30px)}}
+@keyframes rb-breathe{50%{transform:scale(1.06) translate(-10px,8px)}}
+#rb>header,#rb>main,#rb>footer{position:relative;z-index:1}
+#rb>header{z-index:50}
 /* шапка */
 #rb .rb-head{position:sticky;top:0;z-index:50;background:rgba(43,48,53,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 #rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
@@ -262,6 +279,12 @@
 #rb .rb-prod__desc{font-size:14px;color:var(--muted)}
 #rb .rb-prod__more{margin-top:auto;padding-top:8px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 #rb .rb-cat__empty{color:var(--muted)}
+#rb .rb-keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+#rb .rb-keys span{padding:4px 10px;border-radius:999px;font-size:11.5px;line-height:1.3;color:#dffbff;background:rgba(54,203,224,.12);border:1px solid rgba(54,203,224,.35)}
+#rb .rb-dlg__keys{margin:14px 0 4px}
+#rb .rb-dlg__klabel{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#rb .rb-dlg__keys .rb-keys span{font-size:13px;padding:6px 12px;box-shadow:0 0 14px rgba(54,203,224,.15)}
+#rb .rb-dl dd ol{margin:0;padding-left:1.2em}#rb .rb-dl dd li{margin-bottom:4px}#rb .rb-dl dd b{color:#fff;font-weight:600}
 #rb .rb-dlg{padding:0;border:1px solid rgba(54,203,224,.35);border-radius:22px;background:#252a2e;color:#fff;width:min(980px,calc(100vw - 32px));max-height:calc(100vh - 40px);box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
 #rb .rb-dlg::backdrop{background:rgba(15,18,20,.72);backdrop-filter:blur(6px)}
 #rb .rb-dlg[open]{animation:rb-dlg .45s cubic-bezier(.2,.7,.2,1)}
@@ -452,14 +475,20 @@
 #rb .rb-ci a:hover{color:var(--accent)}
 #rb .rb-map{min-height:420px;border:0;width:100%;height:100%;border-radius:var(--r)}
 /* подвал */
-#rb .rb-foot{border-top:1px solid var(--line);padding:56px 0 40px;font-size:14px;color:var(--muted);background:rgba(0,0,0,.12)}
-#rb .rb-foot .rb-wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
-#rb .rb-foot a{text-decoration:none}
+#rb .rb-foot{position:relative;border-top:1px solid rgba(54,203,224,.18);padding:56px 0 26px;font-size:14px;color:var(--muted);background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.22))}
+#rb .rb-foot a{text-decoration:none;color:inherit;transition:color .2s}
 #rb .rb-foot a:hover{color:var(--accent)}
-#rb .rb-foot nav{display:flex;flex-direction:column;gap:8px}
-#rb .rb-social{display:flex;gap:10px;flex-wrap:wrap}
-#rb .rb-social a{border:1px solid var(--line);border-radius:999px;padding:6px 14px;transition:border-color .2s}
+#rb .rb-fgrid{display:grid;grid-template-columns:1.5fr repeat(4,minmax(0,1fr));gap:16px}
+#rb .rb-fcard{display:flex;flex-direction:column;gap:9px;padding:22px;border-radius:18px;border:1px solid rgba(54,203,224,.18);background:linear-gradient(160deg,rgba(54,203,224,.07),rgba(255,255,255,.02) 50%)}
+#rb .rb-fcard__t{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+#rb .rb-fcard--main{grid-row:span 2}
+#rb .rb-fphone{font-family:var(--serif);font-size:22px;color:#fff!important}
+#rb .rb-fcard .rb-btns{margin-top:8px}
+#rb .rb-social{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+#rb .rb-social a{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:13px}
 #rb .rb-social a:hover{border-color:var(--accent)}
+#rb .rb-fbottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:rgba(255,255,255,.5)}
+#rb .rb-fbottom>span{display:flex;flex-wrap:wrap;gap:6px 20px}
 /* появление при прокрутке (только если работает JS) */
 #rb.rb-js .rb-reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 #rb.rb-js .rb-reveal.is-in{opacity:1;transform:none}
@@ -470,11 +499,12 @@
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
 @media (max-width:1280px){#rb .rb-holo{right:1%;top:7%}}
-@media (max-width:1100px){#rb .rb-feats,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-split{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1100px){#rb .rb-fgrid{grid-template-columns:repeat(3,minmax(0,1fr))}#rb .rb-fcard--main{grid-column:1/-1;grid-row:auto}
+  #rb .rb-feats,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-split{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){#rb .rb-feats,#rb .rb-feats--3,#rb .rb-steps,#rb .rb-videos,#rb .rb-stats.rb-stats--4,#rb .rb-duo,#rb .rb-split .rb-feats{grid-template-columns:minmax(0,1fr)}
   #rb .rb-dlg__in{grid-template-columns:minmax(0,1fr)}#rb .rb-dlg__ph{min-height:0;max-height:38vh}#rb .rb-dlg__bd{padding:24px 20px;max-height:none}
   #rb .rb-dlg{max-height:calc(100vh - 20px);overflow:auto}#rb .rb-prods{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  #rb .rb-prod__bd{padding:12px}#rb .rb-prod__bd b{font-size:16px}#rb .rb-prod__desc{display:none}#rb .rb-qa__a{padding-right:0}}
+  #rb .rb-prod__bd{padding:12px}#rb .rb-prod__bd b{font-size:16px}#rb .rb-prod__desc,#rb .rb-prod__bd .rb-keys{display:none}#rb .rb-qa__a{padding-right:0}}
 @media (max-width:1024px){
   #rb .rb-intro{min-height:0;padding:6px 0 40px}
   #rb .rb-intro>.rb-wrap{grid-template-columns:minmax(0,1fr);gap:34px}
@@ -497,7 +527,8 @@
   #rb .rb-rail{grid-auto-columns:78%;margin:0 -24px;padding:6px 24px 14px;scroll-padding:0 24px}
   #rb .rb-pgrid{grid-template-columns:minmax(0,1fr);gap:18px}#rb .rb-railnav{display:none}}
 @media (max-width:820px){#rb{font-size:16px}
-  #rb .rb-product,#rb .rb-contacts,#rb .rb-foot .rb-wrap,#rb .rb-hero--art .rb-wrap{grid-template-columns:minmax(0,1fr)}
+  #rb .rb-product,#rb .rb-contacts,#rb .rb-hero--art .rb-wrap{grid-template-columns:minmax(0,1fr)}
+  #rb .rb-fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-fcard--main{grid-column:1/-1;grid-row:auto}
   #rb .rb-hero__art{width:min(72%,300px);justify-self:center;order:-1}
   #rb .rb-product{gap:32px}#rb .rb-product>div:first-child{position:static}
   #rb .rb-row{grid-template-columns:minmax(0,1fr)}#rb .rb-row__body{padding:6px 12px 14px}
@@ -511,6 +542,7 @@
 @media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
 </style>
 <div id="rb" lang="ru">
+<div class="rb-bgfx" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><g class="rb-bgfx__dna"><path d="M-60 120 C 180 40, 300 220, 540 140 S 900 60, 1140 160 S 1440 260, 1560 180"/><path d="M-60 180 C 180 260, 300 80, 540 160 S 900 260, 1140 140 S 1440 60, 1560 140"/><line x1="60" y1="132" x2="60" y2="168"/><line x1="180" y1="98" x2="180" y2="210"/><line x1="300" y1="132" x2="300" y2="174"/><line x1="420" y1="170" x2="420" y2="138"/><line x1="540" y1="140" x2="540" y2="160"/><line x1="660" y1="112" x2="660" y2="190"/><line x1="780" y1="96" x2="780" y2="220"/><line x1="900" y1="112" x2="900" y2="214"/><line x1="1020" y1="150" x2="1020" y2="160"/><line x1="1140" y1="160" x2="1140" y2="140"/><line x1="1260" y1="186" x2="1260" y2="104"/><line x1="1380" y1="200" x2="1380" y2="96"/></g><g class="rb-bgfx__pep"><path d="M80 760 L220 700 L340 742 L470 676 L600 716 L720 652"/><circle cx="80" cy="760" r="5"/><circle cx="220" cy="700" r="5"/><circle cx="340" cy="742" r="5"/><circle cx="470" cy="676" r="5"/><circle cx="600" cy="716" r="5"/><circle cx="720" cy="652" r="5"/></g><g class="rb-bgfx__exo"><circle cx="1180" cy="620" r="46"/><circle cx="1180" cy="620" r="25"/><circle cx="1290" cy="720" r="26"/><circle cx="1290" cy="720" r="14"/><circle cx="1080" cy="760" r="18"/><circle cx="1080" cy="760" r="10"/><circle cx="980" cy="430" r="14"/><circle cx="980" cy="430" r="8"/></g></svg></div>
 <header class="rb-head"><div class="rb-wrap">
 <a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@96180cf16c86/revolution-bio/img/logo-2d7bce.svg" alt="Революшн Био"></a>
 <nav class="rb-nav" aria-label="Меню"><a class="rb-nav__top" href="/">Главная</a><div class="rb-dd is-on"><button class="rb-nav__top" type="button" aria-expanded="false" aria-controls="rb-dd-1">Препараты<i aria-hidden="true"></i></button><div class="rb-dd__panel" id="rb-dd-1"><span class="rb-dd__title">Препараты</span><a href="/jeuderm"><b>JeuDérm</b><small>Пептидная космецевтика</small></a><a href="/rejusome"><b>Rejusome</b><small>Экзосомальные технологии</small></a><a href="/calyra-lux-5" aria-current="page"><b>Calyra Lux 5</b><small>Теломерная защита и долголетие</small></a><a href="/crystal-pdrn"><b>Crystal PDRN</b><small>PDRN + HA 3%</small></a></div></div><div class="rb-dd"><button class="rb-nav__top" type="button" aria-expanded="false" aria-controls="rb-dd-2">Для профессионалов<i aria-hidden="true"></i></button><div class="rb-dd__panel" id="rb-dd-2"><span class="rb-dd__title">Для профессионалов</span><a href="/kosmetologam"><b>Косметологам</b><small>Скидки, система лояльности, заказ</small></a><a href="/kosmetologam#obuchenie"><b>Обучение и вебинары</b><small>Вебинары по вторникам, записи</small></a><a href="/distributor"><b>Стать дистрибьютором</b><small>Партнёрство в вашем регионе</small></a></div></div><a class="rb-nav__top" href="/pacientam">Для пациентов</a><div class="rb-dd"><button class="rb-nav__top" type="button" aria-expanded="false" aria-controls="rb-dd-4">О компании<i aria-hidden="true"></i></button><div class="rb-dd__panel" id="rb-dd-4"><span class="rb-dd__title">О компании</span><a href="/about"><b>Революшн Био</b><small>Официальный дистрибьютор</small></a><a href="/proizvoditel"><b>Производитель</b><small>VIRTA-MED KOREA · ISO · GMP</small></a><a href="/kontakty"><b>Контакты</b><small>Телефоны, мессенджеры, адрес</small></a></div></div></nav>
@@ -527,12 +559,13 @@
 <section class="rb-sec"><div class="rb-wrap"><div class="rb-panel rb-cta"><div><h2>Узнать цену и записаться на обучение</h2><p class="rb-muted">Подробно о составе, технологии и протоколах — на официальном сайте Calyra Lux 5.</p></div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a><a class="rb-btn" href="https://calyralux.ru/">Сайт Calyra Lux 5</a></div></div></div></section><div class="rb-wrap"><p class="rb-warn">Имеются противопоказания. Перед применением необходима консультация специалиста.</p></div>
 </main>
 <footer class="rb-foot"><div class="rb-wrap">
-<div><p>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены.<br>ИНН: 9709100594 · КПП: 770901001</p>
-<p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
-<nav aria-label="Разделы"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/crystal-pdrn">Crystal PDRN</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a><a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a></nav>
-<div><p><a href="tel:+74951477040">+7 (495) 147-70-40</a><br><a href="mailto:info@revolution.bio">info@revolution.bio</a><br>Москва, Земляной Вал 7, офис 408</p>
-<div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://max.ru/u/f9LHodD0cOLKBWLODghgiSo7Io7UdoSgD9WyEFyj38AwuRwPD6M5HL3syog" target="_blank" rel="noopener">MAX</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
-<p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>
+<div class="rb-fgrid">
+<div class="rb-fcard rb-fcard--main"><span class="rb-fcard__t">Связаться с нами</span><a class="rb-fphone" href="tel:+74951477040">+7 (495) 147-70-40</a>
+<a href="mailto:info@revolution.bio">info@revolution.bio</a><span class="rb-muted">Москва, Земляной Вал 7, офис 408</span>
+<div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://max.ru/u/f9LHodD0cOLKBWLODghgiSo7Io7UdoSgD9WyEFyj38AwuRwPD6M5HL3syog" target="_blank" rel="noopener">MAX</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:feedback">Обратная связь</a></div></div>
+<div class="rb-fcard"><span class="rb-fcard__t">Препараты</span><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/crystal-pdrn">Crystal PDRN</a></div><div class="rb-fcard"><span class="rb-fcard__t">Для профессионалов</span><a href="/kosmetologam">Косметологам</a><a href="/kosmetologam#obuchenie">Обучение и вебинары</a><a href="/distributor">Стать дистрибьютором</a></div><div class="rb-fcard"><span class="rb-fcard__t">Пациентам</span><a href="/pacientam">Как проходит процедура</a><a href="/pacientam#voprosy">Где пройти процедуру</a><a href="#popup:feedback">Задать вопрос</a></div><div class="rb-fcard"><span class="rb-fcard__t">О компании</span><a href="/about">Революшн Био</a><a href="/proizvoditel">Производитель</a><a href="/kontakty">Контакты</a></div></div>
+<div class="rb-fbottom"><span>© <span data-rb-year>2026</span> ООО «Революшн Био» — все права защищены · ИНН 9709100594 · КПП 770901001</span>
+<span><a href="/policy">Политика обработки персональных данных</a><a href="/soglasie">Согласие на обработку персональных данных</a></span></div>
 </div></footer>
 </div>
 <script>
@@ -545,6 +578,7 @@ r.querySelectorAll('.rb-dd').forEach(function(d){var t=d.querySelector('.rb-nav_
 document.addEventListener('click',function(){r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
 r.querySelectorAll('.rb-feat').forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px');});});
+var bg=r.querySelector('.rb-bgfx');if(bg&&!rm){var bt=false;window.addEventListener('scroll',function(){if(bt)return;bt=true;requestAnimationFrame(function(){bg.style.setProperty('--sy',window.scrollY);bt=false;});},{passive:true});}
 var y=r.querySelector('[data-rb-year]');if(y)y.textContent=new Date().getFullYear();
 r.querySelectorAll('.rb-gal').forEach(function(g){var im=g.querySelector('.rb-gal__main img'),th=[].slice.call(g.querySelectorAll('.rb-gal__thumbs button')),i=0;
  function go(n){if(!th.length)return;i=(n+th.length)%th.length;im.src=th[i].getAttribute('data-src');th.forEach(function(t,k){if(k===i)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current');});}
@@ -604,7 +638,7 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
   [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
  function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
   dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
-  dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var pd=c.querySelector('.rb-prod__pd');
+  dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var ks=c.querySelector('.rb-keys'),dk=dlg.querySelector('.rb-dlg__keys');if(dk)dk.innerHTML=ks?'<span class="rb-dlg__klabel">Ключевые компоненты</span>'+ks.outerHTML:'';var pd=c.querySelector('.rb-prod__pd');
   dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;var u=pd.getAttribute('data-url'),more=u?'<div class="rb-dl"><dt>Подробнее</dt><dd><a href="'+u+'" target="_blank" rel="noopener">Описание, протоколы и результаты на сайте бренда →</a></dd></div>':'';
   dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('')+more;
   if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}dlg.querySelector('.rb-dlg__bd').scrollTop=0;
