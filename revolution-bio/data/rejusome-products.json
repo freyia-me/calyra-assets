@@ -73,7 +73,8 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-rejusome-plus-2ml.webp",
   "alt": "Реджусом Плюс 2 мл",
-  "url": "https://rejusome.com/rejusome-plus"
+  "url": "https://rejusome.com/rejusome-plus",
+  "photo": "source/photo-rejusome-plus.webp"
  },
  {
   "id": "exo-boost-cream",
@@ -108,7 +109,8 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-cream-50ml.webp",
   "alt": "Реджусом Экзо крем 50 мл",
-  "url": "https://rejusome.com/exoboost-cream"
+  "url": "https://rejusome.com/exoboost-cream",
+  "photo": "source/photo-exo-boost-cream.webp"
  },
  {
   "id": "exo-boost-serum",
@@ -143,7 +145,8 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-serum-30ml.webp",
   "alt": "Реджусом Экзо сыворотка 30 мл",
-  "url": "https://rejusome.com/exoboost-serum"
+  "url": "https://rejusome.com/exoboost-serum",
+  "photo": "source/photo-exo-boost-serum.webp"
  },
  {
   "id": "exo-eye-cream",
@@ -176,7 +179,8 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-eye-cream-20ml.webp",
   "alt": "Реджусом Экзо крем для глаз 20 мл",
-  "url": "https://rejusome.com/eyecream"
+  "url": "https://rejusome.com/eyecream",
+  "photo": "source/photo-exo-eye-cream.webp"
  },
  {
   "id": "exo-boost-mask",
@@ -268,6 +272,7 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-lip-balm-15ml.webp",
   "alt": "Реджусом Экзо бальзам для губ 15 мл",
-  "url": "https://rejusome.com/rejusome-lip-balm"
+  "url": "https://rejusome.com/rejusome-lip-balm",
+  "photo": "source/photo-exo-lip-balm.webp"
  }
 ]
