@@ -1077,7 +1077,7 @@ def product_card(p, attrs):
     # ссылку на сайт бренда добавляет окно товара: ссылка внутри ссылки-карточки ломает разметку
     url_attr = f' data-url="{p["url"]}"' if p.get('url') else ''
     return (f'<a class="rb-prod{" rb-prod--photo" if p.get("photo_card") else ""}" href="#p-{p["id"]}" data-id="{p["id"]}" {attrs}>'
-            f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"><span class="rb-prod__tags">{tags}</span></span>'
+            f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"{f" style={chr(34)}object-position:{p[chr(102)+'ocus']}{chr(34)}" if p.get("focus") else ""}><span class="rb-prod__tags">{tags}</span></span>'
             f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span><span class="rb-prod__more">Подробнее <i aria-hidden="true">→</i></span></span>'
             f'<span class="rb-prod__pd" hidden{url_attr}><span class="rb-prod__meta">{esc(meta)}</span>{fields}</span></a>')
 
