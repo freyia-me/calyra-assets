@@ -627,7 +627,7 @@ def css():
 #rb .rb-prod__bd{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
 #rb .rb-prod__en{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 #rb .rb-prod__bd b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.2;color:#fff}
-#rb .rb-prod__desc{font-size:14px;color:var(--muted)}
+#rb .rb-prod__desc{font-size:14px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 #rb .rb-prod__more{margin-top:auto;padding-top:8px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 #rb .rb-cat__empty{color:var(--muted)}
 #rb .rb-keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
@@ -656,6 +656,11 @@ def css():
 #rb .rb-dl dd p{margin:0 0 .6em}
 #rb .rb-dl dd ul{margin:0;padding-left:1.1em}
 #rb .rb-dl dd a{color:var(--accent)}
+#rb .rb-comp summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;color:#dffbff;font-size:13.5px}
+#rb .rb-comp summary::-webkit-details-marker{display:none}
+#rb .rb-comp summary::after{content:'+';display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid rgba(54,203,224,.45);color:var(--accent);font-size:14px;transition:transform .3s}
+#rb .rb-comp[open] summary::after{transform:rotate(45deg)}
+#rb .rb-dl .rb-comp ul{list-style:none;padding:0;margin:10px 0 0}#rb .rb-dl .rb-comp li{padding:7px 0 7px 12px;border-left:2px solid rgba(54,203,224,.35);margin-bottom:6px;font-size:14px}
 /* общие блоки страниц */
 #rb .rb-feats{display:grid;gap:18px;grid-template-columns:repeat(4,minmax(0,1fr))}
 #rb .rb-feats--3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -1145,10 +1150,17 @@ def key_parts(text, n=3):
 def jd_products():
     out = []
     for p in json.load(open(os.path.join(DATA, 'jeuderm-products.json'), encoding='utf-8')):
+        fields = [(k, v if '<' in v else esc(v)) for k, v in p['fields']]
+        if p.get('comp'):
+            # состав по группам из презентации — свёрнут, чтобы не перегружать окно товара
+            comp = ''.join(f'<li><b>{esc(g)}</b> — {esc(t)}</li>' for g, t in p['comp'])
+            at = next((i for i, (k, _) in enumerate(fields) if k == 'Как применять'), len(fields))
+            fields.insert(at, ('Состав', f'<details class="rb-comp"><summary>Все группы компонентов · {len(p["comp"])}</summary><ul>{comp}</ul></details>'))
         out.append(dict(id=p['id'], en=p['en'], title=p['title'], desc=p['desc'], img=p['img'], alt=p.get('alt') or p['title'],
                         care=p['care'].split(), lines=p['lines'], vol=p.get('vol'), care_t=p.get('care_t'),
+                        ppm=f'Пептиды {p["ppm"]}' if p.get('ppm') else None,
                         key=p.get('key') or key_parts(dict(p['fields']).get('Активные ингредиенты', '')),
-                        fields=[(k, v if '<' in v else esc(v)) for k, v in p['fields']]))
+                        fields=fields))
     return out
 
 
@@ -1200,7 +1212,7 @@ CALYRA = dict(id='calyra-lux-5', en='Calyra Lux 5', title='CALYRA LUX 5 — CAP 
 # ---------------------------------------------------------------- каталог с фильтрами и окном товара
 def product_card(p, attrs):
     tags = ''.join(f'<span>{CARE_LABEL[c]}</span>' for c in p['care'] if c in CARE_LABEL)
-    meta = ' · '.join(x for x in (p.get('vol'), p.get('care_t')) if x)
+    meta = ' · '.join(x for x in (p.get('vol'), p.get('ppm'), p.get('care_t')) if x)
     fields = ''.join(f'<div class="rb-dl"><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in p['fields'])
     # ссылку на сайт бренда добавляет окно товара: ссылка внутри ссылки-карточки ломает разметку
     url_attr = f' data-url="{p["url"]}"' if p.get('url') else ''
