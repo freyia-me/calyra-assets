@@ -558,6 +558,7 @@ def css():
 #rb .rb-dl dd{margin:0;font-size:14.5px;color:rgba(255,255,255,.85)}
 #rb .rb-dl dd p{margin:0 0 .6em}
 #rb .rb-dl dd ul{margin:0;padding-left:1.1em}
+#rb .rb-dl dd a{color:var(--accent)}
 /* общие блоки страниц */
 #rb .rb-feats{display:grid;gap:18px;grid-template-columns:repeat(4,minmax(0,1fr))}
 #rb .rb-feats--3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -942,16 +943,13 @@ def old_product(rel, pid, en, title=None, **extra):
 
 
 def rj_products():
-    P = 'product/item/'
-    return [
-        old_product(P + '227-rejusome.html', 'rejusome', 'Rejusome', 'Rejusome — стерильная сыворотка с экзосомами', type='serum', vol='20 мг + 5 мл'),
-        old_product(P + '228-rejusome-plus.html', 'rejusome-plus', 'Rejusome Plus', 'Rejusome Plus — готовый раствор с экзосомами', type='serum', vol='2 мл'),
-        old_product(P + '229-rejusome-plus-hair.html', 'rejusome-plus-hair', 'Rejusome Plus · Hair', 'Rejusome Plus для кожи головы и волос', type='hair'),
-        old_product(P + '207-rejusomeboostcream.html', 'exo-boost-cream', 'Exo Boost Cream', 'Крем с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
-        old_product(P + '230-rejusomeboostserum.html', 'exo-boost-serum', 'Exo Boost Serum', 'Сыворотка с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
-        old_product(P + '231-rejusomeboostmask.html', 'exo-boost-mask', 'Exo Boost Mask', 'Маска-бустер с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
-        old_product(P + '237-rejusomeboostmist.html', 'exo-boost-mist', 'Exo Boost Mist', 'Мист-тоник с экзосомами Rejusome Exo Boost', type='cosmetics', care=['home']),
-    ]
+    """товары Rejusome (с сайта rejusome.com): data/rejusome-products.json"""
+    out = []
+    for p in json.load(open(os.path.join(DATA, 'rejusome-products.json'), encoding='utf-8')):
+        fields = [(k, v) for k, v in p['fields']]
+        fields.append(('Подробнее', f'<a href="{p["url"]}" target="_blank" rel="noopener">Описание, протоколы и результаты на rejusome.com →</a>'))
+        out.append(dict(p, type=' '.join(p['type']), fields=fields))
+    return out
 
 
 def pdrn_product():
@@ -1170,7 +1168,7 @@ def build_rejusome(products):
 <section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция Rejusome</h2><hr class="rb-rule">
 {catalog(products, [('type', 'Направление', RJ_TYPES)])}</div></section>
 {section('Технология', 'Что такое экзосомы', f'<div class="rb-rich">{desc}</div>') if strip_tags(desc) else ''}
-{cta('Цены — по запросу', 'Оставьте заявку: менеджер пришлёт прайс и расскажет о протоколах.')}{WARN_SEC}'''
+{cta('Цены — по запросу', 'Оставьте заявку: менеджер пришлёт прайс и расскажет о протоколах.', btn2=('Сайт Rejusome', 'https://rejusome.com/'))}{WARN_SEC}'''
     page('/rejusome', 'Rejusome', body, {'title': 'Rejusome — стерильные сыворотки и космецевтика с экзосомами | Революшн Био',
                                          'description': 'Rejusome, Rejusome Plus и линейка Exo Boost: экзосомы для восстановления кожи и волос. Официальный дистрибьютор в России.',
                                          'keywords': 'Rejusome, Реджусом, экзосомы, сыворотка с экзосомами, Exo Boost'})
@@ -1354,7 +1352,7 @@ build_article('soglasie.html', '/soglasie')
 def old_url(rel):
     return '/' if rel == 'index.html' else '/' + rel[:-5]
 
-OLD_PRODUCT = {p['old']: f'/rejusome#p-{p["id"]}' for p in RJ}
+OLD_PRODUCT = {o: f'/rejusome#p-{p["id"]}' for p in RJ for o in p['old']}
 OLD_PRODUCT['product/item/59-crystal-pdrn.html'] = '/jeuderm?line=pdrn#p-crystal-pdrn'
 OLD_PRODUCT['product/item/81-jeuderm-homecare.html'] = '/jeuderm?care=home'
 OLD_PRODUCT['product/item/82-jeuderm-pofessional.html'] = '/jeuderm?care=pro'

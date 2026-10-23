@@ -62,7 +62,7 @@
 /product/item/207-rejusomeboostcream	/rejusome#p-exo-boost-cream
 /product/item/227-rejusome	/rejusome#p-rejusome
 /product/item/228-rejusome-plus	/rejusome#p-rejusome-plus
-/product/item/229-rejusome-plus-hair	/rejusome#p-rejusome-plus-hair
+/product/item/229-rejusome-plus-hair	/rejusome#p-rejusome-plus
 /product/item/230-rejusomeboostserum	/rejusome#p-exo-boost-serum
 /product/item/231-rejusomeboostmask	/rejusome#p-exo-boost-mask
 /product/item/232-mariya	/#katalog
