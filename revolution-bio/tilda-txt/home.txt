@@ -489,7 +489,8 @@
 <div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@8492ab4bc8e2/revolution-bio/img/phone-49452f.webp" alt=""><div><b>Телефоны и мессенджеры</b><a href="tel:+74951477040">+7 (495) 147-70-40</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp: +7 925 084-30-90</a>
 <a href="https://wa.me/79253428202" target="_blank" rel="noopener">WhatsApp: +7 925 342-82-02</a>
 <a href="https://t.me/revolution_bio" target="_blank" rel="noopener">Telegram: @revolution_bio</a>
-<a href="https://t.me/+79250843090" target="_blank" rel="noopener">Telegram: +7 925 084-30-90</a></div></div>
+<a href="https://t.me/+79250843090" target="_blank" rel="noopener">Telegram: +7 925 084-30-90</a>
+<a href="https://max.ru/u/f9LHodD0cOLKBWLODghgiSo7Io7UdoSgD9WyEFyj38AwuRwPD6M5HL3syog" target="_blank" rel="noopener">MAX: написать в мессенджер</a></div></div>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:feedback">Написать нам</a></div></div>
 <iframe class="rb-map" title="Карта: Революшн Био" loading="lazy" src="https://yandex.ru/map-widget/v1/?um=constructor%3A6803285ddfeb9e98a988d37f868485f1206350bc7beb3cbd2119804af2401e11&amp;source=constructor"></iframe>
 </div></div></section><div class="rb-wrap"><p class="rb-warn">Имеются противопоказания. Перед применением необходима консультация специалиста.</p></div>
@@ -499,7 +500,7 @@
 <p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
 <nav aria-label="Разделы"><a href="/jeuderm">JeuDérm</a><a href="/rejusome">Rejusome</a><a href="/calyra-lux-5">Calyra Lux 5</a><a href="/kosmetologam">Косметологам</a><a href="/pacientam">Пациентам</a><a href="/about">О компании</a><a href="/kontakty">Контакты</a><a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a></nav>
 <div><p><a href="tel:+74951477040">+7 (495) 147-70-40</a><br><a href="mailto:info@revolution.bio">info@revolution.bio</a><br>Москва, Земляной Вал 7, офис 408</p>
-<div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
+<div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://max.ru/u/f9LHodD0cOLKBWLODghgiSo7Io7UdoSgD9WyEFyj38AwuRwPD6M5HL3syog" target="_blank" rel="noopener">MAX</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
 <p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>
 </div></footer>
 </div>

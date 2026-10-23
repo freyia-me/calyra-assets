@@ -102,6 +102,7 @@ NAV = [('JeuDérm', '/jeuderm'), ('Rejusome', '/rejusome'), ('Calyra Lux 5', '/c
        ('Косметологам', '/kosmetologam'), ('Пациентам', '/pacientam'), ('О компании', '/about'), ('Контакты', '/kontakty')]
 PHONE, PHONE_HREF = '+7 (495) 147-70-40', 'tel:+74951477040'
 EMAIL = 'info@revolution.bio'
+MAX_URL = 'https://max.ru/u/f9LHodD0cOLKBWLODghgiSo7Io7UdoSgD9WyEFyj38AwuRwPD6M5HL3syog'  # MAX — со страниц сайта jeuderm-russia.ru
 
 def soup(rel):
     s = BeautifulSoup(open(os.path.join(SRC, rel), encoding='utf-8'), 'lxml')
@@ -802,7 +803,7 @@ def footer():
 <p><a href="/policy">Политика обработки персональных данных</a><br><a href="/soglasie">Согласие на обработку персональных данных</a></p></div>
 <nav aria-label="Разделы">{links}<a href="/proizvoditel">Производитель</a><a href="/distributor">Стать дистрибьютором</a></nav>
 <div><p><a href="{PHONE_HREF}">{PHONE}</a><br><a href="mailto:{EMAIL}">{EMAIL}</a><br>Москва, Земляной Вал 7, офис 408</p>
-<div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
+<div class="rb-social"><a href="https://t.me/revolutionbio" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp</a><a href="{MAX_URL}" target="_blank" rel="noopener">MAX</a><a href="https://vk.com/revolutionbio" target="_blank" rel="noopener">ВКонтакте</a><a href="https://dzen.ru/revolutionbio" target="_blank" rel="noopener">Дзен</a></div>
 <p style="margin-top:18px"><a class="rb-btn" href="#popup:feedback">Обратная связь</a></p></div>
 </div></footer>'''
 
@@ -1155,7 +1156,8 @@ def contacts_section(rel, s, h='h1'):
     icons = {k: img('kontakty.html', f'images/custom/{k}.png') for k in ('address', 'mail', 'phone')}
     tg = '\n'.join(f'<a href="{u}" target="_blank" rel="noopener">{lab}</a>' for lab, u in (
         ('WhatsApp: +7 925 084-30-90', 'https://wa.me/79250843090'), ('WhatsApp: +7 925 342-82-02', 'https://wa.me/79253428202'),
-        ('Telegram: @revolution_bio', 'https://t.me/revolution_bio'), ('Telegram: +7 925 084-30-90', 'https://t.me/+79250843090')))
+        ('Telegram: @revolution_bio', 'https://t.me/revolution_bio'), ('Telegram: +7 925 084-30-90', 'https://t.me/+79250843090'),
+        ('MAX: написать в мессенджер', MAX_URL)))
     addr = text(el.select_one('.contact-address .text')).replace('Адрес:', '').strip() if el else 'Земляной Вал 7, офис 408'
     title = f'<span class="rb-kicker">Связаться с нами</span><{h}>Контакты</{h}><hr class="rb-rule">' if h == 'h2' else ''
     return f'''<section class="rb-sec" id="kontakty"><div class="rb-wrap">{title}<div class="rb-contacts"><div>
@@ -1384,7 +1386,7 @@ def build_proizvoditel():
 
 def build_distributor():
     body = hero('Стать дистрибьютором', [('Стать дистрибьютором', None)], '<p>Работаем с дистрибьюторами, клиниками эстетической медицины и косметологическими центрами — напрямую от официального дистрибьютора в России.</p>') + f'''
-<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-btns" style="margin-top:0"><a class="rb-btn rb-btn--fill" href="#popup:partner">Узнать условия</a><a class="rb-btn" href="https://wa.me/79253428202" target="_blank" rel="noopener">Написать в WhatsApp</a></div></div></section>
+<section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><div class="rb-btns" style="margin-top:0"><a class="rb-btn rb-btn--fill" href="#popup:partner">Узнать условия</a><a class="rb-btn" href="https://wa.me/79253428202" target="_blank" rel="noopener">Написать в WhatsApp</a><a class="rb-btn" href="{MAX_URL}" target="_blank" rel="noopener">Написать в MAX</a></div></div></section>
 {section('Что получает партнёр', 'Почему с нами выгодно', feats([
         (ICON['shield'], 'Оригинальная продукция', 'Прямые поставки, документы на всю продукцию.'),
         (ICON['star'], 'Полный портфель', 'Препараты для кабинета и домашний уход: клиенты возвращаются между процедурами.'),
