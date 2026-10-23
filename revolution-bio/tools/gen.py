@@ -39,6 +39,29 @@ PRODUCT_CARDS = [
     ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/rejusome?type=hair'),
     ('source/card-jeuderm.webp', 'Пептидная космецевтика JeuDérm', 'Всё, что нужно для кабинета косметолога', '/jeuderm'),
 ]
+# Каталог-«шторки» на главной: фото, цвет линейки, подпись на панели, бренд · линейка, заголовок, текст, ссылка
+CATALOG_PANELS = [
+    ('source/panel-rj-plus.webp', '#2a7de1', 'Экзосомы', 'Rejusome', 'Стерильные сыворотки с экзосомами',
+     'Реджусом и Реджусом Плюс — для регенерации кожи лица, тела и кожи головы. Только для специалистов.', '/rejusome?type=serum'),
+    ('source/panel-rj-cream.webp', '#5aa9e6', 'Экзосомный уход', 'Rejusome Exo Boost', 'Космецевтика с экзосомами',
+     'Крем, сыворотка, крем для глаз, маска, спрей-тоник и бальзам для губ — продлевают результат процедур дома.', '/rejusome?type=cosmetics'),
+    ('source/panel-calyra.webp', '#d1185a', 'Долголетие кожи', 'Calyra Lux 5', 'Теломерная защита',
+     'CAP Пептид 5, полинуклеотиды 2% и гиалуронат натрия в одном шприце — работа с качеством и ресурсом кожи.', '/calyra-lux-5'),
+    ('source/panel-pdrn.webp', '#e0457b', 'Восстановление', 'JeuDérm · Crystal PDRN', 'PDRN + HA 3%',
+     'Полинуклеотиды, факторы роста и пептиды — восстановление качества кожи, увлажнение и регенерация.', '/jeuderm?line=pdrn'),
+    ('source/panel-reform.webp', '#cd555b', 'Возрастной уход', 'JeuDérm · Reform Age', 'Возрастной уход 30+',
+     'Пептидный уход для упругости и плотности кожи — в кабинете и дома.', '/jeuderm?line=reformage'),
+    ('source/panel-acno.webp', '#ab0a3d', 'Проблемная кожа', 'JeuDérm · Acno Active', 'Жирная и проблемная кожа',
+     'Пептиды и кислоты против высыпаний и воспалений, для матовой и чистой кожи.', '/jeuderm?line=acno'),
+    ('source/panel-ato.webp', '#76bc21', 'Чувствительная кожа', 'JeuDérm · Ato Care', 'Чувствительная и реактивная кожа',
+     'Мягкий пептидный уход для кожи, склонной к раздражению и дерматитам.', '/jeuderm?line=atocare'),
+    ('source/panel-hair.webp', '#ae57b9', 'Кожа головы', 'JeuDérm · Hair Genesis', 'Кожа головы и волосы',
+     'Стерильный концентрат для процедур и пептидный спрей для дома — для роста и плотности волос.', '/jeuderm?line=hair'),
+    ('source/panel-nova.webp', '#9aa3ab', 'Обновление', 'JeuDérm · Nova · Zymo', 'Обновление кожи',
+     'Кислотные и энзимные системы обновления без агрессивного повреждения и долгой реабилитации.', '/jeuderm?line=novazymo'),
+    ('source/panel-pro.webp', '#65666b', 'ПРО-уход', 'JeuDérm · ПРО', 'Средства для кабинета',
+     'Маски, массажное масло, эксфолиант и дренажный гель — косметолог подбирает их под задачу процедуры.', '/jeuderm?line=pro'),
+]
 # Круглые картинки-«пузыри» в шапке разделов и товаров: адрес страницы -> файл в source/
 PAGE_ART = {
     '/jeuderm': ('source/round-jeuderm.webp', 'Пептидная космецевтика JeuDérm Expert'),
@@ -610,6 +633,37 @@ def css():
 #rb .rb-letter{display:block;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;max-width:420px;justify-self:center}
 #rb .rb-warn{margin:0 0 30px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
 #rb .rb-404{padding:90px 0 120px}
+/* каталог-«шторки» на главной */
+#rb .rb-pans{display:flex;gap:8px;height:clamp(460px,44vw,600px)}
+#rb .rb-pan{position:relative;flex:1 1 0;min-width:0;border-radius:18px;overflow:hidden;background:#1d2124;border:1px solid var(--line);transition:flex-grow .7s cubic-bezier(.2,.7,.2,1),border-color .5s}
+#rb .rb-pan::before{content:"";position:absolute;z-index:3;left:0;top:0;width:34px;height:3px;background:var(--c)}
+#rb .rb-pan>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.62);transform:scale(1.04);transition:filter .7s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-pan::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(30,34,38,.15) 30%,rgba(30,34,38,.9));transition:background .6s}
+#rb .rb-pan__tab{position:absolute;z-index:2;inset:0;width:100%;padding:0 0 26px;border:0;background:none;cursor:pointer;color:#fff;font:inherit;
+  display:flex;align-items:flex-end;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:opacity .4s}
+#rb .rb-pan__tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px;border-radius:18px}
+#rb .rb-pan:not(.is-active):hover>img{filter:grayscale(.4) brightness(.75)}
+#rb .rb-pan__bd{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:32px 34px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s,transform .5s cubic-bezier(.2,.7,.2,1)}
+#rb .rb-pan__n{display:block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+#rb .rb-pan__bd{text-shadow:0 1px 12px rgba(0,0,0,.45)}
+#rb .rb-pan__bd h3{font-size:clamp(24px,2.3vw,34px);margin:0 0 10px;max-width:440px}
+#rb .rb-pan__bd p{margin:0 0 18px;font-size:15px;color:rgba(255,255,255,.82);max-width:440px}
+#rb .rb-pan__bd a{display:inline-flex;gap:10px;align-items:center;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:#fff}
+#rb .rb-pan__bd a i{font-style:normal;transition:transform .3s}#rb .rb-pan__bd a:hover{color:var(--accent)}#rb .rb-pan__bd a:hover i{transform:translateX(4px)}
+#rb .rb-pan.is-active{flex-grow:6;border-color:rgba(54,203,224,.6)}
+#rb .rb-pan.is-active>img{filter:none;transform:none}
+#rb .rb-pan.is-active::after{background:linear-gradient(180deg,transparent 30%,rgba(22,26,29,.78) 55%,rgba(22,26,29,.97) 80%)}
+#rb .rb-pan.is-active .rb-pan__tab{opacity:0;pointer-events:none}
+#rb .rb-pan.is-active .rb-pan__bd{opacity:1;transform:none;pointer-events:auto;transition-delay:.25s}
+@media (min-width:901px){#rb .rb-pan__tab{writing-mode:vertical-rl;transform:rotate(180deg);align-items:center;justify-content:flex-start;padding:26px 0 0}}
+@media (max-width:900px){#rb .rb-railhead{flex-direction:column;align-items:flex-start;gap:0}#rb .rb-railhead p{margin-bottom:24px!important}
+  #rb .rb-pans{flex-direction:column;height:auto;gap:8px}
+  #rb .rb-pan{flex:none;height:64px;transition:height .6s cubic-bezier(.2,.7,.2,1),border-color .5s}
+  #rb .rb-pan.is-active{height:min(110vw,440px)}
+  #rb .rb-pan__tab{align-items:center;justify-content:flex-start;padding:0 20px 0 54px;font-size:12px}
+  #rb .rb-pan::before{top:50%;left:20px;width:18px;margin-top:-1px;transition:opacity .4s}
+  #rb .rb-pan.is-active::before{top:0;left:0;width:34px;margin:0}
+  #rb .rb-pan__bd{padding:22px 20px}}
 /* товар */
 #rb .rb-product{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
 #rb .rb-product>div:first-child{position:sticky;top:96px}
@@ -817,6 +871,10 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
  function fromHash(){var m=location.hash.match(/^#p-([\\w-]+)/);if(!m)return;var c=cat.querySelector('.rb-prod[data-id="'+m[1]+'"]');if(c){if(c.hidden)groups.forEach(function(g){set(g.getAttribute('data-f'),'all',false);});c.scrollIntoView({block:'center'});open(c);}}
  fromHash();window.addEventListener('hashchange',fromHash);
 });
+r.querySelectorAll('.rb-pans').forEach(function(w){var ps=[].slice.call(w.querySelectorAll('.rb-pan'));
+ function act(p){ps.forEach(function(x){var a=x===p;x.classList.toggle('is-active',a);x.querySelector('.rb-pan__tab').setAttribute('aria-expanded',String(a));});}
+ ps.forEach(function(p){var t=p.querySelector('.rb-pan__tab');t.addEventListener('click',function(){act(p);});
+  if(matchMedia('(hover:hover) and (min-width:901px)').matches)p.addEventListener('mouseenter',function(){act(p);});});});
 r.querySelectorAll('.rb-railnav button').forEach(function(bt){bt.addEventListener('click',function(){var sec=bt.closest('.rb-wrap'),rl=sec&&sec.querySelector('.rb-rail');if(!rl)return;var c=rl.querySelector('.rb-pcard');var w=c?c.getBoundingClientRect().width+20:rl.clientWidth*0.8;rl.scrollBy({left:w*(+bt.getAttribute('data-dir')),behavior:rm?'auto':'smooth'});});});
 var h=r.querySelector('.rb-head');function sc(){if(!h)return;if(window.scrollY>10)h.setAttribute('data-scrolled','');else h.removeAttribute('data-scrolled');}
 sc();window.addEventListener('scroll',sc,{passive:true});
@@ -845,6 +903,17 @@ def card(href, image, title, txt='', more='Подробнее', date='', cover=F
     hr = f' href="{href}"' if href else ''
     im = f'<div class="rb-card__img{" rb-card__img--cover" if cover else ""}" style="background-image:url(\'{image}\')" role="img" aria-label="{esc(title)}"></div>' if image else ''
     return f'''<{tag} class="rb-card"{hr}>{im}<div class="rb-card__body">{f'<div class="rb-card__date">{esc(date)}</div>' if date else ''}<div class="rb-card__title">{esc(title)}</div>{f'<div class="rb-card__text">{esc(txt)}</div>' if txt else ''}{f'<span class="rb-card__more">{more} →</span>' if href and more else ''}</div></{tag}>'''
+
+def panels(rel):
+    items = ''
+    for k, (f, col, short, brand, title, txt, href) in enumerate(CATALOG_PANELS):
+        act = k == 0
+        items += (f'<div class="rb-pan{" is-active" if act else ""}" style="--c:{col}">'
+                  f'<img src="{img(rel, f, 1000)}" alt="" loading="lazy">'
+                  f'<button class="rb-pan__tab" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-pan-{k}">{esc(short)}</button>'
+                  f'<div class="rb-pan__bd" id="rb-pan-{k}"><span class="rb-pan__n">{k + 1:02d} · {esc(brand)}</span><h3>{esc(title)}</h3><p>{esc(txt)}</p>'
+                  f'<a href="{href}">Смотреть средства <i aria-hidden="true">→</i></a></div></div>')
+    return f'<div class="rb-pans">{items}</div>'
 
 def pcard(rel, f, title, sub, href):
     ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
@@ -1076,7 +1145,6 @@ def contacts_section(rel, s, h='h1'):
 def build_home():
     rel = 'index.html'
     s = soup(rel)
-    rail = ''.join(pcard(rel, *c) for c in PRODUCT_CARDS)
     slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
     ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
     def mask_pts(p):
@@ -1124,9 +1192,9 @@ def build_home():
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:price">Узнать цену</a><a class="rb-btn" href="#katalog">Каталог продукции</a></div>
 </div></div></section>
 {trust_html}
-<section class="rb-sec" id="katalog"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция</h2><hr class="rb-rule"></div>
-<div class="rb-railnav"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div></div>
-<div class="rb-rail" tabindex="0" aria-label="Направления продукции">{rail}</div></div></section>
+<section class="rb-sec" id="katalog"><div class="rb-wrap"><div class="rb-railhead"><div><span class="rb-kicker">Каталог</span><h2>Продукция по задачам кожи</h2><hr class="rb-rule"></div>
+<p class="rb-muted" style="max-width:420px;margin-bottom:36px">Выберите направление — внутри препараты для процедур и домашний уход. Цены — после заявки.</p></div>
+{panels(rel)}</div></section>
 <section class="rb-sec"><div class="rb-wrap"><div class="rb-split"><div><span class="rb-kicker">Для косметологов</span><h2>Работайте с официальным дистрибьютором</h2><hr class="rb-rule">
 <p class="rb-lead">Оригинальная продукция с документами, обучение и поддержка менеджера. Цены — после заявки: менеджер свяжется с вами и подберёт условия.</p>
 <div class="rb-btns"><a class="rb-btn rb-btn--fill" href="/kosmetologam">Косметологам</a><a class="rb-btn" href="#popup:price">Узнать цену</a></div></div>{cosmo}</div></div></section>
