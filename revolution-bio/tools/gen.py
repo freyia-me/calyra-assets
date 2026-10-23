@@ -32,11 +32,11 @@ BRANDS = [
 # Карточки направлений (готовые изображения с текстом): файл в source/, заголовок, подпись, ссылка.
 # Заголовок и подпись повторяют текст на картинке — они идут в alt и для поиска.
 # Подпись на свёрнутой панели и цвет черты — по порядку PRODUCT_CARDS
-CARD_TABS = [('PDRN', '#e0457b'), ('Стерильные сыворотки', '#2a7de1'), ('Теломерная защита', '#d1185a'),
+CARD_TABS = [('PDRN', '#e0457b'), ('Стерильные Rejusome', '#2a7de1'), ('Теломерная защита', '#d1185a'),
              ('Экзосомный уход', '#5aa9e6'), ('Трихология', '#ae57b9'), ('Пептидная космецевтика', '#cd555b')]
 PRODUCT_CARDS = [
     ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/crystal-pdrn'),
-    ('source/card-serums.webp', 'Стерильные сыворотки', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/rejusome?type=serum'),
+    ('source/card-serums.webp', 'Стерильные Rejusome', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/rejusome?type=serum'),
     ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: PN 2% и CAP Peptide 5', '/calyra-lux-5'),
     ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/rejusome?type=cosmetics'),
     ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/rejusome?type=hair'),
@@ -171,7 +171,7 @@ def map_link(page_rel, href):
 
 # ---------------------------------------------------------------- картинки
 IMAGES = {}
-def img(page_rel, src, max_w=1600):
+def img(page_rel, src, max_w=1600, q=84):
     if not src:
         return None
     src = src.strip().strip('\'"')
@@ -206,7 +206,7 @@ def img(page_rel, src, max_w=1600):
         if im.width > max_w:
             im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
         name = f'{base}-{h}.webp'
-        im.save(os.path.join(IMG_DIR, name), 'WEBP', quality=84, method=6)
+        im.save(os.path.join(IMG_DIR, name), 'WEBP', quality=q, method=6)
     url = f'{CDN}/img/{name}'
     IMAGES[path] = url
     return url
@@ -382,21 +382,14 @@ def css():
 #rb .rb-btn--fill{background:var(--accent);color:var(--accent-ink)}
 #rb .rb-btn--fill:hover{background:#5fd8e9;color:var(--accent-ink)}
 #rb .rb-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-/* фоновые линии — отсылки к технологиям: ДНК (PN, PDRN), пептиды, экзосомы */
-#rb .rb-bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-#rb .rb-bgfx svg{position:absolute;inset:-10% -5%;width:110%;height:120%;transform:translate3d(0,calc(var(--sy,0) * -0.12px),0)}
-#rb .rb-bgfx path,#rb .rb-bgfx line,#rb .rb-bgfx circle{fill:none;stroke-width:1;vector-effect:non-scaling-stroke}
-#rb .rb-bgfx__dna path{stroke:rgba(54,203,224,.16);stroke-dasharray:6 10;animation:rb-flowline 40s linear infinite}
-#rb .rb-bgfx__dna line{stroke:rgba(54,203,224,.08)}
-#rb .rb-bgfx__dna{animation:rb-drift 60s ease-in-out infinite alternate}
-#rb .rb-bgfx__pep path{stroke:rgba(255,255,255,.07)}
-#rb .rb-bgfx__pep circle{stroke:rgba(54,203,224,.22);fill:rgba(54,203,224,.05)}
-#rb .rb-bgfx__pep{animation:rb-drift 50s ease-in-out -12s infinite alternate-reverse}
-#rb .rb-bgfx__exo circle{stroke:rgba(54,203,224,.12)}
-#rb .rb-bgfx__exo{transform-origin:1180px 620px;animation:rb-breathe 14s ease-in-out infinite}
-@keyframes rb-flowline{to{stroke-dashoffset:-400}}
-@keyframes rb-drift{from{transform:translate(-40px,0)}to{transform:translate(60px,30px)}}
-@keyframes rb-breathe{50%{transform:scale(1.06) translate(-10px,8px)}}
+/* фон: одна плавная линия проходит через всю страницу и «прорисовывается» при прокрутке */
+#rb{position:relative}
+#rb .rb-flow{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+#rb .rb-flow svg{display:block;width:100%;height:100%}
+#rb .rb-flow path{fill:none;stroke-linecap:round}
+#rb .rb-flow__base{stroke:rgba(54,203,224,.09);stroke-width:1}
+#rb .rb-flow__lit{stroke:url(#rb-flow-g);stroke-width:1.2}
+#rb .rb-flow__dot{fill:#8ff0ff;filter:drop-shadow(0 0 6px rgba(54,203,224,.9))}
 #rb>header,#rb>main,#rb>footer{position:relative;z-index:1}
 #rb>header{z-index:50}
 /* шапка */
@@ -423,7 +416,6 @@ def css():
 #rb .rb-dd__panel::before{content:"";position:absolute;left:50%;top:-14px;width:1px;height:14px;background:linear-gradient(transparent,var(--accent))}
 #rb .rb-dd__panel::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(143,240,255,.06) 0 1px,transparent 1px 3px)}
 #rb .rb-dd:hover>.rb-dd__panel,#rb .rb-dd.is-open>.rb-dd__panel,#rb .rb-dd:focus-within>.rb-dd__panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
-#rb .rb-dd:hover>.rb-dd__panel{animation:rb-flick .7s steps(1)}
 #rb .rb-dd__title{padding:4px 12px 8px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
 #rb .rb-dd__panel a{position:relative;z-index:1;display:block;padding:10px 12px 10px 26px;border-radius:12px;text-decoration:none;transition:background .25s}
 #rb .rb-dd__panel a::before{content:"";position:absolute;left:12px;top:17px;width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);opacity:.5;transition:opacity .25s}
@@ -489,8 +481,6 @@ def css():
   opacity:0;transform:translateY(8px) scale(.98);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
 #rb .rb-holo::after{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(0deg,rgba(143,240,255,.07) 0 1px,transparent 1px 3px);pointer-events:none}
 #rb .rb-holo.is-active{opacity:1;transform:none;transition-delay:.35s}
-#rb.rb-js .rb-holo.is-active{animation:rb-flick .9s steps(1) .35s both}
-@keyframes rb-flick{0%{opacity:0}12%{opacity:.7}20%{opacity:.2}32%{opacity:.9}40%{opacity:.5}52%,100%{opacity:1}}
 #rb .rb-holo__top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 #rb .rb-holo svg{flex:none;width:34px;height:34px;padding:7px;border-radius:50%;border:1px solid rgba(54,203,224,.55);fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 #rb .rb-holo b{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;color:#fff}
@@ -528,9 +518,8 @@ def css():
 #rb .rb-link.is-active .rb-link__pulse{opacity:1;stroke-width:1.7;animation-duration:2.2s}
 #rb .rb-link.is-active .rb-link__x{opacity:1}
 #rb .rb-link__spark{stroke:#e9fdff;stroke-width:1.6;stroke-dasharray:1 4 3 6 1 3 2 84;opacity:0;filter:drop-shadow(0 0 4px #8ff0ff)}
-#rb .rb-link.is-active .rb-link__spark{animation:rb-spark 1.1s linear infinite,rb-zap 2.2s steps(1) infinite}
+#rb .rb-link.is-active .rb-link__spark{animation:rb-spark 1.1s linear infinite}
 @keyframes rb-spark{from{stroke-dashoffset:110}to{stroke-dashoffset:0}}
-@keyframes rb-zap{0%{opacity:.95}8%{opacity:.2}14%{opacity:1}40%{opacity:.7}46%{opacity:0}60%{opacity:1}100%{opacity:.85}}
 @keyframes rb-pulse{to{stroke-dashoffset:0}}
 /* текст справа */
 #rb .rb-intro__text{position:relative;z-index:3}
@@ -807,10 +796,12 @@ def css():
 #rb .rb-review__img{max-height:260px;width:auto;margin:6px 0;border-radius:var(--r-sm)}
 #rb .rb-review details summary{cursor:pointer;color:var(--accent);font-size:14px;font-weight:600}
 /* статистика, преимущества */
-#rb .rb-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:36px 0}
-#rb .rb-stats>div{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);padding:28px}
-#rb .rb-stat__num{font-family:var(--serif);font-size:clamp(36px,4.5vw,56px);color:var(--accent);line-height:1}
-#rb .rb-stat__txt{color:var(--muted);font-size:15px;margin-top:10px}
+#rb .rb-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:36px 0}
+#rb .rb-stat{padding:28px 24px 26px}
+#rb .rb-stat__num{font-family:var(--serif);font-size:clamp(34px,3.6vw,50px);color:var(--accent);line-height:1;white-space:nowrap;padding-bottom:16px;margin-bottom:14px;
+  background:linear-gradient(90deg,var(--accent),transparent) left bottom/100% 1px no-repeat}
+#rb .rb-stat__num small{font-size:.46em;margin-left:.25em;letter-spacing:.04em;color:rgba(143,240,255,.85)}
+#rb .rb-stat__txt{color:var(--muted);font-size:14.5px;line-height:1.5}
 #rb .rb-adv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:30px 0 50px;text-align:center}
 #rb .rb-adv figure{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);padding:30px 20px}
 #rb .rb-adv img{width:72px;height:72px;object-fit:contain;margin:0 auto 14px}
@@ -851,7 +842,7 @@ def css():
 #rb.rb-js .rb-intro__text>*{animation:rb-up .9s cubic-bezier(.2,.7,.2,1) both}
 #rb.rb-js .rb-intro__text>*:nth-child(2){animation-delay:.08s}#rb.rb-js .rb-intro__text>*:nth-child(3){animation-delay:.16s}
 #rb.rb-js .rb-intro__text>*:nth-child(4){animation-delay:.24s}#rb.rb-js .rb-intro__text>*:nth-child(5){animation-delay:.32s}
-#rb.rb-js .rb-stage,#rb.rb-js .rb-bcol{animation:rb-fade 1.4s ease .1s both}
+#rb.rb-js .rb-bcol{animation:rb-fade 1.4s ease .1s both}
 @keyframes rb-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes rb-fade{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
 @media (max-width:1280px){#rb .rb-holo{right:1%;top:7%}}
@@ -947,7 +938,13 @@ r.querySelectorAll('.rb-dd').forEach(function(d){var t=d.querySelector('.rb-nav_
 document.addEventListener('click',function(){r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
 r.querySelectorAll('.rb-feat').forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px');});});
-var bg=r.querySelector('.rb-bgfx');if(bg&&!rm){var bt=false;window.addEventListener('scroll',function(){if(bt)return;bt=true;requestAnimationFrame(function(){bg.style.setProperty('--sy',window.scrollY);bt=false;});},{passive:true});}
+var fw=r.querySelector('.rb-flow');if(fw){var fs=fw.querySelector('svg'),fb=fw.querySelector('.rb-flow__base'),fl=fw.querySelector('.rb-flow__lit'),fdot=fw.querySelector('.rb-flow__dot'),FL=0,FH=1,ft=false;
+ function fdraw(){var W=r.clientWidth,mn=r.querySelector('main'),H=mn?mn.offsetTop+mn.offsetHeight:r.scrollHeight,st=Math.max(760,innerHeight*.95),a=W*.06,b=W*.94,x=W*.72,y=0,k=0,d;
+  if(W<700){a=W*.04;b=W*.96;}d='M'+x+' 0';while(y<H){var ny=Math.min(y+st,H+st),nx=k%2?b:a;d+=' C'+x+' '+(y+st*.55)+' '+nx+' '+(ny-st*.55)+' '+nx+' '+ny;x=nx;y=ny;k++;}
+  fs.setAttribute('viewBox','0 0 '+W+' '+r.scrollHeight);fb.setAttribute('d',d);fl.setAttribute('d',d);FL=fl.getTotalLength();FH=H;fl.style.strokeDasharray=FL+' '+FL;fscroll();}
+ function fscroll(){ft=false;var p=Math.min(1,Math.max(0,(scrollY+innerHeight*.7)/FH)),L=FL*p;fl.style.strokeDashoffset=FL-L;var pt=fl.getPointAtLength(L);fdot.setAttribute('cx',pt.x);fdot.setAttribute('cy',pt.y);}
+ fdraw();if(window.ResizeObserver)new ResizeObserver(function(){fdraw();}).observe(r);else addEventListener('resize',fdraw);
+ addEventListener('scroll',function(){if(!ft){ft=true;requestAnimationFrame(fscroll);}},{passive:true});}
 var y=r.querySelector('[data-rb-year]');if(y)y.textContent=new Date().getFullYear();
 r.querySelectorAll('.rb-gal').forEach(function(g){var im=g.querySelector('.rb-gal__main img'),th=[].slice.call(g.querySelectorAll('.rb-gal__thumbs button')),i=0;
  function go(n){if(!th.length)return;i=(n+th.length)%th.length;im.src=th[i].getAttribute('data-src');th.forEach(function(t,k){if(k===i)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current');});}
@@ -958,6 +955,7 @@ var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 r.querySelectorAll('.rb-stage').forEach(function(st){
  var sec=st.closest('.rb-intro'),im=st.querySelectorAll('.rb-stage__img'),dt=st.querySelectorAll('.rb-stage__dots button'),cards=sec.querySelectorAll('.rb-brand'),
   svg=sec.querySelector('.rb-links'),links=svg?svg.querySelectorAll('.rb-link'):[],cap=st.querySelector('.rb-stage__cap'),pv=st.querySelectorAll('.rb-pt'),ho=st.querySelectorAll('.rb-holo'),hl=svg?svg.querySelector('.rb-link__holo'):null,n=im.length,i=0,t=null,ms=+st.getAttribute('data-interval')||6000;
+ function ldr(){[].forEach.call(im,function(x){if(x.dataset.src){x.src=x.dataset.src;x.removeAttribute('data-src');}});}if(im[0].complete)setTimeout(ldr,200);else{im[0].addEventListener('load',ldr);im[0].addEventListener('error',ldr);}
  function pts(k){return (im[k].getAttribute('data-hs')||'').split(';').map(function(p){var c=p.split(',');return [+c[0],+c[1]];});}
  var cur=pts(0),from=cur,to=cur,t0=0,anim=0;
  function draw(){[].forEach.call(pv,function(b,k){if(cur[k]){b.style.left=cur[k][0]+'%';b.style.top=cur[k][1]+'%';}});
@@ -1119,7 +1117,9 @@ def page(alias, title, body, seo):
 
 SEO = []
 REPORT = []
-BGFX = '<div class="rb-bgfx" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><g class="rb-bgfx__dna"><path d="M-60 120 C 180 40, 300 220, 540 140 S 900 60, 1140 160 S 1440 260, 1560 180"/><path d="M-60 180 C 180 260, 300 80, 540 160 S 900 260, 1140 140 S 1440 60, 1560 140"/><line x1="60" y1="132" x2="60" y2="168"/><line x1="180" y1="98" x2="180" y2="210"/><line x1="300" y1="132" x2="300" y2="174"/><line x1="420" y1="170" x2="420" y2="138"/><line x1="540" y1="140" x2="540" y2="160"/><line x1="660" y1="112" x2="660" y2="190"/><line x1="780" y1="96" x2="780" y2="220"/><line x1="900" y1="112" x2="900" y2="214"/><line x1="1020" y1="150" x2="1020" y2="160"/><line x1="1140" y1="160" x2="1140" y2="140"/><line x1="1260" y1="186" x2="1260" y2="104"/><line x1="1380" y1="200" x2="1380" y2="96"/></g><g class="rb-bgfx__pep"><path d="M80 760 L220 700 L340 742 L470 676 L600 716 L720 652"/><circle cx="80" cy="760" r="5"/><circle cx="220" cy="700" r="5"/><circle cx="340" cy="742" r="5"/><circle cx="470" cy="676" r="5"/><circle cx="600" cy="716" r="5"/><circle cx="720" cy="652" r="5"/></g><g class="rb-bgfx__exo"><circle cx="1180" cy="620" r="46"/><circle cx="1180" cy="620" r="25"/><circle cx="1290" cy="720" r="26"/><circle cx="1290" cy="720" r="14"/><circle cx="1080" cy="760" r="18"/><circle cx="1080" cy="760" r="10"/><circle cx="980" cy="430" r="14"/><circle cx="980" cy="430" r="8"/></g></svg></div>'
+BGFX = ('<div class="rb-flow" aria-hidden="true"><svg preserveAspectRatio="none"><defs><linearGradient id="rb-flow-g" x1="0" y1="0" x2="0" y2="1">'
+        '<stop offset="0" stop-color="#36cbe0" stop-opacity=".04"/><stop offset=".85" stop-color="#36cbe0" stop-opacity=".26"/><stop offset="1" stop-color="#8ff0ff" stop-opacity=".5"/></linearGradient></defs>'
+        '<path class="rb-flow__base"/><path class="rb-flow__lit"/><circle class="rb-flow__dot" r="2.5" cx="-10" cy="-10"/></svg></div>')
 
 def seo_of(s, fallback_title):
     t = title_of(s) or fallback_title
@@ -1265,8 +1265,14 @@ def cta(title, text_, btn='Узнать цену', href='#popup:price', btn2=Non
     return f'<section class="rb-sec"><div class="rb-wrap"><div class="rb-panel rb-cta"><div><h2>{title}</h2><p class="rb-muted">{text_}</p></div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="{href}">{btn}</a>{b2}</div></div></div></section>'
 
 
+def stat_num(n):
+    """«1000 ppm» → крупное число и мелкая единица, чтобы цифра не переносилась"""
+    m = re.match(r'^([\d\s ,.+]*\d[+%]?)\s+([^\d\s]+)$', n)
+    return f'{m.group(1)}<small>{m.group(2)}</small>' if m else n
+
+
 def stats(items):
-    return '<div class="rb-stats rb-stats--4">' + ''.join(f'<div><div class="rb-stat__num">{n}</div><div class="rb-stat__txt">{t}</div></div>' for n, t in items) + '</div>'
+    return '<div class="rb-stats rb-stats--4">' + ''.join(f'<div class="rb-feat rb-stat"><div class="rb-stat__num">{stat_num(n)}</div><div class="rb-stat__txt">{t}</div></div>' for n, t in items) + '</div>'
 
 
 ICON = {
@@ -1322,14 +1328,14 @@ def contacts_section(rel, s, h='h1'):
 def build_home():
     rel = 'index.html'
     s = soup(rel)
-    slides = [(img(rel, f, 1100), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
+    slides = [(img(rel, f, 960, 76), BRANDS[bi][0], pts, BRANDS[bi][2], bi, labels) for f, bi, pts, labels in HERO_SLIDES]
     ext = lambda h: ' target="_blank" rel="noopener"' if h.startswith('http') else ''
     def mask_pts(p):
         (fx, fy), (cx, cy), (hx, hy) = p
         return [(fx, fy), (cx, cy), (round((cx + hx) / 2) - 3, round((cy + hy) / 2) + 1), (hx, hy)]
     hs_attr = lambda p: ';'.join(f'{x},{y}' for x, y in mask_pts(p))
     plain = lambda labels: ' · '.join(strip_tags(l.replace('<br>', ' ')) for l in labels)
-    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" src="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\"" if k == 0 else " loading=\"lazy\" decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" {"src" if k == 0 else "data-src"}="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\" decoding=\"sync\"" if k == 0 else " decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
     sr_text = ' '.join(f'{b}: {plain(labels)}.' for u, b, p, h, bi, labels in slides)
     dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
     first = slides[0][4]
