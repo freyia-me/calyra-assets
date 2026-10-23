@@ -36,7 +36,8 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-rejusome-5ml-20mg.webp",
   "alt": "Реджусом, набор 20 мг + 5 мл",
-  "url": "https://rejusome.com/rejusome-pack"
+  "url": "https://rejusome.com/rejusome-pack",
+  "photo": "source/photo-rejusome.webp"
  },
  {
   "id": "rejusome-plus",
@@ -212,7 +213,9 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-mask-25g.webp",
   "alt": "Реджусом Экзо маска 25 г",
-  "url": "https://rejusome.com/rejusome-mask"
+  "url": "https://rejusome.com/rejusome-mask",
+  "photo": "source/photo-exo-boost-mask.webp",
+  "focus": "50% 75%"
  },
  {
   "id": "exo-boost-mist",
@@ -243,7 +246,8 @@
   ],
   "img": "https://cdn.jsdelivr.net/gh/freyia-me/rejusome@b849dfa9797ca3fcddc75d993bb0eb6582490dba/img/catalog-exo-spray-150ml.webp",
   "alt": "Реджусом Экзо спрей 150 мл",
-  "url": "https://rejusome.com/mist"
+  "url": "https://rejusome.com/mist",
+  "photo": "source/photo-exo-boost-mist.webp"
  },
  {
   "id": "exo-lip-balm",
