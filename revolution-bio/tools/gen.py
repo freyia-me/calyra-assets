@@ -392,6 +392,10 @@ def css():
 #rb .rb-flow__dot{fill:#8ff0ff;filter:drop-shadow(0 0 6px rgba(54,203,224,.9))}
 #rb>header,#rb>main,#rb>footer{position:relative;z-index:1}
 #rb>header{z-index:50}
+#rb.rb--head{height:var(--rb-hh,88px)}
+#rb.rb--head .rb-head{position:fixed;left:0;right:0;top:0}
+#rb.rb--head .rb-mnav[data-open]{max-height:calc(100vh - var(--rb-hh,64px));overflow:auto}
+#rb.rb--page main [id]{scroll-margin-top:calc(var(--rb-hh,88px) + 16px)}
 /* шапка */
 #rb .rb-head{position:sticky;top:0;z-index:50;background:rgba(43,48,53,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 #rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
@@ -800,6 +804,7 @@ def css():
 #rb .rb-stat{padding:28px 24px 26px}
 #rb .rb-stat__num{font-family:var(--serif);font-size:clamp(34px,3.6vw,50px);color:var(--accent);line-height:1;white-space:nowrap;padding-bottom:16px;margin-bottom:14px;
   background:linear-gradient(90deg,var(--accent),transparent) left bottom/100% 1px no-repeat}
+#rb .rb-stat__num--txt{white-space:normal;font-size:clamp(28px,2.6vw,38px);line-height:1.15;padding-right:22px}
 #rb .rb-stat__num small{font-size:.46em;margin-left:.25em;letter-spacing:.04em;color:rgba(143,240,255,.85)}
 #rb .rb-stat__txt{color:var(--muted);font-size:14.5px;line-height:1.5}
 #rb .rb-adv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:30px 0 50px;text-align:center}
@@ -826,8 +831,9 @@ def css():
 #rb .rb-foot a{text-decoration:none;color:inherit;transition:color .2s}
 #rb .rb-foot a:hover{color:var(--accent)}
 #rb .rb-fgrid{display:grid;grid-template-columns:1.5fr repeat(4,minmax(0,1fr));gap:16px}
-#rb .rb-fcard{display:flex;flex-direction:column;gap:9px;padding:22px;border-radius:18px;border:1px solid rgba(54,203,224,.18);background:linear-gradient(160deg,rgba(54,203,224,.07),rgba(255,255,255,.02) 50%)}
-#rb .rb-fcard__t{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+#rb .rb-fcard{display:flex;flex-direction:column;gap:9px;padding:24px 22px 22px}
+#rb .rb-fcard:hover{transform:translateY(-4px)}
+#rb .rb-fcard__t{padding-right:24px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
 #rb .rb-fcard--main{grid-row:span 2}
 #rb .rb-fphone{font-family:var(--serif);font-size:22px;color:#fff!important}
 #rb .rb-fcard .rb-btns{margin-top:8px}
@@ -835,7 +841,7 @@ def css():
 #rb .rb-social a{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:13px}
 #rb .rb-social a:hover{border-color:var(--accent)}
 #rb .rb-fbottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:rgba(255,255,255,.5)}
-#rb .rb-fbottom>span{display:flex;flex-wrap:wrap;gap:6px 20px}
+#rb .rb-fbottom>span{display:flex;flex-wrap:wrap;gap:6px 20px}#rb .rb-fbottom>span:first-child{display:block}
 /* появление при прокрутке (только если работает JS) */
 #rb.rb-js .rb-reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 #rb.rb-js .rb-reveal.is-in{opacity:1;transform:none}
@@ -913,13 +919,13 @@ def header(alias):
 def footer():
     groups = [(it[0], [(t, h) for t, d, h in it[2]]) for it in MENU if not it[1]]
     groups.insert(2, ('Пациентам', [('Как проходит процедура', '/pacientam'), ('Где пройти процедуру', '/pacientam#voprosy'), ('Задать вопрос', '#popup:feedback')]))
-    cols = ''.join(f'<div class="rb-fcard"><span class="rb-fcard__t">{t}</span>' + ''.join(f'<a href="{h}">{n}</a>' for n, h in links) + '</div>' for t, links in groups)
+    cols = ''.join(f'<div class="rb-feat rb-fcard"><span class="rb-fcard__t">{t}</span>' + ''.join(f'<a href="{h}">{n}</a>' for n, h in links) + '</div>' for t, links in groups)
     soc = ''.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in (
         ('Telegram', 'https://t.me/revolutionbio'), ('WhatsApp', 'https://wa.me/79250843090'), ('MAX', MAX_URL),
         ('ВКонтакте', 'https://vk.com/revolutionbio'), ('Дзен', 'https://dzen.ru/revolutionbio')))
     return f'''<footer class="rb-foot"><div class="rb-wrap">
 <div class="rb-fgrid">
-<div class="rb-fcard rb-fcard--main"><span class="rb-fcard__t">Связаться с нами</span><a class="rb-fphone" href="{PHONE_HREF}">{PHONE}</a>
+<div class="rb-feat rb-fcard rb-fcard--main"><span class="rb-fcard__t">Связаться с нами</span><a class="rb-fphone" href="{PHONE_HREF}">{PHONE}</a>
 <a href="mailto:{EMAIL}">{EMAIL}</a><span class="rb-muted">Москва, Земляной Вал 7, офис 408</span>
 <div class="rb-social">{soc}</div><div class="rb-btns"><a class="rb-btn rb-btn--fill" href="#popup:feedback">Обратная связь</a></div></div>
 {cols}</div>
@@ -929,7 +935,14 @@ def footer():
 
 
 JS = '''<script>
-(function(){var r=document.getElementById('rb');if(!r)return;
+(function(){function init(){var R=document.querySelectorAll('.rb');if(!R.length||window.rbInit)return;window.rbInit=1;
+var r=document,P=document.querySelector('.rb--page')||R[0];
+var hb=document.querySelector('.rb--head'),hw=hb&&hb.querySelector('.rb-head>.rb-wrap');
+function hh(){if(hb&&hw)hb.style.setProperty('--rb-hh',hw.offsetHeight+'px');}hh();addEventListener('resize',hh);
+var path=location.pathname;if(path.length>1&&path.slice(-1)==='/')path=path.slice(0,-1);
+[].forEach.call(document.querySelectorAll('.rb-head a[href],.rb-foot a[href]'),function(a){var u=a.getAttribute('href');
+ if(!u||u.charAt(0)!=='/'||/[?#]/.test(u)||(u.length>1&&u.slice(-1)==='/'?u.slice(0,-1):u)!==path)return;a.setAttribute('aria-current','page');
+ var g=a.closest('.rb-dd,.rb-mgroup');if(g){if(g.tagName==='DETAILS')g.open=true;else g.classList.add('is-on');}});
 var b=r.querySelector('.rb-burger'),m=r.querySelector('.rb-mnav');
 if(b&&m)b.addEventListener('click',function(){var o=m.hasAttribute('data-open');if(o)m.removeAttribute('data-open');else m.setAttribute('data-open','');b.setAttribute('aria-expanded',String(!o));});
 r.querySelectorAll('.rb-dd').forEach(function(d){var t=d.querySelector('.rb-nav__top');
@@ -939,11 +952,11 @@ document.addEventListener('click',function(){r.querySelectorAll('.rb-dd.is-open'
 document.addEventListener('keydown',function(e){if(e.key==='Escape')r.querySelectorAll('.rb-dd.is-open').forEach(function(x){x.classList.remove('is-open');x.querySelector('.rb-nav__top').setAttribute('aria-expanded','false');});});
 r.querySelectorAll('.rb-feat').forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px');});});
 var fw=r.querySelector('.rb-flow');if(fw){var fs=fw.querySelector('svg'),fb=fw.querySelector('.rb-flow__base'),fl=fw.querySelector('.rb-flow__lit'),fdot=fw.querySelector('.rb-flow__dot'),FL=0,FH=1,ft=false;
- function fdraw(){var W=r.clientWidth,mn=r.querySelector('main'),H=mn?mn.offsetTop+mn.offsetHeight:r.scrollHeight,st=Math.max(760,innerHeight*.95),a=W*.06,b=W*.94,x=W*.72,y=0,k=0,d;
+ function fdraw(){var W=P.clientWidth,mn=P.querySelector('main'),H=mn?mn.offsetTop+mn.offsetHeight:P.scrollHeight,st=Math.max(760,innerHeight*.95),a=W*.06,b=W*.94,x=W*.72,y=0,k=0,d;
   if(W<700){a=W*.04;b=W*.96;}d='M'+x+' 0';while(y<H){var ny=Math.min(y+st,H+st),nx=k%2?b:a;d+=' C'+x+' '+(y+st*.55)+' '+nx+' '+(ny-st*.55)+' '+nx+' '+ny;x=nx;y=ny;k++;}
-  fs.setAttribute('viewBox','0 0 '+W+' '+r.scrollHeight);fb.setAttribute('d',d);fl.setAttribute('d',d);FL=fl.getTotalLength();FH=H;fl.style.strokeDasharray=FL+' '+FL;fscroll();}
- function fscroll(){ft=false;var p=Math.min(1,Math.max(0,(scrollY+innerHeight*.7)/FH)),L=FL*p;fl.style.strokeDashoffset=FL-L;var pt=fl.getPointAtLength(L);fdot.setAttribute('cx',pt.x);fdot.setAttribute('cy',pt.y);}
- fdraw();if(window.ResizeObserver)new ResizeObserver(function(){fdraw();}).observe(r);else addEventListener('resize',fdraw);
+  fs.setAttribute('viewBox','0 0 '+W+' '+P.scrollHeight);fb.setAttribute('d',d);fl.setAttribute('d',d);FL=fl.getTotalLength();FH=H;fl.style.strokeDasharray=FL+' '+FL;fscroll();}
+ function fscroll(){ft=false;var p=Math.min(1,Math.max(0,(scrollY+innerHeight*.7-P.getBoundingClientRect().top-scrollY)/FH)),L=FL*p;fl.style.strokeDashoffset=FL-L;var pt=fl.getPointAtLength(L);fdot.setAttribute('cx',pt.x);fdot.setAttribute('cy',pt.y);}
+ fdraw();if(window.ResizeObserver)new ResizeObserver(function(){fdraw();}).observe(P);else addEventListener('resize',fdraw);
  addEventListener('scroll',function(){if(!ft){ft=true;requestAnimationFrame(fscroll);}},{passive:true});}
 var y=r.querySelector('[data-rb-year]');if(y)y.textContent=new Date().getFullYear();
 r.querySelectorAll('.rb-gal').forEach(function(g){var im=g.querySelector('.rb-gal__main img'),th=[].slice.call(g.querySelectorAll('.rb-gal__thumbs button')),i=0;
@@ -1034,11 +1047,13 @@ r.querySelectorAll('.rb-railnav button').forEach(function(bt){bt.addEventListene
 var h=r.querySelector('.rb-head');function sc(){if(!h)return;if(window.scrollY>10)h.setAttribute('data-scrolled','');else h.removeAttribute('data-scrolled');}
 sc();window.addEventListener('scroll',sc,{passive:true});
 if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
- r.classList.add('rb-js');
+ [].forEach.call(R,function(x){x.classList.add('rb-js');});
  var els=r.querySelectorAll('.rb-sec h2,.rb-sec .rb-kicker,.rb-card,.rb-review,.rb-row,.rb-stats>div,.rb-adv figure,.rb-panel,.rb-gal,.rb-fields');
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
  els.forEach(function(el,k){el.classList.add('rb-reveal');el.style.transitionDelay=(k%4)*70+'ms';io.observe(el);});
 }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>'''
 
@@ -1110,7 +1125,7 @@ ASSETS = {}
 def shared_assets():
     """общие стили и скрипт — отдельными файлами на CDN: так код страницы короче и влезает в блок T123"""
     if not ASSETS:
-        style = re.sub(r'^\s*<style>|</style>\s*$', '', css()).replace(CDN + '/img/', '')  # картинки рядом с файлом стилей
+        style = re.sub(r'#rb(?![\w-])', '.rb', re.sub(r'^\s*<style>|</style>\s*$', '', css()).replace(CDN + '/img/', ''))  # картинки рядом с файлом стилей
         script = re.sub(r'^\s*<script>|</script>\s*$', '', JS)
         for key, text, ext in (('css', style, 'css'), ('js', script, 'js')):
             data = text.strip().encode('utf-8')
@@ -1129,13 +1144,26 @@ def page(alias, title, body, seo):
      и второй с #popup:feedback — см. README.md. -->
 '''
     css_url, js_url = shared_assets()
-    doc = (head + FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n<style>#rb{{background:#2b3035;color:#fff;min-height:100vh}}</style>'
-           + f'\n<div id="rb" lang="ru">\n{BGFX}\n{header(alias)}\n<main>\n{body}\n</main>\n{footer()}\n</div>\n<script src="{js_url}"></script>\n')
-    name = 'home' if alias == '/' else alias.strip('/')
+    doc = (head + FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n<style>.rb{{background:#2b3035;color:#fff}}</style>'
+           + f'\n<div class="rb rb--page" lang="ru">\n{BGFX}\n<main>\n{body}\n</main>\n</div>\n<script src="{js_url}"></script>\n')
+    write_doc('home' if alias == '/' else alias.strip('/'), doc)
+    SEO.append((alias, 'home' if alias == '/' else alias.strip('/'), seo.get('title', ''), seo.get('description', ''), seo.get('keywords', '')))
+
+
+def write_doc(name, doc):
     for d, ext in (('tilda', '.html'), ('tilda-txt', '.txt')):
         with open(os.path.join(OUT, d, name + ext), 'w', encoding='utf-8') as f:
             f.write(doc)
-    SEO.append((alias, name, seo.get('title', ''), seo.get('description', ''), seo.get('keywords', '')))
+
+
+def build_header_footer():
+    """шапка и подвал — отдельные страницы Tilda («Хедер» и «Футер»), общие для всего сайта"""
+    css_url, _ = shared_assets()
+    base = FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n<style>.rb{{background:#2b3035;color:#fff}}</style>\n'
+    write_doc('header', '<!-- REVOLUTION BIO — ШАПКА (меню). Вставить в блок T123 на странице-хедере Tilda, см. README.md -->\n'
+              + base + f'<div class="rb rb--head" lang="ru">\n{header(None)}\n</div>\n')
+    write_doc('footer', '<!-- REVOLUTION BIO — ПОДВАЛ. Вставить в блок T123 на странице-футере Tilda, см. README.md -->\n'
+              + base + f'<div class="rb rb--foot" lang="ru">\n{footer()}\n</div>\n')
 
 SEO = []
 REPORT = []
@@ -1307,7 +1335,7 @@ def stat_num(n):
 
 
 def stats(items):
-    return '<div class="rb-stats rb-stats--4">' + ''.join(f'<div class="rb-feat rb-stat"><div class="rb-stat__num">{stat_num(n)}</div><div class="rb-stat__txt">{t}</div></div>' for n, t in items) + '</div>'
+    return '<div class="rb-stats rb-stats--4">' + ''.join(f'<div class="rb-feat rb-stat"><div class="rb-stat__num{"" if re.search(r"\d", n) else " rb-stat__num--txt"}">{stat_num(n)}</div><div class="rb-stat__txt">{t}</div></div>' for n, t in items) + '</div>'
 
 
 ICON = {
@@ -1710,6 +1738,7 @@ build_contacts()
 build_404()
 build_article('policy.html', '/policy')
 build_article('soglasie.html', '/soglasie')
+build_header_footer()
 
 # ---------------------------------------------------------------- редиректы со старого сайта и SEO
 def old_url(rel):
