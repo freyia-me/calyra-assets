@@ -49,7 +49,7 @@ CATALOG_PANELS = [
     ('source/panel-acno.webp', '#ab0a3d', 'Проблемная кожа', 'JeuDérm · Acno Active', 'Жирная и проблемная кожа',
      'Пептиды и кислоты против высыпаний и воспалений, для матовой и чистой кожи.', '/jeuderm?line=acno'),
     ('source/panel-ato.webp', '#76bc21', 'Чувствительная кожа', 'JeuDérm · Ato Care', 'Чувствительная и реактивная кожа',
-     'Мягкий пептидный уход для кожи, склонной к раздражению и дерматитам.', '/jeuderm?line=atocare'),
+     'Мягкий пептидный уход для кожи, склонной к раздражению и сухости.', '/jeuderm?line=atocare'),
     ('source/panel-hair.webp', '#ae57b9', 'Кожа головы', 'JeuDérm · Hair Genesis', 'Кожа головы и волосы',
      'Стерильный концентрат для процедур и пептидный спрей для дома — для роста и плотности волос.', '/jeuderm?line=hair'),
     ('source/panel-nova.webp', '#9aa3ab', 'Обновление', 'JeuDérm · Nova · Zymo', 'Обновление кожи',
@@ -1003,11 +1003,15 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
   apply();if(push&&history.replaceState){var u=new URLSearchParams(location.search);if(v==='all')u.delete(k);else u.set(k,v);var qs=u.toString();history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);}}
  groups.forEach(function(g){var k=g.getAttribute('data-f'),v=q.get(k);if(v&&!g.querySelector('[data-v="'+v+'"]'))v=null;set(k,v||'all',false);
   [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
+ var DET={};
  function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
   dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
   dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var ks=c.querySelector('.rb-keys'),dk=dlg.querySelector('.rb-dlg__keys');if(dk)dk.innerHTML=ks?'<span class="rb-dlg__klabel">Ключевые компоненты</span>'+ks.outerHTML:'';var pd=c.querySelector('.rb-prod__pd');
   dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;var u=pd.getAttribute('data-url'),more=u?'<div class="rb-dl"><dt>Подробнее</dt><dd><a href="'+u+'" target="_blank" rel="noopener">Описание, протоколы и результаты на сайте бренда →</a></dd></div>':'';
-  dlg.querySelector('.rb-dlg__dl').innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('')+more;
+  var id=c.getAttribute('data-id'),dl=dlg.querySelector('.rb-dlg__dl'),cat=c.closest('.rb-cat'),src=cat&&cat.getAttribute('data-details');dlg.setAttribute('data-cur',id);
+  if(src&&!pd.querySelector('.rb-dl')){dl.innerHTML='<div class="rb-dl"><dd class="rb-muted">Загружаем состав…</dd></div>';
+   (DET[src]||(DET[src]=fetch(src).then(function(x){return x.json();}))).then(function(d){if(dlg.getAttribute('data-cur')===id)dl.innerHTML=(d[id]||'')+more;})['catch'](function(){delete DET[src];if(dlg.getAttribute('data-cur')===id)dl.innerHTML=more;});}
+  else dl.innerHTML=[].map.call(pd.querySelectorAll('.rb-dl'),function(x){return x.outerHTML;}).join('')+more;
   if(!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}dlg.querySelector('.rb-dlg__bd').scrollTop=0;
   if(history.replaceState)history.replaceState(null,'',location.pathname+location.search+'#p-'+c.getAttribute('data-id'));}
  function close(){if(dlg.open){if(dlg.close)dlg.close();else dlg.removeAttribute('open');}}
@@ -1100,6 +1104,22 @@ def review_html(r, anchor=True):
     pic = f'<img class="rb-review__img" src="{r["image"]}" alt="Отзыв: {esc(r["author"])}" loading="lazy">' if r.get('image') else ''
     return f'<article class="rb-review"{f" id=\"{r["id"]}\"" if anchor else ""}>{pic}{inner}<div class="rb-review__author">{esc(r["author"])}</div></article>'
 
+ASSETS = {}
+
+
+def shared_assets():
+    """общие стили и скрипт — отдельными файлами на CDN: так код страницы короче и влезает в блок T123"""
+    if not ASSETS:
+        style = re.sub(r'^\s*<style>|</style>\s*$', '', css()).replace(CDN + '/img/', '')  # картинки рядом с файлом стилей
+        script = re.sub(r'^\s*<script>|</script>\s*$', '', JS)
+        for key, text, ext in (('css', style, 'css'), ('js', script, 'js')):
+            data = text.strip().encode('utf-8')
+            name = f'rb-{hashlib.md5(data).hexdigest()[:8]}.{ext}'
+            open(os.path.join(IMG_DIR, name), 'wb').write(data)
+            ASSETS[key] = f'{CDN}/img/{name}'
+    return ASSETS['css'], ASSETS['js']
+
+
 def page(alias, title, body, seo):
     head = f'''<!-- REVOLUTION BIO — {esc(title)} ({alias})
      Вставлять целиком в блок T123 «HTML-код» на странице Tilda с адресом {alias}.
@@ -1108,7 +1128,9 @@ def page(alias, title, body, seo):
      Формы: создайте на странице блок «Форма в попапе» (BF502N) со ссылкой #popup:callback
      и второй с #popup:feedback — см. README.md. -->
 '''
-    doc = head + FONTS + '\n' + css() + f'\n<div id="rb" lang="ru">\n{BGFX}\n{header(alias)}\n<main>\n{body}\n</main>\n{footer()}\n</div>\n' + JS + '\n'
+    css_url, js_url = shared_assets()
+    doc = (head + FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n<style>#rb{{background:#2b3035;color:#fff;min-height:100vh}}</style>'
+           + f'\n<div id="rb" lang="ru">\n{BGFX}\n{header(alias)}\n<main>\n{body}\n</main>\n{footer()}\n</div>\n<script src="{js_url}"></script>\n')
     name = 'home' if alias == '/' else alias.strip('/')
     for d, ext in (('tilda', '.html'), ('tilda-txt', '.txt')):
         with open(os.path.join(OUT, d, name + ext), 'w', encoding='utf-8') as f:
@@ -1210,10 +1232,22 @@ CALYRA = dict(id='calyra-lux-5', en='Calyra Lux 5', title='CALYRA LUX 5 — CAP 
 
 
 # ---------------------------------------------------------------- каталог с фильтрами и окном товара
-def product_card(p, attrs):
+def dl_html(p):
+    return ''.join(f'<div class="rb-dl"><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in p['fields'])
+
+
+def details_file(stem, products):
+    """состав и применение товаров — отдельным JSON на CDN, окно товара подгружает его при открытии"""
+    data = json.dumps({p['id']: dl_html(p) for p in products}, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+    name = f'{stem}-{hashlib.md5(data).hexdigest()[:8]}.json'
+    open(os.path.join(IMG_DIR, name), 'wb').write(data)
+    return f'{CDN}/img/{name}'
+
+
+def product_card(p, attrs, inline=True):
     tags = ''.join(f'<span>{CARE_LABEL[c]}</span>' for c in p['care'] if c in CARE_LABEL)
     meta = ' · '.join(x for x in (p.get('vol'), p.get('ppm'), p.get('care_t')) if x)
-    fields = ''.join(f'<div class="rb-dl"><dt>{esc(k)}</dt><dd>{v}</dd></div>' for k, v in p['fields'])
+    fields = dl_html(p) if inline else ''
     # ссылку на сайт бренда добавляет окно товара: ссылка внутри ссылки-карточки ломает разметку
     url_attr = f' data-url="{p["url"]}"' if p.get('url') else ''
     keys = ('<span class="rb-keys">' + ''.join(f'<span>{esc(k)}</span>' for k in p['key']) + '</span>') if p.get('key') else ''
@@ -1223,7 +1257,7 @@ def product_card(p, attrs):
             f'<span class="rb-prod__pd" hidden{url_attr}><span class="rb-prod__meta">{esc(meta)}</span>{fields}</span></a>')
 
 
-def catalog(products, groups):
+def catalog(products, groups, details=None):
     """groups: [(ключ фильтра, подпись, [(значение, название)])]; у товара атрибут data-<ключ> со списком значений"""
     filt = ''
     for key, label, opts in groups:
@@ -1233,8 +1267,9 @@ def catalog(products, groups):
     def attrs(p):
         a = {'care': ' '.join(p['care']), 'line': ' '.join(p.get('lines', [])), 'type': p.get('type', '')}
         return ' '.join(f'data-{k}="{v}"' for k, v in a.items())
-    cards = ''.join(product_card(p, attrs(p)) for p in products)
-    return f'''<div class="rb-cat"><div class="rb-filters">{filt}</div><div class="rb-prods">{cards}</div>
+    cards = ''.join(product_card(p, attrs(p), not details) for p in products)
+    src = f' data-details="{details_file(details, products)}"' if details else ''
+    return f'''<div class="rb-cat"{src}><div class="rb-filters">{filt}</div><div class="rb-prods">{cards}</div>
 <p class="rb-cat__empty" hidden>По этому сочетанию фильтров товаров нет — выберите другой вариант.</p>
 <dialog class="rb-dlg" aria-labelledby="rb-dlg-t"><div class="rb-dlg__in"><div class="rb-dlg__ph"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
 <div class="rb-dlg__bd"><button class="rb-dlg__x" type="button" aria-label="Закрыть">×</button><span class="rb-prod__en"></span><h3 id="rb-dlg-t"></h3><div class="rb-dlg__meta"></div><p class="rb-dlg__desc"></p><div class="rb-dlg__keys"></div><dl class="rb-dlg__dl"></dl>
@@ -1403,7 +1438,7 @@ def build_jeuderm(products):
 <section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Линейки</span><h2>Уход по задачам кожи</h2><hr class="rb-rule">{panels('index.html')}</div></section>
 <section class="rb-sec" id="katalog" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция JeuDérm</h2><hr class="rb-rule">
 <p class="rb-muted" style="margin-bottom:28px">Выберите уход для кабинета или дома и линейку под задачу кожи. Нажмите на товар, чтобы открыть состав и применение.</p>
-{catalog(products, [('care', 'Уход', [('pro', 'Профессиональный'), ('home', 'Домашний')]), ('line', 'Линейка', lines)])}</div></section>
+{catalog(products, [('care', 'Уход', [('pro', 'Профессиональный'), ('home', 'Домашний')]), ('line', 'Линейка', lines)], details='jeuderm')}</div></section>
 {cta('Цены и протоколы — по запросу', 'Оставьте заявку: менеджер пришлёт прайс для специалистов и протоколы процедур.', btn2=('Официальный сайт JeuDérm', 'https://jeuderm-russia.ru/'))}{WARN_SEC}'''
     page('/jeuderm', 'JeuDérm', body, {'title': 'JeuDérm — пептидная космецевтика из Кореи для косметологов | Революшн Био',
                                        'description': 'Профессиональный и домашний уход JeuDérm: Reform Age, Acno Active, Ato Care, Nova·Zymo, Hair Genesis, Crystal PDRN. Официальный дистрибьютор в России.',
