@@ -1,14 +1,14 @@
 === 1. Главные 20 ===
 1. /news  →  /about
 2. /partners  →  /distributor
-3. /product  →  /#katalog
-4. /product/item/207-rejusomeboostcream  →  /rejusome#p-exo-boost-cream
-5. /product/item/227-rejusome  →  /rejusome#p-rejusome
-6. /product/item/228-rejusome-plus  →  /rejusome#p-rejusome-plus
-7. /product/item/229-rejusome-plus-hair  →  /rejusome#p-rejusome-plus
-8. /product/item/230-rejusomeboostserum  →  /rejusome#p-exo-boost-serum
-9. /product/item/231-rejusomeboostmask  →  /rejusome#p-exo-boost-mask
-10. /product/item/237-rejusomeboostmist  →  /rejusome#p-exo-boost-mist
+3. /product  →  /
+4. /product/item/207-rejusomeboostcream  →  /rejusome
+5. /product/item/227-rejusome  →  /rejusome
+6. /product/item/228-rejusome-plus  →  /rejusome
+7. /product/item/229-rejusome-plus-hair  →  /rejusome
+8. /product/item/230-rejusomeboostserum  →  /rejusome
+9. /product/item/231-rejusomeboostmask  →  /rejusome
+10. /product/item/237-rejusomeboostmist  →  /rejusome
 11. /product/item/59-crystal-pdrn  →  /crystal-pdrn
 12. /product/item/81-jeuderm-homecare  →  /jeuderm?care=home
 13. /product/item/82-jeuderm-pofessional  →  /jeuderm?care=pro
@@ -67,74 +67,74 @@
 44. /partners/itemlist/tag/экзосомы в косметологии  →  /distributor
 45. /partners/itemlist/tag/экзосомы для косметологии  →  /distributor
 46. /partners/itemlist/user/187-superuser  →  /distributor
-47. /product/item/10-rejusome-cream-otzyv  →  /#katalog
-48. /product/item/13-doktor-elina-vasilenko  →  /#katalog
-49. /product/item/14-otzyv  →  /#katalog
-50. /product/item/195-polina-t  →  /#katalog
-51. /product/item/196-anna-p  →  /#katalog
-52. /product/item/197-irina-b  →  /#katalog
-53. /product/item/198-tat-yana-a  →  /#katalog
-54. /product/item/200-ol-ga-k  →  /#katalog
-55. /product/item/201-tat-yana-b  →  /#katalog
-56. /product/item/232-mariya  →  /#katalog
-57. /product/item/233-irina  →  /#katalog
-58. /product/item/234-olga  →  /#katalog
-59. /product/item/235-ol-ga  →  /#katalog
-60. /product/item/236-tat-yana  →  /#katalog
-61. /product/item/9-nauchnyj-tsentr-revolution-group  →  /#katalog
-62. /product/itemlist/category/4-otzyvy  →  /#katalog
-63. /product/itemlist/category/93-otzyvy-tovarov  →  /#katalog
-64. /product/itemlist/tag/227rejusome  →  /#katalog
-65. /product/itemlist/tag/228rejusomeplus  →  /#katalog
-66. /product/itemlist/tag/229rejusomeplushair  →  /#katalog
-67. /product/itemlist/tag/230rejusomeboostserum  →  /#katalog
-68. /product/itemlist/tag/231rejusomeboostmask  →  /#katalog
-69. /product/itemlist/tag/59crystalpdrn  →  /#katalog
-70. /product/itemlist/tag/82  →  /#katalog
-71. /product/itemlist/tag/Crystal PDRN  →  /#katalog
-72. /product/itemlist/tag/JeuDérm  →  /#katalog
-73. /product/itemlist/tag/PDRN  →  /#katalog
-74. /product/itemlist/tag/VirtaMed  →  /#katalog
-75. /product/itemlist/tag/VittenPN  →  /#katalog
-76. /product/itemlist/tag/VittenPNPlus  →  /#katalog
-77. /product/itemlist/tag/asceplus  →  /#katalog
-78. /product/itemlist/tag/asceplusmaruga  →  /#katalog
-79. /product/itemlist/tag/exosomes  →  /#katalog
-80. /product/itemlist/tag/maruga  →  /#katalog
-81. /product/itemlist/tag/rejusome  →  /#katalog
-82. /product/itemlist/tag/rejusome cream  →  /#katalog
-83. /product/itemlist/tag/rejusome mist  →  /#katalog
-84. /product/itemlist/tag/rejusomeplus  →  /#katalog
-85. /product/itemlist/tag/Кристал ПДРН  →  /#katalog
-86. /product/itemlist/tag/ПДРН  →  /#katalog
-87. /product/itemlist/tag/ТэгААА  →  /#katalog
-88. /product/itemlist/tag/Экзосомы  →  /#katalog
-89. /product/itemlist/tag/виртамед  →  /#katalog
-90. /product/itemlist/tag/косметика с экзосомами  →  /#katalog
-91. /product/itemlist/tag/крем  →  /#katalog
-92. /product/itemlist/tag/крем с экзосомами  →  /#katalog
-93. /product/itemlist/tag/микробиом  →  /#katalog
-94. /product/itemlist/tag/микробиом кожи восстановление  →  /#katalog
-95. /product/itemlist/tag/омоложение  →  /#katalog
-96. /product/itemlist/tag/омоложение кожи экзосомами  →  /#katalog
-97. /product/itemlist/tag/отзыв207rejusomeboostcream  →  /#katalog
-98. /product/itemlist/tag/отзывБиоревитализация  →  /#katalog
-99. /product/itemlist/tag/отзывКосмецевтика  →  /#katalog
-100. /product/itemlist/tag/отзывМезонити  →  /#katalog
-101. /product/itemlist/tag/отзывМезотерапия1  →  /#katalog
-102. /product/itemlist/tag/отзывМезотерапия2  →  /#katalog
-103. /product/itemlist/tag/отзывТрихология  →  /#katalog
-104. /product/itemlist/tag/отзывЭкзосомы  →  /#katalog
-105. /product/itemlist/tag/препараты для косметологов  →  /#katalog
-106. /product/itemlist/tag/регенерация  →  /#katalog
-107. /product/itemlist/tag/реджесом  →  /#katalog
-108. /product/itemlist/tag/реджесом мист  →  /#katalog
-109. /product/itemlist/tag/сыворотка с экзосомами  →  /#katalog
-110. /product/itemlist/tag/тоник с экзосомами  →  /#katalog
-111. /product/itemlist/tag/экзосом  →  /#katalog
-112. /product/itemlist/tag/экзосомы в косметологии  →  /#katalog
-113. /product/itemlist/tag/экзосомы для косметологии  →  /#katalog
-114. /product/itemlist/user/187-superuser  →  /#katalog
+47. /product/item/10-rejusome-cream-otzyv  →  /
+48. /product/item/13-doktor-elina-vasilenko  →  /
+49. /product/item/14-otzyv  →  /
+50. /product/item/195-polina-t  →  /
+51. /product/item/196-anna-p  →  /
+52. /product/item/197-irina-b  →  /
+53. /product/item/198-tat-yana-a  →  /
+54. /product/item/200-ol-ga-k  →  /
+55. /product/item/201-tat-yana-b  →  /
+56. /product/item/232-mariya  →  /
+57. /product/item/233-irina  →  /
+58. /product/item/234-olga  →  /
+59. /product/item/235-ol-ga  →  /
+60. /product/item/236-tat-yana  →  /
+61. /product/item/9-nauchnyj-tsentr-revolution-group  →  /
+62. /product/itemlist/category/4-otzyvy  →  /
+63. /product/itemlist/category/93-otzyvy-tovarov  →  /
+64. /product/itemlist/tag/227rejusome  →  /
+65. /product/itemlist/tag/228rejusomeplus  →  /
+66. /product/itemlist/tag/229rejusomeplushair  →  /
+67. /product/itemlist/tag/230rejusomeboostserum  →  /
+68. /product/itemlist/tag/231rejusomeboostmask  →  /
+69. /product/itemlist/tag/59crystalpdrn  →  /
+70. /product/itemlist/tag/82  →  /
+71. /product/itemlist/tag/Crystal PDRN  →  /
+72. /product/itemlist/tag/JeuDérm  →  /
+73. /product/itemlist/tag/PDRN  →  /
+74. /product/itemlist/tag/VirtaMed  →  /
+75. /product/itemlist/tag/VittenPN  →  /
+76. /product/itemlist/tag/VittenPNPlus  →  /
+77. /product/itemlist/tag/asceplus  →  /
+78. /product/itemlist/tag/asceplusmaruga  →  /
+79. /product/itemlist/tag/exosomes  →  /
+80. /product/itemlist/tag/maruga  →  /
+81. /product/itemlist/tag/rejusome  →  /
+82. /product/itemlist/tag/rejusome cream  →  /
+83. /product/itemlist/tag/rejusome mist  →  /
+84. /product/itemlist/tag/rejusomeplus  →  /
+85. /product/itemlist/tag/Кристал ПДРН  →  /
+86. /product/itemlist/tag/ПДРН  →  /
+87. /product/itemlist/tag/ТэгААА  →  /
+88. /product/itemlist/tag/Экзосомы  →  /
+89. /product/itemlist/tag/виртамед  →  /
+90. /product/itemlist/tag/косметика с экзосомами  →  /
+91. /product/itemlist/tag/крем  →  /
+92. /product/itemlist/tag/крем с экзосомами  →  /
+93. /product/itemlist/tag/микробиом  →  /
+94. /product/itemlist/tag/микробиом кожи восстановление  →  /
+95. /product/itemlist/tag/омоложение  →  /
+96. /product/itemlist/tag/омоложение кожи экзосомами  →  /
+97. /product/itemlist/tag/отзыв207rejusomeboostcream  →  /
+98. /product/itemlist/tag/отзывБиоревитализация  →  /
+99. /product/itemlist/tag/отзывКосмецевтика  →  /
+100. /product/itemlist/tag/отзывМезонити  →  /
+101. /product/itemlist/tag/отзывМезотерапия1  →  /
+102. /product/itemlist/tag/отзывМезотерапия2  →  /
+103. /product/itemlist/tag/отзывТрихология  →  /
+104. /product/itemlist/tag/отзывЭкзосомы  →  /
+105. /product/itemlist/tag/препараты для косметологов  →  /
+106. /product/itemlist/tag/регенерация  →  /
+107. /product/itemlist/tag/реджесом  →  /
+108. /product/itemlist/tag/реджесом мист  →  /
+109. /product/itemlist/tag/сыворотка с экзосомами  →  /
+110. /product/itemlist/tag/тоник с экзосомами  →  /
+111. /product/itemlist/tag/экзосом  →  /
+112. /product/itemlist/tag/экзосомы в косметологии  →  /
+113. /product/itemlist/tag/экзосомы для косметологии  →  /
+114. /product/itemlist/user/187-superuser  →  /
 115. /sales/item/15-sale1  →  /kosmetologam
 116. /sales/item/16-sale2  →  /kosmetologam
 117. /uchebnyj-tsentr/item/210-rejusome-trip-dubrovnik-exosomes-summit  →  /kosmetologam
