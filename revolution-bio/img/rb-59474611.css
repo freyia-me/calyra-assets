@@ -33,6 +33,7 @@
 .rb .rb-flow__dot{fill:#8ff0ff;filter:drop-shadow(0 0 6px rgba(54,203,224,.9))}
 .rb>header,.rb>main,.rb>footer{position:relative;z-index:1}
 .rb>header{z-index:50}
+.rb{display:flow-root}
 .rb.rb--head{height:var(--rb-hh,88px)}
 .rb.rb--head .rb-head{position:fixed;left:0;right:0;top:0}
 .rb.rb--head .rb-mnav[data-open]{max-height:calc(100vh - var(--rb-hh,64px));overflow:auto}
@@ -66,8 +67,10 @@
 .rb .rb-dd__panel a::before{content:"";position:absolute;left:12px;top:17px;width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);opacity:.5;transition:opacity .25s}
 .rb .rb-dd__panel a b{display:block;font-family:var(--serif);font-weight:400;font-size:17px;color:#fff;line-height:1.25}
 .rb .rb-dd__panel a small{display:block;font-size:12px;color:rgba(214,235,240,.7);margin-top:2px}
-.rb .rb-dd__panel a:hover,.rb .rb-dd__panel a[aria-current]{background:rgba(54,203,224,.12)}
-.rb .rb-dd__panel a:hover::before,.rb .rb-dd__panel a[aria-current]::before{opacity:1}
+.rb .rb-dd__panel a:hover{background:rgba(255,255,255,.06)}
+.rb .rb-dd__panel a:hover::before{opacity:1}
+.rb .rb-dd__panel a[aria-current]{background:rgba(54,203,224,.14);box-shadow:inset 2px 0 0 var(--accent)}
+.rb .rb-dd__panel a[aria-current]::before{opacity:1}
 .rb .rb-dd__panel a[aria-current] b{color:var(--accent)}
 .rb .rb-mgroup{border-bottom:1px solid var(--line)}
 .rb .rb-mgroup summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:18px}
@@ -80,7 +83,8 @@
 .rb .rb-phone{font-family:var(--serif);font-size:18px;text-decoration:none;white-space:nowrap}
 .rb .rb-phone:hover{color:var(--accent)}
 .rb .rb-contact .rb-btn{padding:10px 22px;font-size:15px;white-space:nowrap}
-.rb .rb-burger{display:none;background:var(--glass);border:1px solid var(--line);border-radius:999px;color:#fff;padding:9px 18px;font:inherit;font-size:15px;cursor:pointer}
+.rb .rb-burger{display:none;background:rgba(54,203,224,.1);border:1px solid var(--accent);border-radius:999px;color:#fff;padding:9px 18px;font:inherit;font-size:15px;cursor:pointer;box-shadow:0 0 14px rgba(54,203,224,.3);transition:background .25s,box-shadow .25s}
+.rb .rb-burger:hover,.rb .rb-burger[aria-expanded="true"]{background:rgba(54,203,224,.22);box-shadow:0 0 20px rgba(54,203,224,.5)}
 .rb .rb-mnav{display:none}
 /* первый экран главной: бренды — лицо — текст */
 .rb .rb-intro{position:relative;overflow:hidden;min-height:min(calc(100vh - 88px),820px);display:flex;align-items:center;padding:28px 0 44px}
@@ -184,7 +188,7 @@
 .rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* заголовок внутренних страниц */
 .rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-.rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;background:url('inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+.rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;pointer-events:none;background:url('inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
 .rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
 .rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
