@@ -5,7 +5,7 @@
      Формы: создайте на странице блок «Форма в попапе» (BF502N) со ссылкой #popup:callback
      и второй с #popup:feedback — см. README.md. -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@24436790fc09/revolution-bio/img/rb-59474611.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@a1e4e73803b3/revolution-bio/img/rb-571b95fc.css">
 <style>.rb{background:#2b3035;color:#fff}</style>
 <div class="rb rb--page" lang="ru">
 <div class="rb-flow" aria-hidden="true"><svg preserveAspectRatio="none"><defs><linearGradient id="rb-flow-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36cbe0" stop-opacity=".04"/><stop offset=".85" stop-color="#36cbe0" stop-opacity=".26"/><stop offset="1" stop-color="#8ff0ff" stop-opacity=".5"/></linearGradient></defs><path class="rb-flow__base"/><path class="rb-flow__lit"/><circle class="rb-flow__dot" r="2.5" cx="-10" cy="-10"/></svg></div>
@@ -20,4 +20,4 @@
 <section class="rb-sec "><div class="rb-wrap"><span class="rb-kicker">Бренды</span><h2>Продукция производителя</h2><hr class="rb-rule"><div class="rb-feats rb-feats--4"><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.5 7h7M7.3 9.2l3.4 6.6M16.7 9.2l-3.4 6.6"/></svg><b><a href="/jeuderm">JeuDérm</a></b><p>Пептидная космецевтика: профессиональный и домашний уход.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2.5h6M10 2.5v4L6.5 12v8a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-8L14 6.5v-4M6.5 14h11"/></svg><b><a href="/rejusome">Rejusome</a></b><p>Стерильные сыворотки и космецевтика с экзосомами.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2c0 5 10 5 10 10S7 17 7 22M17 2c0 5-10 5-10 10s10 5 10 10M8.5 5h7M8.5 19h7M10 9.5h4M10 14.5h4"/></svg><b><a href="/calyra-lux-5">Calyra Lux 5</a></b><p>CAP Пептид 5, PN и гиалуронат натрия в одном шприце.</p></div><div class="rb-feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg><b><a href="/crystal-pdrn">Crystal PDRN</a></b><p>PDRN + HA 3% — восстановление качества кожи.</p></div></div></div></section>
 </main>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@24436790fc09/revolution-bio/img/rb-a8e8f518.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@a1e4e73803b3/revolution-bio/img/rb-a8e8f518.js"></script>

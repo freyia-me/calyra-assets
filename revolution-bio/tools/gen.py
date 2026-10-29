@@ -885,7 +885,9 @@ def css():
   #rb .rb-pgrid{grid-template-columns:minmax(0,1fr);gap:18px}#rb .rb-railnav{display:none}}
 @media (max-width:820px){#rb{font-size:16px}
   #rb .rb-product,#rb .rb-contacts,#rb .rb-hero--art .rb-wrap{grid-template-columns:minmax(0,1fr)}
-  #rb .rb-fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}#rb .rb-fcard--main{grid-column:1/-1;grid-row:auto}
+  #rb .rb-fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}#rb .rb-fcard--main{grid-column:1/-1;grid-row:auto}
+  #rb .rb-fcard{padding:20px 16px 18px;gap:8px}#rb .rb-fcard:not(.rb-fcard--main) a{font-size:15px}
+  #rb .rb-fcard__t{letter-spacing:.1em;padding-right:18px}#rb .rb-fcard::after{right:12px;top:12px;width:10px;height:10px}
   #rb .rb-hero__art{width:min(72%,300px);justify-self:center;order:-1}
   #rb .rb-product{gap:32px}#rb .rb-product>div:first-child{position:static}
   #rb .rb-row{grid-template-columns:minmax(0,1fr)}#rb .rb-row__body{padding:6px 12px 14px}
@@ -896,6 +898,7 @@ def css():
   #rb .rb-phone{display:none}#rb .rb-logo img{height:52px}
   #rb .rb-head .rb-wrap{min-height:68px}#rb .rb-contact{gap:10px}#rb .rb-contact .rb-btn{padding:9px 16px;font-size:14px}}
 @media (max-width:440px){#rb .rb-contact .rb-btn{display:none}}
+@media (max-width:380px){#rb .rb-fcard{padding:18px 13px 16px}#rb .rb-fcard:not(.rb-fcard--main) a{font-size:14px}#rb .rb-fcard__t{font-size:10px;letter-spacing:.06em;padding-right:14px}}
 @media (prefers-reduced-motion:reduce){#rb *{transition:none!important;animation:none!important}#rb.rb-js .rb-reveal{opacity:1;transform:none}}
 </style>"""
 
@@ -921,8 +924,10 @@ def header(alias):
 </div><nav class="rb-mnav" id="rb-mnav" aria-label="Мобильное меню">{mob}<a href="{PHONE_HREF}">{PHONE}</a></nav></header>'''
 
 def footer():
-    groups = [(it[0], [(t, h) for t, d, h in it[2]]) for it in MENU if not it[1]]
-    groups.insert(2, ('Пациентам', [('Как проходит процедура', '/pacientam'), ('Где пройти процедуру', '/pacientam#voprosy'), ('Задать вопрос', '#popup:feedback')]))
+    # в подвале короткие подписи: на телефоне карточки идут по две в ряд, и каждая ссылка должна влезать в строку
+    short = {'Для профессионалов': 'Профессионалам', 'Обучение и вебинары': 'Обучение', 'Стать дистрибьютором': 'Дистрибьюторам'}
+    groups = [(short.get(it[0], it[0]), [(short.get(t, t), h) for t, d, h in it[2]]) for it in MENU if not it[1]]
+    groups.insert(2, ('Пациентам', [('О процедурах', '/pacientam'), ('Где пройти', '/pacientam#voprosy'), ('Задать вопрос', '#popup:feedback')]))
     cols = ''.join(f'<div class="rb-feat rb-fcard"><span class="rb-fcard__t">{t}</span>' + ''.join(f'<a href="{h}">{n}</a>' for n, h in links) + '</div>' for t, links in groups)
     soc = ''.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in (
         ('Telegram', 'https://t.me/revolutionbio'), ('WhatsApp', 'https://wa.me/79250843090'), ('MAX', MAX_URL),

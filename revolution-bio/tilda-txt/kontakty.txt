@@ -5,15 +5,15 @@
      Формы: создайте на странице блок «Форма в попапе» (BF502N) со ссылкой #popup:callback
      и второй с #popup:feedback — см. README.md. -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@24436790fc09/revolution-bio/img/rb-59474611.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@a1e4e73803b3/revolution-bio/img/rb-571b95fc.css">
 <style>.rb{background:#2b3035;color:#fff}</style>
 <div class="rb rb--page" lang="ru">
 <div class="rb-flow" aria-hidden="true"><svg preserveAspectRatio="none"><defs><linearGradient id="rb-flow-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36cbe0" stop-opacity=".04"/><stop offset=".85" stop-color="#36cbe0" stop-opacity=".26"/><stop offset="1" stop-color="#8ff0ff" stop-opacity=".5"/></linearGradient></defs><path class="rb-flow__base"/><path class="rb-flow__lit"/><circle class="rb-flow__dot" r="2.5" cx="-10" cy="-10"/></svg></div>
 <main>
 <section class="rb-hero"><div class="rb-wrap"><nav class="rb-crumbs" aria-label="Навигация"><a href="/">Главная</a><span>—</span>Контакты</nav><h1>Контакты</h1><hr class="rb-rule"></div></section><section class="rb-sec" id="kontakty"><div class="rb-wrap"><div class="rb-contacts"><div>
-<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@24436790fc09/revolution-bio/img/address-e256fe.webp" alt=""><div><b>Адрес</b>Москва, Земляной Вал 7, офис 408</div></div>
-<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@24436790fc09/revolution-bio/img/mail-e48cd4.webp" alt=""><div><b>E-mail</b><a href="mailto:info@revolution.bio">info@revolution.bio</a></div></div>
-<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@24436790fc09/revolution-bio/img/phone-49452f.webp" alt=""><div><b>Телефоны и мессенджеры</b><a href="tel:+74951477040">+7 (495) 147-70-40</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp: +7 925 084-30-90</a>
+<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@a1e4e73803b3/revolution-bio/img/address-e256fe.webp" alt=""><div><b>Адрес</b>Москва, Земляной Вал 7, офис 408</div></div>
+<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@a1e4e73803b3/revolution-bio/img/mail-e48cd4.webp" alt=""><div><b>E-mail</b><a href="mailto:info@revolution.bio">info@revolution.bio</a></div></div>
+<div class="rb-ci"><img src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@a1e4e73803b3/revolution-bio/img/phone-49452f.webp" alt=""><div><b>Телефоны и мессенджеры</b><a href="tel:+74951477040">+7 (495) 147-70-40</a><a href="https://wa.me/79250843090" target="_blank" rel="noopener">WhatsApp: +7 925 084-30-90</a>
 <a href="https://wa.me/79253428202" target="_blank" rel="noopener">WhatsApp: +7 925 342-82-02</a>
 <a href="https://t.me/revolution_bio" target="_blank" rel="noopener">Telegram: @revolution_bio</a>
 <a href="https://t.me/+79250843090" target="_blank" rel="noopener">Telegram: +7 925 084-30-90</a>
@@ -23,4 +23,4 @@
 </div></div></section>
 </main>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@24436790fc09/revolution-bio/img/rb-a8e8f518.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@a1e4e73803b3/revolution-bio/img/rb-a8e8f518.js"></script>
