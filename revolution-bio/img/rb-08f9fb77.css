@@ -34,10 +34,11 @@
 .rb>header,.rb>main,.rb>footer{position:relative;z-index:1}
 .rb>header{z-index:50}
 .rb{display:flow-root}
-.rb.rb--head{height:var(--rb-hh,88px)}
+.rb.rb--head{height:88px}
 .rb.rb--head .rb-head{position:fixed;left:0;right:0;top:0}
-.rb.rb--head .rb-mnav[data-open]{max-height:calc(100vh - var(--rb-hh,64px));overflow:auto}
-.rb.rb--page main [id]{scroll-margin-top:calc(var(--rb-hh,88px) + 16px)}
+.rb.rb--head .rb-mnav[data-open]{max-height:calc(100vh - 68px);overflow:auto}
+.rb.rb--page main [id]{scroll-margin-top:104px}
+@media (max-width:820px){.rb.rb--head{height:68px}.rb.rb--page main [id]{scroll-margin-top:84px}}
 /* шапка */
 .rb .rb-head{position:sticky;top:0;z-index:50;background:rgba(43,48,53,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 .rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
@@ -188,8 +189,9 @@
 .rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* заголовок внутренних страниц */
 .rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-.rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;pointer-events:none;background:url('inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12;
+.rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;pointer-events:none;opacity:0;transition:opacity .8s;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
+.rb.rb-ready .rb-hero::before{background:url('inner-bg-0a67eb.webp') center/cover no-repeat;opacity:.12}
 .rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
 .rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
 .rb.rb-js .rb-hero__art{animation:rb-float 7s ease-in-out infinite}
