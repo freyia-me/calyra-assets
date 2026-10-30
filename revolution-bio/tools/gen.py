@@ -358,7 +358,9 @@ def cat_description(page_rel, s):
     return clean(page_rel, el)
 
 # ---------------------------------------------------------------- вёрстка
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">'
+FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net">'
+         '<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">'
+         '<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet"></noscript>')
 
 def css():
     deco = img('index.html', 'images/custom/inner_bg.png', 1200, 70)
@@ -911,7 +913,7 @@ def css():
 </style>"""
 
 def header(alias):
-    logo = img('index.html', 'images/custom/logo.svg')
+    logo = img('index.html', 'source/logo-header.png', 264, 90)
     cur = lambda h: ' aria-current="page"' if h == alias else ''
     desk, mob = '', ''
     for k, it in enumerate(MENU):
@@ -925,7 +927,7 @@ def header(alias):
                  f'<div class="rb-dd__panel" id="rb-dd-{k}"><span class="rb-dd__title">{it[0]}</span>{items}</div></div>')
         mob += f'<details class="rb-mgroup"{" open" if on else ""}><summary>{it[0]}<i aria-hidden="true"></i></summary>' + ''.join(f'<a href="{h}"{cur(h)}>{t}</a>' for t, d, h in it[2]) + '</details>'
     return f'''<header class="rb-head"><div class="rb-wrap">
-<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="{logo}" alt="Революшн Био"></a>
+<a class="rb-logo" href="/" aria-label="Революшн Био — на главную"><img src="{logo}" alt="Революшн Био" width="66" height="66"></a>
 <nav class="rb-nav" aria-label="Меню">{desk}</nav>
 <div class="rb-contact"><a class="rb-phone" href="{PHONE_HREF}">{PHONE}</a><a class="rb-btn" href="#popup:callback">Заказать звонок</a>
 <button class="rb-burger" type="button" aria-expanded="false" aria-controls="rb-mnav">Меню</button></div>
@@ -984,7 +986,8 @@ var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 r.querySelectorAll('.rb-stage').forEach(function(st){
  var sec=st.closest('.rb-intro'),im=st.querySelectorAll('.rb-stage__img'),dt=st.querySelectorAll('.rb-stage__dots button'),cards=sec.querySelectorAll('.rb-brand'),
   svg=sec.querySelector('.rb-links'),links=svg?svg.querySelectorAll('.rb-link'):[],cap=st.querySelector('.rb-stage__cap'),pv=st.querySelectorAll('.rb-pt'),ho=st.querySelectorAll('.rb-holo'),hl=svg?svg.querySelector('.rb-link__holo'):null,n=im.length,i=0,t=null,ms=+st.getAttribute('data-interval')||6000;
- function ldr(){[].forEach.call(im,function(x){if(x.dataset.srcset){x.srcset=x.dataset.srcset;x.removeAttribute('data-srcset');}if(x.dataset.src){x.src=x.dataset.src;x.removeAttribute('data-src');}});}if(im[0].complete)setTimeout(ldr,200);else{im[0].addEventListener('load',ldr);im[0].addEventListener('error',ldr);}
+ function lz(x){if(!x)return;if(x.dataset.srcset){x.srcset=x.dataset.srcset;x.removeAttribute('data-srcset');}if(x.dataset.src){x.src=x.dataset.src;x.removeAttribute('data-src');}}
+ function ldr(){setTimeout(function(){lz(im[1]);},2500);}if(im[0].complete)ldr();else{im[0].addEventListener('load',ldr);im[0].addEventListener('error',ldr);}
  function pts(k){return (im[k].getAttribute('data-hs')||'').split(';').map(function(p){var c=p.split(',');return [+c[0],+c[1]];});}
  var cur=pts(0),from=cur,to=cur,t0=0,anim=0;
  function draw(){[].forEach.call(pv,function(b,k){if(cur[k]){b.style.left=cur[k][0]+'%';b.style.top=cur[k][1]+'%';}});
@@ -996,7 +999,7 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
    g.querySelector('.rb-link__base').setAttribute('d',d);g.querySelector('.rb-link__pulse').setAttribute('d',d);g.querySelector('.rb-link__spark').setAttribute('d',d);});}
  function tween(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1200),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
   cur=to.map(function(q,k){var f=from[k]||q;return [f[0]+(q[0]-f[0])*e,f[1]+(q[1]-f[1])*e];});draw();if(p<1)anim=requestAnimationFrame(tween);}
- function show(k){i=(k+n)%n;
+ function show(k){i=(k+n)%n;lz(im[i]);lz(im[(i+1)%n]);
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);});
   var bi=im[i].getAttribute('data-brand');
   [].forEach.call(cards,function(e){var a=e.getAttribute('data-brand')===bi;e.classList.toggle('is-active',a);var h=e.querySelector('.rb-brand__head');if(h)h.setAttribute('aria-expanded',String(a));});
@@ -1033,7 +1036,7 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
  groups.forEach(function(g){var k=g.getAttribute('data-f'),v=q.get(k);if(v&&!g.querySelector('[data-v="'+v+'"]'))v=null;set(k,v||'all',false);
   [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
  var DET={};
- function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
+ function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.getAttribute('data-full')||im.src;di.alt=im.alt;
   dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
   dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var ks=c.querySelector('.rb-keys'),dk=dlg.querySelector('.rb-dlg__keys');if(dk)dk.innerHTML=ks?'<span class="rb-dlg__klabel">Ключевые компоненты</span>'+ks.outerHTML:'';var pd=c.querySelector('.rb-prod__pd');
   dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;var u=pd.getAttribute('data-url'),more=u?'<div class="rb-dl"><dt>Подробнее</dt><dd><a href="'+u+'" target="_blank" rel="noopener">Описание, протоколы и результаты на сайте бренда →</a></dd></div>':'';
@@ -1087,8 +1090,9 @@ def crumbs(items):
 def hero(h1, crumb_items, lead='', art=None):
     text_html = f'''{crumbs(crumb_items)}<h1>{esc(h1)}</h1><hr class="rb-rule">{f'<div class="rb-lead rb-rich">{lead}</div>' if lead else ''}'''
     if art:
-        u = img('index.html', art[0], 760, 80)
-        return f'''<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div>{text_html}</div><img class="rb-hero__art" src="{u}" alt="{esc(art[1])}" width="760" height="760" fetchpriority="high"></div></section>'''
+        u, sm = img('index.html', art[0], 760, 80), img('index.html', art[0], 480, 78)
+        return (f'''<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div>{text_html}</div><img class="rb-hero__art" src="{u}" srcset="{sm} 480w, {u} 760w" '''
+                f'''sizes="(max-width: 820px) min(64vw, 300px), 380px" alt="{esc(art[1])}" width="760" height="760" fetchpriority="high"></div></section>''')
     return f'''<section class="rb-hero"><div class="rb-wrap">{text_html}</div></section>'''
 
 def card(href, image, title, txt='', more='Подробнее', date='', cover=False):
@@ -1115,7 +1119,7 @@ def poster_panels(rel):
         act = k == 0
         ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
         items += (f'<div class="rb-pan{" is-active" if act else ""}" style="--c:{col}">'
-                  f'<img src="{img(rel, f, 900)}" alt="{esc(title)}. {esc(sub)}" loading="lazy">'
+                  f'<img src="{img(rel, f, 900, 70)}" alt="{esc(title)}. {esc(sub)}" width="900" height="1200" loading="lazy">'
                   f'<button class="rb-pan__tab" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-pp-{k}">{esc(tab)}</button>'
                   f'<div class="rb-pan__bd" id="rb-pp-{k}"><a class="rb-btn rb-btn--fill" href="{href}"{ext}>Подробнее <i aria-hidden="true">→</i></a></div></div>')
     return f'<div class="rb-pans rb-pans--poster">{items}</div>'
@@ -1274,8 +1278,9 @@ def rj_products():
     out = []
     for p in json.load(open(os.path.join(DATA, 'rejusome-products.json'), encoding='utf-8')):
         fields = [(k, v) for k, v in p['fields']]
-        im = img('index.html', p['photo'], 1200) if p.get('photo') else p['img']
-        out.append(dict(p, img=im, type=' '.join(p['type']), fields=fields, photo_card=True))
+        im = img('index.html', p['photo'], 480, 78) if p.get('photo') else p['img']
+        full = img('index.html', p['photo'], 1000, 80) if p.get('photo') else None
+        out.append(dict(p, img=im, img_full=full, type=' '.join(p['type']), fields=fields, photo_card=True))
     return out
 
 
@@ -1314,7 +1319,7 @@ def product_card(p, attrs, inline=True):
                 f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span>'
                 f'<span class="rb-prod__more">Страница препарата <i aria-hidden="true">→</i></span></span></a>')
     return (f'<a class="rb-prod{" rb-prod--photo" if p.get("photo_card") else ""}" href="#p-{p["id"]}" data-id="{p["id"]}" {attrs}>'
-            f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"{f" style={chr(34)}object-position:{p[chr(102)+'ocus']}{chr(34)}" if p.get("focus") else ""}><span class="rb-prod__tags">{tags}</span></span>'
+            f'<span class="rb-prod__ph"><img src="{p["img"]}"{f" data-full={chr(34)}{p[chr(105)+'mg_full']}{chr(34)}" if p.get("img_full") else ""} alt="{esc(p["alt"])}" loading="lazy"{f" style={chr(34)}object-position:{p[chr(102)+'ocus']}{chr(34)}" if p.get("focus") else ""}><span class="rb-prod__tags">{tags}</span></span>'
             f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span>{keys}<span class="rb-prod__more">Подробнее <i aria-hidden="true">→</i></span></span>'
             f'<span class="rb-prod__pd" hidden{url_attr}><span class="rb-prod__meta">{esc(meta)}</span>{fields}</span></a>')
 
@@ -1433,8 +1438,8 @@ def build_home():
         return [(fx, fy), (cx, cy), (round((cx + hx) / 2) - 3, round((cy + hy) / 2) + 1), (hx, hy)]
     hs_attr = lambda p: ';'.join(f'{x},{y}' for x, y in mask_pts(p))
     plain = lambda labels: ' · '.join(strip_tags(l.replace('<br>', ' ')) for l in labels)
-    small = [img(rel, f, 600, 76) for f, bi, pts, labels in HERO_SLIDES]
-    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" {"src" if k == 0 else "data-src"}="{u}" {"srcset" if k == 0 else "data-srcset"}="{small[k]} 600w, {u} 960w" sizes="(max-width: 820px) min(86vw, 400px), 440px" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\" decoding=\"sync\"" if k == 0 else " decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
+    small = [img(rel, f, 560, 74) for f, bi, pts, labels in HERO_SLIDES]
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" {"src" if k == 0 else "data-src"}="{u}" {"srcset" if k == 0 else "data-srcset"}="{small[k]} 560w, {u} 960w" sizes="(max-width: 820px) min(76vw, 400px), 440px" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\" decoding=\"sync\"" if k == 0 else " decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
     sr_text = ' '.join(f'{b}: {plain(labels)}.' for u, b, p, h, bi, labels in slides)
     dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
     first = slides[0][4]
@@ -1515,7 +1520,7 @@ PDRN_HAIR = dict(id='crystal-pdrn-hair', link='/crystal-pdrn', type='hair', care
 
 
 def build_rejusome(products):
-    PDRN_HAIR['img'] = img('index.html', 'source/photo-crystal-pdrn.webp', 900)
+    PDRN_HAIR['img'] = img('index.html', 'source/photo-crystal-pdrn.webp', 480, 78)
     s = soup('product/itemlist/category/5-ekzosomy.html')
     desc = clean('product/itemlist/category/5-ekzosomy.html', s.select_one('.products-subcategory-description'))
     intro = '<p>Стерильные сыворотки и космецевтика с экзосомами для глубокого восстановления и обновления кожи — в кабинете и дома.</p>'
