@@ -30,7 +30,8 @@ var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 r.querySelectorAll('.rb-stage').forEach(function(st){
  var sec=st.closest('.rb-intro'),im=st.querySelectorAll('.rb-stage__img'),dt=st.querySelectorAll('.rb-stage__dots button'),cards=sec.querySelectorAll('.rb-brand'),
   svg=sec.querySelector('.rb-links'),links=svg?svg.querySelectorAll('.rb-link'):[],cap=st.querySelector('.rb-stage__cap'),pv=st.querySelectorAll('.rb-pt'),ho=st.querySelectorAll('.rb-holo'),hl=svg?svg.querySelector('.rb-link__holo'):null,n=im.length,i=0,t=null,ms=+st.getAttribute('data-interval')||6000;
- function ldr(){[].forEach.call(im,function(x){if(x.dataset.srcset){x.srcset=x.dataset.srcset;x.removeAttribute('data-srcset');}if(x.dataset.src){x.src=x.dataset.src;x.removeAttribute('data-src');}});}if(im[0].complete)setTimeout(ldr,200);else{im[0].addEventListener('load',ldr);im[0].addEventListener('error',ldr);}
+ function lz(x){if(!x)return;if(x.dataset.srcset){x.srcset=x.dataset.srcset;x.removeAttribute('data-srcset');}if(x.dataset.src){x.src=x.dataset.src;x.removeAttribute('data-src');}}
+ function ldr(){setTimeout(function(){lz(im[1]);},2500);}if(im[0].complete)ldr();else{im[0].addEventListener('load',ldr);im[0].addEventListener('error',ldr);}
  function pts(k){return (im[k].getAttribute('data-hs')||'').split(';').map(function(p){var c=p.split(',');return [+c[0],+c[1]];});}
  var cur=pts(0),from=cur,to=cur,t0=0,anim=0;
  function draw(){[].forEach.call(pv,function(b,k){if(cur[k]){b.style.left=cur[k][0]+'%';b.style.top=cur[k][1]+'%';}});
@@ -42,7 +43,7 @@ r.querySelectorAll('.rb-stage').forEach(function(st){
    g.querySelector('.rb-link__base').setAttribute('d',d);g.querySelector('.rb-link__pulse').setAttribute('d',d);g.querySelector('.rb-link__spark').setAttribute('d',d);});}
  function tween(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1200),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
   cur=to.map(function(q,k){var f=from[k]||q;return [f[0]+(q[0]-f[0])*e,f[1]+(q[1]-f[1])*e];});draw();if(p<1)anim=requestAnimationFrame(tween);}
- function show(k){i=(k+n)%n;
+ function show(k){i=(k+n)%n;lz(im[i]);lz(im[(i+1)%n]);
   [].forEach.call(im,function(e,j){e.classList.toggle('is-active',j===i);});
   var bi=im[i].getAttribute('data-brand');
   [].forEach.call(cards,function(e){var a=e.getAttribute('data-brand')===bi;e.classList.toggle('is-active',a);var h=e.querySelector('.rb-brand__head');if(h)h.setAttribute('aria-expanded',String(a));});
@@ -79,7 +80,7 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
  groups.forEach(function(g){var k=g.getAttribute('data-f'),v=q.get(k);if(v&&!g.querySelector('[data-v="'+v+'"]'))v=null;set(k,v||'all',false);
   [].forEach.call(g.querySelectorAll('button'),function(b){b.addEventListener('click',function(){set(k,b.getAttribute('data-v'),true);});});});
  var DET={};
- function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.src;di.alt=im.alt;
+ function open(c){if(!dlg||!c)return;dlg.classList.toggle('rb-dlg--photo',c.classList.contains('rb-prod--photo'));var im=c.querySelector('.rb-prod__ph img'),di=dlg.querySelector('.rb-dlg__ph img');di.src=im.getAttribute('data-full')||im.src;di.alt=im.alt;
   dlg.querySelector('.rb-prod__en').textContent=c.querySelector('.rb-prod__en').textContent;dlg.querySelector('h3').textContent=c.querySelector('.rb-prod__bd b').textContent;
   dlg.querySelector('.rb-dlg__desc').textContent=c.querySelector('.rb-prod__desc').textContent;var ks=c.querySelector('.rb-keys'),dk=dlg.querySelector('.rb-dlg__keys');if(dk)dk.innerHTML=ks?'<span class="rb-dlg__klabel">Ключевые компоненты</span>'+ks.outerHTML:'';var pd=c.querySelector('.rb-prod__pd');
   dlg.querySelector('.rb-dlg__meta').textContent=pd.querySelector('.rb-prod__meta').textContent;var u=pd.getAttribute('data-url'),more=u?'<div class="rb-dl"><dt>Подробнее</dt><dd><a href="'+u+'" target="_blank" rel="noopener">Описание, протоколы и результаты на сайте бренда →</a></dd></div>':'';
