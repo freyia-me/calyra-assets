@@ -1,22 +1,22 @@
 # Главные 301-редиректы — добавьте их в Tilda в первую очередь (старый адрес → новый адрес).
-# Полный список (143 адреса, включая теги, отзывы и страницы партнёров) — в redirects.txt.
+# Полный список (143 адресов, включая теги, отзывы и страницы партнёров) — в redirects.txt.
 /news	/about
 /partners	/distributor
-/product	/#katalog
-/sales	/kosmetologam
-/uchebnyj-tsentr	/kosmetologam
+/product	/
+/product/item/207-rejusomeboostcream	/rejusome?p=exo-boost-cream
+/product/item/227-rejusome	/rejusome?p=rejusome
+/product/item/228-rejusome-plus	/rejusome?p=rejusome-plus
+/product/item/229-rejusome-plus-hair	/rejusome?p=rejusome-plus
+/product/item/230-rejusomeboostserum	/rejusome?p=exo-boost-serum
+/product/item/231-rejusomeboostmask	/rejusome?p=exo-boost-mask
+/product/item/237-rejusomeboostmist	/rejusome?p=exo-boost-mist
+/product/item/59-crystal-pdrn	/crystal-pdrn
+/product/item/81-jeuderm-homecare	/jeuderm?care=home
+/product/item/82-jeuderm-pofessional	/jeuderm?care=pro
 /product/itemlist/category/11-pro-skincare	/rejusome?type=cosmetics
 /product/itemlist/category/19-trikhologiya	/rejusome?type=hair
 /product/itemlist/category/5-ekzosomy	/rejusome?type=serum
 /product/itemlist/category/7-jeuderm	/jeuderm
 /product/itemlist/category/9-biorevitalizatsiya	/crystal-pdrn
-/product/item/207-rejusomeboostcream	/rejusome#p-exo-boost-cream
-/product/item/227-rejusome	/rejusome#p-rejusome
-/product/item/228-rejusome-plus	/rejusome#p-rejusome-plus
-/product/item/229-rejusome-plus-hair	/rejusome#p-rejusome-plus
-/product/item/230-rejusomeboostserum	/rejusome#p-exo-boost-serum
-/product/item/231-rejusomeboostmask	/rejusome#p-exo-boost-mask
-/product/item/237-rejusomeboostmist	/rejusome#p-exo-boost-mist
-/product/item/59-crystal-pdrn	/crystal-pdrn
-/product/item/81-jeuderm-homecare	/jeuderm?care=home
-/product/item/82-jeuderm-pofessional	/jeuderm?care=pro
+/sales	/kosmetologam
+/uchebnyj-tsentr	/kosmetologam

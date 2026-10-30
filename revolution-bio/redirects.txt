@@ -1,6 +1,6 @@
 # 301-редиректы: старый адрес (Joomla) -> новый адрес (Tilda)
 # Tilda: Настройки сайта → Ещё → Редиректы (301)
-# Адреса с #p-… открывают на странице бренда окно нужного товара.
+# Адреса с ?p=… открывают на странице бренда окно нужного товара.
 /component/k2/item/7-doktor-vasilenko-elina	/
 /component/k2/item/8-irina	/
 /news	/about
@@ -49,90 +49,90 @@
 /partners/itemlist/tag/экзосомы в косметологии	/distributor
 /partners/itemlist/tag/экзосомы для косметологии	/distributor
 /partners/itemlist/user/187-superuser	/distributor
-/product	/#katalog
-/product/item/10-rejusome-cream-otzyv	/#katalog
-/product/item/13-doktor-elina-vasilenko	/#katalog
-/product/item/14-otzyv	/#katalog
-/product/item/195-polina-t	/#katalog
-/product/item/196-anna-p	/#katalog
-/product/item/197-irina-b	/#katalog
-/product/item/198-tat-yana-a	/#katalog
-/product/item/200-ol-ga-k	/#katalog
-/product/item/201-tat-yana-b	/#katalog
-/product/item/207-rejusomeboostcream	/rejusome#p-exo-boost-cream
-/product/item/227-rejusome	/rejusome#p-rejusome
-/product/item/228-rejusome-plus	/rejusome#p-rejusome-plus
-/product/item/229-rejusome-plus-hair	/rejusome#p-rejusome-plus
-/product/item/230-rejusomeboostserum	/rejusome#p-exo-boost-serum
-/product/item/231-rejusomeboostmask	/rejusome#p-exo-boost-mask
-/product/item/232-mariya	/#katalog
-/product/item/233-irina	/#katalog
-/product/item/234-olga	/#katalog
-/product/item/235-ol-ga	/#katalog
-/product/item/236-tat-yana	/#katalog
-/product/item/237-rejusomeboostmist	/rejusome#p-exo-boost-mist
+/product	/
+/product/item/10-rejusome-cream-otzyv	/
+/product/item/13-doktor-elina-vasilenko	/
+/product/item/14-otzyv	/
+/product/item/195-polina-t	/
+/product/item/196-anna-p	/
+/product/item/197-irina-b	/
+/product/item/198-tat-yana-a	/
+/product/item/200-ol-ga-k	/
+/product/item/201-tat-yana-b	/
+/product/item/207-rejusomeboostcream	/rejusome?p=exo-boost-cream
+/product/item/227-rejusome	/rejusome?p=rejusome
+/product/item/228-rejusome-plus	/rejusome?p=rejusome-plus
+/product/item/229-rejusome-plus-hair	/rejusome?p=rejusome-plus
+/product/item/230-rejusomeboostserum	/rejusome?p=exo-boost-serum
+/product/item/231-rejusomeboostmask	/rejusome?p=exo-boost-mask
+/product/item/232-mariya	/
+/product/item/233-irina	/
+/product/item/234-olga	/
+/product/item/235-ol-ga	/
+/product/item/236-tat-yana	/
+/product/item/237-rejusomeboostmist	/rejusome?p=exo-boost-mist
 /product/item/59-crystal-pdrn	/crystal-pdrn
 /product/item/81-jeuderm-homecare	/jeuderm?care=home
 /product/item/82-jeuderm-pofessional	/jeuderm?care=pro
-/product/item/9-nauchnyj-tsentr-revolution-group	/#katalog
+/product/item/9-nauchnyj-tsentr-revolution-group	/
 /product/itemlist/category/11-pro-skincare	/rejusome?type=cosmetics
 /product/itemlist/category/19-trikhologiya	/rejusome?type=hair
-/product/itemlist/category/4-otzyvy	/#katalog
+/product/itemlist/category/4-otzyvy	/
 /product/itemlist/category/5-ekzosomy	/rejusome?type=serum
 /product/itemlist/category/7-jeuderm	/jeuderm
 /product/itemlist/category/9-biorevitalizatsiya	/crystal-pdrn
-/product/itemlist/category/93-otzyvy-tovarov	/#katalog
-/product/itemlist/tag/227rejusome	/#katalog
-/product/itemlist/tag/228rejusomeplus	/#katalog
-/product/itemlist/tag/229rejusomeplushair	/#katalog
-/product/itemlist/tag/230rejusomeboostserum	/#katalog
-/product/itemlist/tag/231rejusomeboostmask	/#katalog
-/product/itemlist/tag/59crystalpdrn	/#katalog
-/product/itemlist/tag/82	/#katalog
-/product/itemlist/tag/Crystal PDRN	/#katalog
-/product/itemlist/tag/JeuDérm	/#katalog
-/product/itemlist/tag/PDRN	/#katalog
-/product/itemlist/tag/VirtaMed	/#katalog
-/product/itemlist/tag/VittenPN	/#katalog
-/product/itemlist/tag/VittenPNPlus	/#katalog
-/product/itemlist/tag/asceplus	/#katalog
-/product/itemlist/tag/asceplusmaruga	/#katalog
-/product/itemlist/tag/exosomes	/#katalog
-/product/itemlist/tag/maruga	/#katalog
-/product/itemlist/tag/rejusome	/#katalog
-/product/itemlist/tag/rejusome cream	/#katalog
-/product/itemlist/tag/rejusome mist	/#katalog
-/product/itemlist/tag/rejusomeplus	/#katalog
-/product/itemlist/tag/Кристал ПДРН	/#katalog
-/product/itemlist/tag/ПДРН	/#katalog
-/product/itemlist/tag/ТэгААА	/#katalog
-/product/itemlist/tag/Экзосомы	/#katalog
-/product/itemlist/tag/виртамед	/#katalog
-/product/itemlist/tag/косметика с экзосомами	/#katalog
-/product/itemlist/tag/крем	/#katalog
-/product/itemlist/tag/крем с экзосомами	/#katalog
-/product/itemlist/tag/микробиом	/#katalog
-/product/itemlist/tag/микробиом кожи восстановление	/#katalog
-/product/itemlist/tag/омоложение	/#katalog
-/product/itemlist/tag/омоложение кожи экзосомами	/#katalog
-/product/itemlist/tag/отзыв207rejusomeboostcream	/#katalog
-/product/itemlist/tag/отзывБиоревитализация	/#katalog
-/product/itemlist/tag/отзывКосмецевтика	/#katalog
-/product/itemlist/tag/отзывМезонити	/#katalog
-/product/itemlist/tag/отзывМезотерапия1	/#katalog
-/product/itemlist/tag/отзывМезотерапия2	/#katalog
-/product/itemlist/tag/отзывТрихология	/#katalog
-/product/itemlist/tag/отзывЭкзосомы	/#katalog
-/product/itemlist/tag/препараты для косметологов	/#katalog
-/product/itemlist/tag/регенерация	/#katalog
-/product/itemlist/tag/реджесом	/#katalog
-/product/itemlist/tag/реджесом мист	/#katalog
-/product/itemlist/tag/сыворотка с экзосомами	/#katalog
-/product/itemlist/tag/тоник с экзосомами	/#katalog
-/product/itemlist/tag/экзосом	/#katalog
-/product/itemlist/tag/экзосомы в косметологии	/#katalog
-/product/itemlist/tag/экзосомы для косметологии	/#katalog
-/product/itemlist/user/187-superuser	/#katalog
+/product/itemlist/category/93-otzyvy-tovarov	/
+/product/itemlist/tag/227rejusome	/
+/product/itemlist/tag/228rejusomeplus	/
+/product/itemlist/tag/229rejusomeplushair	/
+/product/itemlist/tag/230rejusomeboostserum	/
+/product/itemlist/tag/231rejusomeboostmask	/
+/product/itemlist/tag/59crystalpdrn	/
+/product/itemlist/tag/82	/
+/product/itemlist/tag/Crystal PDRN	/
+/product/itemlist/tag/JeuDérm	/
+/product/itemlist/tag/PDRN	/
+/product/itemlist/tag/VirtaMed	/
+/product/itemlist/tag/VittenPN	/
+/product/itemlist/tag/VittenPNPlus	/
+/product/itemlist/tag/asceplus	/
+/product/itemlist/tag/asceplusmaruga	/
+/product/itemlist/tag/exosomes	/
+/product/itemlist/tag/maruga	/
+/product/itemlist/tag/rejusome	/
+/product/itemlist/tag/rejusome cream	/
+/product/itemlist/tag/rejusome mist	/
+/product/itemlist/tag/rejusomeplus	/
+/product/itemlist/tag/Кристал ПДРН	/
+/product/itemlist/tag/ПДРН	/
+/product/itemlist/tag/ТэгААА	/
+/product/itemlist/tag/Экзосомы	/
+/product/itemlist/tag/виртамед	/
+/product/itemlist/tag/косметика с экзосомами	/
+/product/itemlist/tag/крем	/
+/product/itemlist/tag/крем с экзосомами	/
+/product/itemlist/tag/микробиом	/
+/product/itemlist/tag/микробиом кожи восстановление	/
+/product/itemlist/tag/омоложение	/
+/product/itemlist/tag/омоложение кожи экзосомами	/
+/product/itemlist/tag/отзыв207rejusomeboostcream	/
+/product/itemlist/tag/отзывБиоревитализация	/
+/product/itemlist/tag/отзывКосмецевтика	/
+/product/itemlist/tag/отзывМезонити	/
+/product/itemlist/tag/отзывМезотерапия1	/
+/product/itemlist/tag/отзывМезотерапия2	/
+/product/itemlist/tag/отзывТрихология	/
+/product/itemlist/tag/отзывЭкзосомы	/
+/product/itemlist/tag/препараты для косметологов	/
+/product/itemlist/tag/регенерация	/
+/product/itemlist/tag/реджесом	/
+/product/itemlist/tag/реджесом мист	/
+/product/itemlist/tag/сыворотка с экзосомами	/
+/product/itemlist/tag/тоник с экзосомами	/
+/product/itemlist/tag/экзосом	/
+/product/itemlist/tag/экзосомы в косметологии	/
+/product/itemlist/tag/экзосомы для косметологии	/
+/product/itemlist/user/187-superuser	/
 /sales	/kosmetologam
 /sales/item/15-sale1	/kosmetologam
 /sales/item/16-sale2	/kosmetologam

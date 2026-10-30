@@ -37,7 +37,7 @@ CARD_TABS = [('PDRN', '#e0457b'), ('Стерильные Rejusome', '#2a7de1'), 
 PRODUCT_CARDS = [
     ('source/card-pdrn.webp', 'JeuDérm PDRN', 'Восстановление качества кожи. PDRN + HA 3%', '/crystal-pdrn'),
     ('source/card-serums.webp', 'Стерильные Rejusome', 'Rejusome Plus — готовый раствор, Rejusome — 20 мг + 5 мл', '/rejusome?type=serum'),
-    ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: PN 2% и CAP Peptide 5', '/calyra-lux-5'),
+    ('source/card-calyra.webp', 'Теломерная защита', 'Calyra Lux 5: CAP Peptide 5, PN 2% и гиалуронат натрия', '/calyra-lux-5'),
     ('source/card-exo-care.webp', 'Экзосомный уход', 'Профессиональный и домашний уход Rejusome', '/rejusome?type=cosmetics'),
     ('source/card-trichology.webp', 'Трихология', 'Rejusome Plus + Crystal PDRN: решения для кожи головы и волос', '/rejusome?type=hair'),
     ('source/card-jeuderm.webp', 'Пептидная космецевтика JeuDérm', 'Всё, что нужно для кабинета косметолога', '/jeuderm'),
@@ -67,7 +67,7 @@ PAGE_ART = {
 BRAND_DESC = [
     'Профессиональная пептидная космецевтика из Южной Кореи — всё, что нужно для кабинета косметолога.',
     'Стерильные сыворотки и экзосомальная космецевтика для глубокого восстановления кожи.',
-    'PN 2% и CAP Пептид 5 в одном шприце — теломерная защита и долголетие кожи.',
+    'CAP Пептид 5, PN 2% и гиалуронат натрия 1% в одном шприце — теломерная защита и долголетие кожи.',
     'PDRN + HA 3% — восстановление качества кожи, увлажнение и регенерация.',
 ]
 # Линейные иконки (24×24) для «голограмм» на лице: пептиды, флакон, ДНК, щит
@@ -171,6 +171,9 @@ def map_link(page_rel, href):
 
 # ---------------------------------------------------------------- картинки
 IMAGES = {}
+USED_NAMES = {}
+
+
 def img(page_rel, src, max_w=1600, q=84):
     if not src:
         return None
@@ -187,8 +190,9 @@ def img(page_rel, src, max_w=1600, q=84):
                 path = path.replace(a, b); break
         else:
             return None
-    if path in IMAGES:
-        return IMAGES[path]
+    key = (path, max_w, q)
+    if key in IMAGES:
+        return IMAGES[key]
     base = re.sub(r'[^a-z0-9]+', '-', os.path.splitext(os.path.basename(path))[0].lower()).strip('-')[:40] or 'img'
     h = hashlib.md5(open(path, 'rb').read()).hexdigest()[:6]
     ext = os.path.splitext(path)[1].lower()
@@ -206,9 +210,11 @@ def img(page_rel, src, max_w=1600, q=84):
         if im.width > max_w:
             im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
         name = f'{base}-{h}.webp'
+        if USED_NAMES.setdefault(name, key) != key:
+            name = f'{base}-{h}-{max_w}.webp'
         im.save(os.path.join(IMG_DIR, name), 'WEBP', quality=q, method=6)
     url = f'{CDN}/img/{name}'
-    IMAGES[path] = url
+    IMAGES[key] = url
     return url
 
 def bg_url(page_rel, el):
@@ -355,7 +361,7 @@ def cat_description(page_rel, s):
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">'
 
 def css():
-    deco = img('index.html', 'images/custom/inner_bg.png', 1600)
+    deco = img('index.html', 'images/custom/inner_bg.png', 1200, 70)
     return """<style>
 #rb{--bg:#2b3035;--bg-2:#33393e;--glass:rgba(255,255,255,.055);--glass-2:rgba(255,255,255,.09);--line:rgba(255,255,255,.12);--ink:#fff;--muted:rgba(255,255,255,.7);
   --accent:#36cbe0;--accent-ink:#0d262b;--glow:rgba(54,203,224,.35);--r:18px;--r-sm:12px;
@@ -393,10 +399,11 @@ def css():
 #rb>header,#rb>main,#rb>footer{position:relative;z-index:1}
 #rb>header{z-index:50}
 #rb{display:flow-root}
-#rb.rb--head{height:var(--rb-hh,88px)}
+#rb.rb--head{height:88px}
 #rb.rb--head .rb-head{position:fixed;left:0;right:0;top:0}
-#rb.rb--head .rb-mnav[data-open]{max-height:calc(100vh - var(--rb-hh,64px));overflow:auto}
-#rb.rb--page main [id]{scroll-margin-top:calc(var(--rb-hh,88px) + 16px)}
+#rb.rb--head .rb-mnav[data-open]{max-height:calc(100vh - 68px);overflow:auto}
+#rb.rb--page main [id]{scroll-margin-top:104px}
+@media (max-width:820px){#rb.rb--head{height:68px}#rb.rb--page main [id]{scroll-margin-top:84px}}
 /* шапка */
 #rb .rb-head{position:sticky;top:0;z-index:50;background:rgba(43,48,53,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
 #rb .rb-head[data-scrolled]{border-bottom-color:var(--line);background:rgba(43,48,53,.9)}
@@ -547,8 +554,9 @@ def css():
 #rb .rb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* заголовок внутренних страниц */
 #rb .rb-hero{position:relative;padding:48px 0 20px;isolation:isolate}
-#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;pointer-events:none;background:url('""" + deco + """') center/cover no-repeat;opacity:.12;
+#rb .rb-hero::before{content:"";position:absolute;inset:0 0 -120px;z-index:-1;pointer-events:none;opacity:0;transition:opacity .8s;
   -webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 100%);mask-image:linear-gradient(180deg,#000 10%,transparent 100%)}
+#rb.rb-ready .rb-hero::before{background:url('""" + deco + """') center/cover no-repeat;opacity:.12}
 #rb .rb-hero--art .rb-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:center}
 #rb .rb-hero__art{width:100%;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
 #rb.rb-js .rb-hero__art{animation:rb-float 7s ease-in-out infinite}
@@ -946,8 +954,7 @@ def footer():
 JS = '''<script>
 (function(){function init(){var R=document.querySelectorAll('.rb');if(!R.length||window.rbInit)return;window.rbInit=1;
 var r=document,P=document.querySelector('.rb--page')||R[0];
-var hb=document.querySelector('.rb--head'),hw=hb&&hb.querySelector('.rb-head>.rb-wrap');
-function hh(){if(hb&&hw)hb.style.setProperty('--rb-hh',hw.offsetHeight+'px');}hh();addEventListener('resize',hh);
+function ready(){[].forEach.call(R,function(x){x.classList.add('rb-ready');});}if(document.readyState==='complete')ready();else addEventListener('load',ready);
 var path=location.pathname;if(path.length>1&&path.slice(-1)==='/')path=path.slice(0,-1);
 [].forEach.call(document.querySelectorAll('.rb-head a[href],.rb-foot a[href]'),function(a){var u=a.getAttribute('href');
  if(!u||u.charAt(0)!=='/'||/[?#]/.test(u)||(u.length>1&&u.slice(-1)==='/'?u.slice(0,-1):u)!==path)return;a.setAttribute('aria-current','page');
@@ -977,7 +984,7 @@ var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 r.querySelectorAll('.rb-stage').forEach(function(st){
  var sec=st.closest('.rb-intro'),im=st.querySelectorAll('.rb-stage__img'),dt=st.querySelectorAll('.rb-stage__dots button'),cards=sec.querySelectorAll('.rb-brand'),
   svg=sec.querySelector('.rb-links'),links=svg?svg.querySelectorAll('.rb-link'):[],cap=st.querySelector('.rb-stage__cap'),pv=st.querySelectorAll('.rb-pt'),ho=st.querySelectorAll('.rb-holo'),hl=svg?svg.querySelector('.rb-link__holo'):null,n=im.length,i=0,t=null,ms=+st.getAttribute('data-interval')||6000;
- function ldr(){[].forEach.call(im,function(x){if(x.dataset.src){x.src=x.dataset.src;x.removeAttribute('data-src');}});}if(im[0].complete)setTimeout(ldr,200);else{im[0].addEventListener('load',ldr);im[0].addEventListener('error',ldr);}
+ function ldr(){[].forEach.call(im,function(x){if(x.dataset.srcset){x.srcset=x.dataset.srcset;x.removeAttribute('data-srcset');}if(x.dataset.src){x.src=x.dataset.src;x.removeAttribute('data-src');}});}if(im[0].complete)setTimeout(ldr,200);else{im[0].addEventListener('load',ldr);im[0].addEventListener('error',ldr);}
  function pts(k){return (im[k].getAttribute('data-hs')||'').split(';').map(function(p){var c=p.split(',');return [+c[0],+c[1]];});}
  var cur=pts(0),from=cur,to=cur,t0=0,anim=0;
  function draw(){[].forEach.call(pv,function(b,k){if(cur[k]){b.style.left=cur[k][0]+'%';b.style.top=cur[k][1]+'%';}});
@@ -1040,8 +1047,8 @@ r.querySelectorAll('.rb-cat').forEach(function(cat){
  if(dlg){dlg.addEventListener('close',function(){if(/^#p-/.test(location.hash)&&history.replaceState)history.replaceState(null,'',location.pathname+location.search);});
   dlg.querySelector('.rb-dlg__x').addEventListener('click',close);dlg.addEventListener('click',function(e){if(e.target===dlg)close();});
   [].forEach.call(dlg.querySelectorAll('[data-close]'),function(a){a.addEventListener('click',close);});}
- cards.forEach(function(c){c.addEventListener('click',function(e){e.preventDefault();open(c);});});
- function fromHash(){var m=location.hash.match(/^#p-([\\w-]+)/);if(!m)return;var c=cat.querySelector('.rb-prod[data-id="'+m[1]+'"]');if(c){if(c.hidden)groups.forEach(function(g){set(g.getAttribute('data-f'),'all',false);});c.scrollIntoView({block:'center'});open(c);}}
+ cards.forEach(function(c){if(c.classList.contains('rb-prod--link'))return;c.addEventListener('click',function(e){e.preventDefault();open(c);});});
+ function fromHash(){var m=location.hash.match(/^#p-([\\w-]+)/)||location.search.match(/[?&]p=([\\w-]+)/);if(!m)return;var c=cat.querySelector('.rb-prod[data-id="'+m[1]+'"]');if(c){if(c.hidden)groups.forEach(function(g){set(g.getAttribute('data-f'),'all',false);});c.scrollIntoView({block:'center'});open(c);}}
  fromHash();window.addEventListener('hashchange',fromHash);
 });
 r.querySelectorAll('.rb-pans').forEach(function(w){var ps=[].slice.call(w.querySelectorAll('.rb-pan'));
@@ -1066,15 +1073,22 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>'''
 
+SITE = 'https://revolution.bio'
+
+
 def crumbs(items):
     parts = ['<a href="/">Главная</a>'] + [f'<a href="{h}">{esc(t)}</a>' if h else esc(t) for t, h in items]
-    return '<nav class="rb-crumbs" aria-label="Навигация">' + '<span>—</span>'.join(parts) + '</nav>'
+    ld = {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        dict({'@type': 'ListItem', 'position': k + 1, 'name': strip_tags(t)}, **({'item': SITE + h.split('?')[0]} if h else {}))
+        for k, (t, h) in enumerate([('Главная', '/')] + list(items))]}
+    return ('<nav class="rb-crumbs" aria-label="Навигация">' + '<span>—</span>'.join(parts) + '</nav>'
+            + f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>')
 
 def hero(h1, crumb_items, lead='', art=None):
     text_html = f'''{crumbs(crumb_items)}<h1>{esc(h1)}</h1><hr class="rb-rule">{f'<div class="rb-lead rb-rich">{lead}</div>' if lead else ''}'''
     if art:
-        u = img('index.html', art[0], 900)
-        return f'''<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div>{text_html}</div><img class="rb-hero__art" src="{u}" alt="{esc(art[1])}"></div></section>'''
+        u = img('index.html', art[0], 760, 80)
+        return f'''<section class="rb-hero rb-hero--art"><div class="rb-wrap"><div>{text_html}</div><img class="rb-hero__art" src="{u}" alt="{esc(art[1])}" width="760" height="760" fetchpriority="high"></div></section>'''
     return f'''<section class="rb-hero"><div class="rb-wrap">{text_html}</div></section>'''
 
 def card(href, image, title, txt='', more='Подробнее', date='', cover=False):
@@ -1152,9 +1166,8 @@ def page(alias, title, body, seo):
      Формы: создайте на странице блок «Форма в попапе» (BF502N) со ссылкой #popup:callback
      и второй с #popup:feedback — см. README.md. -->
 '''
-    css_url, js_url = shared_assets()
-    doc = (head + FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n<style>.rb{{background:#2b3035;color:#fff}}</style>'
-           + f'\n<div class="rb rb--page" lang="ru">\n{BGFX}\n<main>\n{body}\n</main>\n</div>\n<script src="{js_url}"></script>\n')
+    doc = (head + '<style>.rb{background:#2b3035;color:#fff}</style>'
+           + f'\n<div class="rb rb--page" lang="ru">\n{BGFX}\n<main>\n{body}\n</main>\n</div>\n')
     write_doc('home' if alias == '/' else alias.strip('/'), doc)
     SEO.append((alias, 'home' if alias == '/' else alias.strip('/'), seo.get('title', ''), seo.get('description', ''), seo.get('keywords', '')))
 
@@ -1167,12 +1180,19 @@ def write_doc(name, doc):
 
 def build_header_footer():
     """шапка и подвал — отдельные страницы Tilda («Хедер» и «Футер»), общие для всего сайта"""
-    css_url, _ = shared_assets()
-    base = FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n<style>.rb{{background:#2b3035;color:#fff}}</style>\n'
-    write_doc('header', '<!-- REVOLUTION BIO — ШАПКА (меню). Вставить в блок T123 на странице-хедере Tilda, см. README.md -->\n'
-              + base + f'<div class="rb rb--head" lang="ru">\n{header(None)}\n</div>\n')
-    write_doc('footer', '<!-- REVOLUTION BIO — ПОДВАЛ. Вставить в блок T123 на странице-футере Tilda, см. README.md -->\n'
-              + base + f'<div class="rb rb--foot" lang="ru">\n{footer()}\n</div>\n')
+    css_url, js_url = shared_assets()
+    style = '<style>.rb{background:#2b3035;color:#fff}</style>\n'
+    org = {'@context': 'https://schema.org', '@type': 'Organization', 'name': 'Революшн Био', 'legalName': 'ООО «Революшн Био»',
+           'url': SITE + '/', 'logo': f'{CDN}/favicon/android-chrome-512x512.png', 'email': EMAIL, 'telephone': PHONE,
+           'address': {'@type': 'PostalAddress', 'streetAddress': 'ул. Земляной Вал, д. 7, офис 408', 'addressLocality': 'Москва',
+                       'postalCode': '105064', 'addressCountry': 'RU'},
+           'sameAs': ['https://t.me/revolutionbio', 'https://vk.com/revolutionbio', 'https://dzen.ru/revolutionbio', 'https://rutube.ru/channel/42947212/']}
+    # шапка подключает общие стили и шрифты, подвал — общий скрипт: обновить оформление сайта = обновить эти два блока
+    write_doc('header', '<!-- REVOLUTION BIO — ШАПКА (меню) + общие стили и шрифты. Вставить в блок T123 на странице-хедере Tilda, см. README.md -->\n'
+              + FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n' + style + f'<div class="rb rb--head" lang="ru">\n{header(None)}\n</div>\n')
+    write_doc('footer', '<!-- REVOLUTION BIO — ПОДВАЛ + общий скрипт. Вставить в блок T123 на странице-футере Tilda, см. README.md -->\n'
+              + style + f'<div class="rb rb--foot" lang="ru">\n{footer()}\n</div>\n'
+              + f'<script type="application/ld+json">{json.dumps(org, ensure_ascii=False)}</script>\n<script src="{js_url}"></script>\n')
 
 SEO = []
 REPORT = []
@@ -1288,6 +1308,11 @@ def product_card(p, attrs, inline=True):
     # ссылку на сайт бренда добавляет окно товара: ссылка внутри ссылки-карточки ломает разметку
     url_attr = f' data-url="{p["url"]}"' if p.get('url') else ''
     keys = ('<span class="rb-keys">' + ''.join(f'<span>{esc(k)}</span>' for k in p['key']) + '</span>') if p.get('key') else ''
+    if p.get('link'):
+        return (f'<a class="rb-prod rb-prod--photo rb-prod--link" href="{p["link"]}" data-id="{p["id"]}" {attrs}>'
+                f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"><span class="rb-prod__tags"><span>JeuDérm</span></span></span>'
+                f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span>'
+                f'<span class="rb-prod__more">Страница препарата <i aria-hidden="true">→</i></span></span></a>')
     return (f'<a class="rb-prod{" rb-prod--photo" if p.get("photo_card") else ""}" href="#p-{p["id"]}" data-id="{p["id"]}" {attrs}>'
             f'<span class="rb-prod__ph"><img src="{p["img"]}" alt="{esc(p["alt"])}" loading="lazy"{f" style={chr(34)}object-position:{p[chr(102)+'ocus']}{chr(34)}" if p.get("focus") else ""}><span class="rb-prod__tags">{tags}</span></span>'
             f'<span class="rb-prod__bd"><span class="rb-prod__en">{esc(p["en"])}</span><b>{esc(p["title"])}</b><span class="rb-prod__desc">{esc(p["desc"])}</span>{keys}<span class="rb-prod__more">Подробнее <i aria-hidden="true">→</i></span></span>'
@@ -1407,14 +1432,15 @@ def build_home():
         return [(fx, fy), (cx, cy), (round((cx + hx) / 2) - 3, round((cy + hy) / 2) + 1), (hx, hy)]
     hs_attr = lambda p: ';'.join(f'{x},{y}' for x, y in mask_pts(p))
     plain = lambda labels: ' · '.join(strip_tags(l.replace('<br>', ' ')) for l in labels)
-    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" {"src" if k == 0 else "data-src"}="{u}" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\" decoding=\"sync\"" if k == 0 else " decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
+    small = [img(rel, f, 600, 76) for f, bi, pts, labels in HERO_SLIDES]
+    imgs_html = ''.join(f'<img class="rb-stage__img{" is-active" if k == 0 else ""}" {"src" if k == 0 else "data-src"}="{u}" {"srcset" if k == 0 else "data-srcset"}="{small[k]} 600w, {u} 960w" sizes="(max-width: 820px) min(86vw, 400px), 440px" alt="{"Сияющая ухоженная кожа" if k == 0 else ""}" data-brand="{bi}" data-hs="{hs_attr(p)}" data-labels="{esc(plain(labels))}" data-name="{esc(b)}"{" fetchpriority=\"high\" decoding=\"sync\"" if k == 0 else " decoding=\"async\""}>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
     sr_text = ' '.join(f'{b}: {plain(labels)}.' for u, b, p, h, bi, labels in slides)
     dots_html = ''.join(f'<button type="button" aria-label="Кадр {k + 1}: {esc(b)}"{" class=\"is-active\" aria-current=\"true\"" if k == 0 else ""}></button>' for k, (u, b, p, h, bi, labels) in enumerate(slides))
     first = slides[0][4]
     def bcard(k, n, t, h, photo, rnd):
         act = k == first
         return (f'<div class="rb-brand{" is-active" if act else ""}" data-brand="{k}">'
-                f'<button class="rb-brand__head" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-brand-{k}"><img src="{img(rel, photo, 300)}" alt="" loading="lazy">'
+                f'<button class="rb-brand__head" type="button" aria-expanded="{"true" if act else "false"}" aria-controls="rb-brand-{k}"><img src="{img(rel, photo, 200, 80)}" alt="" width="98" height="98" loading="lazy">'
                 f'<div><b>{esc(n)}</b><span>{esc(t)}</span></div><i aria-hidden="true"></i></button>'
                 f'<div class="rb-brand__body" id="rb-brand-{k}"><div><p>{esc(BRAND_DESC[k])}</p><a href="{h}"{ext(h)}>Подробнее →</a></div></div></div>')
     labels_of = {bi: labels for f, bi, p, labels in HERO_SLIDES}
@@ -1482,13 +1508,19 @@ def build_jeuderm(products):
                                        'keywords': 'JeuDérm, ЖеДерм, пептидная космецевтика, профессиональная косметика, Корея, Crystal PDRN'})
 
 
+PDRN_HAIR = dict(id='crystal-pdrn-hair', link='/crystal-pdrn', type='hair', care=[], lines=[], fields=[], en='Crystal PDRN · JeuDérm',
+                 title='Crystal PDRN для кожи головы', desc='Полинуклеотиды и пептиды при выпадении и поредении волос — в паре с Rejusome Plus.',
+                 alt='Crystal PDRN + HA 3%, 5 мл', img=None)
+
+
 def build_rejusome(products):
+    PDRN_HAIR['img'] = img('index.html', 'source/photo-crystal-pdrn.webp', 900)
     s = soup('product/itemlist/category/5-ekzosomy.html')
     desc = clean('product/itemlist/category/5-ekzosomy.html', s.select_one('.products-subcategory-description'))
     intro = '<p>Стерильные сыворотки и космецевтика с экзосомами для глубокого восстановления и обновления кожи — в кабинете и дома.</p>'
     body = hero('Rejusome', [('Rejusome', None)], intro, art=PAGE_ART.get('/rejusome')) + f'''
 <section class="rb-sec" style="padding-top:0"><div class="rb-wrap"><span class="rb-kicker">Каталог</span><h2>Продукция Rejusome</h2><hr class="rb-rule">
-{catalog(products, [('type', 'Направление', RJ_TYPES)])}</div></section>
+{catalog(products + [PDRN_HAIR], [('type', 'Направление', RJ_TYPES)])}</div></section>
 {section('Технология', 'Что такое экзосомы', f'<div class="rb-rich">{desc}</div>') if strip_tags(desc) else ''}
 {cta('Цены — по запросу', 'Оставьте заявку: менеджер пришлёт прайс и расскажет о протоколах.', btn2=('Сайт Rejusome', 'https://rejusome.com/'))}{WARN_SEC}'''
     page('/rejusome', 'Rejusome', body, {'title': 'Rejusome — стерильные сыворотки и космецевтика с экзосомами | Революшн Био',
@@ -1753,7 +1785,7 @@ build_header_footer()
 def old_url(rel):
     return '/' if rel == 'index.html' else '/' + rel[:-5]
 
-OLD_PRODUCT = {o: f'/rejusome#p-{p["id"]}' for p in RJ for o in p['old']}
+OLD_PRODUCT = {o: f'/rejusome?p={p["id"]}' for p in RJ for o in p['old']}
 OLD_PRODUCT['product/item/59-crystal-pdrn.html'] = '/crystal-pdrn'
 OLD_PRODUCT['product/item/81-jeuderm-homecare.html'] = '/jeuderm?care=home'
 OLD_PRODUCT['product/item/82-jeuderm-pofessional.html'] = '/jeuderm?care=pro'
@@ -1769,7 +1801,7 @@ def new_url(rel):
         return OLD_CAT[m.group(1)]
     first = rel.split('/')[0].replace('.html', '')
     return {'index': None, 'about': None, 'kontakty': None, 'policy': None, 'soglasie': None,
-            'product': '/#katalog', 'uchebnyj-tsentr': '/kosmetologam', 'sales': '/kosmetologam', 'news': '/about',
+            'product': '/', 'uchebnyj-tsentr': '/kosmetologam', 'sales': '/kosmetologam', 'news': '/about',
             'partners': '/distributor'}.get(first, '/')
 
 redirects = set()
@@ -1788,7 +1820,7 @@ redirects.add(('/component/k2/item/8-irina', '/'))
 redirects = sorted(redirects)
 with open(os.path.join(OUT, 'redirects.txt'), 'w', encoding='utf-8') as f:
     f.write('# 301-редиректы: старый адрес (Joomla) -> новый адрес (Tilda)\n# Tilda: Настройки сайта → Ещё → Редиректы (301)\n'
-            '# Адреса с #p-… открывают на странице бренда окно нужного товара.\n')
+            '# Адреса с ?p=… открывают на странице бренда окно нужного товара.\n')
     for a, b in redirects:
         f.write(f'{a}\t{b}\n')
 with open(os.path.join(OUT, 'seo-pages.txt'), 'w', encoding='utf-8') as f:
