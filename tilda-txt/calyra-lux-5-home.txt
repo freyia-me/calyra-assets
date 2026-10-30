@@ -45,6 +45,7 @@
 #calyra-editorial .ce-hero-copy .ce-label { margin-bottom: 18px; }
 #calyra-editorial .ce-hero-copy .ce-h1 { max-width: 780px; margin: 0 auto; font-size: clamp(46px, 5.7vw, 81px); line-height: .98; letter-spacing: -.045em; }
 #calyra-editorial .ce-hero-copy .ce-h1 i { font-style: normal; color: var(--ce-wine); }
+#calyra-editorial .ce-h1-brand { display: block; margin-bottom: .18em; font-size: .42em; line-height: 1.1; letter-spacing: -.01em; color: var(--ce-ink); }
 #calyra-editorial .ce-hero-lead { max-width: 600px; margin: 18px auto 0; font-size: 14px; line-height: 1.55; color: #5d5f66; }
 #calyra-editorial .ce-hero-copy .ce-button { min-height: 44px; margin-top: 22px; padding: 10px 14px 10px 22px; }
 
@@ -434,7 +435,7 @@
     <div class="ce-wrap ce-hero-layout">
       <div class="ce-hero-copy">
         <div class="ce-label ce-label--wine">JeuDérm · для косметологов</div>
-        <h1 class="ce-h1">Новая эра<br><i>долголетия</i> кожи</h1>
+        <h1 class="ce-h1"><span class="ce-h1-brand">CALYRA LUX 5 —</span> Новая эра<br><i>долголетия</i> кожи</h1>
         <p class="ce-hero-lead">CALYRA LUX 5 — CAP Пептид 5, полинуклеотиды (PN) и гиалуронат натрия в одном шприце. Комплексная работа с качеством кожи: увлажнённость, плотность, ровный рельеф и сияние.</p>
         <a class="ce-button ce-button--wine" href="#popup:price">Получить прайс для специалистов <em>↗</em></a>
       </div>
@@ -565,20 +566,20 @@
         <p class="ce-text">CALYRA LUX 5 легко встраивается в процедуры, которые уже есть в вашем прайсе. Подробные схемы протоколов — на странице для косметологов.</p>
       </div>
       <div class="ce-protocol-grid">
-        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол совместного применения с радиочастотным лифтингом">
+        <a class="ce-protocol" href="#popup:zakaz_protocol" data-protocol="С радиочастотным лифтингом (RF)" aria-label="Запросить протокол: с радиочастотным лифтингом (rf)">
           <div class="ce-protocol-top"><span>01</span><span>Радиочастоты</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M12 28c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/><path d="M8 40c9-9 18-9 27 0s18 9 27 0 14-7 18-4"/><path d="M12 52c8-8 16-8 24 0s16 8 24 0 16-8 20-3"/></svg></div>
-          <div class="ce-protocol-bottom"><h3>С радиочастотным<br>лифтингом (RF)</h3><span>Смотреть протокол</span></div>
+          <div class="ce-protocol-bottom"><h3>С радиочастотным<br>лифтингом (RF)</h3><span>Запросить протокол</span></div>
         </a>
-        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол ухода после аппаратных процедур">
+        <a class="ce-protocol" href="#popup:zakaz_protocol" data-protocol="После аппаратных процедур" aria-label="Запросить протокол: после аппаратных процедур">
           <div class="ce-protocol-top"><span>02</span><span>Восстановление</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 8c2 17 8 23 25 25-17 2-23 8-25 25-2-17-8-23-25-25 17-2 23-8 25-25Z"/><path d="M63 51c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg></div>
-          <div class="ce-protocol-bottom"><h3>После аппаратных<br>процедур</h3><span>Смотреть протокол</span></div>
+          <div class="ce-protocol-bottom"><h3>После аппаратных<br>процедур</h3><span>Запросить протокол</span></div>
         </a>
-        <a class="ce-protocol" href="/cometology" aria-label="Открыть протокол применения с дермапеном">
+        <a class="ce-protocol" href="#popup:zakaz_protocol" data-protocol="С дермапеном" aria-label="Запросить протокол: с дермапеном">
           <div class="ce-protocol-top"><span>03</span><span>Дермапен</span></div>
           <div class="ce-protocol-art"><svg class="ce-protocol-icon" viewBox="0 0 80 80" aria-hidden="true"><rect x="13" y="19" width="43" height="25" rx="12"/><path d="M56 31h11v17c0 10-8 18-18 18H32"/><circle cx="25" cy="31" r="2"/><circle cx="35" cy="31" r="2"/><circle cx="45" cy="31" r="2"/></svg></div>
-          <div class="ce-protocol-bottom"><h3>В протоколе<br>с дермапеном</h3><span>Смотреть протокол</span></div>
+          <div class="ce-protocol-bottom"><h3>В протоколе<br>с дермапеном</h3><span>Запросить протокол</span></div>
         </a>
       </div>
       <div class="ce-course">
@@ -607,17 +608,17 @@
 
       <div class="ce-study-case"><h3>Фотостарение кожи</h3><p>Женщина, 58 лет. Применение CAP Пептида 5 дважды в день (утром и вечером) в течение 12 месяцев.</p></div>
       <div class="ce-result-pair">
-        <div class="ce-result-photo"><img data-asset="result-before.png" alt="Фотостарение кожи до применения CAP Пептида 5"><span class="ce-result-label">До</span></div>
-        <div class="ce-result-photo"><img data-asset="result-after.png" alt="Кожа после 12 месяцев применения CAP Пептида 5"><span class="ce-result-label">12 месяцев</span></div>
+        <div class="ce-result-photo"><img data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@14941e144676/assets/result-before.webp" alt="Фотостарение кожи до применения CAP Пептида 5"><span class="ce-result-label">До</span></div>
+        <div class="ce-result-photo"><img data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@14941e144676/assets/result-after.webp" alt="Кожа после 12 месяцев применения CAP Пептида 5"><span class="ce-result-label">12 месяцев</span></div>
       </div>
       <div class="ce-result-caption"><span>Более ровная текстура, менее выраженные морщины, свежий вид кожи.</span><span>Данные клинического наблюдения CAP Пептида 5.</span></div>
 
       <div class="ce-recovery">
         <div class="ce-study-case"><h3>Восстановление кожи</h3><p>Мужчина, 56 лет: кожа в области рубца. CAP Пептид 5 наносили ежедневно утром и вечером на чистую сухую кожу.</p></div>
         <div class="ce-recovery-strip">
-          <div class="ce-recovery-photo"><img data-asset="recovery-01.png" alt="Кожа в области рубца, этап 1"><span>01</span></div>
-          <div class="ce-recovery-photo"><img data-asset="recovery-02.png" alt="Кожа в области рубца, этап 2"><span>02</span></div>
-          <div class="ce-recovery-photo"><img data-asset="recovery-03.png" alt="Кожа в области рубца, этап 3"><span>03</span></div>
+          <div class="ce-recovery-photo"><img data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@14941e144676/assets/recovery-01.webp" alt="Кожа в области рубца, этап 1"><span>01</span></div>
+          <div class="ce-recovery-photo"><img data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@14941e144676/assets/recovery-02.webp" alt="Кожа в области рубца, этап 2"><span>02</span></div>
+          <div class="ce-recovery-photo"><img data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@14941e144676/assets/recovery-03.webp" alt="Кожа в области рубца, этап 3"><span>03</span></div>
         </div>
       </div>
 
@@ -630,7 +631,7 @@
       <div class="ce-gallery-main"><img data-asset="calyra-lux-5-boxes.jpg" alt="Упаковки JeuDérm CALYRA LUX 5"><div class="ce-gallery-word">долголетие<br>кожи</div></div>
       <div class="ce-gallery-side">
         <div class="ce-gallery-image"><img style="object-position:center 62%" data-asset="calyra-lux-5-syringes-ribbon.jpg" alt="Шприцы CALYRA LUX 5"></div>
-        <div class="ce-gallery-image ce-gallery-image--wine"><p>Премиальный продукт, который заметен в кабинете.</p><img data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5"></div>
+        <div class="ce-gallery-image ce-gallery-image--wine"><p>Премиальный продукт, который заметен в кабинете.</p><img data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@14941e144676/assets/calyra-lux-5-syringe-clear.webp" alt="Шприц CALYRA LUX 5"></div>
       </div>
     </div>
   </section>
@@ -683,7 +684,7 @@
         <div class="ce-order-actions"><a class="ce-button ce-button--wine" href="#popup:price">Получить прайс <em>↗</em></a><a class="ce-button" href="#popup:zakaz">Заказать продукт</a></div>
         <p class="ce-order-contact">Остались вопросы? <a href="/contacts">Связаться с нами →</a></p>
       </div>
-      <img class="ce-order-syringe" data-asset="calyra-lux-5-syringe-clear.png" alt="Шприц CALYRA LUX 5">
+      <img class="ce-order-syringe" data-asset="https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@14941e144676/assets/calyra-lux-5-syringe-clear.webp" alt="Шприц CALYRA LUX 5">
     </div>
     <div class="ce-wrap ce-contra">
       <div class="ce-label ce-label--wine">Противопоказания</div>
@@ -707,6 +708,16 @@
   var root = document.getElementById('calyra-editorial');
   if (!root) return;
 
+
+  /* протоколы: подставляем выбранный протокол в форму попапа (поле с именем protocol) */
+  root.querySelectorAll('[data-protocol]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var value = card.getAttribute('data-protocol');
+      setTimeout(function () {
+        document.querySelectorAll('input[name="protocol"], textarea[name="protocol"]').forEach(function (field) { field.value = value; });
+      }, 60);
+    });
+  });
   var base = (root.getAttribute('data-assets-base') || '').replace(/\/+$/, '');
   root.querySelectorAll('img[data-asset]').forEach(function (image, index) {
     var asset = image.getAttribute('data-asset');

@@ -1,0 +1,328 @@
+МИКРОРАЗМЕТКА CALYRA LUX 5 (schema.org, JSON-LD)
+
+1. ДЛЯ ВСЕГО САЙТА — компания и сайт
+Куда: Настройки сайта → Ещё → «HTML-код для вставки внутрь head».
+Вставьте ПОСЛЕ кода фавиконов (оба кода могут стоять рядом).
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://calyralux.ru/#organization",
+   "name": "CALYRA LUX 5",
+   "alternateName": "JeuDérm CALYRA LUX 5",
+   "legalName": "ООО «Революшн Био»",
+   "url": "https://calyralux.ru/",
+   "logo": "https://cdn.jsdelivr.net/gh/freyia-me/calyra-assets@9ae4619e389a/favicon/android-chrome-512x512.png",
+   "telephone": "+7 495 147-70-40",
+   "email": "info@revolution.bio",
+   "taxID": "9709100594",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Земляной Вал, д. 7, помещ. 2/4",
+    "addressLocality": "Москва",
+    "postalCode": "105064",
+    "addressCountry": "RU"
+   },
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+7 495 147-70-40",
+    "email": "info@revolution.bio",
+    "contactType": "customer service",
+    "areaServed": "RU",
+    "availableLanguage": "Russian"
+   },
+   "sameAs": [
+    "https://t.me/revolutionbio",
+    "https://vk.com/revolutionbio",
+    "https://dzen.ru/revolutionbio"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://calyralux.ru/#website",
+   "url": "https://calyralux.ru/",
+   "name": "CALYRA LUX 5",
+   "inLanguage": "ru-RU",
+   "publisher": {
+    "@id": "https://calyralux.ru/#organization"
+   }
+  }
+ ]
+}
+</script>
+
+2. ХЛЕБНЫЕ КРОШКИ — для каждой страницы свой код
+Куда: Настройки страницы → Ещё → «HTML-код для вставки внутрь head».
+На главной хлебные крошки не нужны.
+
+--- Технология — calyralux.ru/technology-calyra-lux-5
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Технология CALYRA LUX 5",
+   "item": "https://calyralux.ru/technology-calyra-lux-5"
+  }
+ ]
+}
+</script>
+
+--- CAP Пептид 5 — calyralux.ru/cap-peptide-5-telomery-kozhi
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Технология CALYRA LUX 5",
+   "item": "https://calyralux.ru/technology-calyra-lux-5"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "CAP Пептид 5",
+   "item": "https://calyralux.ru/cap-peptide-5-telomery-kozhi"
+  }
+ ]
+}
+</script>
+
+--- Полинуклеотиды — calyralux.ru/polynucleotides-pn-calyra-lux-5
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Технология CALYRA LUX 5",
+   "item": "https://calyralux.ru/technology-calyra-lux-5"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Полинуклеотиды (PN)",
+   "item": "https://calyralux.ru/polynucleotides-pn-calyra-lux-5"
+  }
+ ]
+}
+</script>
+
+--- Гиалуронат натрия — calyralux.ru/gialuronat-natriya-calyra-lux-5
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Технология CALYRA LUX 5",
+   "item": "https://calyralux.ru/technology-calyra-lux-5"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Гиалуронат натрия",
+   "item": "https://calyralux.ru/gialuronat-natriya-calyra-lux-5"
+  }
+ ]
+}
+</script>
+
+--- Для косметологов — calyralux.ru/cometology
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Для косметологов",
+   "item": "https://calyralux.ru/cometology"
+  }
+ ]
+}
+</script>
+
+--- Для клиентов — calyralux.ru/patients
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Для клиентов",
+   "item": "https://calyralux.ru/patients"
+  }
+ ]
+}
+</script>
+
+--- Обучение — calyralux.ru/study
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Для косметологов",
+   "item": "https://calyralux.ru/cometology"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Обучение",
+   "item": "https://calyralux.ru/study"
+  }
+ ]
+}
+</script>
+
+--- Для дистрибьюторов и клиник — calyralux.ru/distribution-clinics
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Для дистрибьюторов и клиник",
+   "item": "https://calyralux.ru/distribution-clinics"
+  }
+ ]
+}
+</script>
+
+--- Контакты — calyralux.ru/contacts
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Контакты",
+   "item": "https://calyralux.ru/contacts"
+  }
+ ]
+}
+</script>
+
+--- Политика конфиденциальности — calyralux.ru/policy
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Политика конфиденциальности",
+   "item": "https://calyralux.ru/policy"
+  }
+ ]
+}
+</script>
+
+--- Согласие на обработку персональных данных — calyralux.ru/agreement-policy
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Главная",
+   "item": "https://calyralux.ru/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Согласие на обработку персональных данных",
+   "item": "https://calyralux.ru/agreement-policy"
+  }
+ ]
+}
+</script>
+
+ПРОВЕРКА: после публикации проверьте страницы в валидаторе Яндекса
+https://webmaster.yandex.ru/tools/microtest/ и в https://validator.schema.org/
