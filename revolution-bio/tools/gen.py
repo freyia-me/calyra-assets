@@ -938,7 +938,7 @@ def footer():
     groups.insert(2, ('Пациентам', [('О процедурах', '/pacientam'), ('Где пройти', '/pacientam#voprosy'), ('Задать вопрос', '#popup:feedback')]))
     cols = ''.join(f'<div class="rb-feat rb-fcard"><span class="rb-fcard__t">{t}</span>' + ''.join(f'<a href="{h}">{n}</a>' for n, h in links) + '</div>' for t, links in groups)
     soc = ''.join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in (
-        ('Telegram‑менеджер', 'https://t.me/revolutionbio'), ('Telegram‑группа', 'https://t.me/revolution_bio'), ('WhatsApp', 'https://wa.me/79250843090'), ('MAX', MAX_URL),
+        ('Telegram‑менеджер', 'https://t.me/revolution_bio'), ('Telegram‑группа', 'https://t.me/revolutionbio'), ('WhatsApp', 'https://wa.me/79250843090'), ('MAX', MAX_URL),
         ('ВКонтакте', 'https://vk.com/revolutionbio'), ('Дзен', 'https://dzen.ru/revolutionbio')))
     return f'''<footer class="rb-foot"><div class="rb-wrap">
 <div class="rb-fgrid">
@@ -1186,7 +1186,7 @@ def build_header_footer():
            'url': SITE + '/', 'logo': f'{CDN}/favicon/android-chrome-512x512.png', 'email': EMAIL, 'telephone': PHONE,
            'address': {'@type': 'PostalAddress', 'streetAddress': 'ул. Земляной Вал, д. 7, офис 408', 'addressLocality': 'Москва',
                        'postalCode': '105064', 'addressCountry': 'RU'},
-           'sameAs': ['https://t.me/revolution_bio', 'https://vk.com/revolutionbio', 'https://dzen.ru/revolutionbio', 'https://rutube.ru/channel/42947212/']}
+           'sameAs': ['https://t.me/revolutionbio', 'https://vk.com/revolutionbio', 'https://dzen.ru/revolutionbio', 'https://rutube.ru/channel/42947212/']}
     # шапка подключает общие стили и шрифты, подвал — общий скрипт: обновить оформление сайта = обновить эти два блока
     write_doc('header', '<!-- REVOLUTION BIO — ШАПКА (меню) + общие стили и шрифты. Вставить в блок T123 на странице-хедере Tilda, см. README.md -->\n'
               + FONTS + f'\n<link rel="stylesheet" href="{css_url}">\n' + style + f'<div class="rb rb--head" lang="ru">\n{header(None)}\n</div>\n')
@@ -1408,7 +1408,7 @@ def contacts_section(rel, s, h='h1'):
     icons = {k: img('kontakty.html', f'images/custom/{k}.png') for k in ('address', 'mail', 'phone')}
     tg = '\n'.join(f'<a href="{u}" target="_blank" rel="noopener">{lab}</a>' for lab, u in (
         ('WhatsApp: +7 925 084-30-90', 'https://wa.me/79250843090'), ('WhatsApp: +7 925 342-82-02', 'https://wa.me/79253428202'),
-        ('Менеджер в Telegram: @revolutionbio', 'https://t.me/revolutionbio'), ('Группа в Telegram: @revolution_bio', 'https://t.me/revolution_bio'),
+        ('Менеджер в Telegram: @revolution_bio', 'https://t.me/revolution_bio'), ('Группа в Telegram: @revolutionbio', 'https://t.me/revolutionbio'),
         ('Telegram: +7 925 084-30-90', 'https://t.me/+79250843090'),
         ('MAX: написать в мессенджер', MAX_URL)))
     addr = text(el.select_one('.contact-address .text')).replace('Адрес:', '').strip() if el else 'Земляной Вал 7, офис 408'
