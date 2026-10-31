@@ -23,12 +23,14 @@ Veo делает клипы по 8 секунд, поэтому ролик со�
 Premium cosmetic commercial, 16:9, cinematic macro photography look.
 Deep black-to-burgundy background, colour palette of wine red (#651d2d),
 crimson, rose pink, pearl white and crystal-clear glass. Bioluminescent
-glow, soft volumetric light, floating micro-particles like plankton,
-shallow depth of field, gentle bokeh. Slow, elegant, weightless motion,
+glow, soft volumetric light, a few tiny perfectly round soft light specks
+(out-of-focus bokeh dots only), shallow depth of field, gentle bokeh. Slow, elegant, weightless motion,
 no fast cuts, no spinning or rotating objects, no camera shake.
 Ultra-detailed, photoreal, luxury beauty brand aesthetic.
 No text, no captions, no subtitles, no watermarks, no people, no faces,
-no needles. Ambient underwater sound design, deep soft drone, no voice.
+no needles. Exactly ONE jellyfish in the whole scene, no other jellyfish.
+No insects, no bugs, no flies, no shrimp, no plankton creatures, no fish,
+no living organisms other than the single jellyfish. Ambient underwater sound design, deep soft drone, no voice.
 
 =====================================================================
 ПЛАН 1 · 0:00–0:02,5 · Появление медузы
@@ -96,8 +98,10 @@ Keep the syringe label text sharp and unchanged.
 =====================================================================
 Hero product shot. A vivid pink JeuDérm CALYRA LUX 5 box stands upright
 on a glossy black reflective surface, two clear CALYRA LUX 5 syringes lie
-in front of it. Behind the box, a large ethereal glowing jellyfish made of
-light softly pulses once, its tentacles of particles slowly flowing.
+in front of it. Behind the box, ONE large ethereal glowing jellyfish made of
+light softly pulses once, its tentacles slowly flowing. The background is
+a clean dark burgundy gradient with only a few soft round bokeh dots —
+empty, calm, no other creatures or objects.
 The product stays perfectly still and sharp, labels unchanged.
 Camera: almost static, very slow push-in. Light gently brightens.
 Leave clean dark space at the left of frame for the end title.
