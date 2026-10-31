@@ -1,0 +1,141 @@
+CALYRA LUX 5 — «КОД БЕССМЕРТНОЙ МЕДУЗЫ»
+Промпты для рекламного ролика 15 секунд, 16:9 (Google Flow / Veo)
+
+=====================================================================
+КАК СОБИРАТЬ
+=====================================================================
+Veo делает клипы по 8 секунд, поэтому ролик собирается из 6 коротких планов.
+В Flow выбирайте режим «Frames to Video» (кадры в видео):
+— первый кадр плана = картинка из раскадровки,
+— последний кадр = следующая картинка раскадровки.
+Так модель делает плавный переход и не «придумывает» лишнего.
+Каждый клип потом обрезается (или ускоряется) до 2,5 секунды в монтаже.
+
+Перед каждым промптом плана вставляйте общий блок СТИЛЬ (он одинаковый —
+благодаря ему все планы выглядят как один ролик).
+
+Надписи на русском НЕ просим у модели: Veo плохо пишет кириллицу.
+Текст и логотип накладываются в монтаже (CapCut, Premiere, Flow-редактор).
+
+=====================================================================
+СТИЛЬ (вставлять в начало каждого промпта)
+=====================================================================
+Premium cosmetic commercial, 16:9, cinematic macro photography look.
+Deep black-to-burgundy background, colour palette of wine red (#651d2d),
+crimson, rose pink, pearl white and crystal-clear glass. Bioluminescent
+glow, soft volumetric light, floating micro-particles like plankton,
+shallow depth of field, gentle bokeh. Slow, elegant, weightless motion,
+no fast cuts, no spinning or rotating objects, no camera shake.
+Ultra-detailed, photoreal, luxury beauty brand aesthetic.
+No text, no captions, no subtitles, no watermarks, no people, no faces,
+no needles. Ambient underwater sound design, deep soft drone, no voice.
+
+=====================================================================
+ПЛАН 1 · 0:00–0:02,5 · Появление медузы
+Кадры: начало 01_emergence.png → конец 02_glide.png
+=====================================================================
+A translucent Turritopsis dohrnii jellyfish slowly emerges from total
+darkness. Its glass-like bell gradually catches light from within, a
+faint crimson core glowing at its centre. Long pearl-beaded tentacles
+drift softly downward. Tiny luminous particles hang in the water.
+Camera: very slow push-in, slight drift to the left.
+Mood: mysterious, calm, ancient.
+
+=====================================================================
+ПЛАН 2 · 0:02,5–0:05 · Движение и световой импульс
+Кадры: начало 02_glide.png → конец 03_components_macro.png
+=====================================================================
+The jellyfish glides gracefully with one soft pulse of its bell. A wave
+of pink-white bioluminescent light travels from the bell down through
+the tentacles, like a signal passing through living cells. As the light
+reaches the tentacle tips, the camera dives into them, transitioning into
+an extreme macro world of glowing cellular structures.
+Camera: smooth forward dolly into the tentacles, seamless match-move.
+
+=====================================================================
+ПЛАН 3 · 0:05–0:07,5 · Макро трёх компонентов
+Кадры: начало 03_components_macro.png → конец 04_convergence.png
+=====================================================================
+Extreme macro of three distinct elements floating in a luminous crimson
+microcosm:
+1) small faceted ruby-red molecular clusters glowing softly (peptide),
+2) long elegant strands of pearl beads gently undulating (polynucleotides),
+3) clear crystal water bubbles and a delicate transparent web holding
+   moisture (sodium hyaluronate).
+They drift slowly and begin to be drawn toward one point at the centre.
+Camera: slow lateral glide, rack focus from the red clusters to the pearl
+strands to the water bubbles.
+
+=====================================================================
+ПЛАН 4 · 0:07,5–0:10 · Объединение в единую систему
+Кадры: начало 04_convergence.png → конец 05_syringe_formation.png
+=====================================================================
+The red clusters, pearl strands and crystal water bubbles flow together
+into one graceful luminous spiral, a single harmonious system, glowing
+brighter at its centre. The spiral slowly stretches into a straight,
+directed stream of light and particles flowing to the right of frame,
+where two clear glass syringes begin to take shape from the stream.
+Camera: gentle pull-back. Motion is a soft flowing vortex, not a fast spin.
+
+=====================================================================
+ПЛАН 5 · 0:10–0:12,5 · Переход к двум шприцам
+Кадры: начало 05_syringe_formation.png → конец 06_product_final.png
+=====================================================================
+The luminous stream of pearls, ruby particles and water droplets pours
+into two transparent pre-filled syringes lying diagonally, filling them
+with a clear glowing gel. The syringes have white plunger flanges and
+the printed label "CALYRA LUX 5" on the barrel. Particles settle, light
+calms down. The scene transitions to a glossy dark reflective surface
+where the syringes come to rest in front of a vivid pink JeuDérm box.
+Camera: slow arc toward the product, steady and premium.
+Keep the syringe label text sharp and unchanged.
+
+=====================================================================
+ПЛАН 6 · 0:12,5–0:15 · Финальный продуктовый кадр
+Кадр: 06_product_final.png (только начальный кадр)
+=====================================================================
+Hero product shot. A vivid pink JeuDérm CALYRA LUX 5 box stands upright
+on a glossy black reflective surface, two clear CALYRA LUX 5 syringes lie
+in front of it. Behind the box, a large ethereal glowing jellyfish made of
+light softly pulses once, its tentacles of particles slowly flowing.
+The product stays perfectly still and sharp, labels unchanged.
+Camera: almost static, very slow push-in. Light gently brightens.
+Leave clean dark space at the left of frame for the end title.
+
+СОВЕТ: если модель искажает надписи на коробке и шприцах, используйте
+для последних 2,5 секунды саму картинку 06_product_final.png — в монтаже
+добавьте медленное приближение (около 5%) и наложите видео-свечение
+медузы. Так упаковка будет идеальной.
+
+=====================================================================
+НАДПИСИ ДЛЯ МОНТАЖА (шрифты Prata для заголовков, Manrope для текста)
+=====================================================================
+0:00–0:04   КОД БЕССМЕРТНОЙ МЕДУЗЫ
+0:04–0:07   Природа сохраняет молодость на уровне клеточной информации
+0:05–0:07,5 (мелко, у каждого элемента по очереди)
+            CAP Пептид 5 · полинуклеотиды (PN) · гиалуронат натрия
+0:12,5–0:15 CALYRA LUX 5
+            РЕЗУЛЬТАТ — ТОЛЬКО НАЧАЛО
+            JeuDérm · calyralux.ru
+
+=====================================================================
+ГОЛОС ЗА КАДРОМ (по желанию, ~13 секунд, спокойный темп)
+=====================================================================
+«Природа сохраняет молодость на уровне клеточной информации.
+Медуза Turritopsis dohrnii стала символом клеточного долголетия.
+CALYRA LUX 5: CAP Пептид 5, полинуклеотиды и гиалуронат натрия —
+в одной формуле.
+Результат — только начало.»
+
+Если ролик без голоса — музыку берите медленную, атмосферную,
+с одним «световым» акцентом на 0:10 (момент появления шприцев).
+
+=====================================================================
+ЧЕГО ИЗБЕГАТЬ
+=====================================================================
+— медицинских обещаний в надписях и голосе («лечит», «омолаживает»,
+  «восстанавливает ДНК кожи»): про медузу говорим как о символе,
+  а не о прямом действии продукта;
+— игл на шприцах (продукт подаём как наружный);
+— быстрых вращений и резких склеек;
+— английских надписей в кадре, кроме названий CALYRA LUX 5 и JeuDérm.
